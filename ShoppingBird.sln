@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ShoppingBirdData", "ShoppingBirdData\ShoppingBirdData.sqlproj", "{D803828B-3041-4988-8A34-AC8DFEE51261}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ShoppingBirdDesktopUI", "ShoppingBirdDesktopUI\ShoppingBirdDesktopUI.vbproj", "{01B34CC5-E60E-4B07-9867-FB278D26DA3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingBird.Fly", "ShoppingBird.Fly\ShoppingBird.Fly.csproj", "{D6170A9C-83AD-43A9-A782-1B52F3C42AC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +21,14 @@ Global
 		{D803828B-3041-4988-8A34-AC8DFEE51261}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D803828B-3041-4988-8A34-AC8DFEE51261}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D803828B-3041-4988-8A34-AC8DFEE51261}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{01B34CC5-E60E-4B07-9867-FB278D26DA3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01B34CC5-E60E-4B07-9867-FB278D26DA3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01B34CC5-E60E-4B07-9867-FB278D26DA3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01B34CC5-E60E-4B07-9867-FB278D26DA3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6170A9C-83AD-43A9-A782-1B52F3C42AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6170A9C-83AD-43A9-A782-1B52F3C42AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6170A9C-83AD-43A9-A782-1B52F3C42AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6170A9C-83AD-43A9-A782-1B52F3C42AC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
