@@ -1,24 +1,32 @@
 ﻿Imports System.Collections.ObjectModel
 Imports System.Collections.Specialized
 Imports System.ComponentModel
+Imports ShoppingBird.Fly.Interfaces
 
 Public Class InvoiceViewModel
     Implements INotifyPropertyChanged
     Private _subTotal As Decimal
     Private _total As Decimal
     Private _totalTax As Decimal
-
-    Public Sub New()
+    Private _invoiceIO As IInvoiceIO
+    Private _staticData As IStaticInvoiceData
+    Public Sub New(invoiceIO As IInvoiceIO, staticData As IStaticInvoiceData)
+        _invoiceIO = invoiceIO
+        _staticData= staticData
         Me.InvoiceDataCollection = New ObservableCollection(Of InvoiceDataModel)
         AddHandler InvoiceDataCollection.CollectionChanged, AddressOf Items_CollectionChanged
         AddHandler InvoiceDataCollection.CollectionChanged, AddressOf InvoiceDataChanged
         InvoiceDate = Today()
+
+        'Combine the following two into the same call.
+        'Request for data here from library class.
         StoreList = New List(Of Store) From {
             New Store With {.Id = 1, .Name = "Seeds", .IsTaxInclusive = True},
             New Store With {.Id = 2, .Name = "Asni Mart", .IsTaxInclusive = True},
             New Store With {.Id = 3, .Name = "Stop and Shop", .IsTaxInclusive = True}
         }
 
+        'load Tax Data here
         TaxData = New ObservableCollection(Of Tax) From {
             New Tax With {.Id = 1, .Description = "GST 6%", .Rate = 0.06D}
         }
@@ -124,4 +132,14 @@ Public Class InvoiceViewModel
     Private Sub Item_PropertyChanged(ByVal sender As Object, ByVal e As PropertyChangedEventArgs)
         PriceCalcualtions()
     End Sub
+
+    ''' <summary>
+    ''' Loads all the required static data like store list, tax list, Product List
+    ''' </summary>
+    ''' <returns></returns>
+    Private Function LoadPredefinedData() As IStaticInvoiceData
+        Return _invoiceIO.LoadStaticData()
+    End Function
+
+
 End Class

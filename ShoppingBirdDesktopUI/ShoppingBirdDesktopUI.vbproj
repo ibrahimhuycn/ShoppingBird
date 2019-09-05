@@ -200,7 +200,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingBird.Fly\ShoppingBird.Fly.csproj">
+      <Project>{D6170A9C-83AD-43A9-A782-1B52F3C42AC5}</Project>
+      <Name>ShoppingBird.Fly</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="svgs\brands\500px.svg" />
     <Content Include="svgs\brands\accessible-icon.svg" />
