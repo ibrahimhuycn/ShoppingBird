@@ -2,6 +2,7 @@
 Imports System.Collections.Specialized
 Imports System.ComponentModel
 Imports ShoppingBird.Fly.Interfaces
+Imports ShoppingBird.Fly.Models
 
 Public Class InvoiceViewModel
     Implements INotifyPropertyChanged
@@ -9,10 +10,12 @@ Public Class InvoiceViewModel
     Private _total As Decimal
     Private _totalTax As Decimal
     Private _invoiceIO As IInvoiceIO
+    Private _itemIO As IItemIO
     Private _staticData As IStaticInvoiceData
-    Public Sub New(invoiceIO As IInvoiceIO, staticData As IStaticInvoiceData)
+    Public Sub New(invoiceIO As IInvoiceIO, staticData As IStaticInvoiceData, itemIO As IItemIO)
         _invoiceIO = invoiceIO
-        _staticData= staticData
+        _staticData = staticData
+        _itemIO = itemIO
         Me.InvoiceDataCollection = New ObservableCollection(Of InvoiceDataModel)
         AddHandler InvoiceDataCollection.CollectionChanged, AddressOf Items_CollectionChanged
         AddHandler InvoiceDataCollection.CollectionChanged, AddressOf InvoiceDataChanged
@@ -38,6 +41,7 @@ Public Class InvoiceViewModel
     Public Property InvoiceNumber As Integer
     Dim _store As String
 
+    Public Property IsSearchByBarcode As Boolean
     Property Store As String
         Get
             Return _store
@@ -80,6 +84,13 @@ Public Class InvoiceViewModel
     End Property
 
     Public Shared Function SaveInvoice(invoice As InvoiceViewModel) As Status
+        'Fill the invoice with data and save.
+        invoice._invoiceIO.SaveInvoice(New NewInvoice)
+        Return Status.Successful
+    End Function
+    Public Shared Function SearchItem(invoice As InvoiceViewModel) As Status
+        'Complete this statement.
+        invoice._itemIO.SearchItem(New ItemSearchTerms("This is the barcode / description", invoice.IsSearchByBarcode))
         Return Status.Successful
     End Function
 

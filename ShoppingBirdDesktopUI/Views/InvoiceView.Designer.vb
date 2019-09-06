@@ -40,6 +40,7 @@ Partial Class InvoiceView
         Me.TextEditTax = New DevExpress.XtraEditors.TextEdit()
         Me.TextEditTotal = New DevExpress.XtraEditors.TextEdit()
         Me.LookUpEdit1 = New DevExpress.XtraEditors.LookUpEdit()
+        Me.ToggleSwitchSearch = New DevExpress.XtraEditors.ToggleSwitch()
         CType(Me.TextEditInvoiceNumber.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEditSearch.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControlInvoiceItems, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,6 +53,7 @@ Partial Class InvoiceView
         CType(Me.TextEditTax.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEditTotal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LookUpEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ToggleSwitchSearch.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextEditInvoiceNumber
@@ -233,18 +235,28 @@ Partial Class InvoiceView
         '
         'LookUpEdit1
         '
-        Me.LookUpEdit1.Location = New System.Drawing.Point(378, 38)
+        Me.LookUpEdit1.Location = New System.Drawing.Point(118, 261)
         Me.LookUpEdit1.Name = "LookUpEdit1"
         Me.LookUpEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.LookUpEdit1.Properties.NullText = "Select Store"
         Me.LookUpEdit1.Size = New System.Drawing.Size(152, 20)
         Me.LookUpEdit1.TabIndex = 19
         '
+        'ToggleSwitchSearch
+        '
+        Me.ToggleSwitchSearch.Location = New System.Drawing.Point(378, 35)
+        Me.ToggleSwitchSearch.Name = "ToggleSwitchSearch"
+        Me.ToggleSwitchSearch.Properties.OffText = "Description"
+        Me.ToggleSwitchSearch.Properties.OnText = "Barcode"
+        Me.ToggleSwitchSearch.Size = New System.Drawing.Size(146, 25)
+        Me.ToggleSwitchSearch.TabIndex = 20
+        '
         'InvoiceView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(536, 338)
+        Me.Controls.Add(Me.ToggleSwitchSearch)
         Me.Controls.Add(Me.LookUpEdit1)
         Me.Controls.Add(Me.TextEditTotal)
         Me.Controls.Add(Me.TextEditTax)
@@ -275,6 +287,7 @@ Partial Class InvoiceView
         CType(Me.TextEditTax.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEditTotal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LookUpEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ToggleSwitchSearch.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -301,4 +314,5 @@ Partial Class InvoiceView
     Friend WithEvents TextEditTax As DevExpress.XtraEditors.TextEdit
     Friend WithEvents TextEditTotal As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LookUpEdit1 As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents ToggleSwitchSearch As DevExpress.XtraEditors.ToggleSwitch
 End Class

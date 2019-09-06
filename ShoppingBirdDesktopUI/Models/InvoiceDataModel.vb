@@ -7,7 +7,10 @@ Public Class InvoiceDataModel
     Private _price As Decimal
     Private _quantity As Integer
     Private _tax As Decimal
+
+    ReadOnly _taxRate As Decimal
     Private _unit As String
+
     ''' <summary>
     ''' Initializes data variable included in the Invoice
     ''' </summary>
@@ -16,15 +19,35 @@ Public Class InvoiceDataModel
     ''' <param name="price">The price of the item</param>
     ''' <param name="unit">The measured unit of the item</param>
     ''' <param name="taxRate">The rate of tax</param>
-    Public Sub New(description As String, Qty As Integer, price As Decimal, unit As String, Optional taxRate As Integer = 0)
+    Public Sub New(description As String, Qty As Integer, price As Decimal, unit As String, Optional taxRate As Decimal = 0.06D)
         Me.Description = description
         'IMPORTANT: Price and quantity assignment need to be in this order
         Me._price = price
+        Me._taxRate = taxRate
         Me.Quantity = Qty
         Me._unit = unit
+
     End Sub
-    Public Event ItemQuantityChanged()
+
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
+
+    ''' <summary>
+    ''' This method updates all the data that needs updating when the the 
+    ''' selected quantity is changed by the user.  
+    ''' </summary>
+    Private Sub UpdateData()
+        Me._amount = Me._quantity * Me._price
+        Me._tax = Math.Round(Me._amount * TaxRate, 2)
+        RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Amount)))
+        RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Tax)))
+
+    End Sub
+
+    Private ReadOnly Property TaxRate As Decimal
+        Get
+            Return _taxRate
+        End Get
+    End Property
 
     ''' <summary>
     ''' Amount  = (Quantity*Price)
@@ -36,6 +59,7 @@ Public Class InvoiceDataModel
         End Get
 
     End Property
+
     ''' <summary>
     ''' Name of the Item
     ''' </summary>
@@ -45,7 +69,6 @@ Public Class InvoiceDataModel
         End Get
         Set
             _description = Value
-            RaiseEvent ItemQuantityChanged()
             RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Description)))
 
         End Set
@@ -92,16 +115,4 @@ Public Class InvoiceDataModel
             Return _unit
         End Get
     End Property
-
-    ''' <summary>
-    ''' This method updates all the data that needs updating when the the 
-    ''' selected quantity is changed by the user.  
-    ''' </summary>
-    Private Sub UpdateData()
-        Me._amount = Me._quantity * Me._price
-        Me._tax = Math.Round(Me._amount * 0.06D, 2)
-        RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Amount)))
-        RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Tax)))
-
-    End Sub
 End Class

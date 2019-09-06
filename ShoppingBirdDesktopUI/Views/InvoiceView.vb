@@ -2,7 +2,7 @@
 Imports ShoppingBird.Fly.Models
 
 Public Class InvoiceView
-    Private Invoice As InvoiceViewModel = New InvoiceViewModel(New InvoiceIO, New StaticInvoiceData)
+    Private Invoice As InvoiceViewModel = New InvoiceViewModel(New InvoiceIO, New StaticInvoiceData, New ItemIO)
 
     Public Sub New()
 
@@ -15,6 +15,7 @@ Public Class InvoiceView
         LookUpEdit1.Properties.DataSource = Invoice.StoreList
         LookUpEdit1.Properties.DisplayMember = NameOf(Store.Name)
         LookUpEdit1.Properties.ValueMember = NameOf(Store.Id)
+        ToggleSwitchSearch.DataBindings.Add(New Binding("IsOn", Invoice, NameOf(Invoice.IsSearchByBarcode)))
     End Sub
 
     Private Sub ComboBoxEditSearch_KeyUp(sender As Object, e As KeyEventArgs) Handles ComboBoxEditSearch.KeyUp
@@ -22,6 +23,7 @@ Public Class InvoiceView
         SearchProduct()
     End Sub
     Private Sub SearchProduct()
+        MsgBox(Invoice.IsSearchByBarcode.ToString)
         Dim Item = Invoice.InvoiceDataCollection.SingleOrDefault(Function(i) i.Description = "Samsung Galaxy Note 9")
         If Not Item Is Nothing Then
             Item.Quantity += 1
@@ -30,8 +32,8 @@ Public Class InvoiceView
 
         End If
         GridViewInvoiceItems.BestFitColumns()
-    End Sub
 
+    End Sub
 
     Private Enum KeyMap
         Enter = 13
