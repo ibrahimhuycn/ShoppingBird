@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Unit]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [Unit] VARCHAR(10) NOT NULL, 
     [Description] VARCHAR(50) NOT NULL
 )

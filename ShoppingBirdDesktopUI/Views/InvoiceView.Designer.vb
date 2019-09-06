@@ -39,7 +39,7 @@ Partial Class InvoiceView
         Me.TextEditSubTotal = New DevExpress.XtraEditors.TextEdit()
         Me.TextEditTax = New DevExpress.XtraEditors.TextEdit()
         Me.TextEditTotal = New DevExpress.XtraEditors.TextEdit()
-        Me.LookUpEdit1 = New DevExpress.XtraEditors.LookUpEdit()
+        Me.LookUpEditStore = New DevExpress.XtraEditors.LookUpEdit()
         Me.ToggleSwitchSearch = New DevExpress.XtraEditors.ToggleSwitch()
         CType(Me.TextEditInvoiceNumber.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEditSearch.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,7 +52,7 @@ Partial Class InvoiceView
         CType(Me.TextEditSubTotal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEditTax.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEditTotal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LookUpEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LookUpEditStore.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ToggleSwitchSearch.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -233,14 +233,14 @@ Partial Class InvoiceView
         Me.TextEditTotal.Size = New System.Drawing.Size(83, 20)
         Me.TextEditTotal.TabIndex = 18
         '
-        'LookUpEdit1
+        'LookUpEditStore
         '
-        Me.LookUpEdit1.Location = New System.Drawing.Point(118, 261)
-        Me.LookUpEdit1.Name = "LookUpEdit1"
-        Me.LookUpEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.LookUpEdit1.Properties.NullText = "Select Store"
-        Me.LookUpEdit1.Size = New System.Drawing.Size(152, 20)
-        Me.LookUpEdit1.TabIndex = 19
+        Me.LookUpEditStore.Location = New System.Drawing.Point(118, 261)
+        Me.LookUpEditStore.Name = "LookUpEditStore"
+        Me.LookUpEditStore.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.LookUpEditStore.Properties.NullText = "Select Store"
+        Me.LookUpEditStore.Size = New System.Drawing.Size(152, 20)
+        Me.LookUpEditStore.TabIndex = 19
         '
         'ToggleSwitchSearch
         '
@@ -257,7 +257,7 @@ Partial Class InvoiceView
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(536, 338)
         Me.Controls.Add(Me.ToggleSwitchSearch)
-        Me.Controls.Add(Me.LookUpEdit1)
+        Me.Controls.Add(Me.LookUpEditStore)
         Me.Controls.Add(Me.TextEditTotal)
         Me.Controls.Add(Me.TextEditTax)
         Me.Controls.Add(Me.TextEditSubTotal)
@@ -286,7 +286,7 @@ Partial Class InvoiceView
         CType(Me.TextEditSubTotal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEditTax.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEditTotal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LookUpEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LookUpEditStore.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ToggleSwitchSearch.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -313,6 +313,6 @@ Partial Class InvoiceView
     Friend WithEvents TextEditSubTotal As DevExpress.XtraEditors.TextEdit
     Friend WithEvents TextEditTax As DevExpress.XtraEditors.TextEdit
     Friend WithEvents TextEditTotal As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LookUpEdit1 As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents LookUpEditStore As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents ToggleSwitchSearch As DevExpress.XtraEditors.ToggleSwitch
 End Class

@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Tax]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [Description] VARCHAR(50) NOT NULL, 
     [Rate] DECIMAL(3, 2) NOT NULL
 )

@@ -88,9 +88,10 @@ Public Class InvoiceViewModel
         invoice._invoiceIO.SaveInvoice(New NewInvoice)
         Return Status.Successful
     End Function
-    Public Shared Function SearchItem(invoice As InvoiceViewModel) As Status
+    Public Function SearchItem(SearchData As String) As Status
         'Complete this statement.
-        invoice._itemIO.SearchItem(New ItemSearchTerms("This is the barcode / description", invoice.IsSearchByBarcode))
+
+        Me._itemIO.SearchItem(New ItemSearchTerms("This is the barcode / description", Me.IsSearchByBarcode))
         Return Status.Successful
     End Function
 
