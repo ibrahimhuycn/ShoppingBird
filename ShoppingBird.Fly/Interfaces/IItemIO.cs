@@ -6,5 +6,6 @@ namespace ShoppingBird.Fly.Interfaces
     {
         int SaveItem(NewItem e);
         PriceList SearchItem(ItemSearchTerms e);
+        AllDescriptionsItems GetAllItemDescriptions();
     }
 }

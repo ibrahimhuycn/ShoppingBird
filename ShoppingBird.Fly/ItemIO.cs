@@ -28,5 +28,10 @@ namespace ShoppingBird.Fly
 
             throw new NotImplementedException();
         }
+
+        public AllDescriptionsItems GetAllItemDescriptions()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
