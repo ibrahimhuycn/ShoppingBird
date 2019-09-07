@@ -12,10 +12,12 @@ Public Class InvoiceViewModel
     Private _invoiceIO As IInvoiceIO
     Private _itemIO As IItemIO
     Private _staticData As IStaticInvoiceData
-    Public Sub New(invoiceIO As IInvoiceIO, staticData As IStaticInvoiceData, itemIO As IItemIO)
+    Private _storeIO As IStoreIO
+    Public Sub New(invoiceIO As IInvoiceIO, staticData As IStaticInvoiceData, itemIO As IItemIO, storeIO As IStoreIO)
         _invoiceIO = invoiceIO
         _staticData = staticData
         _itemIO = itemIO
+        _storeIO = storeIO
         Me.InvoiceDataCollection = New ObservableCollection(Of InvoiceDataModel)
         AddHandler InvoiceDataCollection.CollectionChanged, AddressOf Items_CollectionChanged
         AddHandler InvoiceDataCollection.CollectionChanged, AddressOf InvoiceDataChanged
@@ -23,11 +25,7 @@ Public Class InvoiceViewModel
 
         'Combine the following two into the same call.
         'Request for data here from library class.
-        StoreList = New List(Of Store) From {
-            New Store With {.Id = 1, .Name = "Seeds", .IsTaxInclusive = True},
-            New Store With {.Id = 2, .Name = "Asni Mart", .IsTaxInclusive = True},
-            New Store With {.Id = 3, .Name = "Stop and Shop", .IsTaxInclusive = True}
-        }
+        StoreList = LoadStoreList()
 
         'load Tax Data here
         TaxData = New ObservableCollection(Of Tax) From {
@@ -153,5 +151,16 @@ Public Class InvoiceViewModel
         Return _invoiceIO.LoadStaticData()
     End Function
 
+    Private Function LoadStoreList() As IList(Of Store)
+        Dim tempStoreList As New List(Of Store)
+        For Each s In _storeIO.LoadAll
+            Dim tempStore As New Store With {.Id = s.Id,
+                .Name = s.Name,
+                .IsTaxInclusive = s.IsTaxInclusive}
+            tempStoreList.Add(tempStore)
+        Next
+
+        Return tempStoreList
+    End Function
 
 End Class

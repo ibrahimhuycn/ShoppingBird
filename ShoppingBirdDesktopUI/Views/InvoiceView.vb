@@ -2,7 +2,7 @@
 Imports ShoppingBird.Fly.Models
 
 Public Class InvoiceView
-    Private Invoice As InvoiceViewModel = New InvoiceViewModel(New InvoiceIO, New StaticInvoiceData, New ItemIO)
+    Private Invoice As InvoiceViewModel = New InvoiceViewModel(New InvoiceIO, New StaticInvoiceData, New ItemIO, New StoreIO)
 
     Public Sub New()
 
