@@ -11,21 +11,17 @@ Public Class InvoiceViewModel
     Private _totalTax As Decimal
     Private _invoiceIO As IInvoiceIO
     Private _itemIO As IItemIO
-    Private _staticData As IStaticInvoiceData
     Private _storeIO As IStoreIO
-    Public Sub New(invoiceIO As IInvoiceIO, staticData As IStaticInvoiceData, itemIO As IItemIO, storeIO As IStoreIO)
+    Public Sub New(invoiceIO As IInvoiceIO, itemIO As IItemIO, storeIO As IStoreIO)
         _invoiceIO = invoiceIO
-        _staticData = staticData
         _itemIO = itemIO
         _storeIO = storeIO
         Me.InvoiceDataCollection = New ObservableCollection(Of InvoiceDataModel)
         AddHandler InvoiceDataCollection.CollectionChanged, AddressOf Items_CollectionChanged
         AddHandler InvoiceDataCollection.CollectionChanged, AddressOf InvoiceDataChanged
         InvoiceDate = Today()
-
-        'Combine the following two into the same call.
-        'Request for data here from library class.
         StoreList = LoadStoreList()
+        Me.ItemList = LoadItemList()
 
         'load Tax Data here
         TaxData = New ObservableCollection(Of Tax) From {
@@ -49,6 +45,11 @@ Public Class InvoiceViewModel
         End Set
     End Property
 
+    ''' <summary>
+    ''' Structure: ItemId Description|Barcode
+    ''' </summary>
+    ''' <returns></returns>
+    Public Property ItemList As List(Of ItemListAllModel)
     Public Property StoreList As List(Of Store)
     Dim _invoiceDate As Date
     Property InvoiceDate As Date
@@ -86,11 +87,25 @@ Public Class InvoiceViewModel
         invoice._invoiceIO.SaveInvoice(New NewInvoice)
         Return Status.Successful
     End Function
-    Public Function SearchItem(SearchData As String) As Status
-        'Complete this statement.
-
-        Me._itemIO.SearchItem(New ItemSearchTerms("This is the barcode / description", Me.IsSearchByBarcode))
-        Return Status.Successful
+    ''' <summary>
+    ''' Searches and returns the item provided that the passed in parameter is in the correct format.
+    ''' </summary>
+    ''' <param name="SearchData">Format: Barcode|ItemDescription|StoreId</param>
+    ''' <returns></returns>
+    Public Function SearchItem(SearchData As String) As ItemSearchResultModel
+        Dim SearchedItem As ItemSearchResultModel
+        Dim SearchParameters() As String = SearchData.Split(ChrW(124))
+        Select Case True
+            Case True
+                SearchedItem = Me._itemIO.SearchItem(New ItemSearchTerms(SearchParameters(0),
+                                        Convert.ToInt32(SearchParameters(2)), Me.IsSearchByBarcode))
+            Case False
+                SearchedItem = Me._itemIO.SearchItem(New ItemSearchTerms(SearchParameters(1),
+                                        Convert.ToInt32(SearchParameters(2)), Me.IsSearchByBarcode))
+            Case Else
+                Throw New ArgumentOutOfRangeException("Item barcode or description is required to perform an item searc")
+        End Select
+        Return SearchedItem
     End Function
 
     Private Sub PriceCalcualtions()
@@ -151,7 +166,7 @@ Public Class InvoiceViewModel
         Return _invoiceIO.LoadStaticData()
     End Function
 
-    Private Function LoadStoreList() As IList(Of Store)
+    Private Function LoadStoreList() As List(Of Store)
         Dim tempStoreList As New List(Of Store)
         For Each s In _storeIO.LoadAll
             Dim tempStore As New Store With {.Id = s.Id,
@@ -163,4 +178,7 @@ Public Class InvoiceViewModel
         Return tempStoreList
     End Function
 
+    Private Function LoadItemList() As List(Of ItemListAllModel)
+        Return _itemIO.GetAllItemDescriptions()
+    End Function
 End Class

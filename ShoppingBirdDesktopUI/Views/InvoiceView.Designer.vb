@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class InvoiceView
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,10 +17,9 @@ Partial Class InvoiceView
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.TextEditInvoiceNumber = New DevExpress.XtraEditors.TextEdit()
-        Me.ComboBoxEditSearch = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.GroupControlInvoiceItems = New DevExpress.XtraEditors.GroupControl()
         Me.GridControlInvoiceItems = New DevExpress.XtraGrid.GridControl()
         Me.GridViewInvoiceItems = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -41,8 +40,8 @@ Partial Class InvoiceView
         Me.TextEditTotal = New DevExpress.XtraEditors.TextEdit()
         Me.LookUpEditStore = New DevExpress.XtraEditors.LookUpEdit()
         Me.ToggleSwitchSearch = New DevExpress.XtraEditors.ToggleSwitch()
+        Me.LookupEditSearch = New DevExpress.XtraEditors.LookUpEdit()
         CType(Me.TextEditInvoiceNumber.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ComboBoxEditSearch.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControlInvoiceItems, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControlInvoiceItems.SuspendLayout()
         CType(Me.GridControlInvoiceItems, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,6 +53,7 @@ Partial Class InvoiceView
         CType(Me.TextEditTotal.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LookUpEditStore.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ToggleSwitchSearch.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LookupEditSearch.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextEditInvoiceNumber
@@ -63,15 +63,6 @@ Partial Class InvoiceView
         Me.TextEditInvoiceNumber.Properties.NullText = "Invoice Number"
         Me.TextEditInvoiceNumber.Size = New System.Drawing.Size(100, 20)
         Me.TextEditInvoiceNumber.TabIndex = 0
-        '
-        'ComboBoxEditSearch
-        '
-        Me.ComboBoxEditSearch.Location = New System.Drawing.Point(12, 38)
-        Me.ComboBoxEditSearch.Name = "ComboBoxEditSearch"
-        Me.ComboBoxEditSearch.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEditSearch.Properties.NullText = "Scan product barcode / Search by product name"
-        Me.ComboBoxEditSearch.Size = New System.Drawing.Size(360, 20)
-        Me.ComboBoxEditSearch.TabIndex = 2
         '
         'GroupControlInvoiceItems
         '
@@ -239,17 +230,31 @@ Partial Class InvoiceView
         Me.LookUpEditStore.Name = "LookUpEditStore"
         Me.LookUpEditStore.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.LookUpEditStore.Properties.NullText = "Select Store"
+        Me.LookUpEditStore.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
         Me.LookUpEditStore.Size = New System.Drawing.Size(152, 20)
         Me.LookUpEditStore.TabIndex = 19
         '
         'ToggleSwitchSearch
         '
+        Me.ToggleSwitchSearch.EditValue = True
         Me.ToggleSwitchSearch.Location = New System.Drawing.Point(378, 35)
         Me.ToggleSwitchSearch.Name = "ToggleSwitchSearch"
         Me.ToggleSwitchSearch.Properties.OffText = "Description"
         Me.ToggleSwitchSearch.Properties.OnText = "Barcode"
         Me.ToggleSwitchSearch.Size = New System.Drawing.Size(146, 25)
         Me.ToggleSwitchSearch.TabIndex = 20
+        '
+        'LookupEditSearch
+        '
+        Me.LookupEditSearch.Location = New System.Drawing.Point(12, 38)
+        Me.LookupEditSearch.Name = "LookupEditSearch"
+        Me.LookupEditSearch.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.LookupEditSearch.Properties.NullText = "Scan product barcode / Search by product name"
+        Me.LookupEditSearch.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
+        Me.LookupEditSearch.Properties.PopupSizeable = False
+        Me.LookupEditSearch.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.LookupEditSearch.Size = New System.Drawing.Size(360, 20)
+        Me.LookupEditSearch.TabIndex = 2
         '
         'InvoiceView
         '
@@ -268,15 +273,14 @@ Partial Class InvoiceView
         Me.Controls.Add(Me.LabelControlTax)
         Me.Controls.Add(Me.DateEditInvoiceDate)
         Me.Controls.Add(Me.GroupControlInvoiceItems)
-        Me.Controls.Add(Me.ComboBoxEditSearch)
         Me.Controls.Add(Me.TextEditInvoiceNumber)
+        Me.Controls.Add(Me.LookupEditSearch)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "InvoiceView"
         Me.Text = "Invoice: #InvoiceNumber"
         CType(Me.TextEditInvoiceNumber.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ComboBoxEditSearch.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControlInvoiceItems, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControlInvoiceItems.ResumeLayout(False)
         CType(Me.GridControlInvoiceItems, System.ComponentModel.ISupportInitialize).EndInit()
@@ -288,13 +292,13 @@ Partial Class InvoiceView
         CType(Me.TextEditTotal.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LookUpEditStore.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ToggleSwitchSearch.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LookupEditSearch.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents TextEditInvoiceNumber As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents ComboBoxEditSearch As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents GroupControlInvoiceItems As DevExpress.XtraEditors.GroupControl
     Friend WithEvents GridControlInvoiceItems As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridViewInvoiceItems As DevExpress.XtraGrid.Views.Grid.GridView
@@ -315,4 +319,5 @@ Partial Class InvoiceView
     Friend WithEvents TextEditTotal As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LookUpEditStore As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents ToggleSwitchSearch As DevExpress.XtraEditors.ToggleSwitch
+    Friend WithEvents LookupEditSearch As DevExpress.XtraEditors.LookUpEdit
 End Class
