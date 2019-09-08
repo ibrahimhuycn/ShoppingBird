@@ -15,11 +15,7 @@ namespace ShoppingBird.Fly.Models
         /// <param name="store">This is the selected store Id</param>
         public ItemSearchTerms(string barcodeOrDescription, int storeId, bool isSearchByBarcode = true)
         {
-            var StoreData = new Store();
-            this.Store = StoreData;
 
-            var ItemData = new Item();
-             this.Item = ItemData;
             switch (isSearchByBarcode)
             {
                 case true:
