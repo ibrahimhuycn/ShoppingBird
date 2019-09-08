@@ -95,16 +95,27 @@ Public Class InvoiceViewModel
     Public Function SearchItem(SearchData As String) As ItemSearchResultModel
         Dim SearchedItem As ItemSearchResultModel
         Dim SearchParameters() As String = SearchData.Split(ChrW(124))
-        Select Case IsSearchByBarcode
-            Case True
-                SearchedItem = Me._itemIO.SearchItem(New ItemSearchTerms(SearchParameters(0),
-                                        Convert.ToInt32(SearchParameters(2)), Me.IsSearchByBarcode))
-            Case False
-                SearchedItem = Me._itemIO.SearchItem(New ItemSearchTerms(SearchParameters(1),
-                                        Convert.ToInt32(SearchParameters(2)), Me.IsSearchByBarcode))
-            Case Else
-                Throw New ArgumentOutOfRangeException("Item barcode or description is required to perform an item searc")
-        End Select
+
+        'The following will throw an error if the item being searched is not in the 
+        'Item list loaded at the form constructor.
+        Try
+            Select Case IsSearchByBarcode
+                Case True
+                    SearchedItem = Me._itemIO.SearchItem(New ItemSearchTerms(SearchParameters(0),
+                                            Convert.ToInt32(SearchParameters(2)), Me.IsSearchByBarcode))
+                Case False
+                    SearchedItem = Me._itemIO.SearchItem(New ItemSearchTerms(SearchParameters(1),
+                                            Convert.ToInt32(SearchParameters(2)), Me.IsSearchByBarcode))
+                Case Else
+                    Throw New ArgumentOutOfRangeException("Item barcode or description is required to perform an item searc")
+            End Select
+        Catch ex As IndexOutOfRangeException
+            Return New ItemSearchResultModel With {.ErrorMessage = "Item does not exist in the database. Please add the item," &
+                " reopen invoice entry form and try again!"}
+        Catch ex As Exception
+            Return New ItemSearchResultModel With {.ErrorMessage = ex.Message}
+        End Try
+
         Return SearchedItem
     End Function
 

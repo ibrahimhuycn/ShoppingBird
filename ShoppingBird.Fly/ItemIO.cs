@@ -31,6 +31,7 @@ namespace ShoppingBird.Fly
                         SearhResult = cnx.Query<ItemSearchResultModel>("usp_SearchItemByBarcodeAndStore", barcodeParameters,
                             commandType: CommandType.StoredProcedure).FirstOrDefault();
                     }
+                    if (SearhResult == null) { SearhResult = new ItemSearchResultModel { ErrorMessage = "Item does not exist in the specified store." }; }
                     return SearhResult;
 
                 case SearchBy.Description:
@@ -42,6 +43,7 @@ namespace ShoppingBird.Fly
                         SearhResult = cnx.Query<ItemSearchResultModel>("usp_SearchItemByDescriptionAndStore", descriptionsParameters,
                             commandType: CommandType.StoredProcedure).FirstOrDefault();
                     }
+                    if (SearhResult == null) { SearhResult = new ItemSearchResultModel { ErrorMessage = "Item does not exist in the specified store." }; }
                     return SearhResult;
                 default:
                     throw new ArgumentOutOfRangeException("please pass in a barcode or item description for searching");

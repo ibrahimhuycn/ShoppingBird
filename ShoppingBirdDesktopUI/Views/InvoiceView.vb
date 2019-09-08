@@ -17,15 +17,27 @@ Public Class InvoiceView
         LookUpEditStore.Properties.DisplayMember = NameOf(Store.Name)
         LookUpEditStore.Properties.ValueMember = NameOf(Store.Id)
 
-        LookupEditSearch.Properties.DataSource = Invoice.ItemList
-        LookupEditSearch.Properties.DisplayMember = NameOf(ItemListAllModel.Item)
-        LookupEditSearch.Properties.ValueMember = NameOf(ItemListAllModel.Id)
+        SearchBoxReAssignData()
 
         ToggleSwitchSearch.DataBindings.Add(New Binding("IsOn", Invoice, NameOf(Invoice.IsSearchByBarcode)))
 
     End Sub
 
-    Private Sub LookupEditSearch_KeyUp(sender As Object, e As KeyEventArgs) Handles LookupEditSearch.KeyUp
+    ''' <summary>
+    ''' Reassign data source, Display member and Value member on search box
+    ''' </summary>
+    Private Sub SearchBoxReAssignData()
+        'Remove
+        LookupEditSearch.Properties.DataSource = Nothing
+        LookupEditSearch.Properties.DisplayMember = ""
+        LookupEditSearch.Properties.ValueMember = ""
+        'Assigm
+        LookupEditSearch.Properties.DataSource = Invoice.ItemList
+        LookupEditSearch.Properties.DisplayMember = NameOf(ItemListAllModel.Item)
+        LookupEditSearch.Properties.ValueMember = NameOf(ItemListAllModel.Id)
+    End Sub
+
+    Private Sub LookupEditSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles LookupEditSearch.KeyDown
 
         If e.KeyCode <> KeyMap.Enter Then Exit Sub
         If LookupEditSearch.Text = Nothing Or LookUpEditStore.Text = LookUpEditStore.Properties.NullText Then
@@ -33,15 +45,21 @@ Public Class InvoiceView
                    MsgBoxStyle.Exclamation, "Incomplete Fields")
             Exit Sub
         End If
-
         Dim SelectedStore As Store = CType(LookUpEditStore.GetSelectedDataRow(), Store)
         SearchProduct(LookupEditSearch.Text & "|" & SelectedStore.Id)
+        LookupEditSearch.Text = ""
     End Sub
 
     Private Sub SearchProduct(searchTerm As String)
         'Search fot the item
-
         Dim SearchResults As ItemSearchResultModel = Invoice.SearchItem(searchTerm)
+        If Not SearchResults?.ErrorMessage Is Nothing Then
+            MsgBox(SearchResults.ErrorMessage, MsgBoxStyle.Critical, "Item Search")
+            LookupEditSearch.Text = ""
+            Exit Sub
+        End If
+        'rule out an error
+
 
         Dim Item = Invoice.InvoiceDataCollection.SingleOrDefault(Function(i) i.Description = SearchResults.Description)
         If Not Item Is Nothing Then
@@ -51,10 +69,17 @@ Public Class InvoiceView
 
         End If
         GridViewInvoiceItems.BestFitColumns()
+    End Sub
 
+    Private Sub GridControlInvoiceItems_KeyDown(sender As Object, e As KeyEventArgs) Handles GridControlInvoiceItems.KeyDown
+        If e.KeyCode = KeyMap.Delete Then
+            GridViewInvoiceItems.DeleteRow(GridViewInvoiceItems.FocusedRowHandle)
+            e.Handled = True
+        End If
     End Sub
 
     Private Enum KeyMap
         Enter = 13
+        Delete = 46
     End Enum
 End Class

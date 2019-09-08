@@ -10,5 +10,6 @@ namespace ShoppingBird.Fly.Models
         public string Unit { get; set; }
         public decimal RetailPrice { get; set; }
         public decimal Rate { get; set; }
+        public string ErrorMessage { get; set; } = null;
     }
 }
