@@ -28,7 +28,7 @@ namespace ShoppingBird.Fly.Models
                     this.Store.Id = storeId;
                     break;
                 case false:
-                    this.Barcode = barcodeOrDescription;
+                    this.Item.Description = barcodeOrDescription;
                     this._searchBy = SearchBy.Description;
                     this.Store.Id = storeId;
                     break;

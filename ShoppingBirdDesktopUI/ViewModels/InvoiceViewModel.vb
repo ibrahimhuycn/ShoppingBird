@@ -95,7 +95,7 @@ Public Class InvoiceViewModel
     Public Function SearchItem(SearchData As String) As ItemSearchResultModel
         Dim SearchedItem As ItemSearchResultModel
         Dim SearchParameters() As String = SearchData.Split(ChrW(124))
-        Select Case True
+        Select Case IsSearchByBarcode
             Case True
                 SearchedItem = Me._itemIO.SearchItem(New ItemSearchTerms(SearchParameters(0),
                                         Convert.ToInt32(SearchParameters(2)), Me.IsSearchByBarcode))
