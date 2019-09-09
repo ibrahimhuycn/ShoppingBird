@@ -72,6 +72,7 @@ Public Class InvoiceView
     End Sub
 
     Private Sub GridControlInvoiceItems_KeyDown(sender As Object, e As KeyEventArgs) Handles GridControlInvoiceItems.KeyDown
+        'delete selected row on grid on pressing delete
         If e.KeyCode = KeyMap.Delete Then
             GridViewInvoiceItems.DeleteRow(GridViewInvoiceItems.FocusedRowHandle)
             e.Handled = True
