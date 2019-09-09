@@ -2,7 +2,6 @@
 (
 	[Id] INT NOT NULL PRIMARY KEY, 
     [StoreId] INT NOT NULL, 
-    [ItemId] INT NOT NULL, 
     [Number] INT NOT NULL /*Bill Number | Invoice Number etc...*/, 
     [SubTotal] DECIMAL(18, 2) NOT NULL, 
     [Tax] DECIMAL(18, 2) NOT NULL, 
