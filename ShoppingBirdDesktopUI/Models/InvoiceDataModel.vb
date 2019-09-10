@@ -19,14 +19,14 @@ Public Class InvoiceDataModel
     ''' <param name="price">The price of the item</param>
     ''' <param name="unit">The measured unit of the item</param>
     ''' <param name="taxRate">The rate of tax</param>
-    Public Sub New(description As String, Qty As Integer, price As Decimal, unit As String, Optional taxRate As Decimal = 0.06D)
+    Public Sub New(itemId As Integer, description As String, Qty As Integer, price As Decimal, unit As String, Optional taxRate As Decimal = 0.06D)
         Me.Description = description
         'IMPORTANT: Price and quantity assignment need to be in this order
         Me._price = price
         Me._taxRate = taxRate
         Me.Quantity = Qty
         Me._unit = unit
-
+        Me.ItemId = itemId
     End Sub
 
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
@@ -43,6 +43,7 @@ Public Class InvoiceDataModel
 
     End Sub
 
+    Public Property ItemId As Integer
     Private ReadOnly Property TaxRate As Decimal
         Get
             Return _taxRate

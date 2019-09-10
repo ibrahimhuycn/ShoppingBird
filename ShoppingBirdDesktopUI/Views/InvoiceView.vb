@@ -65,7 +65,12 @@ Public Class InvoiceView
         If Not Item Is Nothing Then
             Item.Quantity += 1
         Else
-            Invoice.InvoiceDataCollection.Add(New InvoiceDataModel(SearchResults.Description, 1, SearchResults.RetailPrice, SearchResults.Unit))
+            Invoice.InvoiceDataCollection.Add(
+                New InvoiceDataModel(SearchResults.ItemId,
+                                     SearchResults.Description,
+                                     1,
+                                     SearchResults.RetailPrice,
+                                     SearchResults.Unit))
 
         End If
         GridViewInvoiceItems.BestFitColumns()

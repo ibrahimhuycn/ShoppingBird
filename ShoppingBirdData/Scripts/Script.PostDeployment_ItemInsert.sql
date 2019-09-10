@@ -15,11 +15,17 @@ DELETE FROM [dbo].[ItemCategory]
 DELETE FROM [dbo].[Store]
 DELETE FROM [dbo].[Tax]
 DELETE FROM [dbo].[Unit]
+DELETE FROM [dbo].[User]
 GO
 /*
 2. Inserting data
 -----------------------------------------------
 */
+SET IDENTITY_INSERT [dbo].[User] ON
+INSERT INTO [dbo].[User]([Id],[FullName],[IsStoreEmployee],[Username],[Email],[Phone],[Hash],[RequirePasswordChange])
+VALUES(1,'Ibrahim Hussain',0,'swatincadmin','ibrahim.hucyn@swatinc.com',7657111,'agfduyasdfbsdfhjsdgfjsdgfsdjfh',0)
+SET IDENTITY_INSERT [dbo].[User] OFF
+GO
 SET IDENTITY_INSERT [dbo].[Unit] ON
 INSERT INTO [dbo].[Unit]([Id],[Unit],[Description]) VALUES (1,'ea','Each')
 INSERT INTO [dbo].[Unit]([Id],[Unit],[Description]) VALUES (2,'Kg','Kilogram')

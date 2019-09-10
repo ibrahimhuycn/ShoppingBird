@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Invoice]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [StoreId] INT NOT NULL, 
     [Number] INT NOT NULL /*Bill Number | Invoice Number etc...*/, 
     [SubTotal] DECIMAL(18, 2) NOT NULL, 

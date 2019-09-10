@@ -3,7 +3,7 @@
 	@StoreId INT
 AS
 BEGIN
-	SELECT [i].[Description],[u].[Unit],[p].[RetailPrice],[t].[Rate]
+	SELECT [i].[Id] AS [ItemId],[i].[Description],[u].[Unit],[p].[RetailPrice],[t].[Rate]
 	FROM [dbo].[PriceList] [p]
 	INNER JOIN [dbo].[Item] [i] ON [p].[ItemId] = [i].[Id]
 	INNER JOIN [dbo].[Unit] [u] ON [p].[UnitId]  = [u].[Id]
