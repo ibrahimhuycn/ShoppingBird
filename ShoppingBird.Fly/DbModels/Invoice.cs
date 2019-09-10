@@ -8,7 +8,6 @@ namespace ShoppingBird.Fly.DbModels
     {
         public int Id { get; set; }
         public int StoreId { get; set; }
-        public int ItemId { get; set; }
         public int Number { get; set; }
         public decimal SubTotal { get; set; }
         public decimal Tax { get; set; }
