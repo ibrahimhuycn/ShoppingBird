@@ -1,4 +1,5 @@
 ﻿Imports ShoppingBird.Fly
+Imports ShoppingBird.Fly.DbModels
 Imports ShoppingBird.Fly.Models
 
 Public Class InvoiceView
@@ -88,4 +89,30 @@ Public Class InvoiceView
         Enter = 13
         Delete = 46
     End Enum
+
+    Private Sub SimpleButtonSaveInvoice_Click(sender As Object, e As EventArgs) Handles SimpleButtonSaveInvoice.Click
+        'initialise and add the details for the invoice to be saved.
+        Dim invoiceDetails As New List(Of InvoiceDetail)
+
+        For Each Item In Invoice.InvoiceDataCollection
+            invoiceDetails.Add(New InvoiceDetail With {.ItemId = Item.ItemId,
+                               .Price = Item.Price,
+                               .Quantity = Item.Quantity,
+                               .Tax = Item.Tax})
+        Next
+
+        Dim SelectedStore As Store = CType(LookUpEditStore.GetSelectedDataRow(), Store)
+        Dim invoiceDbModel As New DbModels.Invoice With {.StoreId = SelectedStore.Id,
+                                                      .Number = Invoice.InvoiceNumber,
+                                                      .SubTotal = Invoice.SubTotal,
+                                                      .Tax = Invoice.TotalTax,
+                                                      .Total = Invoice.Total,
+                                                      .UserId = 1,
+                                                      .[Date] = Invoice.InvoiceDate}
+
+        Dim InvoiceSaveData = New NewInvoice With {
+                .Invoice = invoiceDbModel,
+                .InvoiceDetails = invoiceDetails}
+        Invoice.SaveInvoice(InvoiceSaveData)
+    End Sub
 End Class

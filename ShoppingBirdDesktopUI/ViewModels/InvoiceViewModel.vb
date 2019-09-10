@@ -82,9 +82,8 @@ Public Class InvoiceViewModel
 
     End Property
 
-    Public Shared Function SaveInvoice(invoice As InvoiceViewModel) As Status
-        'Fill the invoice with data and save.
-        invoice._invoiceIO.SaveInvoice(New NewInvoice)
+    Public Function SaveInvoice(e As NewInvoice) As Status
+        _invoiceIO.SaveInvoice(e)
         Return Status.Successful
     End Function
     ''' <summary>

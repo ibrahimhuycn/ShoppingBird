@@ -1,12 +1,13 @@
 ﻿CREATE PROCEDURE [dbo].[usp_InsertInvoiceDetails]
-	@Inserted_InvoiceId INT,
+	@InvoiceId INT, --This is the inserted invoiceId from the insert to dbo.Invoice
 	@ItemId INT,
 	@Price DECIMAL,
-	@Qty INT,
+	@Quantity INT,
 	@Tax DECIMAL
 AS
 BEGIN TRAN
 --Insert into dbo.InvoiceDetails
+	SET NOCOUNT ON
 	INSERT INTO [dbo].[InvoiceDetails] ([InvoiceId],[ItemId],[Price],[Quantity],[Tax])
-	VALUES (@Inserted_InvoiceId,@ItemId,@Price,@Qty,@Tax)
+	VALUES (@InvoiceId,@ItemId,@Price,@Quantity,@Tax)
 COMMIT TRAN

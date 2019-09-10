@@ -13,29 +13,33 @@ namespace ShoppingBird.Fly
         
         public int SaveInvoice(NewInvoice e)
         {
-            int Insert_InvoiceId = 0;
             int returnvalue = 1;
+            int InsertedInvoiceId = 0;
             string CnxString = Helper.GetConnectionString("ShoppingBirdData");
 
+            //BUG: Invoice can be inserted without details due to an exception on Details insert. Invoice insert does not rollback
+          
             try
             {
                 //step one: insert invoice 
                 using (IDbConnection cnx = new SqlConnection(CnxString))
                 {
-                    Insert_InvoiceId = cnx.Execute("usp_InsertInvoice", e.Invoice, commandType: CommandType.StoredProcedure);
+                   var result = cnx.QuerySingle<dynamic>("usp_InsertInvoice", e.Invoice, commandType: CommandType.StoredProcedure);
+                    InsertedInvoiceId = Convert.ToInt32(result.Inserted_InvoiceId);
                 }
 
                 //step two: insert InvoiceDetails
-                if (Insert_InvoiceId == 0) { throw new Exception("The invoice insert failed. Aborted insert of invoice details."); }
+                if (InsertedInvoiceId == 0) { throw new Exception("The invoice insert failed. Aborted insert of invoice details."); }
 
                 foreach (var item in e.InvoiceDetails)
                 {
-                    item.InvoiceId = Insert_InvoiceId;
+                    item.InvoiceId = InsertedInvoiceId;
+                    using (IDbConnection cnx = new SqlConnection(CnxString))
+                    {
+                        cnx.Execute("usp_InsertInvoiceDetails", item, commandType: CommandType.StoredProcedure);
+                    }
                 }
-                using (IDbConnection cnx = new SqlConnection(CnxString))
-                {
-                    cnx.Execute("usp_InsertInvoiceDetails", e.InvoiceDetails, commandType: CommandType.StoredProcedure);
-                }
+
 
                 returnvalue = 0;
             }
