@@ -7,11 +7,11 @@
 	@UserId INT,
 	@Date DATE = GETDATE
 AS
-BEGIN TRAN
+BEGIN
 --Insert to dbo.Invoice: Get the inserted Id
 	SET NOCOUNT ON
 	INSERT INTO [dbo].[Invoice] ([StoreId],[Number],[SubTotal],[Tax],[Total],[UserId],[Date])
 	OUTPUT INSERTED.Id AS Inserted_InvoiceId
 	VALUES (@StoreId,@Number,@SubTotal,@Tax,@Total,@UserId,@Date)
-COMMIT TRAN
+END
 

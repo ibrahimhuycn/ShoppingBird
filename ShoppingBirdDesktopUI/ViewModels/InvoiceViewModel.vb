@@ -83,8 +83,18 @@ Public Class InvoiceViewModel
     End Property
 
     Public Function SaveInvoice(e As NewInvoice) As Status
-        _invoiceIO.SaveInvoice(e)
-        Return Status.Successful
+        Dim InsertStatus As Status = Status.Failed
+        Try
+            If _invoiceIO.SaveInvoice(e) = 0 Then
+                MsgBox(" data Inserted")
+                InsertStatus = Status.Successful
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        Return InsertStatus
+
     End Function
     ''' <summary>
     ''' Searches and returns the item provided that the passed in parameter is in the correct format.

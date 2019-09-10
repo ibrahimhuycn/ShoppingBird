@@ -5,9 +5,9 @@
 	@Quantity INT,
 	@Tax DECIMAL
 AS
-BEGIN TRAN
+BEGIN 
 --Insert into dbo.InvoiceDetails
 	SET NOCOUNT ON
 	INSERT INTO [dbo].[InvoiceDetails] ([InvoiceId],[ItemId],[Price],[Quantity],[Tax])
 	VALUES (@InvoiceId,@ItemId,@Price,@Quantity,@Tax)
-COMMIT TRAN
+END 

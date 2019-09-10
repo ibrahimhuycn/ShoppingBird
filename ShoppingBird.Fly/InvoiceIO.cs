@@ -1,16 +1,13 @@
-﻿using Dapper;
-using ShoppingBird.Fly.DataAccess;
+﻿using ShoppingBird.Fly.DataAccess;
 using ShoppingBird.Fly.Interfaces;
 using ShoppingBird.Fly.Models;
 using System;
-using System.Data;
-using System.Data.SqlClient;
 
 namespace ShoppingBird.Fly
 {
     public class InvoiceIO : IInvoiceIO
     {
-        
+
         public int SaveInvoice(NewInvoice e)
         {
             int returnvalue = 1;
@@ -18,40 +15,36 @@ namespace ShoppingBird.Fly
             string CnxString = Helper.GetConnectionString("ShoppingBirdData");
 
             //BUG: Invoice can be inserted without details due to an exception on Details insert. Invoice insert does not rollback
-          
-            try
+
+            using (SqlDataAccess sql = new SqlDataAccess())
             {
-                //step one: insert invoice 
-                using (IDbConnection cnx = new SqlConnection(CnxString))
+                try
                 {
-                   var result = cnx.QuerySingle<dynamic>("usp_InsertInvoice", e.Invoice, commandType: CommandType.StoredProcedure);
+                    //step one: insert invoice 
+                    sql.StartTransaction("ShoppingBirdData");
+                    var result = sql.SaveDataInTransactionQuerySingle("usp_InsertInvoice", e.Invoice);
                     InsertedInvoiceId = Convert.ToInt32(result.Inserted_InvoiceId);
-                }
 
-                //step two: insert InvoiceDetails
-                if (InsertedInvoiceId == 0) { throw new Exception("The invoice insert failed. Aborted insert of invoice details."); }
-
-                foreach (var item in e.InvoiceDetails)
-                {
-                    item.InvoiceId = InsertedInvoiceId;
-                    using (IDbConnection cnx = new SqlConnection(CnxString))
+                    //step two: insert InvoiceDetails
+                    if (InsertedInvoiceId == 0) { throw new Exception("The invoice insert failed. Aborted insert of invoice details."); }
+                    foreach (var item in e.InvoiceDetails)
                     {
-                        cnx.Execute("usp_InsertInvoiceDetails", item, commandType: CommandType.StoredProcedure);
+                        item.InvoiceId = InsertedInvoiceId;
+                        sql.SaveDataInTransactionExecute("usp_InsertInvoiceDetails", item);
                     }
+
+                    returnvalue = 0;
+                }
+                catch (Exception)
+                {
+
+                    sql.RollbackTransaction();
+                    throw;
                 }
 
-
-                returnvalue = 0;
-            }
-            catch (Exception)
-            {
-
-                throw;
+                return returnvalue;
             }
 
-
-
-            return returnvalue;
         }
 
         IStaticInvoiceData IInvoiceIO.LoadStaticData()
