@@ -1,7 +1,7 @@
 # ShoppingBird
 Application to help shop with the lowest price. Will add functionality for personal finance.
 
-#How the application Works
+## How the application Works
 The backbone of the application is that the end user enters invoices from different stores into the software. The software then maintains
 a list of all items/products/goods with their specific prices for specific stores.
 
