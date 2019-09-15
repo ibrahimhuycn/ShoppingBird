@@ -13,6 +13,7 @@ Public Class InvoiceView
         TextEditTax.DataBindings.Add(New Binding("Text", Invoice, NameOf(Invoice.TotalTax)))
         TextEditTotal.DataBindings.Add(New Binding("Text", Invoice, NameOf(Invoice.Total)))
         DateEditInvoiceDate.DataBindings.Add(New Binding("EditValue", Invoice, NameOf(Invoice.InvoiceDate)))
+        TextEditInvoiceNumber.DataBindings.Add(New Binding("EditValue", Invoice, NameOf(Invoice.InvoiceNumber)))
 
         LookUpEditStore.Properties.DataSource = Invoice.StoreList
         LookUpEditStore.Properties.DisplayMember = NameOf(Store.Name)
@@ -32,7 +33,7 @@ Public Class InvoiceView
         LookupEditSearch.Properties.DataSource = Nothing
         LookupEditSearch.Properties.DisplayMember = ""
         LookupEditSearch.Properties.ValueMember = ""
-        'Assigm
+        'Assign
         LookupEditSearch.Properties.DataSource = Invoice.ItemList
         LookupEditSearch.Properties.DisplayMember = NameOf(ItemListAllModel.Item)
         LookupEditSearch.Properties.ValueMember = NameOf(ItemListAllModel.Id)

@@ -12,7 +12,6 @@ namespace ShoppingBird.Fly
         {
             int returnvalue = 1;
             int InsertedInvoiceId = 0;
-            string CnxString = Helper.GetConnectionString("ShoppingBirdData");
 
             //BUG: Invoice can be inserted without details due to an exception on Details insert. Invoice insert does not rollback
 
