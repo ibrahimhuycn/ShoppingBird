@@ -102,17 +102,32 @@ Public Class InvoiceView
         Next
 
         Dim SelectedStore As Store = CType(LookUpEditStore.GetSelectedDataRow(), Store)
+        If SelectedStore Is Nothing Then
+            MsgBox("The store is not selected", MsgBoxStyle.Critical, "Invoice")
+            Exit Sub
+        End If
+
         Dim invoiceDbModel As New DbModels.Invoice With {.StoreId = SelectedStore.Id,
-                                                      .Number = Invoice.InvoiceNumber,
-                                                      .SubTotal = Invoice.SubTotal,
-                                                      .Tax = Invoice.TotalTax,
-                                                      .Total = Invoice.Total,
-                                                      .UserId = 1,
-                                                      .[Date] = Invoice.InvoiceDate}
+                                              .Number = Invoice.InvoiceNumber,
+                                              .SubTotal = Invoice.SubTotal,
+                                              .Tax = Invoice.TotalTax,
+                                              .Total = Invoice.Total,
+                                              .UserId = 1,
+                                              .[Date] = Invoice.InvoiceDate}
+
+
+
 
         Dim InvoiceSaveData = New NewInvoice With {
                 .Invoice = invoiceDbModel,
                 .InvoiceDetails = invoiceDetails}
-        Invoice.SaveInvoice(InvoiceSaveData)
+
+        'Check whether the invoice has more than 0 items.
+        If invoiceDetails.Count > 0 Then
+            Invoice.SaveInvoice(InvoiceSaveData)
+        Else
+            MsgBox("Please add items to invoice before saving!", MsgBoxStyle.Exclamation, "Invoice")
+        End If
+
     End Sub
 End Class
