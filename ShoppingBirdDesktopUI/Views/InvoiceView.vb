@@ -107,6 +107,8 @@ Public Class InvoiceView
             Exit Sub
         End If
 
+        'NOTE: Needs to edit this code to include the actual signed in user. Not 
+        'necessarily the following lines though. Use data binding.
         Dim invoiceDbModel As New DbModels.Invoice With {.StoreId = SelectedStore.Id,
                                               .Number = Invoice.InvoiceNumber,
                                               .SubTotal = Invoice.SubTotal,
