@@ -90,7 +90,8 @@ Public Class InvoiceViewModel
                 InsertStatus = Status.Successful
             End If
         Catch ex As Exception
-            MsgBox(ex.Message)
+            If ex.Message.Contains("UNIQUE KEY") Then MsgBox("The invoice already exists in the database." &
+                      $"{vbCrLf}Invoice Number: {e.Invoice.Number}", MsgBoxStyle.Information, "Invoice")
         End Try
 
         Return InsertStatus
@@ -116,7 +117,7 @@ Public Class InvoiceViewModel
                     SearchedItem = Me._itemIO.SearchItem(New ItemSearchTerms(SearchParameters(1),
                                             Convert.ToInt32(SearchParameters(2)), Me.IsSearchByBarcode))
                 Case Else
-                    Throw New ArgumentOutOfRangeException("Item barcode or description is required to perform an item searc")
+                    Throw New ArgumentOutOfRangeException("Item barcode or description is required to perform an item search")
             End Select
         Catch ex As IndexOutOfRangeException
             Return New ItemSearchResultModel With {.ErrorMessage = "Item does not exist in the database. Please add the item," &

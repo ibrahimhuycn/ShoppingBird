@@ -25,6 +25,7 @@ namespace ShoppingBird.Fly.DataAccess
         /// </summary>
         public void CommitTransaction()
         {
+            //Cannot call if transection is already completed.
             _transaction?.Commit();
             _connection?.Close();
         }
@@ -40,7 +41,17 @@ namespace ShoppingBird.Fly.DataAccess
 
         public void Dispose()
         {
-            CommitTransaction();
+            try
+            {
+                CommitTransaction();
+            }
+            catch (InvalidOperationException ex) { if (ex.Message.Contains("SqlTransaction has completed") != true) throw; }
+            catch (Exception) { throw; }
+            finally
+            {
+                _transaction?.Dispose();
+                _connection?.Close();
+            }
         }
 
         public dynamic SaveDataInTransactionQuerySingle(string storedProcedure, object parameters)
