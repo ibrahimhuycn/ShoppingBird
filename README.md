@@ -11,5 +11,5 @@ The application can also give reports on user expenses.
 ### Improvements
 Should communicate with store owners to convince them to give their product list/price list so that the end user does not have to enter the products into the database while entering the invoice.
 
-### Releases:
+### Releases
 No releases. Just developing alpha.
