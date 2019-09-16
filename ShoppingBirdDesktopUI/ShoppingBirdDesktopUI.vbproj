@@ -154,6 +154,12 @@
     <Compile Include="Views\InvoiceView.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\Settings.Designer.vb">
+      <DependentUpon>Settings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\ShoppingBirdDesktopUI.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\InvoiceView.resx">
       <DependentUpon>InvoiceView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Settings.resx">
+      <DependentUpon>Settings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ShoppingBirdDesktopUI.resx">
       <DependentUpon>ShoppingBirdDesktopUI.vb</DependentUpon>
