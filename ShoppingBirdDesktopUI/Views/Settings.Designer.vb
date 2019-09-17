@@ -23,16 +23,15 @@ Partial Class Settings
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Settings))
         Me.barManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.bar1 = New DevExpress.XtraBars.Bar()
+        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.bar2 = New DevExpress.XtraBars.Bar()
         Me.bar3 = New DevExpress.XtraBars.Bar()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
-        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.XtraTabControlSettings = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPage1 = New DevExpress.XtraTab.XtraTabPage()
-        Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
         Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.ComboBoxEdit5 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
@@ -44,30 +43,30 @@ Partial Class Settings
         Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
         Me.ComboBoxEdit1 = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
-        Me.GridControlCategories = New DevExpress.XtraGrid.GridControl()
-        Me.GridViewCategories = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
-        Me.TextEdit4 = New DevExpress.XtraEditors.TextEdit()
-        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
-        Me.XtraTabPage3 = New DevExpress.XtraTab.XtraTabPage()
-        Me.SeparatorControl1 = New DevExpress.XtraEditors.SeparatorControl()
+        Me.XtraTabPage2 = New DevExpress.XtraTab.XtraTabPage()
         Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
         Me.TextEdit5 = New DevExpress.XtraEditors.TextEdit()
         Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
+        Me.SeparatorControl1 = New DevExpress.XtraEditors.SeparatorControl()
+        Me.SimpleButton2 = New DevExpress.XtraEditors.SimpleButton()
+        Me.TextEdit4 = New DevExpress.XtraEditors.TextEdit()
+        Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
+        Me.GridControlCategories = New DevExpress.XtraGrid.GridControl()
+        Me.GridViewCategories = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.XtraTabPage3 = New DevExpress.XtraTab.XtraTabPage()
+        Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
+        Me.TextEdit6 = New DevExpress.XtraEditors.TextEdit()
         Me.SimpleButton4 = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl5 = New DevExpress.XtraEditors.GroupControl()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.TextEdit6 = New DevExpress.XtraEditors.TextEdit()
-        Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
+        Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
         CType(Me.barManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XtraTabControlSettings, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControlSettings.SuspendLayout()
         Me.XtraTabPage1.SuspendLayout()
-        Me.XtraTabPage2.SuspendLayout()
         CType(Me.ComboBoxEdit5.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
@@ -80,25 +79,26 @@ Partial Class Settings
         CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComboBoxEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControlCategories, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridViewCategories, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl3.SuspendLayout()
-        CType(Me.TextEdit4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.XtraTabPage3.SuspendLayout()
-        CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.XtraTabPage2.SuspendLayout()
         CType(Me.TextEdit5.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl4.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl3.SuspendLayout()
+        CType(Me.GridControlCategories, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridViewCategories, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.XtraTabPage3.SuspendLayout()
+        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEdit6.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl5.SuspendLayout()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit6.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'barManager1
@@ -122,6 +122,13 @@ Partial Class Settings
         Me.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
         Me.bar1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem1)})
         Me.bar1.Text = "Tools"
+        '
+        'BarButtonItem1
+        '
+        Me.BarButtonItem1.Caption = "Refresh"
+        Me.BarButtonItem1.Id = 0
+        Me.BarButtonItem1.ImageOptions.SvgImage = CType(resources.GetObject("BarButtonItem1.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.BarButtonItem1.Name = "BarButtonItem1"
         '
         'bar2
         '
@@ -177,13 +184,6 @@ Partial Class Settings
         Me.barDockControlRight.Manager = Me.barManager1
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 213)
         '
-        'BarButtonItem1
-        '
-        Me.BarButtonItem1.Caption = "Refresh"
-        Me.BarButtonItem1.Id = 0
-        Me.BarButtonItem1.ImageOptions.SvgImage = CType(resources.GetObject("BarButtonItem1.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.BarButtonItem1.Name = "BarButtonItem1"
-        '
         'XtraTabControlSettings
         '
         Me.XtraTabControlSettings.Dock = System.Windows.Forms.DockStyle.Fill
@@ -204,19 +204,6 @@ Partial Class Settings
         Me.XtraTabPage1.Name = "XtraTabPage1"
         Me.XtraTabPage1.Size = New System.Drawing.Size(461, 185)
         Me.XtraTabPage1.Text = "Add Item"
-        '
-        'XtraTabPage2
-        '
-        Me.XtraTabPage2.Controls.Add(Me.SimpleButton3)
-        Me.XtraTabPage2.Controls.Add(Me.TextEdit5)
-        Me.XtraTabPage2.Controls.Add(Me.GroupControl4)
-        Me.XtraTabPage2.Controls.Add(Me.SeparatorControl1)
-        Me.XtraTabPage2.Controls.Add(Me.SimpleButton2)
-        Me.XtraTabPage2.Controls.Add(Me.TextEdit4)
-        Me.XtraTabPage2.Controls.Add(Me.GroupControl3)
-        Me.XtraTabPage2.Name = "XtraTabPage2"
-        Me.XtraTabPage2.Size = New System.Drawing.Size(461, 185)
-        Me.XtraTabPage2.Text = "Categories | Units"
         '
         'SimpleButton1
         '
@@ -317,74 +304,21 @@ Partial Class Settings
         Me.TextEdit1.Size = New System.Drawing.Size(429, 20)
         Me.TextEdit1.TabIndex = 11
         '
-        'GridControlCategories
+        'XtraTabPage2
         '
-        Me.GridControlCategories.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GridControlCategories.Location = New System.Drawing.Point(2, 20)
-        Me.GridControlCategories.MainView = Me.GridViewCategories
-        Me.GridControlCategories.MenuManager = Me.barManager1
-        Me.GridControlCategories.Name = "GridControlCategories"
-        Me.GridControlCategories.Size = New System.Drawing.Size(219, 117)
-        Me.GridControlCategories.TabIndex = 0
-        Me.GridControlCategories.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridViewCategories})
-        '
-        'GridViewCategories
-        '
-        Me.GridViewCategories.GridControl = Me.GridControlCategories
-        Me.GridViewCategories.Name = "GridViewCategories"
-        Me.GridViewCategories.OptionsView.ShowGroupPanel = False
-        '
-        'GroupControl3
-        '
-        Me.GroupControl3.Controls.Add(Me.GridControlCategories)
-        Me.GroupControl3.Location = New System.Drawing.Point(5, 43)
-        Me.GroupControl3.Name = "GroupControl3"
-        Me.GroupControl3.Size = New System.Drawing.Size(223, 139)
-        Me.GroupControl3.TabIndex = 1
-        Me.GroupControl3.Text = "Categories"
-        '
-        'TextEdit4
-        '
-        Me.TextEdit4.Location = New System.Drawing.Point(5, 17)
-        Me.TextEdit4.MenuManager = Me.barManager1
-        Me.TextEdit4.Name = "TextEdit4"
-        Me.TextEdit4.Properties.NullText = "Input categories here ..."
-        Me.TextEdit4.Size = New System.Drawing.Size(152, 20)
-        Me.TextEdit4.TabIndex = 2
-        '
-        'SimpleButton2
-        '
-        Me.SimpleButton2.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
-        Me.SimpleButton2.ImageOptions.SvgImage = CType(resources.GetObject("SimpleButton2.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.SimpleButton2.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.SimpleButton2.Location = New System.Drawing.Point(163, 15)
-        Me.SimpleButton2.Name = "SimpleButton2"
-        Me.SimpleButton2.Size = New System.Drawing.Size(65, 23)
-        Me.SimpleButton2.TabIndex = 3
-        Me.SimpleButton2.Text = "Save"
-        '
-        'XtraTabPage3
-        '
-        Me.XtraTabPage3.Controls.Add(Me.CheckEdit1)
-        Me.XtraTabPage3.Controls.Add(Me.TextEdit6)
-        Me.XtraTabPage3.Controls.Add(Me.SimpleButton4)
-        Me.XtraTabPage3.Controls.Add(Me.GroupControl5)
-        Me.XtraTabPage3.Name = "XtraTabPage3"
-        Me.XtraTabPage3.Size = New System.Drawing.Size(461, 185)
-        Me.XtraTabPage3.Text = "Stores"
-        '
-        'SeparatorControl1
-        '
-        Me.SeparatorControl1.AutoSizeMode = True
-        Me.SeparatorControl1.LineOrientation = System.Windows.Forms.Orientation.Vertical
-        Me.SeparatorControl1.Location = New System.Drawing.Point(234, 0)
-        Me.SeparatorControl1.Name = "SeparatorControl1"
-        Me.SeparatorControl1.Size = New System.Drawing.Size(20, 180)
-        Me.SeparatorControl1.TabIndex = 4
+        Me.XtraTabPage2.Controls.Add(Me.SimpleButton3)
+        Me.XtraTabPage2.Controls.Add(Me.TextEdit5)
+        Me.XtraTabPage2.Controls.Add(Me.GroupControl4)
+        Me.XtraTabPage2.Controls.Add(Me.SeparatorControl1)
+        Me.XtraTabPage2.Controls.Add(Me.SimpleButton2)
+        Me.XtraTabPage2.Controls.Add(Me.TextEdit4)
+        Me.XtraTabPage2.Controls.Add(Me.GroupControl3)
+        Me.XtraTabPage2.Name = "XtraTabPage2"
+        Me.XtraTabPage2.Size = New System.Drawing.Size(461, 185)
+        Me.XtraTabPage2.Text = "Categories | Units"
         '
         'SimpleButton3
         '
-        Me.SimpleButton3.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
         Me.SimpleButton3.ImageOptions.SvgImage = CType(resources.GetObject("SimpleButton3.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.SimpleButton3.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
         Me.SimpleButton3.Location = New System.Drawing.Point(392, 15)
@@ -428,6 +362,89 @@ Partial Class Settings
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsView.ShowGroupPanel = False
         '
+        'SeparatorControl1
+        '
+        Me.SeparatorControl1.AutoSizeMode = True
+        Me.SeparatorControl1.LineOrientation = System.Windows.Forms.Orientation.Vertical
+        Me.SeparatorControl1.Location = New System.Drawing.Point(234, 0)
+        Me.SeparatorControl1.Name = "SeparatorControl1"
+        Me.SeparatorControl1.Size = New System.Drawing.Size(20, 180)
+        Me.SeparatorControl1.TabIndex = 4
+        '
+        'SimpleButton2
+        '
+        Me.SimpleButton2.ImageOptions.SvgImage = CType(resources.GetObject("SimpleButton2.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.SimpleButton2.ImageOptions.SvgImageSize = New System.Drawing.Size(18, 18)
+        Me.SimpleButton2.Location = New System.Drawing.Point(163, 15)
+        Me.SimpleButton2.Name = "SimpleButton2"
+        Me.SimpleButton2.Size = New System.Drawing.Size(65, 23)
+        Me.SimpleButton2.TabIndex = 3
+        Me.SimpleButton2.Text = "Save"
+        '
+        'TextEdit4
+        '
+        Me.TextEdit4.Location = New System.Drawing.Point(5, 17)
+        Me.TextEdit4.MenuManager = Me.barManager1
+        Me.TextEdit4.Name = "TextEdit4"
+        Me.TextEdit4.Properties.NullText = "Input categories here ..."
+        Me.TextEdit4.Size = New System.Drawing.Size(152, 20)
+        Me.TextEdit4.TabIndex = 2
+        '
+        'GroupControl3
+        '
+        Me.GroupControl3.Controls.Add(Me.GridControlCategories)
+        Me.GroupControl3.Location = New System.Drawing.Point(5, 43)
+        Me.GroupControl3.Name = "GroupControl3"
+        Me.GroupControl3.Size = New System.Drawing.Size(223, 139)
+        Me.GroupControl3.TabIndex = 1
+        Me.GroupControl3.Text = "Categories"
+        '
+        'GridControlCategories
+        '
+        Me.GridControlCategories.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GridControlCategories.Location = New System.Drawing.Point(2, 20)
+        Me.GridControlCategories.MainView = Me.GridViewCategories
+        Me.GridControlCategories.MenuManager = Me.barManager1
+        Me.GridControlCategories.Name = "GridControlCategories"
+        Me.GridControlCategories.Size = New System.Drawing.Size(219, 117)
+        Me.GridControlCategories.TabIndex = 0
+        Me.GridControlCategories.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridViewCategories})
+        '
+        'GridViewCategories
+        '
+        Me.GridViewCategories.GridControl = Me.GridControlCategories
+        Me.GridViewCategories.Name = "GridViewCategories"
+        Me.GridViewCategories.OptionsView.ShowGroupPanel = False
+        '
+        'XtraTabPage3
+        '
+        Me.XtraTabPage3.Controls.Add(Me.CheckEdit1)
+        Me.XtraTabPage3.Controls.Add(Me.TextEdit6)
+        Me.XtraTabPage3.Controls.Add(Me.SimpleButton4)
+        Me.XtraTabPage3.Controls.Add(Me.GroupControl5)
+        Me.XtraTabPage3.Name = "XtraTabPage3"
+        Me.XtraTabPage3.Size = New System.Drawing.Size(461, 185)
+        Me.XtraTabPage3.Text = "Stores"
+        '
+        'CheckEdit1
+        '
+        Me.CheckEdit1.Location = New System.Drawing.Point(281, 6)
+        Me.CheckEdit1.MenuManager = Me.barManager1
+        Me.CheckEdit1.Name = "CheckEdit1"
+        Me.CheckEdit1.Properties.Caption = "Is Tax Inclusive"
+        Me.CheckEdit1.Size = New System.Drawing.Size(102, 19)
+        Me.CheckEdit1.TabIndex = 12
+        Me.CheckEdit1.TabStop = False
+        '
+        'TextEdit6
+        '
+        Me.TextEdit6.Location = New System.Drawing.Point(5, 6)
+        Me.TextEdit6.MenuManager = Me.barManager1
+        Me.TextEdit6.Name = "TextEdit6"
+        Me.TextEdit6.Properties.NullText = "Business name here..."
+        Me.TextEdit6.Size = New System.Drawing.Size(270, 20)
+        Me.TextEdit6.TabIndex = 11
+        '
         'SimpleButton4
         '
         Me.SimpleButton4.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
@@ -465,25 +482,6 @@ Partial Class Settings
         Me.GridView2.Name = "GridView2"
         Me.GridView2.OptionsView.ShowGroupPanel = False
         '
-        'TextEdit6
-        '
-        Me.TextEdit6.Location = New System.Drawing.Point(5, 6)
-        Me.TextEdit6.MenuManager = Me.barManager1
-        Me.TextEdit6.Name = "TextEdit6"
-        Me.TextEdit6.Properties.NullText = "Business name here..."
-        Me.TextEdit6.Size = New System.Drawing.Size(270, 20)
-        Me.TextEdit6.TabIndex = 11
-        '
-        'CheckEdit1
-        '
-        Me.CheckEdit1.Location = New System.Drawing.Point(281, 6)
-        Me.CheckEdit1.MenuManager = Me.barManager1
-        Me.CheckEdit1.Name = "CheckEdit1"
-        Me.CheckEdit1.Properties.Caption = "Is Tax Inclusive"
-        Me.CheckEdit1.Size = New System.Drawing.Size(102, 19)
-        Me.CheckEdit1.TabIndex = 12
-        Me.CheckEdit1.TabStop = False
-        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -500,7 +498,6 @@ Partial Class Settings
         CType(Me.XtraTabControlSettings, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabControlSettings.ResumeLayout(False)
         Me.XtraTabPage1.ResumeLayout(False)
-        Me.XtraTabPage2.ResumeLayout(False)
         CType(Me.ComboBoxEdit5.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
@@ -513,25 +510,26 @@ Partial Class Settings
         CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ComboBoxEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControlCategories, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridViewCategories, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupControl3.ResumeLayout(False)
-        CType(Me.TextEdit4.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.XtraTabPage3.ResumeLayout(False)
-        CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.XtraTabPage2.ResumeLayout(False)
         CType(Me.TextEdit5.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl4.ResumeLayout(False)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SeparatorControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit4.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl3.ResumeLayout(False)
+        CType(Me.GridControlCategories, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridViewCategories, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.XtraTabPage3.ResumeLayout(False)
+        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEdit6.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl5.ResumeLayout(False)
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit6.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

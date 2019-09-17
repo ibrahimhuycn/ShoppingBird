@@ -122,6 +122,7 @@
     <Compile Include="Models\Store.vb" />
     <Compile Include="Models\Tax.vb" />
     <Compile Include="Models\Unit.vb" />
+    <Compile Include="ViewModels\AddItemViewModel.vb" />
     <Compile Include="ViewModels\InvoiceViewModel.vb" />
     <Compile Include="ViewModels\Status.vb" />
     <Compile Include="Views\AddItem.Designer.vb">
