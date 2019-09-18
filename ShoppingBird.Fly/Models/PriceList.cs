@@ -2,9 +2,9 @@
 
 namespace ShoppingBird.Fly.Models
 {
-    public class PriceList
+    public class ItemPriceData
     {
-        public PriceList()
+        public ItemPriceData()
         {
             Item = new Item();
             Tax = new Tax();

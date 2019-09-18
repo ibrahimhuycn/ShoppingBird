@@ -2,7 +2,7 @@
 
 namespace ShoppingBird.Fly.Models
 {
-    public class ItemSearchTerms : PriceList
+    public class ItemSearchTerms : ItemPriceData
     {
 
         private SearchBy _searchBy;

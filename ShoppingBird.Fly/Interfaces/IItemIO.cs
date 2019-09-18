@@ -5,7 +5,7 @@ namespace ShoppingBird.Fly.Interfaces
 {
     public interface IItemIO
     {
-        int SaveItem(NewItem e);
+        int SaveItem(ItemInsertDataArgs e);
         ItemSearchResultModel SearchItem(ItemSearchTerms e);
         List<ItemListAllModel> GetAllItemDescriptions();
     }

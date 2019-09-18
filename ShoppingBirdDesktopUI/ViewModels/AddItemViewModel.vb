@@ -1,4 +1,5 @@
-﻿Imports System.ComponentModel
+﻿Imports System.Collections.ObjectModel
+Imports System.ComponentModel
 
 Public Class AddItemViewModel
     Inherits SettingsViewModel
@@ -27,20 +28,4 @@ Public Class AddItemViewModel
     End Property
 
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
-End Class
-
-
-Public Class SettingsViewModel
-    Public Sub New()
-        LoadAllData()
-    End Sub
-
-    Private Sub LoadAllData()
-        Throw New NotImplementedException()
-    End Sub
-
-    Public Property CategoryList As IObservable(Of ItemCategory)
-    Public Property StoreList As IObservable(Of Store)
-    Public Property TaxList As IObservable(Of Tax)
-    Public Property UnitList As IObservable(Of Unit)
 End Class

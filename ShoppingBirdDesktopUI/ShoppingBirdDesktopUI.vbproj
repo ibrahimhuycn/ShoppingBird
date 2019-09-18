@@ -116,21 +116,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\InvoiceDataModel.vb" />
-    <Compile Include="Models\Item.vb" />
     <Compile Include="Models\ItemCategory.vb" />
-    <Compile Include="Models\PriceList.vb" />
     <Compile Include="Models\Store.vb" />
     <Compile Include="Models\Tax.vb" />
     <Compile Include="Models\Unit.vb" />
     <Compile Include="ViewModels\AddItemViewModel.vb" />
     <Compile Include="ViewModels\InvoiceViewModel.vb" />
+    <Compile Include="ViewModels\SettingsViewModel.vb" />
     <Compile Include="ViewModels\Status.vb" />
-    <Compile Include="Views\AddItem.Designer.vb">
-      <DependentUpon>AddItem.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Views\AddItem.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Views\AddUserView.Designer.vb">
       <DependentUpon>AddUserView.vb</DependentUpon>
     </Compile>
@@ -172,9 +165,6 @@
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <EmbeddedResource Include="Views\AddItem.resx">
-      <DependentUpon>AddItem.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\AddUserView.resx">
       <DependentUpon>AddUserView.vb</DependentUpon>
     </EmbeddedResource>

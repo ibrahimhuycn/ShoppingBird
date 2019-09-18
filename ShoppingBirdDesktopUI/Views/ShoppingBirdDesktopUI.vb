@@ -19,14 +19,8 @@ Partial Public Class ShoppingBirdDesktopUI
         invoice.Show()
     End Sub
 
-    Private Sub BarButtonItemAddItem_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItemAddItem.ItemClick
-        Dim item As New AddItem With {.MdiParent = Me,
-            .StartPosition = FormStartPosition.CenterParent}
-        item.Show()
-    End Sub
-
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
-        Dim settings As New Settings With {.MdiParent = Me,
+        Dim settings As New Settings(New AddItemViewModel) With {.MdiParent = Me,
             .StartPosition = FormStartPosition.CenterParent}
         settings.Show()
     End Sub

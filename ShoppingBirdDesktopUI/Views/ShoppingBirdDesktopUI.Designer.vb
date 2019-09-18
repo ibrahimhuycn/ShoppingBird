@@ -78,7 +78,6 @@
         'ribbonPageGroup1
         '
         Me.ribbonPageGroup1.ItemLinks.Add(Me.BarButtonItemInvoice)
-        Me.ribbonPageGroup1.ItemLinks.Add(Me.BarButtonItemAddItem)
         Me.ribbonPageGroup1.ItemLinks.Add(Me.BarButtonItem1)
         Me.ribbonPageGroup1.Name = "ribbonPageGroup1"
         Me.ribbonPageGroup1.Text = "ribbonPageGroup1"

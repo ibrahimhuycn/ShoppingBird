@@ -80,6 +80,9 @@
     <Build Include="Stored Procedures\usp_SearchItemByDescriptionAndStore.sql" />
     <Build Include="Stored Procedures\usp_InsertInvoice.sql" />
     <Build Include="Stored Procedures\usp_InsertInvoiceDetails.sql" />
+    <Build Include="Stored Procedures\usp_InsertItemReturnInsertedId.sql" />
+    <Build Include="Stored Procedures\usp_InsertItemPrice.sql" />
+    <Build Include="Stored Procedures\usp_usp_SearchItemIdByItemDescription.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ShoppingBirdData.refactorlog" />

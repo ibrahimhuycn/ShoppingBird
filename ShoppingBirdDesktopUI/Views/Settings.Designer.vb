@@ -24,7 +24,6 @@ Partial Class Settings
         Me.barManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.bar1 = New DevExpress.XtraBars.Bar()
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
-        Me.bar2 = New DevExpress.XtraBars.Bar()
         Me.bar3 = New DevExpress.XtraBars.Bar()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
@@ -63,6 +62,9 @@ Partial Class Settings
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
+        Me.bar2 = New DevExpress.XtraBars.Bar()
+        Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.barManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XtraTabControlSettings, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControlSettings.SuspendLayout()
@@ -103,15 +105,14 @@ Partial Class Settings
         '
         'barManager1
         '
-        Me.barManager1.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.bar1, Me.bar2, Me.bar3})
+        Me.barManager1.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.bar1, Me.bar3})
         Me.barManager1.DockControls.Add(Me.barDockControlTop)
         Me.barManager1.DockControls.Add(Me.barDockControlBottom)
         Me.barManager1.DockControls.Add(Me.barDockControlLeft)
         Me.barManager1.DockControls.Add(Me.barDockControlRight)
         Me.barManager1.Form = Me
-        Me.barManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarButtonItem1})
-        Me.barManager1.MainMenu = Me.bar2
-        Me.barManager1.MaxItemId = 1
+        Me.barManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.BarButtonItem1, Me.BarButtonItem2})
+        Me.barManager1.MaxItemId = 2
         Me.barManager1.StatusBar = Me.bar3
         '
         'bar1
@@ -120,25 +121,16 @@ Partial Class Settings
         Me.bar1.DockCol = 0
         Me.bar1.DockRow = 1
         Me.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.bar1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem1)})
+        Me.bar1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem2)})
         Me.bar1.Text = "Tools"
         '
         'BarButtonItem1
         '
         Me.BarButtonItem1.Caption = "Refresh"
+        Me.BarButtonItem1.Hint = "Refresh"
         Me.BarButtonItem1.Id = 0
         Me.BarButtonItem1.ImageOptions.SvgImage = CType(resources.GetObject("BarButtonItem1.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.BarButtonItem1.Name = "BarButtonItem1"
-        '
-        'bar2
-        '
-        Me.bar2.BarName = "Main menu"
-        Me.bar2.DockCol = 0
-        Me.bar2.DockRow = 0
-        Me.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.bar2.OptionsBar.MultiLine = True
-        Me.bar2.OptionsBar.UseWholeRow = True
-        Me.bar2.Text = "Main menu"
         '
         'bar3
         '
@@ -158,7 +150,7 @@ Partial Class Settings
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.barManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(467, 53)
+        Me.barDockControlTop.Size = New System.Drawing.Size(467, 31)
         '
         'barDockControlBottom
         '
@@ -172,25 +164,25 @@ Partial Class Settings
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 53)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 31)
         Me.barDockControlLeft.Manager = Me.barManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 213)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 235)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(467, 53)
+        Me.barDockControlRight.Location = New System.Drawing.Point(467, 31)
         Me.barDockControlRight.Manager = Me.barManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 213)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 235)
         '
         'XtraTabControlSettings
         '
         Me.XtraTabControlSettings.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.XtraTabControlSettings.Location = New System.Drawing.Point(0, 53)
+        Me.XtraTabControlSettings.Location = New System.Drawing.Point(0, 31)
         Me.XtraTabControlSettings.Name = "XtraTabControlSettings"
         Me.XtraTabControlSettings.SelectedTabPage = Me.XtraTabPage1
-        Me.XtraTabControlSettings.Size = New System.Drawing.Size(467, 213)
+        Me.XtraTabControlSettings.Size = New System.Drawing.Size(467, 235)
         Me.XtraTabControlSettings.TabIndex = 4
         Me.XtraTabControlSettings.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.XtraTabPage1, Me.XtraTabPage2, Me.XtraTabPage3})
         '
@@ -202,7 +194,7 @@ Partial Class Settings
         Me.XtraTabPage1.Controls.Add(Me.GroupControl1)
         Me.XtraTabPage1.Controls.Add(Me.TextEdit1)
         Me.XtraTabPage1.Name = "XtraTabPage1"
-        Me.XtraTabPage1.Size = New System.Drawing.Size(461, 185)
+        Me.XtraTabPage1.Size = New System.Drawing.Size(461, 207)
         Me.XtraTabPage1.Text = "Add Item"
         '
         'SimpleButton1
@@ -482,11 +474,40 @@ Partial Class Settings
         Me.GridView2.Name = "GridView2"
         Me.GridView2.OptionsView.ShowGroupPanel = False
         '
+        'bar2
+        '
+        Me.bar2.BarName = "Main menu"
+        Me.bar2.DockCol = 0
+        Me.bar2.DockRow = 0
+        Me.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+        Me.bar2.OptionsBar.MultiLine = True
+        Me.bar2.OptionsBar.UseWholeRow = True
+        Me.bar2.Text = "Main menu"
+        '
+        'BarButtonItem2
+        '
+        Me.BarButtonItem2.Caption = "Add Item"
+        Me.BarButtonItem2.Hint = "Add Item"
+        Me.BarButtonItem2.Id = 1
+        Me.BarButtonItem2.ImageOptions.SvgImage = CType(resources.GetObject("BarButtonItem2.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.BarButtonItem2.Name = "BarButtonItem2"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(155, 2)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(286, 26)
+        Me.Label1.TabIndex = 16
+        Me.Label1.Text = "Implement a way to search the item, edit store, Add it. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Search by barcode, if a" &
+    "bsent, add it."
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(467, 289)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.XtraTabControlSettings)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
@@ -537,7 +558,6 @@ Partial Class Settings
 
     Friend barManager1 As DevExpress.XtraBars.BarManager
     Friend bar1 As DevExpress.XtraBars.Bar
-    Friend bar2 As DevExpress.XtraBars.Bar
     Friend bar3 As DevExpress.XtraBars.Bar
     Friend barDockControlTop As DevExpress.XtraBars.BarDockControl
     Friend barDockControlBottom As DevExpress.XtraBars.BarDockControl
@@ -577,4 +597,7 @@ Partial Class Settings
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents BehaviorManager1 As DevExpress.Utils.Behaviors.BehaviorManager
+    Friend WithEvents BarButtonItem2 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bar2 As DevExpress.XtraBars.Bar
+    Friend WithEvents Label1 As Label
 End Class
