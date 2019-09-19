@@ -1,4 +1,4 @@
-﻿using ShoppingBird.Fly.DbModels;
+﻿using ShoppingBird.Fly.Models;
 using System;
 using System.Collections.Generic;
 

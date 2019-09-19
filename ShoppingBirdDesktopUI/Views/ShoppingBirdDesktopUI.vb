@@ -19,6 +19,7 @@ Partial Public Class ShoppingBirdDesktopUI
         Dim Config = New MapperConfiguration(Sub(cfg)
                                                  cfg.CreateMap(Of Models.Units, Unit)()
                                                  cfg.CreateMap(Of Models.ItemCategory, ItemCategory)()
+                                                 cfg.CreateMap(Of Models.Store, Store)()
                                              End Sub)
         Config.AssertConfigurationIsValid()
         _mapper = Config.CreateMapper()
@@ -31,7 +32,7 @@ Partial Public Class ShoppingBirdDesktopUI
     End Sub
 
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
-        Dim settings As New Settings(New AddItemViewModel(New CategoriesIO, _mapper, New UnitsIO)) With {.MdiParent = Me,
+        Dim settings As New Settings(New AddItemViewModel(New CategoriesIO, _mapper, New UnitsIO, New StoreIO)) With {.MdiParent = Me,
             .StartPosition = FormStartPosition.CenterParent}
         settings.Show()
     End Sub

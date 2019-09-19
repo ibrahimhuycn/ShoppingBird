@@ -1,4 +1,4 @@
-﻿using ShoppingBird.Fly.DbModels;
+﻿using ShoppingBird.Fly.Models;
 using ShoppingBird.Fly.Interfaces;
 using ShoppingBird.Fly.DataAccess;
 using System;

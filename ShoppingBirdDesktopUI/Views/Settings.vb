@@ -1,4 +1,6 @@
-﻿Public Class Settings
+﻿Imports System.ComponentModel
+
+Public Class Settings
     Private _addItem As AddItemViewModel
     Public Sub New(addItem As AddItemViewModel)
         InitializeComponent()
@@ -34,5 +36,17 @@
         LookUpEditItemUnit.Properties.DataSource = _addItem.UnitList
         LookUpEditItemUnit.Properties.DisplayMember = NameOf(Unit.Unit)
         LookUpEditItemUnit.Properties.ValueMember = NameOf(Unit.Id)
+    End Sub
+
+    Private Sub Settings_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        _addItem.Dispose()
+        _addItem = Nothing
+        LookupEditStore.Properties.DataSource = Nothing
+        LookUpEditTax.Properties.DataSource = Nothing
+        LookUpEditCategory.Properties.DataSource = Nothing
+        LookUpEditSubCategory.Properties.DataSource = Nothing
+        LookUpEditItemUnit.Properties.DataSource = Nothing
+        Me.Dispose()
+
     End Sub
 End Class
