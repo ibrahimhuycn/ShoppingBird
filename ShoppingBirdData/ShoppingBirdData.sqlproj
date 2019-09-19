@@ -82,7 +82,10 @@
     <Build Include="Stored Procedures\usp_InsertInvoiceDetails.sql" />
     <Build Include="Stored Procedures\usp_InsertItemReturnInsertedId.sql" />
     <Build Include="Stored Procedures\usp_InsertItemPrice.sql" />
-    <Build Include="Stored Procedures\usp_usp_SearchItemIdByItemDescription.sql" />
+    <Build Include="Stored Procedures\usp_SearchItemIdByItemDescription.sql" />
+    <Build Include="Stored Procedures\usp_ItemPriceDataByBarcode.sql" />
+    <Build Include="Stored Procedures\usp_GetAllCategories.sql" />
+    <Build Include="Stored Procedures\usp_GetAllUnits.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ShoppingBirdData.refactorlog" />

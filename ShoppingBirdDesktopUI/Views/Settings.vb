@@ -7,7 +7,6 @@
     End Sub
 
     Private Sub BindItemAndPriceData()
-        'TextEditSubTotal.DataBindings.Add(New Binding("Text", Invoice, NameOf(Invoice.SubTotal)))
         'Bind barcode
         TextEditBarcode.DataBindings.Add(New Binding("Text", _addItem, NameOf(_addItem.Barcode)))
 
@@ -30,5 +29,10 @@
         LookUpEditSubCategory.Properties.DataSource = _addItem.CategoryList
         LookUpEditSubCategory.Properties.DisplayMember = NameOf(ItemCategory.Category)
         LookUpEditSubCategory.Properties.ValueMember = NameOf(ItemCategory.Id)
+
+        'Bind Units
+        LookUpEditItemUnit.Properties.DataSource = _addItem.UnitList
+        LookUpEditItemUnit.Properties.DisplayMember = NameOf(Unit.Unit)
+        LookUpEditItemUnit.Properties.ValueMember = NameOf(Unit.Id)
     End Sub
 End Class

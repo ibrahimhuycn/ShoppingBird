@@ -1,16 +1,20 @@
 ﻿Imports System.Collections.ObjectModel
 Imports System.ComponentModel
+Imports AutoMapper
+Imports ShoppingBird.Fly.Interfaces
 
 Public Class AddItemViewModel
     Inherits SettingsViewModel
     Implements INotifyPropertyChanged
 
     Dim _description As String
-
     Dim _id As Integer
 
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
 
+    Public Sub New(categoriesIO As ICategoriesIO, mapper As Mapper, unitsIO As IUnitsIO)
+        MyBase.New(categoriesIO, mapper, unitsIO)
+    End Sub
     Property Description As String
         Get
             Return _description

@@ -32,13 +32,23 @@ Partial Class Settings
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         Me.XtraTabControlSettings = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPageAddItem = New DevExpress.XtraTab.XtraTabPage()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
-        Me.ComboBoxEditItemUnit = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.ToggleSwitch1 = New DevExpress.XtraEditors.ToggleSwitch()
+        Me.LookUpEditSearchItem = New DevExpress.XtraEditors.LookUpEdit()
         Me.GroupControItemStorePrices = New DevExpress.XtraEditors.GroupControl()
+        Me.GridControlItemData = New DevExpress.XtraGrid.GridControl()
+        Me.GridViewItemData = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridColumnBarcode = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumnStore = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumnPrice = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupControlItemRetailData = New DevExpress.XtraEditors.GroupControl()
-        Me.TextEditRetailPrice = New DevExpress.XtraEditors.TextEdit()
         Me.TextEditBarcode = New DevExpress.XtraEditors.TextEdit()
+        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.LookUpEditSubCategory = New DevExpress.XtraEditors.LookUpEdit()
+        Me.LookUpEditCategory = New DevExpress.XtraEditors.LookUpEdit()
         Me.TextEditItemDescription = New DevExpress.XtraEditors.TextEdit()
+        Me.LookUpEditTax = New DevExpress.XtraEditors.LookUpEdit()
+        Me.TextEditRetailPrice = New DevExpress.XtraEditors.TextEdit()
+        Me.LookupEditStore = New DevExpress.XtraEditors.LookUpEdit()
         Me.XtraTabPageCategoriesAndUnits = New DevExpress.XtraTab.XtraTabPage()
         Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
         Me.TextEdit5 = New DevExpress.XtraEditors.TextEdit()
@@ -61,29 +71,26 @@ Partial Class Settings
         Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
         Me.bar2 = New DevExpress.XtraBars.Bar()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.LookupEditStore = New DevExpress.XtraEditors.LookUpEdit()
-        Me.LookUpEditTax = New DevExpress.XtraEditors.LookUpEdit()
-        Me.LookUpEditCategory = New DevExpress.XtraEditors.LookUpEdit()
-        Me.LookUpEditSubCategory = New DevExpress.XtraEditors.LookUpEdit()
-        Me.LookUpEdit1 = New DevExpress.XtraEditors.LookUpEdit()
-        Me.ToggleSwitch1 = New DevExpress.XtraEditors.ToggleSwitch()
-        Me.GridControlItemData = New DevExpress.XtraGrid.GridControl()
-        Me.GridViewItemData = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumnBarcode = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumnStore = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumnPrice = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.LookUpEditItemUnit = New DevExpress.XtraEditors.LookUpEdit()
         CType(Me.barManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XtraTabControlSettings, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControlSettings.SuspendLayout()
         Me.XtraTabPageAddItem.SuspendLayout()
-        CType(Me.ComboBoxEditItemUnit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ToggleSwitch1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LookUpEditSearchItem.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControItemStorePrices, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControItemStorePrices.SuspendLayout()
+        CType(Me.GridControlItemData, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridViewItemData, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControlItemRetailData, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControlItemRetailData.SuspendLayout()
-        CType(Me.TextEditRetailPrice.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEditBarcode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LookUpEditSubCategory.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LookUpEditCategory.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEditItemDescription.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LookUpEditTax.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEditRetailPrice.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LookupEditStore.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPageCategoriesAndUnits.SuspendLayout()
         CType(Me.TextEdit5.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -104,14 +111,7 @@ Partial Class Settings
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LookupEditStore.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LookUpEditTax.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LookUpEditCategory.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LookUpEditSubCategory.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LookUpEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ToggleSwitch1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControlItemData, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridViewItemData, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LookUpEditItemUnit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'barManager1
@@ -208,12 +208,111 @@ Partial Class Settings
         'XtraTabPageAddItem
         '
         Me.XtraTabPageAddItem.Controls.Add(Me.ToggleSwitch1)
-        Me.XtraTabPageAddItem.Controls.Add(Me.LookUpEdit1)
+        Me.XtraTabPageAddItem.Controls.Add(Me.LookUpEditSearchItem)
         Me.XtraTabPageAddItem.Controls.Add(Me.GroupControItemStorePrices)
         Me.XtraTabPageAddItem.Controls.Add(Me.GroupControlItemRetailData)
         Me.XtraTabPageAddItem.Name = "XtraTabPageAddItem"
         Me.XtraTabPageAddItem.Size = New System.Drawing.Size(461, 207)
         Me.XtraTabPageAddItem.Text = "Add Item"
+        '
+        'ToggleSwitch1
+        '
+        Me.ToggleSwitch1.Location = New System.Drawing.Point(322, 12)
+        Me.ToggleSwitch1.MenuManager = Me.barManager1
+        Me.ToggleSwitch1.Name = "ToggleSwitch1"
+        Me.ToggleSwitch1.Properties.OffText = "Description"
+        Me.ToggleSwitch1.Properties.OnText = "Barcode"
+        Me.ToggleSwitch1.Size = New System.Drawing.Size(136, 25)
+        Me.ToggleSwitch1.TabIndex = 15
+        '
+        'LookUpEditSearchItem
+        '
+        Me.LookUpEditSearchItem.AllowDrop = True
+        Me.LookUpEditSearchItem.Location = New System.Drawing.Point(8, 15)
+        Me.LookUpEditSearchItem.Name = "LookUpEditSearchItem"
+        Me.LookUpEditSearchItem.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.LookUpEditSearchItem.Properties.NullText = "Search item by barcode or description"
+        Me.LookUpEditSearchItem.Properties.PopupSizeable = False
+        Me.LookUpEditSearchItem.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.LookUpEditSearchItem.Size = New System.Drawing.Size(308, 20)
+        Me.LookUpEditSearchItem.TabIndex = 14
+        '
+        'GroupControItemStorePrices
+        '
+        Me.GroupControItemStorePrices.Controls.Add(Me.GridControlItemData)
+        Me.GroupControItemStorePrices.Location = New System.Drawing.Point(214, 41)
+        Me.GroupControItemStorePrices.Name = "GroupControItemStorePrices"
+        Me.GroupControItemStorePrices.Size = New System.Drawing.Size(244, 163)
+        Me.GroupControItemStorePrices.TabIndex = 13
+        Me.GroupControItemStorePrices.Text = "Item Prices | Store Wise Data"
+        '
+        'GridControlItemData
+        '
+        Me.GridControlItemData.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GridControlItemData.Location = New System.Drawing.Point(2, 20)
+        Me.GridControlItemData.MainView = Me.GridViewItemData
+        Me.GridControlItemData.MenuManager = Me.barManager1
+        Me.GridControlItemData.Name = "GridControlItemData"
+        Me.GridControlItemData.Size = New System.Drawing.Size(240, 141)
+        Me.GridControlItemData.TabIndex = 1
+        Me.GridControlItemData.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridViewItemData})
+        '
+        'GridViewItemData
+        '
+        Me.GridViewItemData.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumnBarcode, Me.GridColumnStore, Me.GridColumnPrice})
+        Me.GridViewItemData.GridControl = Me.GridControlItemData
+        Me.GridViewItemData.Name = "GridViewItemData"
+        Me.GridViewItemData.OptionsView.ShowGroupPanel = False
+        '
+        'GridColumnBarcode
+        '
+        Me.GridColumnBarcode.Caption = "Barocde"
+        Me.GridColumnBarcode.FieldName = "Barcode"
+        Me.GridColumnBarcode.Name = "GridColumnBarcode"
+        Me.GridColumnBarcode.Visible = True
+        Me.GridColumnBarcode.VisibleIndex = 0
+        '
+        'GridColumnStore
+        '
+        Me.GridColumnStore.Caption = "Store"
+        Me.GridColumnStore.FieldName = "Store"
+        Me.GridColumnStore.Name = "GridColumnStore"
+        Me.GridColumnStore.Visible = True
+        Me.GridColumnStore.VisibleIndex = 1
+        '
+        'GridColumnPrice
+        '
+        Me.GridColumnPrice.Caption = "Retail Price"
+        Me.GridColumnPrice.FieldName = "Price"
+        Me.GridColumnPrice.Name = "GridColumnPrice"
+        Me.GridColumnPrice.Visible = True
+        Me.GridColumnPrice.VisibleIndex = 2
+        '
+        'GroupControlItemRetailData
+        '
+        Me.GroupControlItemRetailData.Controls.Add(Me.TextEditBarcode)
+        Me.GroupControlItemRetailData.Controls.Add(Me.SimpleButton1)
+        Me.GroupControlItemRetailData.Controls.Add(Me.LookUpEditSubCategory)
+        Me.GroupControlItemRetailData.Controls.Add(Me.LookUpEditCategory)
+        Me.GroupControlItemRetailData.Controls.Add(Me.TextEditItemDescription)
+        Me.GroupControlItemRetailData.Controls.Add(Me.LookUpEditTax)
+        Me.GroupControlItemRetailData.Controls.Add(Me.TextEditRetailPrice)
+        Me.GroupControlItemRetailData.Controls.Add(Me.LookupEditStore)
+        Me.GroupControlItemRetailData.Controls.Add(Me.LookUpEditItemUnit)
+        Me.GroupControlItemRetailData.Location = New System.Drawing.Point(3, 41)
+        Me.GroupControlItemRetailData.Name = "GroupControlItemRetailData"
+        Me.GroupControlItemRetailData.Size = New System.Drawing.Size(205, 163)
+        Me.GroupControlItemRetailData.TabIndex = 12
+        Me.GroupControlItemRetailData.Text = "Item Retail Data"
+        '
+        'TextEditBarcode
+        '
+        Me.TextEditBarcode.Location = New System.Drawing.Point(5, 49)
+        Me.TextEditBarcode.MenuManager = Me.barManager1
+        Me.TextEditBarcode.Name = "TextEditBarcode"
+        Me.TextEditBarcode.Properties.NullText = "Barcode"
+        Me.TextEditBarcode.Size = New System.Drawing.Size(93, 20)
+        Me.TextEditBarcode.TabIndex = 21
         '
         'SimpleButton1
         '
@@ -223,40 +322,45 @@ Partial Class Settings
         Me.SimpleButton1.TabIndex = 15
         Me.SimpleButton1.Text = "Save"
         '
-        'ComboBoxEditItemUnit
+        'LookUpEditSubCategory
         '
-        Me.ComboBoxEditItemUnit.Location = New System.Drawing.Point(5, 127)
-        Me.ComboBoxEditItemUnit.Name = "ComboBoxEditItemUnit"
-        Me.ComboBoxEditItemUnit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ComboBoxEditItemUnit.Properties.NullText = "Unit"
-        Me.ComboBoxEditItemUnit.Size = New System.Drawing.Size(93, 20)
-        Me.ComboBoxEditItemUnit.TabIndex = 14
+        Me.LookUpEditSubCategory.Location = New System.Drawing.Point(104, 101)
+        Me.LookUpEditSubCategory.Name = "LookUpEditSubCategory"
+        Me.LookUpEditSubCategory.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.LookUpEditSubCategory.Properties.NullText = "Select Sub Category"
+        Me.LookUpEditSubCategory.Properties.PopupSizeable = False
+        Me.LookUpEditSubCategory.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.LookUpEditSubCategory.Size = New System.Drawing.Size(93, 20)
+        Me.LookUpEditSubCategory.TabIndex = 8
         '
-        'GroupControItemStorePrices
+        'LookUpEditCategory
         '
-        Me.GroupControItemStorePrices.Controls.Add(Me.GridControlItemData)
-        Me.GroupControItemStorePrices.Location = New System.Drawing.Point(214, 41)
-        Me.GroupControItemStorePrices.Name = "GroupControItemStorePrices"
-        Me.GroupControItemStorePrices.Size = New System.Drawing.Size(244, 163)
-        Me.GroupControItemStorePrices.TabIndex = 13
-        Me.GroupControItemStorePrices.Text = "Item Prices, Store Wise Data"
+        Me.LookUpEditCategory.Location = New System.Drawing.Point(5, 101)
+        Me.LookUpEditCategory.Name = "LookUpEditCategory"
+        Me.LookUpEditCategory.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.LookUpEditCategory.Properties.NullText = "Select Category"
+        Me.LookUpEditCategory.Properties.PopupSizeable = False
+        Me.LookUpEditCategory.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.LookUpEditCategory.Size = New System.Drawing.Size(93, 20)
+        Me.LookUpEditCategory.TabIndex = 7
         '
-        'GroupControlItemRetailData
+        'TextEditItemDescription
         '
-        Me.GroupControlItemRetailData.Controls.Add(Me.SimpleButton1)
-        Me.GroupControlItemRetailData.Controls.Add(Me.LookUpEditSubCategory)
-        Me.GroupControlItemRetailData.Controls.Add(Me.ComboBoxEditItemUnit)
-        Me.GroupControlItemRetailData.Controls.Add(Me.LookUpEditCategory)
-        Me.GroupControlItemRetailData.Controls.Add(Me.TextEditItemDescription)
-        Me.GroupControlItemRetailData.Controls.Add(Me.LookUpEditTax)
-        Me.GroupControlItemRetailData.Controls.Add(Me.TextEditRetailPrice)
-        Me.GroupControlItemRetailData.Controls.Add(Me.TextEditBarcode)
-        Me.GroupControlItemRetailData.Controls.Add(Me.LookupEditStore)
-        Me.GroupControlItemRetailData.Location = New System.Drawing.Point(3, 41)
-        Me.GroupControlItemRetailData.Name = "GroupControlItemRetailData"
-        Me.GroupControlItemRetailData.Size = New System.Drawing.Size(205, 163)
-        Me.GroupControlItemRetailData.TabIndex = 12
-        Me.GroupControlItemRetailData.Text = "Item Retail Data"
+        Me.TextEditItemDescription.Location = New System.Drawing.Point(5, 23)
+        Me.TextEditItemDescription.Name = "TextEditItemDescription"
+        Me.TextEditItemDescription.Properties.NullText = "Item description"
+        Me.TextEditItemDescription.Size = New System.Drawing.Size(192, 20)
+        Me.TextEditItemDescription.TabIndex = 11
+        '
+        'LookUpEditTax
+        '
+        Me.LookUpEditTax.Location = New System.Drawing.Point(104, 49)
+        Me.LookUpEditTax.MenuManager = Me.barManager1
+        Me.LookUpEditTax.Name = "LookUpEditTax"
+        Me.LookUpEditTax.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.LookUpEditTax.Properties.NullText = "Select Tax"
+        Me.LookUpEditTax.Size = New System.Drawing.Size(93, 20)
+        Me.LookUpEditTax.TabIndex = 16
         '
         'TextEditRetailPrice
         '
@@ -266,21 +370,16 @@ Partial Class Settings
         Me.TextEditRetailPrice.Size = New System.Drawing.Size(93, 20)
         Me.TextEditRetailPrice.TabIndex = 5
         '
-        'TextEditBarcode
+        'LookupEditStore
         '
-        Me.TextEditBarcode.Location = New System.Drawing.Point(5, 49)
-        Me.TextEditBarcode.Name = "TextEditBarcode"
-        Me.TextEditBarcode.Properties.NullText = "Barcode"
-        Me.TextEditBarcode.Size = New System.Drawing.Size(93, 20)
-        Me.TextEditBarcode.TabIndex = 4
-        '
-        'TextEditItemDescription
-        '
-        Me.TextEditItemDescription.Location = New System.Drawing.Point(5, 23)
-        Me.TextEditItemDescription.Name = "TextEditItemDescription"
-        Me.TextEditItemDescription.Properties.NullText = "Item description"
-        Me.TextEditItemDescription.Size = New System.Drawing.Size(192, 20)
-        Me.TextEditItemDescription.TabIndex = 11
+        Me.LookupEditStore.Location = New System.Drawing.Point(104, 75)
+        Me.LookupEditStore.Name = "LookupEditStore"
+        Me.LookupEditStore.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.LookupEditStore.Properties.NullText = "Select Store"
+        Me.LookupEditStore.Properties.PopupSizeable = False
+        Me.LookupEditStore.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.LookupEditStore.Size = New System.Drawing.Size(93, 20)
+        Me.LookupEditStore.TabIndex = 0
         '
         'XtraTabPageCategoriesAndUnits
         '
@@ -480,111 +579,16 @@ Partial Class Settings
         Me.Label1.Text = "Implement a way to search the item, edit store, Add it. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Search by barcode, if a" &
     "bsent, add it."
         '
-        'LookupEditStore
+        'LookUpEditItemUnit
         '
-        Me.LookupEditStore.Location = New System.Drawing.Point(104, 75)
-        Me.LookupEditStore.Name = "LookupEditStore"
-        Me.LookupEditStore.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.LookupEditStore.Properties.NullText = "Select Store"
-        Me.LookupEditStore.Properties.PopupSizeable = False
-        Me.LookupEditStore.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.LookupEditStore.Size = New System.Drawing.Size(93, 20)
-        Me.LookupEditStore.TabIndex = 0
-        '
-        'LookUpEditTax
-        '
-        Me.LookUpEditTax.Location = New System.Drawing.Point(104, 49)
-        Me.LookUpEditTax.MenuManager = Me.barManager1
-        Me.LookUpEditTax.Name = "LookUpEditTax"
-        Me.LookUpEditTax.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.LookUpEditTax.Properties.NullText = "Select Tax"
-        Me.LookUpEditTax.Size = New System.Drawing.Size(93, 20)
-        Me.LookUpEditTax.TabIndex = 16
-        '
-        'LookUpEditCategory
-        '
-        Me.LookUpEditCategory.Location = New System.Drawing.Point(5, 101)
-        Me.LookUpEditCategory.Name = "LookUpEditCategory"
-        Me.LookUpEditCategory.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.LookUpEditCategory.Properties.NullText = "Select Category"
-        Me.LookUpEditCategory.Properties.PopupSizeable = False
-        Me.LookUpEditCategory.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.LookUpEditCategory.Size = New System.Drawing.Size(93, 20)
-        Me.LookUpEditCategory.TabIndex = 7
-        '
-        'LookUpEditSubCategory
-        '
-        Me.LookUpEditSubCategory.Location = New System.Drawing.Point(104, 101)
-        Me.LookUpEditSubCategory.Name = "LookUpEditSubCategory"
-        Me.LookUpEditSubCategory.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.LookUpEditSubCategory.Properties.NullText = "Select Sub Category"
-        Me.LookUpEditSubCategory.Properties.PopupSizeable = False
-        Me.LookUpEditSubCategory.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.LookUpEditSubCategory.Size = New System.Drawing.Size(93, 20)
-        Me.LookUpEditSubCategory.TabIndex = 8
-        '
-        'LookUpEdit1
-        '
-        Me.LookUpEdit1.Location = New System.Drawing.Point(8, 15)
-        Me.LookUpEdit1.Name = "LookUpEdit1"
-        Me.LookUpEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.LookUpEdit1.Properties.NullText = "Select Category"
-        Me.LookUpEdit1.Properties.PopupSizeable = False
-        Me.LookUpEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.LookUpEdit1.Size = New System.Drawing.Size(308, 20)
-        Me.LookUpEdit1.TabIndex = 14
-        '
-        'ToggleSwitch1
-        '
-        Me.ToggleSwitch1.Location = New System.Drawing.Point(322, 12)
-        Me.ToggleSwitch1.MenuManager = Me.barManager1
-        Me.ToggleSwitch1.Name = "ToggleSwitch1"
-        Me.ToggleSwitch1.Properties.OffText = "Description"
-        Me.ToggleSwitch1.Properties.OnText = "Barcode"
-        Me.ToggleSwitch1.Size = New System.Drawing.Size(136, 25)
-        Me.ToggleSwitch1.TabIndex = 15
-        '
-        'GridControlItemData
-        '
-        Me.GridControlItemData.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GridControlItemData.Location = New System.Drawing.Point(2, 20)
-        Me.GridControlItemData.MainView = Me.GridViewItemData
-        Me.GridControlItemData.MenuManager = Me.barManager1
-        Me.GridControlItemData.Name = "GridControlItemData"
-        Me.GridControlItemData.Size = New System.Drawing.Size(240, 141)
-        Me.GridControlItemData.TabIndex = 1
-        Me.GridControlItemData.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridViewItemData})
-        '
-        'GridViewItemData
-        '
-        Me.GridViewItemData.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumnBarcode, Me.GridColumnStore, Me.GridColumnPrice})
-        Me.GridViewItemData.GridControl = Me.GridControlItemData
-        Me.GridViewItemData.Name = "GridViewItemData"
-        Me.GridViewItemData.OptionsView.ShowGroupPanel = False
-        '
-        'GridColumnBarcode
-        '
-        Me.GridColumnBarcode.Caption = "Barocde"
-        Me.GridColumnBarcode.FieldName = "Barcode"
-        Me.GridColumnBarcode.Name = "GridColumnBarcode"
-        Me.GridColumnBarcode.Visible = True
-        Me.GridColumnBarcode.VisibleIndex = 0
-        '
-        'GridColumnStore
-        '
-        Me.GridColumnStore.Caption = "Store"
-        Me.GridColumnStore.FieldName = "Store"
-        Me.GridColumnStore.Name = "GridColumnStore"
-        Me.GridColumnStore.Visible = True
-        Me.GridColumnStore.VisibleIndex = 1
-        '
-        'GridColumnPrice
-        '
-        Me.GridColumnPrice.Caption = "Retail Price"
-        Me.GridColumnPrice.FieldName = "Price"
-        Me.GridColumnPrice.Name = "GridColumnPrice"
-        Me.GridColumnPrice.Visible = True
-        Me.GridColumnPrice.VisibleIndex = 2
+        Me.LookUpEditItemUnit.Location = New System.Drawing.Point(5, 127)
+        Me.LookUpEditItemUnit.Name = "LookUpEditItemUnit"
+        Me.LookUpEditItemUnit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.LookUpEditItemUnit.Properties.NullText = "Unit"
+        Me.LookUpEditItemUnit.Properties.PopupSizeable = False
+        Me.LookUpEditItemUnit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.LookUpEditItemUnit.Size = New System.Drawing.Size(93, 20)
+        Me.LookUpEditItemUnit.TabIndex = 14
         '
         'Settings
         '
@@ -603,14 +607,21 @@ Partial Class Settings
         CType(Me.XtraTabControlSettings, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabControlSettings.ResumeLayout(False)
         Me.XtraTabPageAddItem.ResumeLayout(False)
-        CType(Me.ComboBoxEditItemUnit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ToggleSwitch1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LookUpEditSearchItem.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControItemStorePrices, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControItemStorePrices.ResumeLayout(False)
+        CType(Me.GridControlItemData, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridViewItemData, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControlItemRetailData, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControlItemRetailData.ResumeLayout(False)
-        CType(Me.TextEditRetailPrice.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEditBarcode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LookUpEditSubCategory.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LookUpEditCategory.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEditItemDescription.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LookUpEditTax.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEditRetailPrice.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LookupEditStore.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPageCategoriesAndUnits.ResumeLayout(False)
         CType(Me.TextEdit5.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
@@ -631,14 +642,7 @@ Partial Class Settings
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LookupEditStore.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LookUpEditTax.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LookUpEditCategory.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LookUpEditSubCategory.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LookUpEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ToggleSwitch1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControlItemData, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridViewItemData, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LookUpEditItemUnit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -656,11 +660,9 @@ Partial Class Settings
     Friend WithEvents XtraTabPageAddItem As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents XtraTabPageCategoriesAndUnits As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents ComboBoxEditItemUnit As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents GroupControItemStorePrices As DevExpress.XtraEditors.GroupControl
     Friend WithEvents GroupControlItemRetailData As DevExpress.XtraEditors.GroupControl
     Friend WithEvents TextEditRetailPrice As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents TextEditBarcode As DevExpress.XtraEditors.TextEdit
     Friend WithEvents TextEditItemDescription As DevExpress.XtraEditors.TextEdit
     Friend WithEvents SimpleButton3 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents TextEdit5 As DevExpress.XtraEditors.TextEdit
@@ -689,10 +691,12 @@ Partial Class Settings
     Friend WithEvents LookUpEditCategory As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LookUpEditSubCategory As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents ToggleSwitch1 As DevExpress.XtraEditors.ToggleSwitch
-    Friend WithEvents LookUpEdit1 As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents LookUpEditSearchItem As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents GridControlItemData As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridViewItemData As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridColumnBarcode As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumnStore As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumnPrice As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents TextEditBarcode As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LookUpEditItemUnit As DevExpress.XtraEditors.LookUpEdit
 End Class
