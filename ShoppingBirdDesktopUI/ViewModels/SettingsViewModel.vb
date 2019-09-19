@@ -1,4 +1,5 @@
 ﻿Imports System.Collections.ObjectModel
+Imports ShoppingBird.Fly.DbModels
 
 Public Class SettingsViewModel
     Public Sub New()

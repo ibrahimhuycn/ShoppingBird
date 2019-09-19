@@ -61,12 +61,12 @@
         Me.BarButtonItemAddItem.Name = "BarButtonItemAddItem"
         Me.BarButtonItemAddItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
-        'BarButtonItem1
+        'BarButtonItemRefresh
         '
         Me.BarButtonItem1.Caption = "Settings"
         Me.BarButtonItem1.Id = 3
-        Me.BarButtonItem1.ImageOptions.SvgImage = CType(resources.GetObject("BarButtonItem1.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.BarButtonItem1.Name = "BarButtonItem1"
+        Me.BarButtonItem1.ImageOptions.SvgImage = CType(resources.GetObject("BarButtonItemRefresh.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.BarButtonItem1.Name = "BarButtonItemRefresh"
         Me.BarButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
         'ribbonPage1

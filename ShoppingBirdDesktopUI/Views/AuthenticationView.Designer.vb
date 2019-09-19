@@ -45,10 +45,10 @@ Partial Class AuthenticationView
         Me.LabelControl1.TabIndex = 0
         Me.LabelControl1.Text = "WELCOME"
         '
-        'TextEdit1
+        'TextEditItemDescription
         '
         Me.TextEdit1.Location = New System.Drawing.Point(12, 35)
-        Me.TextEdit1.Name = "TextEdit1"
+        Me.TextEdit1.Name = "TextEditItemDescription"
         Me.TextEdit1.Properties.NullText = "Username"
         Me.TextEdit1.Size = New System.Drawing.Size(211, 20)
         Me.TextEdit1.TabIndex = 1

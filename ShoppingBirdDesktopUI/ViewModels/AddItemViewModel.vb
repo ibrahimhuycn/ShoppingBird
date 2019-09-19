@@ -5,7 +5,21 @@ Public Class AddItemViewModel
     Inherits SettingsViewModel
     Implements INotifyPropertyChanged
 
+    Dim _description As String
+
     Dim _id As Integer
+
+    Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
+
+    Property Description As String
+        Get
+            Return _description
+        End Get
+        Set
+            _description = Value
+            RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Me.Description)))
+        End Set
+    End Property
     Property Id As Integer
         Get
             Return _id
@@ -16,16 +30,14 @@ Public Class AddItemViewModel
         End Set
     End Property
 
-    Dim _description As String
-    Property Description As String
+    Dim _barcode As String
+    Property Barcode As String
         Get
-            Return _description
+            Return _barcode
         End Get
         Set
-            _description = Value
-            RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Me.Description)))
+            _barcode = Value
+            RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Me.Barcode)))
         End Set
     End Property
-
-    Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
 End Class

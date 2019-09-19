@@ -28,10 +28,10 @@ Partial Class ChangePasswordView
         CType(Me.TextEdit3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TextEdit1
+        'TextEditItemDescription
         '
         Me.TextEdit1.Location = New System.Drawing.Point(12, 12)
-        Me.TextEdit1.Name = "TextEdit1"
+        Me.TextEdit1.Name = "TextEditItemDescription"
         Me.TextEdit1.Properties.NullText = "Username"
         Me.TextEdit1.Size = New System.Drawing.Size(211, 20)
         Me.TextEdit1.TabIndex = 1

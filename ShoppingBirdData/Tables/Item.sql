@@ -7,6 +7,6 @@
     CONSTRAINT [FK_Item_ItemCategory] FOREIGN KEY ([CategoryId]) REFERENCES [ItemCategory]([Id]),
 	CONSTRAINT [FK_Item_ItemSubCategory] FOREIGN KEY ([CategoryId]) REFERENCES [ItemCategory]([Id]), 
     CONSTRAINT [AK_Item_Description] UNIQUE ([Description]), 
-    CONSTRAINT [PK_Item] PRIMARY KEY ([Id],[Description]) 
+    CONSTRAINT [PK_Item] PRIMARY KEY ([Id]) 
 
 )
