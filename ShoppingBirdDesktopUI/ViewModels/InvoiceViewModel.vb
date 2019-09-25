@@ -189,7 +189,7 @@ Public Class InvoiceViewModel
 
     Private Function LoadStoreList() As List(Of Store)
         Dim tempStoreList As New List(Of Store)
-        For Each s In _storeIO.LoadAll
+        For Each s In _storeIO.GetAllStores
             Dim tempStore As New Store With {.Id = s.Id,
                 .Name = s.Name,
                 .IsTaxInclusive = s.IsTaxInclusive}

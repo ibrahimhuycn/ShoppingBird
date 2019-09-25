@@ -24,12 +24,12 @@ namespace ShoppingBird.Fly
         /// <returns>Returns 0 on successful insertion</returns>
         public int SaveItem(ItemInsertDataArgs e)
         {
-            //Try to read itemId from database 
+            //Try to read itemId from database. If this is found.., PriceData may need to be inserted.
             e.Item.Id = SelectItemByDescription(e.Item.Description);
 
             //Try reading the price for the specified item for the specified store from the database
             var SearchResult = SearchByDescriptionAndStore(new ItemSearchTerms(e.Item.Description, e.PriceData.Store.Id));
-            if (SearchResult.ErrorMessage == null)
+            if (SearchResult.ErrorMessage is null)
             {
                 throw new Exception($"Item (Barcode): {SearchResult.Description} ({e.PriceData.Barcode}){Environment.NewLine}"+
                     $"Store: {e.PriceData.Store.Name}{Environment.NewLine}"+ 
@@ -37,6 +37,7 @@ namespace ShoppingBird.Fly
             }
 
             //If ItemId returned !=0 , It means that the item is present in the database and returned the Id
+            //Note: The following lines will not be executed if both the item it's price data is present on DB.
             if (e.Item.Id == 0)
             {
                 //Insert item

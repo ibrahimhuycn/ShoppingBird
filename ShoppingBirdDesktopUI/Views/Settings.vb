@@ -36,6 +36,11 @@ Public Class Settings
         LookUpEditItemUnit.Properties.DataSource = _addItem.UnitList
         LookUpEditItemUnit.Properties.DisplayMember = NameOf(Unit.Unit)
         LookUpEditItemUnit.Properties.ValueMember = NameOf(Unit.Id)
+
+        'Load Taxes
+        LookUpEditTax.Properties.DataSource = _addItem.TaxList
+        LookUpEditTax.Properties.DisplayMember = NameOf(Tax.Description)
+        LookUpEditTax.Properties.ValueMember = NameOf(Tax.Id)
     End Sub
 
     Private Sub Settings_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
@@ -49,4 +54,19 @@ Public Class Settings
         Me.Dispose()
 
     End Sub
+
+    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
+        _addItem.
+    End Sub
+
+    Private Sub GetUserSelectedItemStaticData()
+        'Dim SelectedStore As Store = CType(LookUpEditStore.GetSelectedDataRow(), Store)
+        'Store
+        'Tax
+        'Cat
+        'SubCat
+        'Unit
+
+    End Sub
 End Class
+

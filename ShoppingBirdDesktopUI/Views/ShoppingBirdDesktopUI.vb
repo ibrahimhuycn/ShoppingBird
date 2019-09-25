@@ -20,9 +20,10 @@ Partial Public Class ShoppingBirdDesktopUI
                                                  cfg.CreateMap(Of Models.Units, Unit)()
                                                  cfg.CreateMap(Of Models.ItemCategory, ItemCategory)()
                                                  cfg.CreateMap(Of Models.Store, Store)()
+                                                 cfg.CreateMap(Of Models.Tax, Tax)()
                                              End Sub)
         Config.AssertConfigurationIsValid()
-        _mapper = Config.CreateMapper()
+        _mapper = CType(Config.CreateMapper(), Mapper)
     End Sub
     Private Sub BarButtonItemInvoice_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItemInvoice.ItemClick
         Dim invoice As New InvoiceView With {.MdiParent = Me,
@@ -32,7 +33,7 @@ Partial Public Class ShoppingBirdDesktopUI
     End Sub
 
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
-        Dim settings As New Settings(New AddItemViewModel(New CategoriesIO, _mapper, New UnitsIO, New StoreIO)) With {.MdiParent = Me,
+        Dim settings As New Settings(New AddItemViewModel(New CategoriesIO, _mapper, New UnitsIO, New StoreIO, New TaxIO, New ItemIO)) With {.MdiParent = Me,
             .StartPosition = FormStartPosition.CenterParent}
         settings.Show()
     End Sub

@@ -49,6 +49,7 @@ Partial Class Settings
         Me.LookUpEditTax = New DevExpress.XtraEditors.LookUpEdit()
         Me.TextEditRetailPrice = New DevExpress.XtraEditors.TextEdit()
         Me.LookupEditStore = New DevExpress.XtraEditors.LookUpEdit()
+        Me.LookUpEditItemUnit = New DevExpress.XtraEditors.LookUpEdit()
         Me.XtraTabPageCategoriesAndUnits = New DevExpress.XtraTab.XtraTabPage()
         Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
         Me.TextEdit5 = New DevExpress.XtraEditors.TextEdit()
@@ -71,7 +72,6 @@ Partial Class Settings
         Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
         Me.bar2 = New DevExpress.XtraBars.Bar()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.LookUpEditItemUnit = New DevExpress.XtraEditors.LookUpEdit()
         CType(Me.barManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XtraTabControlSettings, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControlSettings.SuspendLayout()
@@ -91,6 +91,7 @@ Partial Class Settings
         CType(Me.LookUpEditTax.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEditRetailPrice.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LookupEditStore.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LookUpEditItemUnit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPageCategoriesAndUnits.SuspendLayout()
         CType(Me.TextEdit5.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -111,7 +112,6 @@ Partial Class Settings
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LookUpEditItemUnit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'barManager1
@@ -313,6 +313,7 @@ Partial Class Settings
         Me.TextEditBarcode.Properties.NullText = "Barcode"
         Me.TextEditBarcode.Size = New System.Drawing.Size(93, 20)
         Me.TextEditBarcode.TabIndex = 21
+        Me.TextEditBarcode.ToolTip = "Item barcode"
         '
         'SimpleButton1
         '
@@ -351,6 +352,7 @@ Partial Class Settings
         Me.TextEditItemDescription.Properties.NullText = "Item description"
         Me.TextEditItemDescription.Size = New System.Drawing.Size(192, 20)
         Me.TextEditItemDescription.TabIndex = 11
+        Me.TextEditItemDescription.ToolTip = "Item Description"
         '
         'LookUpEditTax
         '
@@ -380,6 +382,17 @@ Partial Class Settings
         Me.LookupEditStore.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.LookupEditStore.Size = New System.Drawing.Size(93, 20)
         Me.LookupEditStore.TabIndex = 0
+        '
+        'LookUpEditItemUnit
+        '
+        Me.LookUpEditItemUnit.Location = New System.Drawing.Point(5, 127)
+        Me.LookUpEditItemUnit.Name = "LookUpEditItemUnit"
+        Me.LookUpEditItemUnit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.LookUpEditItemUnit.Properties.NullText = "Unit"
+        Me.LookUpEditItemUnit.Properties.PopupSizeable = False
+        Me.LookUpEditItemUnit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.LookUpEditItemUnit.Size = New System.Drawing.Size(93, 20)
+        Me.LookUpEditItemUnit.TabIndex = 14
         '
         'XtraTabPageCategoriesAndUnits
         '
@@ -579,17 +592,6 @@ Partial Class Settings
         Me.Label1.Text = "Implement a way to search the item, edit store, Add it. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Search by barcode, if a" &
     "bsent, add it."
         '
-        'LookUpEditItemUnit
-        '
-        Me.LookUpEditItemUnit.Location = New System.Drawing.Point(5, 127)
-        Me.LookUpEditItemUnit.Name = "LookUpEditItemUnit"
-        Me.LookUpEditItemUnit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.LookUpEditItemUnit.Properties.NullText = "Unit"
-        Me.LookUpEditItemUnit.Properties.PopupSizeable = False
-        Me.LookUpEditItemUnit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.LookUpEditItemUnit.Size = New System.Drawing.Size(93, 20)
-        Me.LookUpEditItemUnit.TabIndex = 14
-        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -622,6 +624,7 @@ Partial Class Settings
         CType(Me.LookUpEditTax.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TextEditRetailPrice.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LookupEditStore.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LookUpEditItemUnit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPageCategoriesAndUnits.ResumeLayout(False)
         CType(Me.TextEdit5.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
@@ -642,7 +645,6 @@ Partial Class Settings
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LookUpEditItemUnit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

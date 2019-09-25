@@ -13,12 +13,11 @@ namespace ShoppingBird.Fly
 {
     public class StoreIO : IStoreIO
     {
-
-        public IList<Store> LoadAll()
+        private readonly string CnxString = Helper.GetConnectionString("ShoppingBirdData");
+        public IList<Store> GetAllStores()
         {
             List<Store> StoreList = new List<Store>();
 
-            string CnxString = Helper.GetConnectionString("ShoppingBirdData");
             using (IDbConnection cnx = new SqlConnection(CnxString))
             {
                 return cnx.Query<Store>("usp_GetAllStores", commandType: CommandType.StoredProcedure).ToList();

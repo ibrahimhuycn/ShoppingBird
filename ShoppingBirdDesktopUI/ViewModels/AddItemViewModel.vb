@@ -12,8 +12,8 @@ Public Class AddItemViewModel
 
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
 
-    Public Sub New(categoriesIO As ICategoriesIO, mapper As Mapper, unitsIO As IUnitsIO, storeIO As IStoreIO)
-        MyBase.New(categoriesIO, mapper, unitsIO, storeIO)
+    Public Sub New(categoriesIO As ICategoriesIO, mapper As Mapper, unitsIO As IUnitsIO, storeIO As IStoreIO, taxIO As ITaxIO, itemIO As IItemIO)
+        MyBase.New(categoriesIO, mapper, unitsIO, storeIO, taxIO, itemIO)
     End Sub
     Property Description As String
         Get
