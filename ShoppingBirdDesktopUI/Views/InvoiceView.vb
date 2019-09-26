@@ -133,4 +133,26 @@ Public Class InvoiceView
         End If
 
     End Sub
+
+    ''' <summary>
+    ''' Disables/Enables the option to select stores and enter invoice number depending on the row count.
+    ''' Purpose: To prevent the end user from entering the same item for different in the same invoice. This creates two bugs.
+    ''' 1: The invoice number saved will not be valid. This can be ignored.
+    ''' 2: There is a bug in price handling in this case. Refer to Issue: #2 SEVERE
+    ''' </summary>
+    ''' <param name="sender">not used</param>
+    ''' <param name="e">not used</param>
+    Private Sub InvoiceDataEntryControl(sender As Object, e As EventArgs) Handles GridViewInvoiceItems.RowCountChanged
+        Dim rowCount As Integer = GridViewInvoiceItems.DataRowCount
+
+        Select Case True
+            Case rowCount = 0
+                TextEditInvoiceNumber.Enabled = True
+                LookUpEditStore.Enabled = True
+            Case rowCount > 0
+                TextEditInvoiceNumber.Enabled = False
+                LookUpEditStore.Enabled = False
+        End Select
+    End Sub
+
 End Class
