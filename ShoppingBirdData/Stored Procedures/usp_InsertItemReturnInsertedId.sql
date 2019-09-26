@@ -3,7 +3,7 @@ Insert Item Step One: Insert into dbo.Item.
 Next step is to insert into dbo.PriceList
 */
 CREATE PROCEDURE [dbo].[usp_InsertItemReturnInsertedId] 
-    @Description VARCHAR, 
+    @Description VARCHAR(100), 
     @CategoryId INT,
     @SubCategoryId INT 
 AS

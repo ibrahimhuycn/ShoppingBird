@@ -1,8 +1,7 @@
-﻿Imports System.ComponentModel
-Imports System.Text
-Imports AutoMapper
+﻿Imports AutoMapper
 Imports DevExpress.Skins
 Imports ShoppingBird.Fly
+Imports ShoppingBird.Fly.Models
 
 Partial Public Class ShoppingBirdDesktopUI
     Private _mapper As Mapper
@@ -21,6 +20,10 @@ Partial Public Class ShoppingBirdDesktopUI
                                                  cfg.CreateMap(Of Models.ItemCategory, ItemCategory)()
                                                  cfg.CreateMap(Of Models.Store, Store)()
                                                  cfg.CreateMap(Of Models.Tax, Tax)()
+                                                 cfg.CreateMap(Of Store, Models.Store)()
+                                                 cfg.CreateMap(Of Tax, Models.Tax)()
+                                                 cfg.CreateMap(Of ItemCategory, Models.ItemCategory)()
+                                                 cfg.CreateMap(Of Unit, Models.Units)()
                                              End Sub)
         Config.AssertConfigurationIsValid()
         _mapper = CType(Config.CreateMapper(), Mapper)
@@ -33,8 +36,17 @@ Partial Public Class ShoppingBirdDesktopUI
     End Sub
 
     Private Sub BarButtonItem1_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItem1.ItemClick
-        Dim settings As New Settings(New AddItemViewModel(New CategoriesIO, _mapper, New UnitsIO, New StoreIO, New TaxIO, New ItemIO)) With {.MdiParent = Me,
+        Dim settings As New Settings(New AddItemViewModel(New CategoriesIO,
+                                         _mapper,
+                                         New UnitsIO,
+                                         New StoreIO,
+                                         New TaxIO,
+                                         New ItemIO),
+                            _mapper,
+                            New ItemInsertUserSelectedStaticData) With {.MdiParent = Me,
             .StartPosition = FormStartPosition.CenterParent}
         settings.Show()
+
+        '  Dim a As IItemInsertUserSelectedStaticData = New ItemInsertUserSelectedStaticData()
     End Sub
 End Class

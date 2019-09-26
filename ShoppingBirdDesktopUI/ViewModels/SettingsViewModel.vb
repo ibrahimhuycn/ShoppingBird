@@ -8,7 +8,7 @@ Public Class SettingsViewModel
     Private ReadOnly _storeIO As IStoreIO
     Private ReadOnly _taxIO As ITaxIO
     Private ReadOnly _unitsIO As IUnitsIO
-    Private ReadOnly _itemIO As IItemIO
+    Public ReadOnly _itemIO As IItemIO
 
     Public Sub New(categoriesIO As ICategoriesIO, mapper As Mapper, unitsIO As IUnitsIO, storeIO As IStoreIO, taxIO As ITaxIO, itemIO As IItemIO)
         'Initialize the lists to avoid exceptions
@@ -23,6 +23,7 @@ Public Class SettingsViewModel
         Me._unitsIO = unitsIO
         Me._storeIO = storeIO
         Me._itemIO = itemIO
+
         'Load all data
         LoadStaticListsData()
 
@@ -41,13 +42,11 @@ Public Class SettingsViewModel
         LoadStores()
         LoadTaxes()
     End Sub
-
     Private Sub LoadStores()
         For Each store In _storeIO.GetAllStores()
             StoreList.Add(_mapper.Map(Of Store)(store))
         Next
     End Sub
-
     Private Sub LoadTaxes()
         For Each tax In _taxIO.GetAllTax()
             TaxList.Add(_mapper.Map(Of Tax)(tax))

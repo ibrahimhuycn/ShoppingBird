@@ -1,16 +1,33 @@
 ﻿Imports System.ComponentModel
+Imports AutoMapper
+Imports ShoppingBird.Fly
+Imports ShoppingBird.Fly.Interfaces
 
 Public Class Settings
     Private _addItem As AddItemViewModel
-    Public Sub New(addItem As AddItemViewModel)
+    Private _itemInsertData As IItemInsertUserSelectedStaticData
+    Private _mapper As IMapper
+
+    Public Sub New(addItem As AddItemViewModel, mapper As IMapper, itemInsertStaticData As IItemInsertUserSelectedStaticData)
         InitializeComponent()
         _addItem = addItem
+        _itemInsertData = itemInsertStaticData
+        _mapper = mapper
         BindItemAndPriceData()
     End Sub
 
+    ''' <summary>
+    ''' Binds the datasources to the controls of the view. 
+    ''' </summary>
     Private Sub BindItemAndPriceData()
         'Bind barcode
         TextEditBarcode.DataBindings.Add(New Binding("Text", _addItem, NameOf(_addItem.Barcode)))
+
+        'Bind Description
+        TextEditItemDescription.DataBindings.Add(New Binding("Text", _addItem, NameOf(_addItem.Description)))
+
+        'Bind Retail Price
+        TextEditRetailPrice.DataBindings.Add(New Binding("Text", _addItem, NameOf(_addItem.RetailPrice)))
 
         'Bind StoreList
         LookupEditStore.Properties.DataSource = _addItem.StoreList
@@ -43,6 +60,28 @@ Public Class Settings
         LookUpEditTax.Properties.ValueMember = NameOf(Tax.Id)
     End Sub
 
+
+    Private Function GetUserSelectedItemStaticData() As IItemInsertUserSelectedStaticData
+        'todo: Needs to check whether an item is selected in each of these Lookup boxes
+        'Get selected store
+        Dim store As Store = CType(LookupEditStore.GetSelectedDataRow(), Store)
+        'Get selected tax
+        Dim tax As Tax = CType(LookUpEditTax.GetSelectedDataRow(), Tax)
+        'Get selected category
+        Dim category As ItemCategory = CType(LookUpEditCategory.GetSelectedDataRow(), ItemCategory)
+        'Get selected sub category
+        Dim subCategory As ItemCategory = CType(LookUpEditSubCategory.GetSelectedDataRow(), ItemCategory)
+        'Get selected unit
+        Dim unit As Unit = CType(LookUpEditItemUnit.GetSelectedDataRow(), Unit)
+
+        Return _itemInsertData.Initialise(store,
+                                          _mapper.Map(Of Models.Tax)(tax),
+                                          _mapper.Map(Of Models.ItemCategory)(category),
+                                          _mapper.Map(Of Models.ItemCategory)(subCategory),
+                                          _mapper.Map(Of Models.Units)(unit))
+
+    End Function
+
     Private Sub Settings_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         _addItem.Dispose()
         _addItem = Nothing
@@ -55,18 +94,8 @@ Public Class Settings
 
     End Sub
 
-    Private Sub SimpleButton1_Click(sender As Object, e As EventArgs) Handles SimpleButton1.Click
-        _addItem.
-    End Sub
-
-    Private Sub GetUserSelectedItemStaticData()
-        'Dim SelectedStore As Store = CType(LookUpEditStore.GetSelectedDataRow(), Store)
-        'Store
-        'Tax
-        'Cat
-        'SubCat
-        'Unit
-
+    Private Sub SimpleButtonSaveItem_Click(sender As Object, e As EventArgs) Handles SimpleButtonSaveItem.Click
+        _addItem.Save(GetUserSelectedItemStaticData())
     End Sub
 End Class
 

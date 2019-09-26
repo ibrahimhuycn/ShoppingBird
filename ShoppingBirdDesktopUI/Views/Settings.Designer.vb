@@ -42,7 +42,7 @@ Partial Class Settings
         Me.GridColumnPrice = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GroupControlItemRetailData = New DevExpress.XtraEditors.GroupControl()
         Me.TextEditBarcode = New DevExpress.XtraEditors.TextEdit()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
+        Me.SimpleButtonSaveItem = New DevExpress.XtraEditors.SimpleButton()
         Me.LookUpEditSubCategory = New DevExpress.XtraEditors.LookUpEdit()
         Me.LookUpEditCategory = New DevExpress.XtraEditors.LookUpEdit()
         Me.TextEditItemDescription = New DevExpress.XtraEditors.TextEdit()
@@ -291,7 +291,7 @@ Partial Class Settings
         'GroupControlItemRetailData
         '
         Me.GroupControlItemRetailData.Controls.Add(Me.TextEditBarcode)
-        Me.GroupControlItemRetailData.Controls.Add(Me.SimpleButton1)
+        Me.GroupControlItemRetailData.Controls.Add(Me.SimpleButtonSaveItem)
         Me.GroupControlItemRetailData.Controls.Add(Me.LookUpEditSubCategory)
         Me.GroupControlItemRetailData.Controls.Add(Me.LookUpEditCategory)
         Me.GroupControlItemRetailData.Controls.Add(Me.TextEditItemDescription)
@@ -315,13 +315,13 @@ Partial Class Settings
         Me.TextEditBarcode.TabIndex = 21
         Me.TextEditBarcode.ToolTip = "Item barcode"
         '
-        'SimpleButton1
+        'SimpleButtonSaveItem
         '
-        Me.SimpleButton1.Location = New System.Drawing.Point(104, 125)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(93, 23)
-        Me.SimpleButton1.TabIndex = 15
-        Me.SimpleButton1.Text = "Save"
+        Me.SimpleButtonSaveItem.Location = New System.Drawing.Point(104, 125)
+        Me.SimpleButtonSaveItem.Name = "SimpleButtonSaveItem"
+        Me.SimpleButtonSaveItem.Size = New System.Drawing.Size(93, 23)
+        Me.SimpleButtonSaveItem.TabIndex = 15
+        Me.SimpleButtonSaveItem.Text = "Save Item"
         '
         'LookUpEditSubCategory
         '
@@ -661,7 +661,7 @@ Partial Class Settings
     Friend WithEvents XtraTabControlSettings As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents XtraTabPageAddItem As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents XtraTabPageCategoriesAndUnits As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SimpleButtonSaveItem As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GroupControItemStorePrices As DevExpress.XtraEditors.GroupControl
     Friend WithEvents GroupControlItemRetailData As DevExpress.XtraEditors.GroupControl
     Friend WithEvents TextEditRetailPrice As DevExpress.XtraEditors.TextEdit

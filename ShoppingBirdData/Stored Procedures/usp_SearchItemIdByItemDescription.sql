@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[usp_SearchItemIdByItemDescription]
-	@Description VARCHAR
+	@Description VARCHAR(100)
 AS
 BEGIN
 	SELECT [i].[Id]

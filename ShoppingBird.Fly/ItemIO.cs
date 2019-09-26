@@ -100,9 +100,13 @@ namespace ShoppingBird.Fly
             var Item = new { Description = itemDescription };
             using (IDbConnection cnx = new SqlConnection(CnxString))
             {
-                var searchResult = cnx.Query<dynamic>("usp_GetAllItemDescriptionsWithId", Item,
+                var searchResult = cnx.Query<dynamic>("usp_SearchItemIdByItemDescription", Item,
                                                     commandType: CommandType.StoredProcedure).FirstOrDefault();
-                itemId = searchResult.Id;
+                if (searchResult != null)
+                {
+                    itemId = searchResult.Id;
+                }
+    
             }
 
             return itemId;
@@ -126,8 +130,11 @@ namespace ShoppingBird.Fly
             using (IDbConnection cnx = new SqlConnection(CnxString))
             {
                 var searchResult = cnx.QuerySingle<dynamic>("usp_InsertItemReturnInsertedId", newItem,
-                                                    commandType: CommandType.StoredProcedure).FirstOrDefault();
-                itemId = searchResult.Id;
+                                                    commandType: CommandType.StoredProcedure);
+                if (searchResult != null)
+                {
+                    itemId = searchResult.Id;
+                }
             }
             return itemId;
         }
@@ -140,7 +147,7 @@ namespace ShoppingBird.Fly
         {
             var ItemPriceData = new
             {
-                ItemId = item.Id,
+                ItemId = item.Item.Id,
                 Barcode = item.Barcode,
                 TaxId = item.Tax.Id,
                 StoreId = item.Store.Id,
