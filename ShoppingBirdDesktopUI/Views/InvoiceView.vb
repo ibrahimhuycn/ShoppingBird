@@ -68,11 +68,12 @@ Public Class InvoiceView
             Item.Quantity += 1
         Else
             Invoice.InvoiceDataCollection.Add(
-                New InvoiceDataModel(SearchResults.ItemId,
-                                     SearchResults.Description,
-                                     1,
-                                     SearchResults.RetailPrice,
-                                     SearchResults.Unit))
+                            New InvoiceDataModel(SearchResults.ItemId,
+                                                 SearchResults.Description,
+                                                 1,
+                                                 SearchResults.RetailPrice,
+                                                 SearchResults.Unit,
+                                                 SearchResults.Rate))
 
         End If
         GridViewInvoiceItems.BestFitColumns()
@@ -117,9 +118,6 @@ Public Class InvoiceView
                                               .Total = Invoice.Total,
                                               .UserId = 1,
                                               .[Date] = Invoice.InvoiceDate}
-
-
-
 
         Dim InvoiceSaveData = New NewInvoice With {
                 .Invoice = invoiceDbModel,
