@@ -42,8 +42,14 @@ GO
 SET IDENTITY_INSERT [dbo].[Store] ON
 INSERT INTO [dbo].[Store]([Id],[Name],[IsTaxInclusive]) VALUES (1,'Asni Mini Mart',1)
 INSERT INTO [dbo].[Store]([Id],[Name],[IsTaxInclusive]) VALUES (2,'Stop and Shop',0)
-INSERT INTO [dbo].[Store]([Id],[Name],[IsTaxInclusive]) VALUES (3,'Seeds',1)
-INSERT INTO [dbo].[Store]([Id],[Name],[IsTaxInclusive]) VALUES (4,'Samraahi',0)
+INSERT INTO [dbo].[Store]([Id],[Name],[IsTaxInclusive]) VALUES (3,'Seeds',0)
+INSERT INTO [dbo].[Store]([Id],[Name],[IsTaxInclusive]) VALUES (4,'Samraahi Shop',0)
+INSERT INTO [dbo].[Store]([Id],[Name],[IsTaxInclusive]) VALUES (5,'Goanbilli Plus',0)
+INSERT INTO [dbo].[Store]([Id],[Name],[IsTaxInclusive]) VALUES (6,'MIFCO Mas Fihaara',0)
+INSERT INTO [dbo].[Store]([Id],[Name],[IsTaxInclusive]) VALUES (7,'VB Mart',1)
+INSERT INTO [dbo].[Store]([Id],[Name],[IsTaxInclusive]) VALUES (8,'Items',0)
+INSERT INTO [dbo].[Store]([Id],[Name],[IsTaxInclusive]) VALUES (9,'AlishBa',0)
+INSERT INTO [dbo].[Store]([Id],[Name],[IsTaxInclusive]) VALUES (10,'Kalhirava',0)
 SET IDENTITY_INSERT [dbo].[Store] OFF
 GO
 
