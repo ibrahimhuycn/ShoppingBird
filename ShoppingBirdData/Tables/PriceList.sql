@@ -5,7 +5,7 @@
 	[Barcode] VARCHAR(50) NOT NULL,
     [TaxId] INT NOT NULL, 
     [StoreId] INT NOT NULL, 
-    [RetailPrice] INT NOT NULL, 
+    [RetailPrice] DECIMAL(13,4) NOT NULL, 
     [UnitId] INT NOT NULL, 
     [UpdatedAt] DATE NOT NULL, 
     [CreatedAt] DATE NOT NULL, 
