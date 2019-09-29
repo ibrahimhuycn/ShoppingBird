@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[usp_ItemPriceDataByBarcode]
-	@Barcode INT
+	@Barcode VARCHAR(50)
 AS
 	SELECT [i].[Description],[p].[Barcode], [p].[TaxId], [p].[RetailPrice],[p].[StoreId],[i].[CategoryId],[i].[SubCategoryId],[p].[UnitId]
 	FROM [dbo].[Item] [i]

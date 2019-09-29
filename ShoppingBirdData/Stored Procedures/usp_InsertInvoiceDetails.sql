@@ -1,9 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[usp_InsertInvoiceDetails]
 	@InvoiceId INT, --This is the inserted invoiceId from the insert to dbo.Invoice
 	@ItemId INT,
-	@Price DECIMAL,
+	@Price DECIMAL(13,4),
 	@Quantity INT,
-	@Tax DECIMAL
+	@Tax DECIMAL(13,4)
 AS
 BEGIN 
 --Insert into dbo.InvoiceDetails

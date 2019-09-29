@@ -1,9 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[usp_InsertInvoice]
 	@StoreId INT,
 	@Number INT,
-	@SubTotal DECIMAL,
-	@Tax DECIMAL,
-	@Total DECIMAL,
+	@SubTotal DECIMAL(13,4),
+	@Tax DECIMAL(3,2),
+	@Total DECIMAL(13,4),
 	@UserId INT,
 	@Date DATE = GETDATE
 AS

@@ -7,7 +7,7 @@ CREATE PROCEDURE [dbo].[usp_InsertItemPrice]
 	@Barcode VARCHAR(50),
     @TaxId INT , 
     @StoreId INT , 
-    @RetailPrice INT, 
+    @RetailPrice DECIMAL(13,4), 
     @UnitId INT, 
     @UpdatedAt DATE, 
     @CreatedAt DATE
