@@ -28,7 +28,9 @@ namespace ShoppingBird.Fly
             e.Item.Id = SelectItemByDescription(e.Item.Description);
 
             //Try reading the price for the specified item for the specified store from the database
-            var SearchResult = SearchByDescriptionAndStore(new ItemSearchTerms(e.Item.Description, e.PriceData.Store.Id));
+            var SearchResult = SearchByDescriptionAndStore(new ItemSearchTerms(e.Item.Description, e.PriceData.Store.Id,false));
+            
+            //If the item is not in the database the error message will have a value because it could not find any data for the search
             if (SearchResult.ErrorMessage is null)
             {
                 throw new Exception($"Item (Barcode): {SearchResult.Description} ({e.PriceData.Barcode}){Environment.NewLine}"+
@@ -85,6 +87,22 @@ namespace ShoppingBird.Fly
             using (IDbConnection cnx = new SqlConnection(CnxString))
             {
                 return cnx.Query<ItemListAllModel>("usp_GetAllItemDescriptionsWithId", commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        /// <summary>
+        /// Searches all prices for the item in all stores provided the item description.
+        /// </summary>
+        /// <param name="itemDescription">The item name.</param>
+        /// <returns></returns>
+        public List<SearchResultsAllPriceDataForItemModel> SearchAllPriceDataForItem(string itemDescription)
+        {
+            var Item = new { ItemDescription = itemDescription };
+
+            using (IDbConnection cnx = new SqlConnection(CnxString))
+            {
+                return cnx.Query<SearchResultsAllPriceDataForItemModel>("usp_GetAllPricesDataForItem",Item,
+                     commandType: CommandType.StoredProcedure).ToList();
             }
         }
 
@@ -198,7 +216,10 @@ namespace ShoppingBird.Fly
                 SearhResult = cnx.Query<ItemSearchResultModel>("usp_SearchItemByDescriptionAndStore", descriptionsParameters,
                     commandType: CommandType.StoredProcedure).FirstOrDefault();
             }
-            if (SearhResult == null) { SearhResult = new ItemSearchResultModel { ErrorMessage = "Item does not exist in the specified store." }; }
+            if (SearhResult == null) 
+            { 
+                SearhResult = new ItemSearchResultModel { ErrorMessage = "Item does not exist in the specified store." }; 
+            }
             return SearhResult;
         }
 

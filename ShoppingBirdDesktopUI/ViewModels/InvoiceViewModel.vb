@@ -1,8 +1,8 @@
-﻿Imports System.Collections.ObjectModel
+﻿Imports ShoppingBird.Fly.Interfaces
+Imports ShoppingBird.Fly.Models
+Imports System.Collections.ObjectModel
 Imports System.Collections.Specialized
 Imports System.ComponentModel
-Imports ShoppingBird.Fly.Interfaces
-Imports ShoppingBird.Fly.Models
 
 Public Class InvoiceViewModel
     Implements INotifyPropertyChanged
@@ -21,12 +21,9 @@ Public Class InvoiceViewModel
         AddHandler InvoiceDataCollection.CollectionChanged, AddressOf InvoiceDataChanged
         InvoiceDate = Today()
         StoreList = LoadStoreList()
-        Me.ItemList = LoadItemList()
+        Me.ItemList = SharedFunctions.LoadItemList(_itemIO)
 
-        'load Tax Data here
-        TaxData = New ObservableCollection(Of Tax) From {
-            New Tax With {.Id = 1, .Description = "GST 6%", .Rate = 0.06D}
-        }
+
 
     End Sub
     Public WithEvents InvoiceDataCollection As ObservableCollection(Of InvoiceDataModel)
@@ -197,9 +194,5 @@ Public Class InvoiceViewModel
         Next
 
         Return tempStoreList
-    End Function
-
-    Private Function LoadItemList() As List(Of ItemListAllModel)
-        Return _itemIO.GetAllItemDescriptions()
     End Function
 End Class

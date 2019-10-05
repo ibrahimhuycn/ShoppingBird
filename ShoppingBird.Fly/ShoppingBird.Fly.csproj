@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Ibrahim Hussain</Authors>
+    <Company>Swat, Inc.</Company>
+    <Product>ShoppingBird</Product>
   </PropertyGroup>
 
   <ItemGroup>

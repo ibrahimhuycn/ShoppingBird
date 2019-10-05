@@ -8,5 +8,6 @@ namespace ShoppingBird.Fly.Interfaces
         int SaveItem(ItemInsertDataArgs e);
         ItemSearchResultModel SearchItem(ItemSearchTerms e);
         List<ItemListAllModel> GetAllItemDescriptions();
+        List<SearchResultsAllPriceDataForItemModel> SearchAllPriceDataForItem(string itemDescription);
     }
 }

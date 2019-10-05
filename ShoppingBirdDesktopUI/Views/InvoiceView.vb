@@ -87,10 +87,7 @@ Public Class InvoiceView
         End If
     End Sub
 
-    Private Enum KeyMap
-        Enter = 13
-        Delete = 46
-    End Enum
+
 
     Private Sub SimpleButtonSaveInvoice_Click(sender As Object, e As EventArgs) Handles SimpleButtonSaveInvoice.Click
         'initialise and add the details for the invoice to be saved.
@@ -154,3 +151,8 @@ Public Class InvoiceView
     End Sub
 
 End Class
+
+Public Enum KeyMap
+    Enter = 13
+    Delete = 46
+End Enum

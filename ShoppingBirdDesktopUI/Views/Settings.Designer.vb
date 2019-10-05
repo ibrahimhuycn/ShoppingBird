@@ -32,7 +32,7 @@ Partial Class Settings
         Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         Me.XtraTabControlSettings = New DevExpress.XtraTab.XtraTabControl()
         Me.XtraTabPageAddItem = New DevExpress.XtraTab.XtraTabPage()
-        Me.ToggleSwitch1 = New DevExpress.XtraEditors.ToggleSwitch()
+        Me.ToggleSwitchIsSearchBarcode = New DevExpress.XtraEditors.ToggleSwitch()
         Me.LookUpEditSearchItem = New DevExpress.XtraEditors.LookUpEdit()
         Me.GroupControItemStorePrices = New DevExpress.XtraEditors.GroupControl()
         Me.GridControlItemData = New DevExpress.XtraGrid.GridControl()
@@ -76,7 +76,7 @@ Partial Class Settings
         CType(Me.XtraTabControlSettings, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControlSettings.SuspendLayout()
         Me.XtraTabPageAddItem.SuspendLayout()
-        CType(Me.ToggleSwitch1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ToggleSwitchIsSearchBarcode.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LookUpEditSearchItem.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControItemStorePrices, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControItemStorePrices.SuspendLayout()
@@ -207,7 +207,7 @@ Partial Class Settings
         '
         'XtraTabPageAddItem
         '
-        Me.XtraTabPageAddItem.Controls.Add(Me.ToggleSwitch1)
+        Me.XtraTabPageAddItem.Controls.Add(Me.ToggleSwitchIsSearchBarcode)
         Me.XtraTabPageAddItem.Controls.Add(Me.LookUpEditSearchItem)
         Me.XtraTabPageAddItem.Controls.Add(Me.GroupControItemStorePrices)
         Me.XtraTabPageAddItem.Controls.Add(Me.GroupControlItemRetailData)
@@ -215,15 +215,15 @@ Partial Class Settings
         Me.XtraTabPageAddItem.Size = New System.Drawing.Size(461, 207)
         Me.XtraTabPageAddItem.Text = "Add Item"
         '
-        'ToggleSwitch1
+        'ToggleSwitchIsSearchBarcode
         '
-        Me.ToggleSwitch1.Location = New System.Drawing.Point(322, 12)
-        Me.ToggleSwitch1.MenuManager = Me.barManager1
-        Me.ToggleSwitch1.Name = "ToggleSwitch1"
-        Me.ToggleSwitch1.Properties.OffText = "Description"
-        Me.ToggleSwitch1.Properties.OnText = "Barcode"
-        Me.ToggleSwitch1.Size = New System.Drawing.Size(136, 25)
-        Me.ToggleSwitch1.TabIndex = 15
+        Me.ToggleSwitchIsSearchBarcode.Location = New System.Drawing.Point(322, 12)
+        Me.ToggleSwitchIsSearchBarcode.MenuManager = Me.barManager1
+        Me.ToggleSwitchIsSearchBarcode.Name = "ToggleSwitchIsSearchBarcode"
+        Me.ToggleSwitchIsSearchBarcode.Properties.OffText = "Description"
+        Me.ToggleSwitchIsSearchBarcode.Properties.OnText = "Barcode"
+        Me.ToggleSwitchIsSearchBarcode.Size = New System.Drawing.Size(136, 25)
+        Me.ToggleSwitchIsSearchBarcode.TabIndex = 15
         '
         'LookUpEditSearchItem
         '
@@ -275,7 +275,7 @@ Partial Class Settings
         'GridColumnStore
         '
         Me.GridColumnStore.Caption = "Store"
-        Me.GridColumnStore.FieldName = "Store"
+        Me.GridColumnStore.FieldName = "StoreName"
         Me.GridColumnStore.Name = "GridColumnStore"
         Me.GridColumnStore.Visible = True
         Me.GridColumnStore.VisibleIndex = 1
@@ -283,7 +283,7 @@ Partial Class Settings
         'GridColumnPrice
         '
         Me.GridColumnPrice.Caption = "Retail Price"
-        Me.GridColumnPrice.FieldName = "Price"
+        Me.GridColumnPrice.FieldName = "RetailPrice"
         Me.GridColumnPrice.Name = "GridColumnPrice"
         Me.GridColumnPrice.Visible = True
         Me.GridColumnPrice.VisibleIndex = 2
@@ -609,7 +609,7 @@ Partial Class Settings
         CType(Me.XtraTabControlSettings, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabControlSettings.ResumeLayout(False)
         Me.XtraTabPageAddItem.ResumeLayout(False)
-        CType(Me.ToggleSwitch1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ToggleSwitchIsSearchBarcode.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LookUpEditSearchItem.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControItemStorePrices, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControItemStorePrices.ResumeLayout(False)
@@ -692,7 +692,7 @@ Partial Class Settings
     Friend WithEvents LookUpEditTax As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LookUpEditCategory As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LookUpEditSubCategory As DevExpress.XtraEditors.LookUpEdit
-    Friend WithEvents ToggleSwitch1 As DevExpress.XtraEditors.ToggleSwitch
+    Friend WithEvents ToggleSwitchIsSearchBarcode As DevExpress.XtraEditors.ToggleSwitch
     Friend WithEvents LookUpEditSearchItem As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents GridControlItemData As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridViewItemData As DevExpress.XtraGrid.Views.Grid.GridView

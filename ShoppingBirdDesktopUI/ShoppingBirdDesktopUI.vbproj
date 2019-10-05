@@ -120,6 +120,7 @@
   <ItemGroup>
     <Compile Include="Models\InvoiceDataModel.vb" />
     <Compile Include="Models\ItemCategory.vb" />
+    <Compile Include="Models\SharedFunctions.vb" />
     <Compile Include="Models\Store.vb" />
     <Compile Include="Models\Tax.vb" />
     <Compile Include="Models\Unit.vb" />

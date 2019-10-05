@@ -2,6 +2,7 @@
 Imports AutoMapper
 Imports ShoppingBird.Fly
 Imports ShoppingBird.Fly.Interfaces
+Imports ShoppingBird.Fly.Models
 
 Public Class Settings
     Private _addItem As AddItemViewModel
@@ -13,13 +14,21 @@ Public Class Settings
         _addItem = addItem
         _itemInsertData = itemInsertStaticData
         _mapper = mapper
+        Me.ItemList = SharedFunctions.LoadItemList(_addItem._itemIO)
         BindItemAndPriceData()
     End Sub
+
+    Public Property ItemList As List(Of ItemListAllModel)
 
     ''' <summary>
     ''' Binds the datasources to the controls of the view. 
     ''' </summary>
     Private Sub BindItemAndPriceData()
+        'Bind SearchBox to item list
+        LookUpEditSearchItem.Properties.DataSource = ItemList
+        LookUpEditSearchItem.Properties.DisplayMember = NameOf(ItemListAllModel.Item)
+        LookUpEditSearchItem.Properties.ValueMember = NameOf(ItemListAllModel.Id)
+
         'Bind barcode
         TextEditBarcode.DataBindings.Add(New Binding("Text", _addItem, NameOf(_addItem.Barcode)))
 
@@ -96,6 +105,20 @@ Public Class Settings
 
     Private Sub SimpleButtonSaveItem_Click(sender As Object, e As EventArgs) Handles SimpleButtonSaveItem.Click
         _addItem.Save(GetUserSelectedItemStaticData())
+    End Sub
+
+    Private Sub LookUpEditSearchItem_KeyDown(sender As Object, e As KeyEventArgs) Handles LookUpEditSearchItem.KeyDown
+        If e.KeyCode <> KeyMap.Enter Then Exit Sub
+
+        If LookUpEditSearchItem.Text = Nothing Or LookUpEditSearchItem.Text = LookUpEditSearchItem.Properties.NullText Then
+            MsgBox("Item description is required for search!", MsgBoxStyle.Exclamation, "All Items, All Stores")
+            Exit Sub
+        End If
+        SearchItemPriceDataAllStores(LookUpEditSearchItem.Text.Split(ChrW(124))(1))
+    End Sub
+
+    Private Sub SearchItemPriceDataAllStores(description As String)
+        GridControlItemData.DataSource = _addItem.SearchItemPricesAllStores(description)
     End Sub
 End Class
 

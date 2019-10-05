@@ -104,6 +104,8 @@ Partial Class InvoiceView
         'GridColumnQuantity
         '
         Me.GridColumnQuantity.Caption = "Quantity"
+        Me.GridColumnQuantity.DisplayFormat.FormatString = "n"
+        Me.GridColumnQuantity.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumnQuantity.FieldName = "Quantity"
         Me.GridColumnQuantity.Name = "GridColumnQuantity"
         Me.GridColumnQuantity.Visible = True

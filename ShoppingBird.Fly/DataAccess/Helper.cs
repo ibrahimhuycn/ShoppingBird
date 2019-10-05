@@ -9,8 +9,10 @@ namespace ShoppingBird.Fly.DataAccess
     {
         public static string GetConnectionString(string CnxString)
         {
-            string a = @"Server = (LocalDb)\MSSQLLocalDB; Database = ShoppingbirdData; ";
-            return a;
+            string ConnectionString;
+            //ConnectionString = @"Server = (LocalDb)\MSSQLLocalDB; Database = pShoppingbirdData;";
+            ConnectionString = @"Server = (LocalDb)\MSSQLLocalDB; Database = ShoppingbirdData;";
+            return ConnectionString;
         }
     }
 }

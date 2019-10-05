@@ -5,7 +5,7 @@ Public Class InvoiceDataModel
     Private _amount As Decimal
     Private _description As String
     Private _price As Decimal
-    Private _quantity As Integer
+    Private _quantity As Decimal
     Private _tax As Decimal
 
     ReadOnly _taxRate As Decimal
@@ -88,7 +88,7 @@ Public Class InvoiceDataModel
     ''' Number of Items
     ''' </summary>
     ''' <returns></returns>
-    Property Quantity As Integer
+    Property Quantity As Decimal
         Get
             Return _quantity
         End Get

@@ -65,7 +65,6 @@ GO
 SET IDENTITY_INSERT [dbo].[Item] ON
 INSERT INTO [dbo].[Item]([Id],[Description],[CategoryId],[SubCategoryId]) VALUES (1,'Safa Chef Chili Sauce Garlic 340g',4,4)
 INSERT INTO [dbo].[Item]([Id],[Description],[CategoryId],[SubCategoryId]) VALUES (2,'Stell Air Freshner Packet Rose',5,5)
-INSERT INTO [dbo].[Item]([Id],[Description],[CategoryId],[SubCategoryId]) VALUES (4,'Sony batter AA',3,3)
 SET IDENTITY_INSERT [dbo].[Item] OFF
 GO
 
