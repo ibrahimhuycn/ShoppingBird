@@ -8,7 +8,7 @@ Public Class SettingsViewModel
     Private ReadOnly _storeIO As IStoreIO
     Private ReadOnly _taxIO As ITaxIO
     Private ReadOnly _unitsIO As IUnitsIO
-    Public ReadOnly _itemIO As IItemIO
+    Protected Property InstanceItemIO As IItemIO
 
     Public Sub New(categoriesIO As ICategoriesIO, mapper As Mapper, unitsIO As IUnitsIO, storeIO As IStoreIO, taxIO As ITaxIO, itemIO As IItemIO)
         'Initialize the lists to avoid exceptions
@@ -22,7 +22,7 @@ Public Class SettingsViewModel
         Me._taxIO = taxIO
         Me._unitsIO = unitsIO
         Me._storeIO = storeIO
-        Me._itemIO = itemIO
+        Me.InstanceItemIO = itemIO
 
         'Load all data
         LoadStaticListsData()
@@ -36,6 +36,7 @@ Public Class SettingsViewModel
         Next
 
     End Sub
+
     Private Sub LoadStaticListsData()
         LoadCategories()
         LoadUnits()
@@ -59,10 +60,6 @@ Public Class SettingsViewModel
     End Sub
 
     Protected Overrides Sub Finalize()
-        CategoryList = Nothing
-        StoreList = Nothing
-        TaxList = Nothing
-        UnitList = Nothing
         MyBase.Finalize()
     End Sub
 
@@ -70,8 +67,8 @@ Public Class SettingsViewModel
         Finalize()
     End Sub
 
-    Public Property CategoryList As List(Of ItemCategory)
-    Public Property StoreList As ObservableCollection(Of Store)
-    Public Property TaxList As List(Of Tax)
-    Public Property UnitList As List(Of Unit)
+    Public ReadOnly Property CategoryList As List(Of ItemCategory)
+    Public ReadOnly Property StoreList As ObservableCollection(Of Store)
+    Public ReadOnly Property TaxList As List(Of Tax)
+    Public ReadOnly Property UnitList As List(Of Unit)
 End Class

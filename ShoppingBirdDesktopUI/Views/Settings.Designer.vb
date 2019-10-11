@@ -232,6 +232,7 @@ Partial Class Settings
         Me.LookUpEditSearchItem.Name = "LookUpEditSearchItem"
         Me.LookUpEditSearchItem.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.LookUpEditSearchItem.Properties.NullText = "Search item by barcode or description"
+        Me.LookUpEditSearchItem.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
         Me.LookUpEditSearchItem.Properties.PopupSizeable = False
         Me.LookUpEditSearchItem.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.LookUpEditSearchItem.Size = New System.Drawing.Size(308, 20)
@@ -262,6 +263,7 @@ Partial Class Settings
         Me.GridViewItemData.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumnBarcode, Me.GridColumnStore, Me.GridColumnPrice})
         Me.GridViewItemData.GridControl = Me.GridControlItemData
         Me.GridViewItemData.Name = "GridViewItemData"
+        Me.GridViewItemData.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseUp
         Me.GridViewItemData.OptionsView.ShowGroupPanel = False
         '
         'GridColumnBarcode

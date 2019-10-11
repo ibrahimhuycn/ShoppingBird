@@ -28,13 +28,13 @@ namespace ShoppingBird.Fly
             e.Item.Id = SelectItemByDescription(e.Item.Description);
 
             //Try reading the price for the specified item for the specified store from the database
-            var SearchResult = SearchByDescriptionAndStore(new ItemSearchTerms(e.Item.Description, e.PriceData.Store.Id,false));
-            
+            var SearchResult = SearchByDescriptionAndStore(new ItemSearchTerms(e.Item.Description, e.PriceData.Store.Id, false));
+
             //If the item is not in the database the error message will have a value because it could not find any data for the search
             if (SearchResult.ErrorMessage is null)
             {
-                throw new Exception($"Item (Barcode): {SearchResult.Description} ({e.PriceData.Barcode}){Environment.NewLine}"+
-                    $"Store: {e.PriceData.Store.Name}{Environment.NewLine}"+ 
+                throw new Exception($"Item (Barcode): {SearchResult.Description} ({e.PriceData.Barcode}){Environment.NewLine}" +
+                    $"Store: {e.PriceData.Store.Name}{Environment.NewLine}" +
                     "The item and price data for the store is already in the database!");
             }
 
@@ -101,8 +101,34 @@ namespace ShoppingBird.Fly
 
             using (IDbConnection cnx = new SqlConnection(CnxString))
             {
-                return cnx.Query<SearchResultsAllPriceDataForItemModel>("usp_GetAllPricesDataForItem",Item,
+                return cnx.Query<SearchResultsAllPriceDataForItemModel>("usp_GetAllPricesDataForItem", Item,
                      commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        /// <summary>
+        /// This function returns an instance of a class ItemInsertAssistDataModel which
+        /// contains UnitId, Category, SubCategory and Tax which is needed for item insert. This is implemented 
+        /// to make it easier for the end user to enter item data in Item Settings page.
+        /// </summary>
+        /// <param name="barcode">The item barcode</param>
+        /// <param name="storeId">The store ID from which the data is to be fetched.</param>
+        public ItemInsertAssistDataModel GetInsertAssistData(string barcode, int storeId)
+        {
+            var Item = new { Barcode = barcode, StoreId = storeId };
+
+            using (IDbConnection cnx = new SqlConnection(CnxString))
+            {
+                try
+                {
+                    return cnx.Query<ItemInsertAssistDataModel>("usp_GetItemCatDataAndUnitWithBarcodeAndStore", Item, 
+                        commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+                }
+                catch (Exception ex)
+                {
+                    return new ItemInsertAssistDataModel { ErrorMessage = ex.Message };
+                }
             }
         }
 
@@ -124,7 +150,7 @@ namespace ShoppingBird.Fly
                 {
                     itemId = searchResult.Id;
                 }
-    
+
             }
 
             return itemId;
@@ -177,8 +203,8 @@ namespace ShoppingBird.Fly
 
             using (IDbConnection cnx = new SqlConnection(CnxString))
             {
-                 cnx.Execute("usp_InsertItemPrice", ItemPriceData,
-                                                    commandType: CommandType.StoredProcedure);
+                cnx.Execute("usp_InsertItemPrice", ItemPriceData,
+                                                   commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -216,9 +242,9 @@ namespace ShoppingBird.Fly
                 SearhResult = cnx.Query<ItemSearchResultModel>("usp_SearchItemByDescriptionAndStore", descriptionsParameters,
                     commandType: CommandType.StoredProcedure).FirstOrDefault();
             }
-            if (SearhResult == null) 
-            { 
-                SearhResult = new ItemSearchResultModel { ErrorMessage = "Item does not exist in the specified store." }; 
+            if (SearhResult == null)
+            {
+                SearhResult = new ItemSearchResultModel { ErrorMessage = "Item does not exist in the specified store." };
             }
             return SearhResult;
         }

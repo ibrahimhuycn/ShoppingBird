@@ -88,6 +88,7 @@
     <Build Include="Stored Procedures\usp_GetAllUnits.sql" />
     <Build Include="Stored Procedures\usp_GetAllTax.sql" />
     <Build Include="Stored Procedures\usp_GetAllPricesDataForItem.sql" />
+    <Build Include="Stored Procedures\usp_GetItemCatDataAndUnitWithBarcodeAndStore.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ShoppingBirdData.refactorlog" />

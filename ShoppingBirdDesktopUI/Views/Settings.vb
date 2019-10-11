@@ -14,11 +14,11 @@ Public Class Settings
         _addItem = addItem
         _itemInsertData = itemInsertStaticData
         _mapper = mapper
-        Me.ItemList = SharedFunctions.LoadItemList(_addItem._itemIO)
+        Me.ItemList = SharedFunctions.LoadItemList(_addItem?.GetCurrentItemList())
         BindItemAndPriceData()
     End Sub
 
-    Public Property ItemList As List(Of ItemListAllModel)
+    Public ReadOnly Property ItemList As List(Of ItemListAllModel)
 
     ''' <summary>
     ''' Binds the datasources to the controls of the view. 
@@ -119,6 +119,38 @@ Public Class Settings
 
     Private Sub SearchItemPriceDataAllStores(description As String)
         GridControlItemData.DataSource = _addItem.SearchItemPricesAllStores(description)
+    End Sub
+
+    ''' <summary>
+    ''' This sub works only in the following scenario
+    ''' Allows you to respond to row clicks. The event will not fire when data editing is enabled and the 
+    ''' ColumnViewOptionsBehavior.EditorShowMode property is set to MouseDown 
+    ''' (and to Default, if multiple row selection is disabled)
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub GridViewItemData_RowClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles GridViewItemData.RowClick
+
+        Dim barcode As String = GridViewItemData.GetFocusedRowCellValue("Barcode").ToString
+        Dim storeName As String = GridViewItemData.GetFocusedRowCellValue("StoreName").ToString
+        Dim StoreId As Integer = CType((LookupEditStore.Properties.GetDataSourceRowByDisplayValue(storeName)), Store).Id
+        Dim retailPrice As Decimal = DirectCast(GridViewItemData.GetFocusedRowCellValue("RetailPrice"), Decimal)
+
+        Dim InsertAssistData As ItemInsertAssistDataModel = _addItem.LoadInsertAssistDetailsOfSelectedItem(barcode, StoreId)
+
+        If InsertAssistData.ErrorMessage Is Nothing Then
+            _addItem.Description = LookUpEditSearchItem.Text.Split(ChrW(124))(1)
+            _addItem.Barcode = barcode
+            LookUpEditTax.EditValue = InsertAssistData.TaxId
+            _addItem.RetailPrice = retailPrice
+            LookupEditStore.EditValue = StoreId
+            LookUpEditCategory.EditValue = InsertAssistData.CategoryId
+            LookUpEditSubCategory.EditValue = InsertAssistData.SubCategoryId
+            LookUpEditItemUnit.EditValue = InsertAssistData.UnitId
+        Else
+            MsgBox($"An error occured, cannot load data.{vbCrLf}{InsertAssistData.ErrorMessage}")
+        End If
+
     End Sub
 End Class
 

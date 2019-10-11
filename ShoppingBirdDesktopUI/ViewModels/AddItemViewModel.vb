@@ -3,6 +3,7 @@ Imports System.ComponentModel
 Imports AutoMapper
 Imports ShoppingBird.Fly
 Imports ShoppingBird.Fly.Interfaces
+Imports ShoppingBird.Fly.Models
 
 Public Class AddItemViewModel
     Inherits SettingsViewModel
@@ -41,7 +42,7 @@ Public Class AddItemViewModel
                 .Tax = e.Tax,
                 .Unit = e.Unit}
             Try
-                If _itemIO.SaveItem(New Models.ItemInsertDataArgs(InsertItem, PriceData)) = 0 Then
+                If InstanceItemIO.SaveItem(New Models.ItemInsertDataArgs(InsertItem, PriceData)) = 0 Then
                     MsgBox("Item inserted successfully!")
                 Else
                     MsgBox("!!!!!")
@@ -56,7 +57,15 @@ Public Class AddItemViewModel
     End Sub
 
     Public Function SearchItemPricesAllStores(ItemDescription As String) As List(Of Models.SearchResultsAllPriceDataForItemModel)
-        Return MyBase._itemIO.SearchAllPriceDataForItem(ItemDescription)
+        Return MyBase.InstanceItemIO.SearchAllPriceDataForItem(ItemDescription)
+    End Function
+
+    Public Function LoadInsertAssistDetailsOfSelectedItem(barcode As String, storeId As Integer) As ItemInsertAssistDataModel
+        Return InstanceItemIO.GetInsertAssistData(barcode, storeId)
+    End Function
+
+    Public Function GetCurrentItemList() As IItemIO
+        Return InstanceItemIO
     End Function
 
     Property Barcode As String
