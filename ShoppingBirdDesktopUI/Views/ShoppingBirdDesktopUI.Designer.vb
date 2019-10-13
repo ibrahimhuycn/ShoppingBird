@@ -88,6 +88,7 @@
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1190, 485)
         Me.Controls.Add(Me.ribbonControl1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.Name = "ShoppingBirdDesktopUI"
         Me.Ribbon = Me.ribbonControl1

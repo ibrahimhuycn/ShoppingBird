@@ -65,6 +65,9 @@
   <PropertyGroup>
     <StartupObject>ShoppingBirdDesktopUI.My.MyApplication</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ShoppingBird.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
@@ -242,6 +245,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ShoppingBird.ico" />
     <Content Include="svgs\brands\500px.svg" />
     <Content Include="svgs\brands\accessible-icon.svg" />
     <Content Include="svgs\brands\accusoft.svg" />
