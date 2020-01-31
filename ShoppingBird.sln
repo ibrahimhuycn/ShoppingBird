@@ -7,7 +7,9 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ShoppingBirdData", "Shoppin
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ShoppingBirdDesktopUI", "ShoppingBirdDesktopUI\ShoppingBirdDesktopUI.vbproj", "{01B34CC5-E60E-4B07-9867-FB278D26DA3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingBird.Fly", "ShoppingBird.Fly\ShoppingBird.Fly.csproj", "{D6170A9C-83AD-43A9-A782-1B52F3C42AC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingBird.Fly", "ShoppingBird.Fly\ShoppingBird.Fly.csproj", "{D6170A9C-83AD-43A9-A782-1B52F3C42AC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingBirdWeb", "ShoppingBirdWeb\ShoppingBirdWeb.csproj", "{8CF2A9FD-3CFD-4CAE-98A9-A0F168EE7E18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{D6170A9C-83AD-43A9-A782-1B52F3C42AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6170A9C-83AD-43A9-A782-1B52F3C42AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6170A9C-83AD-43A9-A782-1B52F3C42AC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CF2A9FD-3CFD-4CAE-98A9-A0F168EE7E18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CF2A9FD-3CFD-4CAE-98A9-A0F168EE7E18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CF2A9FD-3CFD-4CAE-98A9-A0F168EE7E18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CF2A9FD-3CFD-4CAE-98A9-A0F168EE7E18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

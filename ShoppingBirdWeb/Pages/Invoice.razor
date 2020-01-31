@@ -1,0 +1,213 @@
+﻿@page "/invoice"
+@using Syncfusion.EJ2.Blazor
+@using Syncfusion.EJ2.Blazor.DropDowns
+@using Syncfusion.EJ2.Blazor.Inputs
+@using Syncfusion.EJ2.Blazor.Grids
+@using Syncfusion.EJ2.Blazor.Popups
+@using System.ComponentModel
+@using Data
+
+    <div class="container-fluid">
+        <br />
+        <EjsButton @onclick="SetQtyRequired">Show Qty Window</EjsButton>
+        <br />
+
+        <div class="card">
+
+            <div class="card-header">
+                <h4 class="p-2"> @InvoiceNumberDisplayFormat<span class="badge badge-info p-2">@InvoiceStatus</span></h4>
+            </div>
+
+            <div class="card-body">
+                <form>
+
+                    <!--Row 1-->
+                    <div class="row">
+
+                        <div class="col-4 p-1">
+                            <EjsTextBox Placeholder="Enter invoice number.." @bind-Value="InvoiceNumber"></EjsTextBox>
+                        </div>
+
+                        <div class=" col-8 p-1">
+                            <!--Proper combobox-->
+                            <EjsComboBox TValue="string"
+                                         Placeholder="Search for product / scan barcode ..."
+                                         AllowFiltering="true" FilterType="Syncfusion.EJ2.Blazor.DropDowns.FilterType.Contains"
+                                         @bind-Value="@ComboBoxValueMember" DataSource="@product">
+                                <ComboBoxFieldSettings Value="Barcode" Text="Description"></ComboBoxFieldSettings>
+                            </EjsComboBox>
+                        </div>
+
+
+                    </div>
+
+                    <!--Row 2 col-12  p-1 form-control-->
+                    <div class="row">
+
+                        <div class="p-1">
+                            <EjsGrid DataSource=@this.CartItems @ref="@DefaultGrid"
+                                     AllowPaging="true"
+                                     AllowSorting="true"
+                                     Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })">
+                                <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
+                                <GridPageSettings PageSize="6"></GridPageSettings>
+                                <GridColumns>
+                                    <GridColumn Field=@nameof(Cart.Barcode) HeaderText="Barcode" IsPrimaryKey="true"></GridColumn>
+                                    <GridColumn Field=@nameof(Cart.Description) HeaderText="Product Name"></GridColumn>
+                                    <GridColumn Field=@nameof(Cart.Qty) HeaderText="Qty"></GridColumn>
+                                    <GridColumn Field=@nameof(Cart.RetailPrice) HeaderText="Price"></GridColumn>
+                                    <GridColumn Field=@nameof(Cart.Amount) HeaderText="Amount"></GridColumn>
+                                </GridColumns>
+                            </EjsGrid>
+                        </div>
+
+                    </div>
+
+                </form>
+
+
+            </div>
+
+            <div class="card-footer">
+                <div class="p-1">
+                    <p>ComboBox value is: <strong>@ComboBoxValueMember</strong></p>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+        @if (IsQtyRequired)
+    {
+        <EjsDialog Height="300px" Width="100px">
+            <DialogTemplates>
+                <Content> <div class='dialogContent'><span class='dialogText'>Please enter a Quantity for the selected item</span></div></Content>
+                <FooterTemplate>
+                    <EjsTextBox @bind-Value="@Quantity" Placeholder='Quantity' />
+                    <button id='sendButton' @onclick="@OnsendBtnclick" class='e-control e-btn e-primary' data-ripple='true'>Send</button>
+                </FooterTemplate>
+            </DialogTemplates>
+        </EjsDialog>
+
+    }
+    </div>
+
+
+
+@code {
+    protected override Task OnInitializedAsync()
+    {
+        CartItems = new BindingList<Cart>();
+        IsQtyRequired = false;
+        GetProducts();
+        this.InvoiceNumberDisplayFormat = "New Invoice  ";
+        return base.OnInitializedAsync();
+    }
+
+    private string Quantity;
+    private void OnsendBtnclick()
+    {
+
+        this.IsQtyRequired = false;
+
+        //Add the item with quantity to cart
+        AddSelectedToCart(ComboBoxValueMember);
+
+        //Reset Quantity
+        this.Quantity = "1";
+    }
+
+    private string _ComboBoxValueMember = null;
+    public EjsGrid<Cart> DefaultGrid { get; set; }
+
+    public string ComboBoxValueMember
+    {
+        get
+        {
+            return _ComboBoxValueMember;
+        }
+        set
+        {
+            _ComboBoxValueMember = value;
+
+            //Prompt for quantity
+            IsQtyRequired = true;
+
+
+        }
+    }
+
+    private bool IsQtyRequired { get; set; }
+
+    List<Product> product;
+
+    BindingList<Cart> CartItems;
+
+    private string _invoiceNumber;
+
+    private string InvoiceStatus = "NEW";
+
+    private string InvoiceNumber
+    {
+        get
+        {
+            return _invoiceNumber;
+        }
+        set
+        {
+            this._invoiceNumber = value;
+            this.InvoiceNumberDisplayFormat = "Invoice Number: #" + _invoiceNumber + "  ";
+        }
+    }
+
+    private string InvoiceNumberDisplayFormat;
+
+    private void GetProducts()
+    {
+        product = new List<Product>();
+
+        product.Add(new Product() { Barcode = "1625377", Description = "Enzi Rihaakuru", RetailPrice = 67.98F });
+        product.Add(new Product() { Barcode = "8347237", Description = "Erca Nuts", RetailPrice = 1.75F });
+        product.Add(new Product() { Barcode = "234GT82", Description = "Kent Orange, TRIX", RetailPrice = 25.00F });
+        product.Add(new Product() { Barcode = "9768788", Description = "NESTLE Milo ActiveGo", RetailPrice = 120.50F });
+    }
+
+    private void AddSelectedToCart(string barcode)
+    {
+        Product selectedItem = product.SingleOrDefault(p => p.Barcode == barcode);
+
+        if (selectedItem is null) { return; }
+
+        try
+        {
+            this.CartItems.Add(new Cart()
+            {
+                Barcode = selectedItem.Barcode,
+                Description = selectedItem.Description,
+                RetailPrice = selectedItem.RetailPrice,
+                Qty = int.Parse(Quantity)
+            });
+
+        }
+        catch (Exception)
+        {
+            this.CartItems.Add(new Cart()
+            {
+                Barcode = selectedItem.Barcode,
+                Description = selectedItem.Description,
+                RetailPrice = selectedItem.RetailPrice,
+                Qty = 0
+            });
+        }
+
+        DefaultGrid?.Refresh();
+    }
+
+    private void SetQtyRequired()
+    {
+        IsQtyRequired = true;
+    }
+}
