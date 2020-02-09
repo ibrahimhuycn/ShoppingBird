@@ -57,7 +57,7 @@ Public Class InvoiceView
         End If
         'rule out an error
 
-
+        'Checks whether the item is already in the invoice, if so this increaments the quantity instead of add a new record
         Dim Item = ViewModel.InvoiceDataCollection.SingleOrDefault(Function(i) i.Description = SearchResults.Description)
         If Not Item Is Nothing Then
             Item.Quantity += 1
