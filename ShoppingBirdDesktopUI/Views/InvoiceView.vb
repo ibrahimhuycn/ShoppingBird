@@ -3,40 +3,35 @@ Imports ShoppingBird.Fly.DbModels
 Imports ShoppingBird.Fly.Models
 
 Public Class InvoiceView
-    Private Invoice As InvoiceViewModel = New InvoiceViewModel(New InvoiceIO, New ItemIO, New StoreIO)
+    Private Property ViewModel As InvoiceViewModel
 
-    Public Sub New()
+
+    Public Sub New(viewModel As InvoiceViewModel)
 
         InitializeComponent()
-        GridControlInvoiceItems.DataSource = Invoice.InvoiceDataCollection
-        TextEditSubTotal.DataBindings.Add(New Binding("Text", Invoice, NameOf(Invoice.SubTotal)))
-        TextEditTax.DataBindings.Add(New Binding("Text", Invoice, NameOf(Invoice.TotalTax)))
-        TextEditTotal.DataBindings.Add(New Binding("Text", Invoice, NameOf(Invoice.Total)))
-        DateEditInvoiceDate.DataBindings.Add(New Binding("EditValue", Invoice, NameOf(Invoice.InvoiceDate)))
-        TextEditInvoiceNumber.DataBindings.Add(New Binding("EditValue", Invoice, NameOf(Invoice.InvoiceNumber)))
-
-        LookUpEditStore.Properties.DataSource = Invoice.StoreList
-        LookUpEditStore.Properties.DisplayMember = NameOf(Store.Name)
-        LookUpEditStore.Properties.ValueMember = NameOf(Store.Id)
-
-        SearchBoxReAssignData()
-
-        ToggleSwitchSearch.DataBindings.Add(New Binding("IsOn", Invoice, NameOf(Invoice.IsSearchByBarcode)))
+        Me.ViewModel = viewModel
+        InitializeDataBinding()
 
     End Sub
 
-    ''' <summary>
-    ''' Reassign data source, Display member and Value member on search box
-    ''' </summary>
-    Private Sub SearchBoxReAssignData()
-        'Remove
-        LookupEditSearch.Properties.DataSource = Nothing
-        LookupEditSearch.Properties.DisplayMember = ""
-        LookupEditSearch.Properties.ValueMember = ""
+    Private Sub InitializeDataBinding()
+        GridControlInvoiceItems.DataSource = ViewModel.InvoiceDataCollection
+        TextEditSubTotal.DataBindings.Add(New Binding("Text", ViewModel, NameOf(ViewModel.SubTotal)))
+        TextEditTax.DataBindings.Add(New Binding("Text", ViewModel, NameOf(ViewModel.TotalTax)))
+        TextEditTotal.DataBindings.Add(New Binding("Text", ViewModel, NameOf(ViewModel.Total)))
+        DateEditInvoiceDate.DataBindings.Add(New Binding("EditValue", ViewModel, NameOf(ViewModel.InvoiceDate)))
+        TextEditInvoiceNumber.DataBindings.Add(New Binding("EditValue", ViewModel, NameOf(ViewModel.InvoiceNumber)))
+
+        LookUpEditStore.Properties.DataSource = ViewModel.StoreList
+        LookUpEditStore.Properties.DisplayMember = NameOf(Store.Name)
+        LookUpEditStore.Properties.ValueMember = NameOf(Store.Id)
+
         'Assign
-        LookupEditSearch.Properties.DataSource = Invoice.ItemList
+        LookupEditSearch.Properties.DataSource = ViewModel.ItemList
         LookupEditSearch.Properties.DisplayMember = NameOf(ItemListAllModel.Item)
         LookupEditSearch.Properties.ValueMember = NameOf(ItemListAllModel.Id)
+
+        ToggleSwitchSearch.DataBindings.Add(New Binding("IsOn", ViewModel, NameOf(ViewModel.IsSearchByBarcode)))
     End Sub
 
     Private Sub LookupEditSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles LookupEditSearch.KeyDown
@@ -54,7 +49,7 @@ Public Class InvoiceView
 
     Private Sub SearchProduct(searchTerm As String)
         'Search fot the item
-        Dim SearchResults As ItemSearchResultModel = Invoice.SearchItem(searchTerm)
+        Dim SearchResults As ItemSearchResultModel = ViewModel.SearchItem(searchTerm)
         If Not SearchResults?.ErrorMessage Is Nothing Then
             MsgBox(SearchResults.ErrorMessage, MsgBoxStyle.Critical, "Item Search")
             LookupEditSearch.Text = ""
@@ -63,11 +58,11 @@ Public Class InvoiceView
         'rule out an error
 
 
-        Dim Item = Invoice.InvoiceDataCollection.SingleOrDefault(Function(i) i.Description = SearchResults.Description)
+        Dim Item = ViewModel.InvoiceDataCollection.SingleOrDefault(Function(i) i.Description = SearchResults.Description)
         If Not Item Is Nothing Then
             Item.Quantity += 1
         Else
-            Invoice.InvoiceDataCollection.Add(
+            ViewModel.InvoiceDataCollection.Add(
                             New InvoiceDataModel(SearchResults.ItemId,
                                                  SearchResults.Description,
                                                  1,
@@ -93,7 +88,7 @@ Public Class InvoiceView
         'initialise and add the details for the invoice to be saved.
         Dim invoiceDetails As New List(Of InvoiceDetail)
 
-        For Each Item In Invoice.InvoiceDataCollection
+        For Each Item In ViewModel.InvoiceDataCollection
             invoiceDetails.Add(New InvoiceDetail With {.ItemId = Item.ItemId,
                                .Price = Item.Price,
                                .Quantity = Item.Quantity,
@@ -109,12 +104,12 @@ Public Class InvoiceView
         'NOTE: Needs to edit this code to include the actual signed in user. Not 
         'necessarily the following lines though. Use data binding.
         Dim invoiceDbModel As New DbModels.Invoice With {.StoreId = SelectedStore.Id,
-                                              .Number = Invoice.InvoiceNumber,
-                                              .SubTotal = Invoice.SubTotal,
-                                              .Tax = Invoice.TotalTax,
-                                              .Total = Invoice.Total,
+                                              .Number = ViewModel.InvoiceNumber,
+                                              .SubTotal = ViewModel.SubTotal,
+                                              .Tax = ViewModel.TotalTax,
+                                              .Total = ViewModel.Total,
                                               .UserId = 1,
-                                              .[Date] = Invoice.InvoiceDate}
+                                              .[Date] = ViewModel.InvoiceDate}
 
         Dim InvoiceSaveData = New NewInvoice With {
                 .Invoice = invoiceDbModel,
@@ -122,7 +117,7 @@ Public Class InvoiceView
 
         'Check whether the invoice has more than 0 items.
         If invoiceDetails.Count > 0 Then
-            Invoice.SaveInvoice(InvoiceSaveData)
+            ViewModel.SaveInvoice(InvoiceSaveData)
         Else
             MsgBox("Please add items to invoice before saving!", MsgBoxStyle.Exclamation, "Invoice")
         End If

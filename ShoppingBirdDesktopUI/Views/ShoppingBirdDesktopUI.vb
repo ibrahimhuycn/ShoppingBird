@@ -29,7 +29,8 @@ Partial Public Class ShoppingBirdDesktopUI
         _mapper = CType(Config.CreateMapper(), Mapper)
     End Sub
     Private Sub BarButtonItemInvoice_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles BarButtonItemInvoice.ItemClick
-        Dim invoice As New InvoiceView With {.MdiParent = Me,
+        Dim viewModel As New InvoiceViewModel(New InvoiceIO, New ItemIO, New StoreIO)
+        Dim invoice As New InvoiceView(viewModel) With {.MdiParent = Me,
             .StartPosition = FormStartPosition.CenterParent
         }
         invoice.Show()
