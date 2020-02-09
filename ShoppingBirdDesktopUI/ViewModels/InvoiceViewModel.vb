@@ -99,9 +99,10 @@ Public Class InvoiceViewModel
     ''' </summary>
     ''' <param name="SearchData">Format: Barcode|ItemDescription|StoreId</param>
     ''' <returns></returns>
+    <CodeAnalysis.SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification:="<Pending>")>
     Public Function SearchItem(SearchData As String) As ItemSearchResultModel
         Dim SearchedItem As ItemSearchResultModel
-        Dim SearchParameters() As String = SearchData.Split(ChrW(124))
+        Dim SearchParameters() As String = SearchData?.Split(ChrW(124))
 
         'The following will throw an error if the item being searched is not in the 
         'Item list loaded at the form constructor.
@@ -114,7 +115,7 @@ Public Class InvoiceViewModel
                     SearchedItem = Me._itemIO.SearchItem(New ItemSearchTerms(SearchParameters(1),
                                             Convert.ToInt32(SearchParameters(2)), Me.IsSearchByBarcode))
                 Case Else
-                    Throw New ArgumentOutOfRangeException("Item barcode or description is required to perform an item search")
+                    Throw New Exception("Item barcode or description is required to perform an item search")
             End Select
         Catch ex As IndexOutOfRangeException
             Return New ItemSearchResultModel With {.ErrorMessage = "Item does not exist in the database. Please add the item," &
