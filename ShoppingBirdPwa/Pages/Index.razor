@@ -1,0 +1,66 @@
+﻿@page "/"
+
+<header>
+    <nav class="navbar fixed-top navbar-expand-lg shadow p-3 mb-5 bg-white rounded">
+        <a class="navbar-brand" href="#">
+            <img src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" loading="lazy">
+            Shopping Bird
+        </a>
+
+        <ShoppingBirdPwa.Components.SearchBox OnItemChosen="HandleItemChosen" />
+    </nav>
+</header>
+<main>
+
+
+
+</main>
+
+<footer>
+    <nav class="navbar fixed-bottom navbar-expand-lg shadow-lg p-3 bg-white rounded">
+         
+        <button class="btn btn-outline-danger form-control w-25">✗ Remove item</button>
+        <div class="form-control w-25">Total: <span class="price">100.00</span></div>
+        <button class="btn btn-outline-success form-control w-25">💳 Checkout</button>
+  
+    </nav>
+</footer>
+
+
+@code {
+    private string _searchTerm;
+
+    public event EventHandler<string> SearchTermEntered;
+
+    [Parameter]
+    public string SearchTerm
+    {
+        get
+        {
+            return _searchTerm;
+        }
+        set
+        {
+            _searchTerm = value;
+            SearchTermEntered?.Invoke(this, _searchTerm);
+        }
+
+
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        this.SearchTermEntered += OnSearchTermEntered;
+    }
+
+    public void OnSearchTermEntered(object sender, string searchTerm)
+    {
+        Console.WriteLine(searchTerm);
+    }
+
+    async Task HandleItemChosen(string ean)
+    {
+        await Task.Run(() => Console.WriteLine(ean + " ean printed"));
+    }
+}
