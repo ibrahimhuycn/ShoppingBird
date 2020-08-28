@@ -1,5 +1,4 @@
-﻿@*@inject Inventory.InventoryClient InventoryClient*@
-
+﻿@inject Inventory.InventoryClient InventoryClient
 <div class="search">
     <form @onsubmit="AddItem">
         <input class="form-control" type="search" placeholder="Scan or search" list="products-autocomplete"
@@ -8,14 +7,14 @@
     <datalist id="products-autocomplete">
         @foreach (var item in autocompleteItems)
         {
-            @*<option>@item.Name</option>*@
+            <option>@item.Name</option>
         }
     </datalist>
 </div>
 
 @code {
     string searchText;
-    List<string> autocompleteItems = new List<string>();
+    List<AutocompleteItem> autocompleteItems = new List<AutocompleteItem>();
 
     [Parameter] public EventCallback<string> OnItemChosen { get; set; }
 

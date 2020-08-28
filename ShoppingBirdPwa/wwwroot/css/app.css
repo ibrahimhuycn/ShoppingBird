@@ -1,5 +1,68 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+.cart-item {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: var(--space-2) var(--outer-padding);
+    line-height: 28px;
+    margin-top: var(--space-1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+    .cart-item:first-of-type {
+        margin-top: var(--space-3);
+    }
+
+    .cart-item:last-of-type {
+        margin-bottom: var(--space-4);
+    }
+
+    .cart-item img {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .cart-item .info {
+        padding: 0 var(--space-4);
+        flex-grow: 1;
+        min-width: 0;
+    }
+
+    .cart-item .item-summary {
+        text-align: right;
+        width: 10rem;
+    }
+
+    .cart-item h3, .cart-item p {
+        padding: 0;
+        margin: 0;
+        font-weight: 400;
+    }
+
+    .cart-item .info p {
+        font-weight: 100;
+        color: #444;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .cart-item .price, footer .price {
+        font-weight: 400;
+        font-size: 150%;
+    }
+
+    .cart-item .quantity {
+        font-weight: 100;
+        color: #666;
+    }
+
+footer div:nth-child(2) {
+    flex-grow: 1;
+    text-align: center;
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }

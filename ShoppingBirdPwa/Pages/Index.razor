@@ -1,33 +1,44 @@
 ﻿@page "/"
+@inject Cart Cart
+@using Models
 
 <header>
     <nav class="navbar fixed-top navbar-expand-lg shadow p-3 mb-5 bg-white rounded">
         <a class="navbar-brand" href="#">
-            <img src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" loading="lazy">
+            <img src="icon-512.png" width="30" height="30" alt="" loading="lazy">
             Shopping Bird
         </a>
 
         <ShoppingBirdPwa.Components.SearchBox OnItemChosen="HandleItemChosen" />
     </nav>
 </header>
+
 <main>
-
-
-
+    @foreach (var row in Cart.Rows)
+    {
+        <CartRowDisplay @key="row.Key" Data="row" />
+    }
 </main>
 
 <footer>
-    <nav class="navbar fixed-bottom navbar-expand-lg shadow-lg p-3 bg-white rounded">
-         
-        <button class="btn btn-outline-danger form-control w-25">✗ Remove item</button>
-        <div class="form-control w-25">Total: <span class="price">100.00</span></div>
-        <button class="btn btn-outline-success form-control w-25">💳 Checkout</button>
-  
+    <nav class="navbar fixed-bottom navbar-expand-lg shadow-lg p-3 bg-dark rounded">
+
+        <button class="btn btn-outline-danger form-control mr-2 p-1 w-25">✗ Remove item</button>
+        <div class="form-control mr-2 p-1 w-25">Total: <span class="price">100.00</span></div>
+        <button class="btn btn-outline-success form-control mr-2 p-1 w-25">💳 Checkout</button>
+
     </nav>
 </footer>
 
 
+
 @code {
+    bool isInRemoveMode;
+
+    void EnterRemoveMode()
+    {
+        isInRemoveMode = true;
+    }
     private string _searchTerm;
 
     public event EventHandler<string> SearchTermEntered;
@@ -61,6 +72,14 @@
 
     async Task HandleItemChosen(string ean)
     {
-        await Task.Run(() => Console.WriteLine(ean + " ean printed"));
+        if (isInRemoveMode)
+        {
+            Cart.RemoveItem(ean);
+            isInRemoveMode = false;
+        }
+        else
+        {
+            await Cart.AddItemAsync(ean);
+        }
     }
 }
