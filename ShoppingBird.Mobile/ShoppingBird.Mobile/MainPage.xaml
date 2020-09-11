@@ -14,7 +14,8 @@
                 <Grid>
                     <Label Grid.Row="0" Grid.Column="0" Margin="10,10,0,0" Text="Shopping Bird" HorizontalTextAlignment="Start" TextColor="WhiteSmoke" FontSize="20" FontAttributes="Bold"/>
                     <Picker Grid.Row="0" Grid.Column="1" Title="Select store" HorizontalOptions="CenterAndExpand"
-                            ItemsSource="{Binding AllStores}" SelectedItem="{Binding SelectedStore}"/>
+                            ItemsSource="{Binding AllStores}" 
+                            SelectedItem="{Binding SelectedStore}"/>
                     <SearchBar Grid.Row="0" Grid.Column="2"  Placeholder="Scan item barcode..."
                                Text="{Binding SelectedProduct}"
                                SearchCommand="{Binding OnSearch}"
@@ -23,10 +24,11 @@
             </Frame>
         </StackLayout>
         
-        <!--Invoice Products-->
+        <!--Invoice Products (Cart Items)-->
         <StackLayout Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" BackgroundColor="WhiteSmoke" Padding="5">
             <CollectionView ItemsSource="{Binding CartItems}" 
-                            SelectionMode="Single" BackgroundColor="WhiteSmoke">
+                            SelectionMode="Single" BackgroundColor="WhiteSmoke"
+                            x:Name="CartItemsViewCollection">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout  Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
@@ -35,17 +37,41 @@
                             <StackLayout>
                                 <Frame  CornerRadius="5" BackgroundColor="LightGray" Margin="5">
                                     <Grid>
+                                    <!--Barcode-->
                                     <Label Text="{Binding Barcode}" 
                                            TextColor="Black" FontAttributes="Bold"/>
-                                    <Label Grid.Column="1"
+                                    <!--Quantity-->
+                                    <Label Grid.Column="3"
+                                           HorizontalOptions="End"
                                            HorizontalTextAlignment="End"
                                            Text="{Binding Quantity, StringFormat='Quantity: {0}'}" 
                                            TextColor="Black" 
                                            FontAttributes="Bold"/>
-                                        <Label Grid.Row="1"
-                                               HorizontalOptions="StartAndExpand"  
-                                               Text="{Binding Description}" TextColor="Black"/>
-                                    </Grid>
+                                    <!--Product description-->
+                                    <Label Grid.Row="1" Grid.ColumnSpan="3"
+                                            HorizontalOptions="StartAndExpand"  
+                                            Text="{Binding Description}" TextColor="Black"/>
+                                     <!--Retail price-->
+                                    <Label Grid.Row="2"
+                                           HorizontalOptions="StartAndExpand"  
+                                           Text="{Binding RetailPrice, StringFormat='Retail Price: {0} MVR'}" 
+                                           TextColor="Black"
+                                           FontAttributes="Bold"/>
+                                    <!--tax-->    
+                                    <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                                           HorizontalOptions="Center"
+                                           HorizontalTextAlignment="Center"
+                                           Text="{Binding TaxAmount, StringFormat='Tax: {0} MVR'}" 
+                                           TextColor="Black"
+                                           FontAttributes="Bold"/>
+                                    <!--Amount-->
+                                    <Label Grid.Row="2" Grid.Column="3"
+                                           HorizontalOptions="End"
+                                           HorizontalTextAlignment="End"
+                                           Text="{Binding Amount, StringFormat='Amount: {0} MVR'}" 
+                                           TextColor="Black"
+                                           FontAttributes="Bold"/>
+                                </Grid>
                                 </Frame>
                             </StackLayout>
                     </DataTemplate>
@@ -57,14 +83,17 @@
         <StackLayout Grid.Row="5" Grid.Column="0" >
             <Frame BackgroundColor="#2196F3" Padding="5" CornerRadius="2">
                 <Grid>
-                    <Button Grid.Row="0" Grid.Column="0" Text="Remove Item"/>
+                    <Button Grid.Row="0" Grid.Column="0" 
+                            Text="Remove Item"
+                            x:Name="ButtonRemoveItem"/>
                     
                     <Label  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,10,0,0" 
-                           Text="Total: $ 123.25" 
+                           Text="{Binding Total, StringFormat='Total: {0} MVR'}" 
                            TextColor="WhiteSmoke" FontSize="20" FontAttributes="Bold"
                            HorizontalTextAlignment="Center" />
                     
-                    <Button Grid.Row="0" Grid.Column="4" Text="Checkout"/>
+                    <Button Grid.Row="0" Grid.Column="4" 
+                            Text="{Binding CartItems.Count, StringFormat='Checkout ({0})'}"/>
                 </Grid>
             </Frame>
         </StackLayout>

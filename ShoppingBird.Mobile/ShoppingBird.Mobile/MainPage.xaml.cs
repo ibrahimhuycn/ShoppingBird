@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShoppingBird.Mobile.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -15,6 +16,18 @@ namespace ShoppingBird.Mobile
             InitializeComponent();
             _viewModel.DisplayAlert += this.DisplayViewModelAlert;
             SearchBar.Unfocused += ReForcusSearchBar;
+            ButtonRemoveItem.Clicked += ButtonRemoveItem_Clicked;
+        }
+
+        private void ButtonRemoveItem_Clicked(object sender, EventArgs e)
+        {
+            var item = (CartItem)CartItemsViewCollection.SelectedItem;
+            if (item is null)
+            {
+                DisplayAlert("Remove Item", "Please select an item to remove.", "OK");
+                return;
+            }
+            _viewModel.RemoveItem(item);
         }
 
         private void ReForcusSearchBar(object sender, FocusEventArgs e)
