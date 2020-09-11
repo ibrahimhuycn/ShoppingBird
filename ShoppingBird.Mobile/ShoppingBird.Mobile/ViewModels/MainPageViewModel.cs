@@ -1,6 +1,7 @@
 ﻿using ShoppingBird.Fly;
 using ShoppingBird.Fly.Interfaces;
 using ShoppingBird.Mobile.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -16,6 +17,7 @@ namespace ShoppingBird.Mobile.ViewModels
         private string _selectedProduct;
         private readonly IStoreIO _storeIO;
 
+        public EventHandler<string> DisplayAlert;
         public MainPageViewModel()
         {
             this.AllStores = new List<StoreModel>();
@@ -68,10 +70,27 @@ namespace ShoppingBird.Mobile.ViewModels
 
         public ICommand OnSearch => new Command(() =>
         {
+            if (!IsStoreSelected())
+            {
+                SelectedProduct = "";
+                DisplayAlert?.Invoke(this,"Please select a store first!");
+                return;
+            }
+
             var barcode = SelectedProduct.Split('|')[0].Trim();
             var item = AllProducts.FindAll((x) => x.Item.Split('|')[0].Trim() == barcode).FirstOrDefault();
             CartItems.Add(new CartItem().GetPartialInvoiceItem(item));
+            Debug.WriteLine("Item Added to cart");
             SelectedProduct = "";
         });
+
+        /// <summary>
+        /// Check whether store is selected
+        /// </summary>
+        /// <returns>True if store is selected</returns>
+        private bool IsStoreSelected()
+        {
+            return SelectedStore is null ? false : !string.IsNullOrEmpty(SelectedStore.Name);
+        }
     }
 }

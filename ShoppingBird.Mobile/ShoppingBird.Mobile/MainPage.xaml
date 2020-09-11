@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ShoppingBird.Mobile.ViewModels"
              x:Class="ShoppingBird.Mobile.MainPage" BackgroundColor="WhiteSmoke">
     <ContentPage.BindingContext>
-        <local:MainPageViewModel/>
+        <local:MainPageViewModel x:Name="_viewModel"/>
     </ContentPage.BindingContext>
     
     <!--Header-->
@@ -17,7 +17,8 @@
                             ItemsSource="{Binding AllStores}" SelectedItem="{Binding SelectedStore}"/>
                     <SearchBar Grid.Row="0" Grid.Column="2"  Placeholder="Scan item barcode..."
                                Text="{Binding SelectedProduct}"
-                               SearchCommand="{Binding OnSearch}"/>
+                               SearchCommand="{Binding OnSearch}"
+                               x:Name="SearchBar"/>
                 </Grid>
             </Frame>
         </StackLayout>
