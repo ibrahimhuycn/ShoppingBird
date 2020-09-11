@@ -17,6 +17,7 @@ namespace ShoppingBird.Mobile
             _viewModel.DisplayAlert += this.DisplayViewModelAlert;
             SearchBar.Unfocused += ReForcusSearchBar;
             ButtonRemoveItem.Clicked += ButtonRemoveItem_Clicked;
+            _viewModel.CheckForSavedData?.Invoke(this, new System.Runtime.CompilerServices.AsyncVoidMethodBuilder());
         }
 
         private void ButtonRemoveItem_Clicked(object sender, EventArgs e)

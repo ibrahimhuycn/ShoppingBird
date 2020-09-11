@@ -1,11 +1,15 @@
-﻿using ShoppingBird.Fly;
+﻿using Newtonsoft.Json;
+using ShoppingBird.Fly;
 using ShoppingBird.Fly.Interfaces;
 using ShoppingBird.Mobile.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -19,13 +23,17 @@ namespace ShoppingBird.Mobile.ViewModels
 
         public EventHandler<string> DisplayAlert;
         public EventHandler BarcodeRead;
+        public EventHandler<AsyncVoidMethodBuilder> CheckForSavedData;
+        public delegate void OnSaveCurrentState(object sender, EventArgs e);
+        public event OnSaveCurrentState SaveCurrentState;
         private double _total;
+        private int? _selectedStoreIndex;
 
         public MainPageViewModel()
         {
-            this.AllStores = new List<StoreModel>();
-            this.AllProducts = new List<Product>();
-            this.CartItems = new ObservableCollection<CartItem>();
+            if (AllStores is null) this.AllStores = new List<StoreModel>();
+            if (AllProducts is null) this.AllProducts = new List<Product>();
+            if (CartItems is null) this.CartItems = new ObservableCollection<CartItem>();
             this.Total = 0d;
             //load demo data
             LoadDemoData();
@@ -33,47 +41,35 @@ namespace ShoppingBird.Mobile.ViewModels
 
             //act OnBarcodeRead
             BarcodeRead += OnBarcodeRead_ReCalculateTotal;
+            SaveCurrentState += MainPageViewModel_SaveCurrentState;
+            this.CheckForSavedData += CheckForSavedInvoice;
+            BarcodeRead?.Invoke(this, EventArgs.Empty);
         }
 
-        internal void RemoveItem(CartItem item)
+        private async void CheckForSavedInvoice(object sender, AsyncVoidMethodBuilder e)
         {
-            if (item.Quantity > 1)
+            var SavedData = await ReadSaved();
+            if (!string.IsNullOrEmpty(SavedData))
             {
-                item.Quantity -= 1;
-                return;
-            }
-
-            CartItems.Remove(item);
-
-            //update total price display
-            OnBarcodeRead_ReCalculateTotal(this, EventArgs.Empty);
-        }
-
-        private void OnBarcodeRead_ReCalculateTotal(object sender, EventArgs e)
-        {
-            Total = 0d;
-            foreach (var item in CartItems)
-            {
-                Total += item.Amount;
+                var invoiceData = LoadSavedData(SavedData);
+                DisplaySavedData(invoiceData);
+                OnBarcodeRead_ReCalculateTotal(this, EventArgs.Empty);
             }
         }
 
-        private void LoadDemoData()
+        private void DisplaySavedData(List<CartItem> invoiceData)
         {
-            //shops data
-            var samraahi = new StoreModel() { Id = 1, Name = "Samraahi", IsTaxInclusive = false };
-            var seeds = new StoreModel() { Id = 2, Name = "Seeds", IsTaxInclusive = true };
-            AllStores.Add(samraahi);
-            AllStores.Add(seeds);
+            if (invoiceData is null || invoiceData.Count == 0) return;
+            this.SelectedStoreIndex =invoiceData.FirstOrDefault().ItemId -1;
+            foreach (var item in invoiceData)
+            {
+                this.CartItems.Add(item);
+            }
+        }
 
-            //products data
-            var shampoo = new Product() { Id = 1, Item = "4902430401135 | PANTENE Anti-Dandruff Shampoo" };
-            var reader = new Product() { Id = 2, Item = "49024304012736 | Generic barcode reader" };
-            var hairdryer = new Product() { Id = 3, Item = "6941595101588 | Folding Hair dryer 3007 EUROPEAN STANDARD" };
-            AllProducts.Add(shampoo);
-            AllProducts.Add(reader);
-            AllProducts.Add(hairdryer);
-
+        private List<CartItem> LoadSavedData(string savedJsonData)
+        {
+            return JsonConvert.DeserializeObject<List<CartItem>>(savedJsonData);
         }
 
         public List<StoreModel> AllStores { get; set; }
@@ -87,6 +83,21 @@ namespace ShoppingBird.Mobile.ViewModels
                 NotifyPropertyChanged();
             }
         }
+        public int? SelectedStoreIndex
+        {
+            get => _selectedStoreIndex; set
+            {
+                if (_selectedStoreIndex == value) return;
+                _selectedStoreIndex = value;
+                SelectedStore = AllStores.Where((x) => x.Id == _selectedStoreIndex+1).FirstOrDefault();
+                if (SelectedStore is null)
+                {
+                    _selectedStoreIndex = null;
+                }
+                NotifyPropertyChanged();
+            }
+        }
+
         public List<Product> AllProducts { get; set; }
         public string SelectedProduct
         {
@@ -137,6 +148,8 @@ namespace ShoppingBird.Mobile.ViewModels
             SelectedProduct = "";
             //Up UI and calculations on reading barcode
             BarcodeRead?.Invoke(this, EventArgs.Empty);
+            SaveCurrentState?.Invoke(this, EventArgs.Empty);
+
         });
 
         /// <summary>
@@ -163,13 +176,84 @@ namespace ShoppingBird.Mobile.ViewModels
             }
         }
 
+        private async void MainPageViewModel_SaveCurrentState(object sender, EventArgs e)
+        {
+            var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "Cart.json");
+            using (var writer = File.CreateText(backingFile))
+            {
+                await writer.WriteLineAsync(JsonConvert.SerializeObject(CartItems,
+                    Formatting.Indented));
+            }
+        }
+
+        private async Task<string> ReadSaved()
+        {
+            string line = "";
+            var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments), "Cart.json");
+
+            if (backingFile == null || !File.Exists(backingFile))
+            {
+                return "";
+            }
+
+            using (var reader = new StreamReader(backingFile, true))
+            {
+                line = await reader.ReadToEndAsync();
+            }
+            Debug.WriteLine(line);
+            return line;
+        }
+
+        internal void RemoveItem(CartItem item)
+        {
+            if (item.Quantity > 1)
+            {
+                item.Quantity -= 1;
+                return;
+            }
+
+            CartItems.Remove(item);
+
+            //update total price display
+            OnBarcodeRead_ReCalculateTotal(this, EventArgs.Empty);
+            SaveCurrentState?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnBarcodeRead_ReCalculateTotal(object sender, EventArgs e)
+        {
+            Total = 0d;
+            foreach (var item in CartItems)
+            {
+                Total += item.Amount;
+            }
+        }
+
+        private void LoadDemoData()
+        {
+            //shops data
+            var samraahi = new StoreModel() { Id = 1, Name = "Samraahi", IsTaxInclusive = false };
+            var seeds = new StoreModel() { Id = 2, Name = "Seeds", IsTaxInclusive = true };
+            AllStores.Add(samraahi);
+            AllStores.Add(seeds);
+
+            //products data
+            var shampoo = new Product() { Id = 1, Item = "4902430401135 | PANTENE Anti-Dandruff Shampoo" };
+            var reader = new Product() { Id = 2, Item = "49024304012736 | Generic barcode reader" };
+            var hairdryer = new Product() { Id = 3, Item = "6941595101588 | Folding Hair dryer 3007 EUROPEAN STANDARD" };
+            AllProducts.Add(shampoo);
+            AllProducts.Add(reader);
+            AllProducts.Add(hairdryer);
+
+        }
         /// <summary>
         /// Adds the passed in item to cart
         /// </summary>
         /// <param name="item"></param>
         private void AddItemToCart(Product item)
         {
-            CartItems.Add(new CartItem().GetPartialInvoiceItem(item));
+            var cartItem = new CartItem().GetPartialInvoiceItem(item);
+            cartItem.Store = SelectedStore;
+            CartItems.Add(cartItem);
             Debug.WriteLine("Item Added to cart");
         }
 
@@ -181,5 +265,6 @@ namespace ShoppingBird.Mobile.ViewModels
         {
             return SelectedStore is null ? false : !string.IsNullOrEmpty(SelectedStore.Name);
         }
+
     }
 }

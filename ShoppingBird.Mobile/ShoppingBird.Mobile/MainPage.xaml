@@ -14,8 +14,8 @@
                 <Grid>
                     <Label Grid.Row="0" Grid.Column="0" Margin="10,10,0,0" Text="Shopping Bird" HorizontalTextAlignment="Start" TextColor="WhiteSmoke" FontSize="20" FontAttributes="Bold"/>
                     <Picker Grid.Row="0" Grid.Column="1" Title="Select store" HorizontalOptions="CenterAndExpand"
-                            ItemsSource="{Binding AllStores}" 
-                            SelectedItem="{Binding SelectedStore}"/>
+                            ItemsSource="{Binding AllStores}"
+                            SelectedIndex="{Binding SelectedStoreIndex, Mode=TwoWay}"/>
                     <SearchBar Grid.Row="0" Grid.Column="2"  Placeholder="Scan item barcode..."
                                Text="{Binding SelectedProduct}"
                                SearchCommand="{Binding OnSearch}"

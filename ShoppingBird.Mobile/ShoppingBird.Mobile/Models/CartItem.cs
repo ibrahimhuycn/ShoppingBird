@@ -13,6 +13,7 @@ namespace ShoppingBird.Mobile.Models
         public CartItem()
         {
             this.TaxData = new List<TaxModel>();
+            this.Store = new StoreModel();
             SetDemoTax();
             this.Quantity = 1;
         }
@@ -92,5 +93,9 @@ namespace ShoppingBird.Mobile.Models
             }
             return tax;
         }
+
+        //used only with saving and loading cart data from local storage
+        public StoreModel Store { get; set; }
+
     }
 }
