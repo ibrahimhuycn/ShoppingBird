@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[usp_GetAllStores]
 AS
 BEGIN
-	SELECT *
+	SELECT [Id],[Name],[IsTaxInclusive]
 	FROM [dbo].[Store]
 END

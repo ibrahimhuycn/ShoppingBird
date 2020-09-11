@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShoppingBird.Mobile.ViewModels"
+             x:Class="ShoppingBird.Mobile.MainPage" BackgroundColor="WhiteSmoke">
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <!--Header-->
+    <Grid VerticalOptions="StartAndExpand" BackgroundColor="WhiteSmoke">
+        <StackLayout Grid.Row="0" Grid.Column="0" >
+            <Frame BackgroundColor="#2196F3" Padding="5" CornerRadius="2">
+                <Grid>
+                    <Label Grid.Row="0" Grid.Column="0" Margin="10,10,0,0" Text="Shopping Bird" HorizontalTextAlignment="Start" TextColor="WhiteSmoke" FontSize="20" FontAttributes="Bold"/>
+                    <Picker Grid.Row="0" Grid.Column="1" Title="Select store" HorizontalOptions="CenterAndExpand"
+                            ItemsSource="{Binding AllStores}" SelectedItem="{Binding SelectedStore}"/>
+                    <SearchBar Grid.Row="0" Grid.Column="2"  Placeholder="Scan item barcode..."
+                               Text="{Binding SelectedProduct}"
+                               SearchCommand="{Binding OnSearch}"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+        
+        <!--Invoice Products-->
+        <StackLayout Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" BackgroundColor="WhiteSmoke" Padding="5">
+            <CollectionView ItemsSource="{Binding CartItems}" 
+                            SelectionMode="Single" BackgroundColor="WhiteSmoke">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout  Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                            <StackLayout>
+                                <Frame  CornerRadius="5" BackgroundColor="LightGray" Margin="5">
+                                    <Grid>
+                                    <Label Text="{Binding Barcode}" 
+                                           TextColor="Black" FontAttributes="Bold"/>
+                                    <Label Grid.Column="1"
+                                           HorizontalTextAlignment="End"
+                                           Text="{Binding Quantity, StringFormat='Quantity: {0}'}" 
+                                           TextColor="Black" 
+                                           FontAttributes="Bold"/>
+                                        <Label Grid.Row="1"
+                                               HorizontalOptions="StartAndExpand"  
+                                               Text="{Binding Description}" TextColor="Black"/>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+
+        <!--Footer-->
+        <StackLayout Grid.Row="5" Grid.Column="0" >
+            <Frame BackgroundColor="#2196F3" Padding="5" CornerRadius="2">
+                <Grid>
+                    <Button Grid.Row="0" Grid.Column="0" Text="Remove Item"/>
+                    
+                    <Label  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,10,0,0" 
+                           Text="Total: $ 123.25" 
+                           TextColor="WhiteSmoke" FontSize="20" FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+                    
+                    <Button Grid.Row="0" Grid.Column="4" Text="Checkout"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </Grid>
+</ContentPage>
