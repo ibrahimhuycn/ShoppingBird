@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingBird.Mobile.AddItemPage">
+    <ContentPage.Content>
+        <Grid>
+            <!--Header-->
+            <StackLayout>
+                <Frame BackgroundColor="#2196F3" Padding="5" CornerRadius="2">
+                    <Grid>
+                        <Label Margin="10,10,0,0" 
+                               Text="ADD NEW ITEM"
+                               TextColor="WhiteSmoke" 
+                               FontSize="20" FontAttributes="Bold"/>
+                        <Label Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,0"
+                               HorizontalOptions="StartAndExpand"
+                               Text="Shop Name"  
+                               TextColor="WhiteSmoke" 
+                               FontSize="20"
+                               FontAttributes="Bold"/>
+                        <Label Grid.Column="2" Grid.ColumnSpan="1" Margin="0,10,0,10"
+                               HorizontalOptions="StartAndExpand"
+                               Text="  475674674774"  
+                               TextColor="WhiteSmoke" 
+                               FontSize="20"
+                               FontAttributes="Bold"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            
+            <!--Body-->
+            <StackLayout Grid.Row="1" Grid.RowSpan="4" Margin="50,0,50,0" >
+                <Frame>
+                    <Grid>
+                        <Entry Grid.ColumnSpan="2" Placeholder="Item Description" />
+                        <Entry Grid.Row="1" Placeholder="Price" Keyboard="Numeric" />
+                        <Picker Grid.Row="1" Grid.Column="1" Title="Tax" />
+                        <Picker Grid.Row="2" Title="Category" />
+                        <Picker Grid.Row="2" Grid.Column="1" Title="Sub Category" />
+                        <Picker Grid.Row="3" Grid.Column="0" Title="Unit" />
+                    </Grid>
+                </Frame>
+
+            </StackLayout>
+
+            <!--Footer-->
+            <StackLayout Grid.Row="5" Grid.Column="0" >
+                <Frame BackgroundColor="#2196F3" Padding="5" CornerRadius="2">
+                    <Grid>
+                        <Button Grid.Row="0" Grid.Column="0" 
+                            Text="Cancel"
+                            x:Name="ButtonRemoveItem"/>
+
+                        <Button Grid.Row="0" Grid.Column="4" 
+                            Text="Save"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
