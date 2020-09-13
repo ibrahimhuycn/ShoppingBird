@@ -31,9 +31,9 @@ namespace ShoppingBird.Mobile.ViewModels
 
         public MainPageViewModel()
         {
-            if (AllStores is null) this.AllStores = new List<StoreModel>();
-            if (AllProducts is null) this.AllProducts = new List<Product>();
-            if (CartItems is null) this.CartItems = new ObservableCollection<CartItem>();
+            AllStores = new List<StoreModel>();
+            AllProducts = new List<Product>();
+            CartItems = new ObservableCollection<CartItem>();
             this.Total = 0d;
             //load demo data
             LoadDemoData();
@@ -42,7 +42,7 @@ namespace ShoppingBird.Mobile.ViewModels
             //act OnBarcodeRead
             BarcodeRead += OnBarcodeRead_ReCalculateTotal;
             SaveCurrentState += MainPageViewModel_SaveCurrentState;
-            this.CheckForSavedData += CheckForSavedInvoice;
+            CheckForSavedData += CheckForSavedInvoice;
             BarcodeRead?.Invoke(this, EventArgs.Empty);
         }
 
@@ -60,10 +60,24 @@ namespace ShoppingBird.Mobile.ViewModels
         private void DisplaySavedData(List<CartItem> invoiceData)
         {
             if (invoiceData is null || invoiceData.Count == 0) return;
-            this.SelectedStoreIndex =invoiceData.FirstOrDefault().ItemId -1;
+            this.SelectedStoreIndex = GetStoreIndexByName(invoiceData.FirstOrDefault().Store.Name);
+
             foreach (var item in invoiceData)
             {
                 this.CartItems.Add(item);
+            }
+        }
+
+        private int? GetStoreIndexByName(string name)
+        {
+            var storeIndex = AllStores.FindIndex((x) => x.Name == name);
+            if (storeIndex == -1 )
+            {
+                return null;
+            }
+            else
+            {
+                return storeIndex;
             }
         }
 
