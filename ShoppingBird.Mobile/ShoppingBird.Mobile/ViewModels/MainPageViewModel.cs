@@ -23,6 +23,7 @@ namespace ShoppingBird.Mobile.ViewModels
 
         public EventHandler<string> DisplayAlert;
         public EventHandler BarcodeRead;
+        public EventHandler<ItemNotFoundArgs> ItemNotFound;
         public EventHandler<AsyncVoidMethodBuilder> CheckForSavedData;
         public delegate void OnSaveCurrentState(object sender, EventArgs e);
         public event OnSaveCurrentState SaveCurrentState;
@@ -145,10 +146,15 @@ namespace ShoppingBird.Mobile.ViewModels
 
             var barcode = SelectedProduct.Split('|')[0].Trim();
             var item = AllProducts.FindAll((x) => x.Item.Split('|')[0].Trim() == barcode).FirstOrDefault();
+            Debug.WriteLine("Current barcode: " + barcode);
 
             if (item is null)
             {
-                DisplayAlert?.Invoke(this, "Cannot find the item you were looking for.");
+                ItemNotFound?.Invoke(this, new ItemNotFoundArgs() 
+                {
+                    SelectedStore = this.SelectedStore,
+                    Barcode = barcode
+                });
                 return;
             }
 

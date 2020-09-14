@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShoppingBird.Mobile.ViewModels"
              x:Class="ShoppingBird.Mobile.AddItemPage">
+    <ContentPage.BindingContext>
+        <local:AddItemPageViewModel x:Name="_viewModel"/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
-        <Grid>
+        <Grid BackgroundColor="LavenderBlush">
             <!--Header-->
-            <StackLayout>
+            <StackLayout BackgroundColor="LavenderBlush">
                 <Frame BackgroundColor="#2196F3" Padding="5" CornerRadius="2">
                     <Grid>
                         <Label Margin="10,10,0,0" 
@@ -14,13 +19,13 @@
                                FontSize="20" FontAttributes="Bold"/>
                         <Label Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,0"
                                HorizontalOptions="StartAndExpand"
-                               Text="Shop Name"  
+                               Text="{Binding StoreName}"  
                                TextColor="WhiteSmoke" 
                                FontSize="20"
                                FontAttributes="Bold"/>
                         <Label Grid.Column="2" Grid.ColumnSpan="1" Margin="0,10,0,10"
                                HorizontalOptions="StartAndExpand"
-                               Text="  475674674774"  
+                               Text="{Binding Barcode}"  
                                TextColor="WhiteSmoke" 
                                FontSize="20"
                                FontAttributes="Bold"/>
@@ -29,15 +34,32 @@
             </StackLayout>
             
             <!--Body-->
-            <StackLayout Grid.Row="1" Grid.RowSpan="4" Margin="50,0,50,0" >
-                <Frame>
+            <StackLayout Grid.Row="1" Grid.RowSpan="4" BackgroundColor="LavenderBlush">
+                <Frame BackgroundColor="LavenderBlush">
                     <Grid>
-                        <Entry Grid.ColumnSpan="2" Placeholder="Item Description" />
-                        <Entry Grid.Row="1" Placeholder="Price" Keyboard="Numeric" />
-                        <Picker Grid.Row="1" Grid.Column="1" Title="Tax" />
-                        <Picker Grid.Row="2" Title="Category" />
-                        <Picker Grid.Row="2" Grid.Column="1" Title="Sub Category" />
-                        <Picker Grid.Row="3" Grid.Column="0" Title="Unit" />
+                        <Entry Grid.ColumnSpan="2" 
+                               Placeholder="{Binding Description}" 
+                               TextColor="Black" 
+                               PlaceholderColor="Gray"
+                               BackgroundColor="LavenderBlush"/>
+                        <Entry Grid.Row="1" 
+                               Placeholder="Price" 
+                               Keyboard="Numeric" 
+                               Text="{Binding Price}"
+                               TextColor="Black" 
+                               PlaceholderColor="Gray"/>
+                        <Picker Grid.Row="1" Grid.Column="1" Title="Tax" TextColor="Black" TitleColor="Gray"
+                                ItemsSource="{Binding TaxList}"
+                                ItemDisplayBinding="{Binding Description}"/>
+                        <Picker Grid.Row="2" Title="Category" TextColor="Black" TitleColor="Gray"
+                                ItemsSource="{Binding CategoryList}"
+                                ItemDisplayBinding="{Binding Category}"/>
+                        <Picker Grid.Row="2" Grid.Column="1" Title="Sub Category" TextColor="Black" TitleColor="Gray"
+                                ItemsSource="{Binding CategoryList}"
+                                ItemDisplayBinding="{Binding Category}"/>
+                        <Picker Grid.Row="3" Grid.Column="0" Title="Unit" TextColor="Black" TitleColor="Gray" 
+                                ItemsSource="{Binding UnitList}"
+                                ItemDisplayBinding="{Binding Unit}"/>
                     </Grid>
                 </Frame>
 
@@ -49,10 +71,11 @@
                     <Grid>
                         <Button Grid.Row="0" Grid.Column="0" 
                             Text="Cancel"
-                            x:Name="ButtonRemoveItem"/>
+                            x:Name="ButtonCancel"/>
 
                         <Button Grid.Row="0" Grid.Column="4" 
-                            Text="Save"/>
+                                Text="Save"
+                                x:Name="ButtonSave"/>
                     </Grid>
                 </Frame>
             </StackLayout>

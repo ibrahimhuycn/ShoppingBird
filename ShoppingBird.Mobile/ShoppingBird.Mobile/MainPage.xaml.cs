@@ -18,6 +18,33 @@ namespace ShoppingBird.Mobile
             SearchBar.Unfocused += ReForcusSearchBar;
             ButtonRemoveItem.Clicked += ButtonRemoveItem_Clicked;
             _viewModel.CheckForSavedData?.Invoke(this, new System.Runtime.CompilerServices.AsyncVoidMethodBuilder());
+            _viewModel.ItemNotFound += OnItemNotFound;
+        }
+
+        private async void OnItemNotFound(object sender, ItemNotFoundArgs e)
+        {
+            var response = await DisplayAlert("Item not found", "Cannot find the item you are looking for.., do you want to add the item?", "Yes", "No");
+            if (response)
+            {
+                SearchBar.Unfocused -= ReForcusSearchBar;
+                var addItemPage = new AddItemPage(e);
+                addItemPage.Disappearing += AddItemPage_Disappearing;
+                await Navigation.PushModalAsync(addItemPage);
+            }
+            else
+            {
+                _viewModel.SelectedProduct = null;
+            }
+        }
+
+        /// <summary>
+        /// Onclosing the add item page... clears the search box and get it on continuous focus
+        /// </summary>
+        private void AddItemPage_Disappearing(object sender, EventArgs e)
+        {
+            SearchBar.Focus();
+            _viewModel.SelectedProduct = null;
+            SearchBar.Unfocused += ReForcusSearchBar;
         }
 
         private void ButtonRemoveItem_Clicked(object sender, EventArgs e)
