@@ -150,6 +150,7 @@ namespace ShoppingBird.Mobile.ViewModels
 
             if (item is null)
             {
+                if (string.IsNullOrEmpty(SelectedProduct)) return;
                 ItemNotFound?.Invoke(this, new ItemNotFoundArgs() 
                 {
                     SelectedStore = this.SelectedStore,
@@ -165,7 +166,7 @@ namespace ShoppingBird.Mobile.ViewModels
                 AddItemToCart(item);
             }
 
-            SelectedProduct = "";
+            SelectedProduct = null;
             //Up UI and calculations on reading barcode
             BarcodeRead?.Invoke(this, EventArgs.Empty);
             SaveCurrentState?.Invoke(this, EventArgs.Empty);

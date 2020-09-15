@@ -1,10 +1,6 @@
 ﻿using ShoppingBird.Mobile.Models;
+using Syncfusion.XForms.ComboBox;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ShoppingBird.Mobile
@@ -16,9 +12,17 @@ namespace ShoppingBird.Mobile
             InitializeComponent();
             _viewModel.DisplayAlert += this.DisplayViewModelAlert;
             SearchBar.Unfocused += ReForcusSearchBar;
+            SearchBar.SelectionChanged += SearchBar_OnSearch;
+            SearchBar.Completed += SearchBar_OnSearch;
             ButtonRemoveItem.Clicked += ButtonRemoveItem_Clicked;
             _viewModel.CheckForSavedData?.Invoke(this, new System.Runtime.CompilerServices.AsyncVoidMethodBuilder());
             _viewModel.ItemNotFound += OnItemNotFound;
+        }
+
+        private void SearchBar_OnSearch(object sender, EventArgs e)
+        {
+            _viewModel.OnSearch.Execute(this);
+            SearchBar.Focus();
         }
 
         private async void OnItemNotFound(object sender, ItemNotFoundArgs e)

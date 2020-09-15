@@ -37,29 +37,38 @@
             <StackLayout Grid.Row="1" Grid.RowSpan="4" BackgroundColor="LavenderBlush">
                 <Frame BackgroundColor="LavenderBlush">
                     <Grid>
-                        <Entry Grid.ColumnSpan="2" 
-                               Placeholder="{Binding Description}" 
+                        <Entry Grid.ColumnSpan="2" Placeholder="Item Description" 
                                TextColor="Black" 
                                PlaceholderColor="Gray"
-                               BackgroundColor="LavenderBlush"/>
+                               BackgroundColor="LavenderBlush"
+                               Text="{Binding Description}"/>
+                        <!--Price-->    
                         <Entry Grid.Row="1" 
                                Placeholder="Price" 
                                Keyboard="Numeric" 
                                Text="{Binding Price}"
                                TextColor="Black" 
                                PlaceholderColor="Gray"/>
+                        <!--Tax-->
                         <Picker Grid.Row="1" Grid.Column="1" Title="Tax" TextColor="Black" TitleColor="Gray"
                                 ItemsSource="{Binding TaxList}"
-                                ItemDisplayBinding="{Binding Description}"/>
+                                ItemDisplayBinding="{Binding Description}"
+                                SelectedItem="{Binding SelectedTax} "/>
+                        <!--Category-->
                         <Picker Grid.Row="2" Title="Category" TextColor="Black" TitleColor="Gray"
                                 ItemsSource="{Binding CategoryList}"
-                                ItemDisplayBinding="{Binding Category}"/>
+                                ItemDisplayBinding="{Binding Category}"
+                                SelectedItem="{Binding SelectedCategory}"/>
+                        <!--Sub Category-->
                         <Picker Grid.Row="2" Grid.Column="1" Title="Sub Category" TextColor="Black" TitleColor="Gray"
                                 ItemsSource="{Binding CategoryList}"
-                                ItemDisplayBinding="{Binding Category}"/>
+                                ItemDisplayBinding="{Binding Category}"
+                                SelectedItem="{Binding SelectedSubCategory}"/>
+                        <!--Unit-->
                         <Picker Grid.Row="3" Grid.Column="0" Title="Unit" TextColor="Black" TitleColor="Gray" 
                                 ItemsSource="{Binding UnitList}"
-                                ItemDisplayBinding="{Binding Unit}"/>
+                                ItemDisplayBinding="{Binding Unit}"
+                                SelectedItem="{Binding SelectedUnit}"/>
                     </Grid>
                 </Frame>
 
@@ -75,7 +84,8 @@
 
                         <Button Grid.Row="0" Grid.Column="4" 
                                 Text="Save"
-                                x:Name="ButtonSave"/>
+                                x:Name="ButtonSave"
+                                Command="{Binding SaveItemCommand}"/>
                     </Grid>
                 </Frame>
             </StackLayout>

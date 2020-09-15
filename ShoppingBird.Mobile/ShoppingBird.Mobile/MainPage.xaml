@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
              xmlns:local="clr-namespace:ShoppingBird.Mobile.ViewModels"
              x:Class="ShoppingBird.Mobile.MainPage" BackgroundColor="WhiteSmoke">
     <ContentPage.BindingContext>
@@ -13,13 +14,25 @@
             <Frame BackgroundColor="#2196F3" Padding="5" CornerRadius="2">
                 <Grid>
                     <Label Grid.Row="0" Grid.Column="0" Margin="10,10,0,0" Text="Shopping Bird" HorizontalTextAlignment="Start" TextColor="WhiteSmoke" FontSize="20" FontAttributes="Bold"/>
+
                     <Picker Grid.Row="0" Grid.Column="1" Title="Select store" HorizontalOptions="CenterAndExpand"
                             ItemsSource="{Binding AllStores}"
                             SelectedIndex="{Binding SelectedStoreIndex, Mode=TwoWay}"/>
-                    <SearchBar Grid.Row="0" Grid.Column="2"  Placeholder="Scan item barcode..."
-                               Text="{Binding SelectedProduct}"
-                               SearchCommand="{Binding OnSearch}"
-                               x:Name="SearchBar"/>
+
+                    <combobox:SfComboBox
+                        Grid.Row="0" Grid.Column="2"
+                        HeightRequest="40" 
+                        x:Name="SearchBar" 
+                        MaximumDropDownHeight="200"
+                        MultiSelectMode="None"
+                        IsEditableMode="true"
+                        AllowFiltering="True"
+                        SuggestionMode="Contains"
+                        Watermark="Scan item barcode..."
+                        DataSource="{Binding AllProducts}"
+                        Text="{Binding SelectedProduct}"
+                        DisplayMemberPath="Item"
+                        ComboBoxMode="SuggestAppend"/>
                 </Grid>
             </Frame>
         </StackLayout>
