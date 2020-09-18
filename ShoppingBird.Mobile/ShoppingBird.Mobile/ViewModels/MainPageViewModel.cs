@@ -31,8 +31,11 @@ namespace ShoppingBird.Mobile.ViewModels
         public ICommand ExecuteSearchCommand { get; set; }
         public ICommand CheckOutCommand { get; set; }
         public ICommand RemoveSelectedItemCommand { get; set; }
+        public ICommand CartItemSelectionChanged { get; set; }
         private double _total;
         private int? _selectedStoreIndex;
+        private CartItem _selectedCartItem;
+        private int? _selectedCartItemIndex;
 
         public MainPageViewModel()
         {
@@ -50,6 +53,7 @@ namespace ShoppingBird.Mobile.ViewModels
             ExecuteSearchCommand = new Command(OnSearch);
             CheckOutCommand = new Command(CheckOut, CanCheckOut);
             RemoveSelectedItemCommand = new Command(RemoveItem, CanRemoveItem);
+            CartItemSelectionChanged = new Command<CartItem>(SetSelectedCartItem);
             BarcodeRead += OnBarcodeRead_ReCalculateTotal;
             SaveCurrentState += MainPageViewModel_SaveCurrentState;
             CheckForSavedData += CheckForSavedInvoice;
@@ -58,9 +62,15 @@ namespace ShoppingBird.Mobile.ViewModels
             PropertyChanged += MainPageViewModel_PropertyChanged;
         }
 
+        private void SetSelectedCartItem(CartItem item)
+        {
+            SelectedCartItem = item;
+        }
+
         private void MainPageViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             (CheckOutCommand as Command).ChangeCanExecute();
+            (RemoveSelectedItemCommand as Command).ChangeCanExecute();
         }
 
         private bool CanCheckOut()
@@ -128,7 +138,7 @@ namespace ShoppingBird.Mobile.ViewModels
         private int? GetStoreIndexByName(string name)
         {
             var storeIndex = AllStores.FindIndex((x) => x.Name == name);
-            if (storeIndex == -1 )
+            if (storeIndex == -1)
             {
                 return null;
             }
@@ -160,7 +170,7 @@ namespace ShoppingBird.Mobile.ViewModels
             {
                 if (_selectedStoreIndex == value) return;
                 _selectedStoreIndex = value;
-                SelectedStore = AllStores.Where((x) => x.Id == _selectedStoreIndex+1).FirstOrDefault();
+                SelectedStore = AllStores.Where((x) => x.Id == _selectedStoreIndex + 1).FirstOrDefault();
                 if (SelectedStore is null)
                 {
                     _selectedStoreIndex = null;
@@ -176,6 +186,25 @@ namespace ShoppingBird.Mobile.ViewModels
             {
                 if (_selectedProduct == value) return;
                 _selectedProduct = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public int? SelectedCartItemIndex
+        {
+            get => _selectedCartItemIndex; set
+            {
+                if (_selectedCartItemIndex == value) return;
+                _selectedCartItemIndex = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public CartItem SelectedCartItem
+        {
+            get => _selectedCartItem; set
+            {
+                if (_selectedCartItem == value) return;
+                _selectedCartItem = value;
                 NotifyPropertyChanged();
             }
         }
@@ -207,7 +236,7 @@ namespace ShoppingBird.Mobile.ViewModels
             if (item is null)
             {
                 if (string.IsNullOrEmpty(SelectedProduct)) return;
-                ItemNotFound?.Invoke(this, new ItemNotFoundArgs() 
+                ItemNotFound?.Invoke(this, new ItemNotFoundArgs()
                 {
                     SelectedStore = this.SelectedStore,
                     Barcode = barcode
@@ -283,14 +312,14 @@ namespace ShoppingBird.Mobile.ViewModels
 
         internal void RemoveItem()
         {
-            if (item.Quantity > 1)
+            if (SelectedCartItem.Quantity > 1)
             {
-                item.Quantity -= 1;
+                SelectedCartItem.Quantity -= 1;
                 return;
             }
 
-            CartItems.Remove(item);
-
+            CartItems.Remove(SelectedCartItem);
+            SelectedCartItem = null;
             //update total price display
             OnBarcodeRead_ReCalculateTotal(this, EventArgs.Empty);
             SaveCurrentState?.Invoke(this, EventArgs.Empty);
@@ -298,7 +327,7 @@ namespace ShoppingBird.Mobile.ViewModels
 
         private bool CanRemoveItem()
         {
-            return !string.IsNullOrEmpty(SelectedProduct);
+            return !(SelectedCartItem is null);
         }
 
         private void OnBarcodeRead_ReCalculateTotal(object sender, EventArgs e)
@@ -333,7 +362,7 @@ namespace ShoppingBird.Mobile.ViewModels
         /// <param name="item"></param>
         private void AddItemToCart(Product item)
         {
-            var barcode  = item.Item.Split('|')[0].Trim();
+            var barcode = item.Item.Split('|')[0].Trim();
             var searchData = _itemIO.SearchItem(new Fly.Models.ItemSearchTerms(barcode, SelectedStore.Id));
             if (!string.IsNullOrEmpty(searchData.ErrorMessage))
             {
@@ -342,7 +371,7 @@ namespace ShoppingBird.Mobile.ViewModels
             }
             var price = double.Parse(searchData.RetailPrice.ToString());
             var taxRate = double.Parse(searchData.Rate.ToString());
-            var cartItem = new CartItem().GetPartialInvoiceItem(item,price,taxRate);
+            var cartItem = new CartItem().GetPartialInvoiceItem(item, price, taxRate);
             cartItem.Store = SelectedStore;
             CartItems.Add(cartItem);
             Debug.WriteLine("Item Added to cart");

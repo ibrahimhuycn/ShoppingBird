@@ -14,7 +14,6 @@ namespace ShoppingBird.Mobile
             SearchBar.Unfocused += ReForcusSearchBar;
             SearchBar.SelectionChanged += SearchBar_OnSearch;
             SearchBar.Completed += SearchBar_OnSearch;
-            //ButtonRemoveItem.Clicked += ButtonRemoveItem_Clicked;
             _viewModel.CheckForSavedData?.Invoke(this, new System.Runtime.CompilerServices.AsyncVoidMethodBuilder());
             _viewModel.ItemNotFound += OnItemNotFound;
         }
@@ -49,17 +48,6 @@ namespace ShoppingBird.Mobile
             SearchBar.Focus();
             _viewModel.SelectedProduct = null;
             SearchBar.Unfocused += ReForcusSearchBar;
-        }
-
-        private void ButtonRemoveItem_Clicked(object sender, EventArgs e)
-        {
-            var item = (CartItem)CartItemsViewCollection.SelectedItem;
-            if (item is null)
-            {
-                DisplayAlert("Remove Item", "Please select an item to remove.", "OK");
-                return;
-            }
-            _viewModel.RemoveItem(item);
         }
 
         private void ReForcusSearchBar(object sender, FocusEventArgs e)
