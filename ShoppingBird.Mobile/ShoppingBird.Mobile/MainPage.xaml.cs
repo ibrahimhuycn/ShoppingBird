@@ -14,14 +14,14 @@ namespace ShoppingBird.Mobile
             SearchBar.Unfocused += ReForcusSearchBar;
             SearchBar.SelectionChanged += SearchBar_OnSearch;
             SearchBar.Completed += SearchBar_OnSearch;
-            ButtonRemoveItem.Clicked += ButtonRemoveItem_Clicked;
+            //ButtonRemoveItem.Clicked += ButtonRemoveItem_Clicked;
             _viewModel.CheckForSavedData?.Invoke(this, new System.Runtime.CompilerServices.AsyncVoidMethodBuilder());
             _viewModel.ItemNotFound += OnItemNotFound;
         }
 
         private void SearchBar_OnSearch(object sender, EventArgs e)
         {
-            _viewModel.OnSearch.Execute(this);
+            _viewModel.ExecuteSearchCommand.Execute(this);
             SearchBar.Focus();
         }
 

@@ -20,6 +20,7 @@ namespace ShoppingBird.Mobile.ViewModels
         private StoreModel _selectedStore;
         private string _selectedProduct;
         private readonly IStoreIO _storeIO;
+        private readonly IItemIO _itemIO;
 
         public EventHandler<string> DisplayAlert;
         public EventHandler BarcodeRead;
@@ -27,6 +28,9 @@ namespace ShoppingBird.Mobile.ViewModels
         public EventHandler<AsyncVoidMethodBuilder> CheckForSavedData;
         public delegate void OnSaveCurrentState(object sender, EventArgs e);
         public event OnSaveCurrentState SaveCurrentState;
+        public ICommand ExecuteSearchCommand { get; set; }
+        public ICommand CheckOutCommand { get; set; }
+        public ICommand RemoveSelectedItemCommand { get; set; }
         private double _total;
         private int? _selectedStoreIndex;
 
@@ -37,14 +41,66 @@ namespace ShoppingBird.Mobile.ViewModels
             CartItems = new ObservableCollection<CartItem>();
             this.Total = 0d;
             //load demo data
-            LoadDemoData();
+            //LoadDemoData();
             _storeIO = new StoreIO();
+            _itemIO = new ItemIO();
+            InitializeCart();
 
             //act OnBarcodeRead
+            ExecuteSearchCommand = new Command(OnSearch);
+            CheckOutCommand = new Command(CheckOut, CanCheckOut);
+            RemoveSelectedItemCommand = new Command(RemoveItem, CanRemoveItem);
             BarcodeRead += OnBarcodeRead_ReCalculateTotal;
             SaveCurrentState += MainPageViewModel_SaveCurrentState;
             CheckForSavedData += CheckForSavedInvoice;
             BarcodeRead?.Invoke(this, EventArgs.Empty);
+
+            PropertyChanged += MainPageViewModel_PropertyChanged;
+        }
+
+        private void MainPageViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            (CheckOutCommand as Command).ChangeCanExecute();
+        }
+
+        private bool CanCheckOut()
+        {
+            return CartItems.Count > 0;
+        }
+
+        private void CheckOut()
+        {
+
+        }
+        private void InitializeCart()
+        {
+            //load all products data
+            LoadAllProductsData();
+            //load all stores
+            LoadAllStores();
+        }
+
+        private void LoadAllStores()
+        {
+            var stores = _storeIO.GetAllStores();
+            foreach (var store in stores)
+            {
+                this.AllStores.Add(new StoreModel()
+                {
+                    Id = store.Id,
+                    Name = store.Name,
+                    IsTaxInclusive = store.IsTaxInclusive
+                });
+            }
+        }
+
+        private void LoadAllProductsData()
+        {
+            var products = _itemIO.GetAllItemDescriptions();
+            foreach (var item in products)
+            {
+                this.AllProducts.Add(new Product() { Id = item.Id, Item = item.Item });
+            }
         }
 
         private async void CheckForSavedInvoice(object sender, AsyncVoidMethodBuilder e)
@@ -123,6 +179,7 @@ namespace ShoppingBird.Mobile.ViewModels
                 NotifyPropertyChanged();
             }
         }
+
         public ObservableCollection<CartItem> CartItems { get; set; }
         public double Total
         {
@@ -133,8 +190,7 @@ namespace ShoppingBird.Mobile.ViewModels
                 NotifyPropertyChanged();
             }
         }
-
-        public ICommand OnSearch => new Command(() =>
+        public void OnSearch()
         {
             //check if store is selected
             if (!IsStoreSelected())
@@ -171,7 +227,7 @@ namespace ShoppingBird.Mobile.ViewModels
             BarcodeRead?.Invoke(this, EventArgs.Empty);
             SaveCurrentState?.Invoke(this, EventArgs.Empty);
 
-        });
+        }
 
         /// <summary>
         /// Check whether the item for the barcode is present in cart
@@ -225,7 +281,7 @@ namespace ShoppingBird.Mobile.ViewModels
             return line;
         }
 
-        internal void RemoveItem(CartItem item)
+        internal void RemoveItem()
         {
             if (item.Quantity > 1)
             {
@@ -238,6 +294,11 @@ namespace ShoppingBird.Mobile.ViewModels
             //update total price display
             OnBarcodeRead_ReCalculateTotal(this, EventArgs.Empty);
             SaveCurrentState?.Invoke(this, EventArgs.Empty);
+        }
+
+        private bool CanRemoveItem()
+        {
+            return !string.IsNullOrEmpty(SelectedProduct);
         }
 
         private void OnBarcodeRead_ReCalculateTotal(object sender, EventArgs e)
@@ -272,7 +333,16 @@ namespace ShoppingBird.Mobile.ViewModels
         /// <param name="item"></param>
         private void AddItemToCart(Product item)
         {
-            var cartItem = new CartItem().GetPartialInvoiceItem(item);
+            var barcode  = item.Item.Split('|')[0].Trim();
+            var searchData = _itemIO.SearchItem(new Fly.Models.ItemSearchTerms(barcode, SelectedStore.Id));
+            if (!string.IsNullOrEmpty(searchData.ErrorMessage))
+            {
+                DisplayAlert?.Invoke(this, searchData.ErrorMessage);
+                return;
+            }
+            var price = double.Parse(searchData.RetailPrice.ToString());
+            var taxRate = double.Parse(searchData.Rate.ToString());
+            var cartItem = new CartItem().GetPartialInvoiceItem(item,price,taxRate);
             cartItem.Store = SelectedStore;
             CartItems.Add(cartItem);
             Debug.WriteLine("Item Added to cart");

@@ -1,4 +1,5 @@
-﻿using ShoppingBird.Mobile.ViewModels;
+﻿using ShoppingBird.Fly.Models;
+using ShoppingBird.Mobile.ViewModels;
 using System.Collections.Generic;
 
 namespace ShoppingBird.Mobile.Models
@@ -24,13 +25,16 @@ namespace ShoppingBird.Mobile.Models
             TaxData.Add(tax);
         }
 
-        public CartItem GetPartialInvoiceItem(Product product)
+        public CartItem GetPartialInvoiceItem(Product product, double retailPrice, double taxRate)
         {
+            //todo: Get tax model
+            var tax = new TaxModel() { Percent = taxRate };
+
             this.ItemId = product.Id;
             this.Barcode = product.Item.Split('|')[0].Trim();
             this.Description = product.Item.Split('|')[1].Trim();
-            this.RetailPrice = 25.99d;
-            this.TaxAmount = 2.87d; //demo data.
+            this.RetailPrice = retailPrice;
+            this.TaxAmount = CaluateTax();
             this.Amount = RetailPrice + TaxAmount;
             return this;
         }

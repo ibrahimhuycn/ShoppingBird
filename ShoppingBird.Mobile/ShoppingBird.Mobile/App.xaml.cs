@@ -8,6 +8,7 @@ namespace ShoppingBird.Mobile
     {
         public App()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzE3ODg1QDMxMzgyZTMyMmUzMEpFTVBDWjZSSllDSGt0Q2JhRTJncytDOGpHalNGS0dIaFJsdzU1NzJoeVU9");
             InitializeComponent();
 
             MainPage = new MainPage();

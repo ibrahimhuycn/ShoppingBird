@@ -29,6 +29,7 @@
                         AllowFiltering="True"
                         SuggestionMode="Contains"
                         Watermark="Scan item barcode..."
+                        WatermarkColor="WhiteSmoke"
                         DataSource="{Binding AllProducts}"
                         Text="{Binding SelectedProduct}"
                         DisplayMemberPath="Item"
@@ -39,7 +40,7 @@
         
         <!--Invoice Products (Cart Items)-->
         <StackLayout Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" BackgroundColor="WhiteSmoke" Padding="5">
-            <CollectionView ItemsSource="{Binding CartItems}" 
+            <CollectionView ItemsSource="{Binding CartItems}"
                             SelectionMode="Single" BackgroundColor="WhiteSmoke"
                             x:Name="CartItemsViewCollection">
                 <CollectionView.ItemsLayout>
@@ -98,6 +99,7 @@
                 <Grid>
                     <Button Grid.Row="0" Grid.Column="0" 
                             Text="Remove Item"
+                            Command="{Binding RemoveSelectedItemCommand}"
                             x:Name="ButtonRemoveItem"/>
                     
                     <Label  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,10,0,0" 
@@ -106,7 +108,8 @@
                            HorizontalTextAlignment="Center" />
                     
                     <Button Grid.Row="0" Grid.Column="4" 
-                            Text="{Binding CartItems.Count, StringFormat='Checkout ({0})'}"/>
+                            Text="{Binding CartItems.Count, StringFormat='Checkout ({0})'}"
+                            Command="{Binding CheckOutCommand}" />
                 </Grid>
             </Frame>
         </StackLayout>
