@@ -119,6 +119,7 @@ namespace ShoppingBird.Mobile.ViewModels
 
                 ResetCart();
                 DisplayAlert?.Invoke(this, "Successfully saved the invoice.");
+                MainPageViewModel_SaveCurrentState(this, EventArgs.Empty);
             }
             catch (Exception ex)
             {
