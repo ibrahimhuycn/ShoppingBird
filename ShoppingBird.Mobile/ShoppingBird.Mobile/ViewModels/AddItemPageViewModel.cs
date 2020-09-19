@@ -1,4 +1,6 @@
-﻿using ShoppingBird.Mobile.Models;
+﻿using ShoppingBird.Fly;
+using ShoppingBird.Fly.Interfaces;
+using ShoppingBird.Mobile.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -7,12 +9,21 @@ namespace ShoppingBird.Mobile.ViewModels
 {
     public class AddItemPageViewModel : BindableBase
     {
+        private readonly ITaxIO _taxIO;
+        private readonly ICategoriesIO _categoriesIO;
+        private readonly IUnitsIO _unitsIO;
         private string _storeName;
         private string _barcode;
         private StoreModel _store;
         private string _description;
         private double? _price;
+        private TaxModel _selectedTax;
+        private CategoryModel _selectedCategory;
+        private CategoryModel _selectedSubCategory;
+        private UnitModel _selectedUnit;
+        private string _pageTitle;
 
+        public event EventHandler<ToastModel> DisplayToast;
         public ICommand SaveItemCommand { get; }
 
         public AddItemPageViewModel()
@@ -20,10 +31,88 @@ namespace ShoppingBird.Mobile.ViewModels
             TaxList = new List<TaxModel>();
             CategoryList = new List<CategoryModel>();
             UnitList = new List<UnitModel>();
-            InitializeDemoData();
+            _taxIO = new TaxIO();
+            _categoriesIO = new CategoriesIO();
+            _unitsIO = new UnitsIO();
+
+            //InitializeDemoData();
+            LoadStaticData();
 
             SaveItemCommand = new Command(SaveItem);
             PropertyChanged += AddItemPageViewModel_PropertyChanged;
+        }
+
+        private void LoadStaticData()
+        {
+            try
+            {
+                //get Tax list
+                var taxList = _taxIO.GetAllTax();
+                //get Categories list
+                var categoryList = _categoriesIO.LoadAll();
+                //get units list
+                var unitList = _unitsIO.LoadAll();
+
+                InitializeStaticData(new dynamic[] { taxList, categoryList, unitList });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+        /// <summary>
+        /// Initializes static lists
+        /// </summary>
+        /// <param name="staticDataArray">dynamic array with tax, category and unit list at index 0,1 and 2</param>
+        private void InitializeStaticData(dynamic[] staticDataArray)
+        {
+            for (int i = 0; i < staticDataArray.Length; i++)
+            {
+                switch (i)
+                {
+                    case 0: //tax list init
+                        TaxList.Clear();
+                        foreach (Fly.Models.Tax item in staticDataArray[i])
+                        {
+                            TaxList.Add(new TaxModel()
+                            {
+                                Id = item.Id,
+                                Description = item.Description,
+                                Percent = double.Parse(item.Rate.ToString())
+                            });
+                        }
+                        break;
+                    case 1: // Category list init
+                        CategoryList.Clear();
+                        foreach (Fly.Models.ItemCategory item in staticDataArray[i])
+                        {
+                            CategoryList.Add(new CategoryModel()
+                            {
+                                Id = item.Id,
+                                Category = item.Category
+                            });
+                        }
+                        break;
+                    case 2: // Unit List init
+                        UnitList.Clear();
+                        foreach (Fly.Models.Units item in staticDataArray[i])
+                        {
+                            UnitList.Add(new UnitModel()
+                            {
+                                Id = item.Id,
+                                Unit = item.Unit,
+                                Description = item.Description
+                            });
+                        }
+                        break;
+                    default:
+                        throw new Exception("Unknown static list for initialization.");
+                }
+            }
         }
 
         private void AddItemPageViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -58,8 +147,21 @@ namespace ShoppingBird.Mobile.ViewModels
             Barcode = addPriceArgs.Barcode;
             Store = addPriceArgs.CurrentStore;
             SelectedTax = TaxList.Find((x) => x.Id == addPriceArgs.ItemTaxId);
+            SelectedCategory = CategoryList.Find((x) => x.Id == addPriceArgs.ItemCatId);
+            SelectedSubCategory = CategoryList.Find((x) => x.Id == addPriceArgs.ItemSubCatId);
+            SelectedUnit = UnitList.Find((x) => x.Id == addPriceArgs.ItemUnitId);
+
         }
 
+        public string PageTitle
+        {
+            get => _pageTitle; set
+            {
+                if (_pageTitle == value) return;
+                _pageTitle = value;
+                NotifyPropertyChanged();
+            }
+        }
         public StoreModel Store
         {
             get => _store; set
@@ -86,7 +188,6 @@ namespace ShoppingBird.Mobile.ViewModels
                 NotifyPropertyChanged();
             }
         }
-
         public string Description
         {
             get => _description; set
@@ -108,22 +209,58 @@ namespace ShoppingBird.Mobile.ViewModels
         public List<TaxModel> TaxList { get; set; }
         public List<CategoryModel> CategoryList { get; set; }
         public List<UnitModel> UnitList { get; set; }
-
-        public TaxModel SelectedTax { get; set; }
-        public CategoryModel SelectedCategory { get; set; }
-        public CategoryModel SelectedSubCategory { get; set; }
-        public UnitModel SelectedUnit { get; set; }
+        public TaxModel SelectedTax
+        {
+            get => _selectedTax; set
+            {
+                if (_selectedTax == value) return;
+                _selectedTax = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public CategoryModel SelectedCategory
+        {
+            get => _selectedCategory; set
+            {
+                if (_selectedCategory == value) return;
+                _selectedCategory = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public CategoryModel SelectedSubCategory
+        {
+            get => _selectedSubCategory; set
+            {
+                if (_selectedSubCategory == value) return;
+                _selectedSubCategory = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public UnitModel SelectedUnit
+        {
+            get => _selectedUnit; set
+            {
+                if (_selectedUnit == value) return;
+                _selectedUnit = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         //Saves the current item
         void SaveItem()
         {
-            if(IsOkToSave())
+            if (IsOkToSave())
             {
                 //save
             }
             else
             {
-                throw new Exception("Cannot save. All parameters not provided.");
+                DisplayToast?.Invoke(this, new ToastModel()
+                {
+                    Message = "Please complete all required fields",
+                    Type = ToastModel.MessageType.Error,
+                    ToastLength = Plugin.Toast.Abstractions.ToastLength.Long
+                });
             }
         }
 

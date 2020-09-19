@@ -25,6 +25,7 @@ namespace ShoppingBird.Mobile.ViewModels
         private readonly IInvoiceIO _invoiceIO;
 
         public event EventHandler<string> DisplayAlert;
+        public event EventHandler<ToastModel> DisplayToast;
         public EventHandler<PromptModel> DisplayPrompt;
         public EventHandler BarcodeRead;
         public EventHandler<ItemNotFoundArgs> ItemNotFound;
@@ -63,6 +64,7 @@ namespace ShoppingBird.Mobile.ViewModels
             SaveCurrentState += MainPageViewModel_SaveCurrentState;
             CheckForSavedData += CheckForSavedInvoice;
             BarcodeRead?.Invoke(this, EventArgs.Empty);
+            
 
             PropertyChanged += MainPageViewModel_PropertyChanged;
         }
@@ -118,7 +120,12 @@ namespace ShoppingBird.Mobile.ViewModels
                 });
 
                 ResetCart();
-                DisplayAlert?.Invoke(this, "Successfully saved the invoice.");
+                DisplayToast?.Invoke(this, new ToastModel() 
+                { 
+                    Message= "Successfully saved the invoice.",
+                    Type = ToastModel.MessageType.Success,
+                    ToastLength = Plugin.Toast.Abstractions.ToastLength.Long 
+                });
                 MainPageViewModel_SaveCurrentState(this, EventArgs.Empty);
             }
             catch (Exception ex)
@@ -469,7 +476,17 @@ namespace ShoppingBird.Mobile.ViewModels
             //search for product
             var itemData = _itemIO.GetItemDataByBarcode(barcode);
             //Initiate adding new price data for selected store
-            InitiateAddPriceData?.Invoke(this, new AddPriceForStoreArgs());
+            var priceArgs = new AddPriceForStoreArgs()
+            {
+                 Barcode = barcode,
+                 Description = itemData.Description,
+                 CurrentStore = SelectedStore,
+                 ItemTaxId = itemData.TaxId,
+                 ItemCatId = itemData.CategoryId,
+                 ItemSubCatId = itemData.SubCategoryId,
+                 ItemUnitId = itemData.UnitId
+            };
+            InitiateAddPriceData?.Invoke(this, priceArgs);
         }
 
         /// <summary>

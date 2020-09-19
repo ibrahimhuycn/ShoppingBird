@@ -1,4 +1,5 @@
-﻿using ShoppingBird.Mobile.Models;
+﻿using Plugin.Toast;
+using ShoppingBird.Mobile.Models;
 using Syncfusion.XForms.ComboBox;
 using System;
 using Xamarin.Forms;
@@ -18,6 +19,29 @@ namespace ShoppingBird.Mobile
             _viewModel.ItemNotFound += OnItemNotFound;
             _viewModel.DisplayPrompt += this.DisplayPrompt;
             _viewModel.InitiateAddPriceData += this.OnInitiatePriceData;
+            _viewModel.DisplayToast += _viewModel_DisplayToast;
+        }
+
+        private void _viewModel_DisplayToast(object sender, ToastModel e)
+        {
+
+            switch (e.Type)
+            {
+                case ToastModel.MessageType.Normal:
+                    CrossToastPopUp.Current.ShowToastMessage(e.Message, e.ToastLength);
+                    break;
+                case ToastModel.MessageType.Success:
+                    CrossToastPopUp.Current.ShowToastSuccess(e.Message, e.ToastLength);
+                    break;
+                case ToastModel.MessageType.Warning:
+                    CrossToastPopUp.Current.ShowToastWarning(e.Message, e.ToastLength);
+                    break;
+                case ToastModel.MessageType.Error:
+                    CrossToastPopUp.Current.ShowToastError(e.Message, e.ToastLength);
+                    break;
+                default:
+                    break;
+            }
         }
 
         private async void OnInitiatePriceData(object sender, AddPriceForStoreArgs e)

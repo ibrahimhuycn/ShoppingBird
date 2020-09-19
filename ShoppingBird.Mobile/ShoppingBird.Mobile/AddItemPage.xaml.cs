@@ -1,4 +1,5 @@
-﻿using ShoppingBird.Mobile.Models;
+﻿using Plugin.Toast;
+using ShoppingBird.Mobile.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace ShoppingBird.Mobile
             _itemNotFoundArgs = args;
             InitializeDisplayData(Mode.AddNewItem);
             ButtonCancel.Clicked += ButtonCancel_Clicked;
+            _viewModel.DisplayToast += _viewModel_DisplayToast;
+
         }
 
         public AddItemPage(AddPriceForStoreArgs args)
@@ -30,6 +33,8 @@ namespace ShoppingBird.Mobile
             _addPriceArgs = args;
             InitializeDisplayData(Mode.AddPriceForStore);
             ButtonCancel.Clicked += ButtonCancel_Clicked;
+            _viewModel.DisplayToast += _viewModel_DisplayToast;
+
         }
 
         private void InitializeDisplayData(Mode initializeMode)
@@ -39,9 +44,11 @@ namespace ShoppingBird.Mobile
                 case Mode.AddNewItem:
                     _viewModel.Store = _itemNotFoundArgs.SelectedStore;
                     _viewModel.Barcode = _itemNotFoundArgs.Barcode;
+                    _viewModel.PageTitle = "Add New Item";
                     break;
                 case Mode.AddPriceForStore:
                     _viewModel.InitializeForAddingPrice(_addPriceArgs);
+                    _viewModel.PageTitle = "Add Item Price";
                     break;
                 default:
                     break;
@@ -49,6 +56,27 @@ namespace ShoppingBird.Mobile
 
         }
 
+        private void _viewModel_DisplayToast(object sender, ToastModel e)
+        {
+
+            switch (e.Type)
+            {
+                case ToastModel.MessageType.Normal:
+                    CrossToastPopUp.Current.ShowToastMessage(e.Message, e.ToastLength);
+                    break;
+                case ToastModel.MessageType.Success:
+                    CrossToastPopUp.Current.ShowToastSuccess(e.Message, e.ToastLength);
+                    break;
+                case ToastModel.MessageType.Warning:
+                    CrossToastPopUp.Current.ShowToastWarning(e.Message, e.ToastLength);
+                    break;
+                case ToastModel.MessageType.Error:
+                    CrossToastPopUp.Current.ShowToastError(e.Message, e.ToastLength);
+                    break;
+                default:
+                    break;
+            }
+        }
         private async void ButtonCancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();

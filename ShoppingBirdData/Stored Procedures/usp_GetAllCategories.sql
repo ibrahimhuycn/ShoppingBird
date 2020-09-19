@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[usp_GetAllCategories]
 AS
 BEGIN
-	SELECT * 
+	SELECT [Id], [Category]
 	FROM [dbo].[ItemCategory]
 END

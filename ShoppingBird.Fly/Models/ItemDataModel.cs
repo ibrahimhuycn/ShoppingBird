@@ -8,7 +8,7 @@ namespace ShoppingBird.Fly.Models
     {
         public string Description { get; set; }
         public int TaxId { get; set; }
-        public int CategorryId { get; set; }
+        public int CategoryId { get; set; }
         public int SubCategoryId { get; set; }
         public int UnitId { get; set; }
     }
