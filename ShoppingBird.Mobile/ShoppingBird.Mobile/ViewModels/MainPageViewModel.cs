@@ -37,6 +37,7 @@ namespace ShoppingBird.Mobile.ViewModels
         public ICommand CheckOutCommand { get; set; }
         public ICommand RemoveSelectedItemCommand { get; set; }
         public ICommand CartItemSelectionChanged { get; set; }
+        public ICommand IncreaseQtyCommand { get; set; }
         private double _total;
         private int? _selectedStoreIndex;
         private CartItem _selectedCartItem;
@@ -60,6 +61,7 @@ namespace ShoppingBird.Mobile.ViewModels
             CheckOutCommand = new Command(InitiateCheckOut, CanCheckOut);
             RemoveSelectedItemCommand = new Command(RemoveItem, CanRemoveItem);
             CartItemSelectionChanged = new Command<CartItem>(SetSelectedCartItem);
+            IncreaseQtyCommand = new Command<CartItem>(IncreaseSelectedItemQty);
             BarcodeRead += OnBarcodeRead_ReCalculateTotal;
             SaveCurrentState += MainPageViewModel_SaveCurrentState;
             CheckForSavedData += CheckForSavedInvoice;
@@ -67,6 +69,11 @@ namespace ShoppingBird.Mobile.ViewModels
             
 
             PropertyChanged += MainPageViewModel_PropertyChanged;
+        }
+
+        private void IncreaseSelectedItemQty(CartItem cartItem)
+        {
+            cartItem.Quantity += 1;
         }
 
         private void InitiateCheckOut()
@@ -313,7 +320,12 @@ namespace ShoppingBird.Mobile.ViewModels
             if (!IsStoreSelected())
             {
                 SelectedProduct = "";
-                DisplayAlert?.Invoke(this, "Please select a store first!");
+                DisplayToast?.Invoke(this, new ToastModel()
+                {
+                    Message = "Please select a store first!",
+                    ToastLength = Plugin.Toast.Abstractions.ToastLength.Long,
+                    Type = ToastModel.MessageType.Warning
+                });
                 return;
             }
 
