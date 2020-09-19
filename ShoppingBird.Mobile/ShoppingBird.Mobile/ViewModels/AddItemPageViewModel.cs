@@ -1,5 +1,6 @@
 ﻿using ShoppingBird.Fly;
 using ShoppingBird.Fly.Interfaces;
+using ShoppingBird.Fly.Models;
 using ShoppingBird.Mobile.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace ShoppingBird.Mobile.ViewModels
         private readonly ITaxIO _taxIO;
         private readonly ICategoriesIO _categoriesIO;
         private readonly IUnitsIO _unitsIO;
+        private readonly IItemIO  _itemIO;
         private string _storeName;
         private string _barcode;
         private StoreModel _store;
@@ -34,6 +36,7 @@ namespace ShoppingBird.Mobile.ViewModels
             _taxIO = new TaxIO();
             _categoriesIO = new CategoriesIO();
             _unitsIO = new UnitsIO();
+            _itemIO = new ItemIO();
 
             //InitializeDemoData();
             LoadStaticData();
@@ -251,7 +254,63 @@ namespace ShoppingBird.Mobile.ViewModels
         {
             if (IsOkToSave())
             {
-                //save
+                var saveInsertItem = new Item()
+                {
+                    Category  = new ItemCategory() {Id = SelectedCategory.Id, Category = SelectedCategory.Category },
+                    SubCategory = new ItemCategory() { Id = SelectedSubCategory.Id, Category = SelectedSubCategory.Category },
+                    Description = Description
+                };
+
+                var priceData = new ItemPriceData()
+                {
+                    Barcode = Barcode,
+                    Item = saveInsertItem,
+                    RetailPrice = decimal.Parse(Price.ToString()),
+                    Store = Store,
+                    Tax = new Tax()
+                    {
+                        Id = SelectedTax.Id,
+                        Description = SelectedTax.Description,
+                        Rate = decimal.Parse(SelectedTax.Percent.ToString())
+                    },
+                    Unit = new Units() 
+                    {
+                        Id = SelectedUnit.Id,
+                        Unit = SelectedUnit.Unit,
+                        Description = SelectedUnit.Description
+                    }
+                };
+
+                try
+                {
+                    if (_itemIO.SaveItem(new ItemInsertDataArgs(saveInsertItem, priceData)) == 0)
+                    {
+                        DisplayToast?.Invoke(this, new ToastModel() 
+                        {
+                            Message = "Item saved successfully." ,
+                            Type = ToastModel.MessageType.Success,
+                            ToastLength = Plugin.Toast.Abstractions.ToastLength.Long
+                        });
+                    }
+                    else
+                    {
+                        DisplayToast?.Invoke(this, new ToastModel()
+                        {
+                            Message = "Something unexpected happened! Not sure that the item was saved!",
+                            Type = ToastModel.MessageType.Warning,
+                            ToastLength = Plugin.Toast.Abstractions.ToastLength.Long
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    DisplayToast?.Invoke(this, new ToastModel()
+                    {
+                        Message = $"Error saving item record!\n\n {ex.Message}",
+                        Type= ToastModel.MessageType.Error,
+                        ToastLength = Plugin.Toast.Abstractions.ToastLength.Long
+                    });
+                }
             }
             else
             {
