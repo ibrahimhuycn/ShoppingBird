@@ -222,7 +222,7 @@ namespace ShoppingBird.Fly
                 SearhResult = cnx.Query<ItemSearchResultModel>("usp_SearchItemByBarcodeAndStore", barcodeParameters,
                     commandType: CommandType.StoredProcedure).FirstOrDefault();
             }
-            if (SearhResult == null) { SearhResult = new ItemSearchResultModel { ErrorMessage = "Item does not exist in the specified store." }; }
+            if (SearhResult == null) { SearhResult = new ItemSearchResultModel { ErrorMessage = "PriceDataNotFoundForStore" }; }
             return SearhResult;
 
         }
@@ -249,6 +249,23 @@ namespace ShoppingBird.Fly
             return SearhResult;
         }
 
+        public ItemDataModel GetItemDataByBarcode(string barcode)
+        {
+            var Item = new { Barcode = barcode};
 
+            using (IDbConnection cnx = new SqlConnection(CnxString))
+            {
+                try
+                {
+                    return cnx.Query<ItemDataModel>("[dbo].[usp_GetItemDataWithBarcode]", Item,
+                        commandType: CommandType.StoredProcedure).FirstOrDefault();
+
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
     }
 }

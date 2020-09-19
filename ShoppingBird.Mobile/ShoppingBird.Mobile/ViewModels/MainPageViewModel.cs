@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ShoppingBird.Fly;
+using ShoppingBird.Fly.DbModels;
 using ShoppingBird.Fly.Interfaces;
 using ShoppingBird.Mobile.Models;
 using System;
@@ -21,11 +22,14 @@ namespace ShoppingBird.Mobile.ViewModels
         private string _selectedProduct;
         private readonly IStoreIO _storeIO;
         private readonly IItemIO _itemIO;
+        private readonly IInvoiceIO _invoiceIO;
 
-        public EventHandler<string> DisplayAlert;
+        public event EventHandler<string> DisplayAlert;
+        public EventHandler<PromptModel> DisplayPrompt;
         public EventHandler BarcodeRead;
         public EventHandler<ItemNotFoundArgs> ItemNotFound;
         public EventHandler<AsyncVoidMethodBuilder> CheckForSavedData;
+        public EventHandler<AddPriceForStoreArgs> InitiateAddPriceData;
         public delegate void OnSaveCurrentState(object sender, EventArgs e);
         public event OnSaveCurrentState SaveCurrentState;
         public ICommand ExecuteSearchCommand { get; set; }
@@ -47,11 +51,12 @@ namespace ShoppingBird.Mobile.ViewModels
             //LoadDemoData();
             _storeIO = new StoreIO();
             _itemIO = new ItemIO();
+            _invoiceIO = new InvoiceIO();
             InitializeCart();
 
             //act OnBarcodeRead
             ExecuteSearchCommand = new Command(OnSearch);
-            CheckOutCommand = new Command(CheckOut, CanCheckOut);
+            CheckOutCommand = new Command(InitiateCheckOut, CanCheckOut);
             RemoveSelectedItemCommand = new Command(RemoveItem, CanRemoveItem);
             CartItemSelectionChanged = new Command<CartItem>(SetSelectedCartItem);
             BarcodeRead += OnBarcodeRead_ReCalculateTotal;
@@ -60,6 +65,15 @@ namespace ShoppingBird.Mobile.ViewModels
             BarcodeRead?.Invoke(this, EventArgs.Empty);
 
             PropertyChanged += MainPageViewModel_PropertyChanged;
+        }
+
+        private void InitiateCheckOut()
+        {
+            DisplayPrompt?.Invoke(this, new PromptModel()
+            {
+                Header = "Invoice Id",
+                Message ="Please input the invoice Id..."
+            });
         }
 
         private void SetSelectedCartItem(CartItem item)
@@ -78,10 +92,73 @@ namespace ShoppingBird.Mobile.ViewModels
             return CartItems.Count > 0;
         }
 
-        private void CheckOut()
+        //checkout the items (save the invoice)
+        public void CheckOut()
         {
+            //calculate subtotal and tax
+            var subTotalAndTaxInvoiceDetails = CalculateSubTotalAndTax(CartItems);
+            //prepare data
+            var invoice = new Invoice()
+            {
+                 Number = InvoiceId,
+                 StoreId = SelectedStore.Id,
+                 SubTotal = subTotalAndTaxInvoiceDetails[0],
+                 Tax = subTotalAndTaxInvoiceDetails[1],
+                 Total = decimal.Parse(Total.ToString()),
+                 Date = DateTime.Now,
+                 UserId =1
+            };
+
+            try
+            {
+                _invoiceIO.SaveInvoice(new Fly.Models.NewInvoice()
+                {
+                    Invoice = invoice,
+                    InvoiceDetails = subTotalAndTaxInvoiceDetails[2]
+                });
+
+                ResetCart();
+                DisplayAlert?.Invoke(this, "Successfully saved the invoice.");
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert?.Invoke(this, ex.Message);
+            }
 
         }
+
+        /// <summary>
+        /// removes cart items and deselects the selected store
+        /// </summary>
+        private void ResetCart()
+        {
+            CartItems.Clear();
+            SelectedStoreIndex = -1;
+            OnBarcodeRead_ReCalculateTotal(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Calculates subtotal and tax and invoiceDetails list
+        /// </summary>
+        /// <returns>Returns a decimal array where index 0 is sub total, 1 is Tax, 2 is InvoiceDetails model</returns>
+        private dynamic[] CalculateSubTotalAndTax(ObservableCollection<CartItem> cartItems)
+        {
+            var subTotalAndTaxInvoiceDetails = new dynamic[3] { new decimal(), new decimal(), new List<InvoiceDetail>() };
+            foreach (var item in cartItems)
+            {
+                subTotalAndTaxInvoiceDetails[0] += decimal.Parse(item.RetailPrice.ToString());
+                subTotalAndTaxInvoiceDetails[1] += decimal.Parse(item.TaxAmount.ToString());
+                subTotalAndTaxInvoiceDetails[2].Add(new InvoiceDetail()
+                {
+                    ItemId = item.ItemId,
+                    Price = decimal.Parse(item.RetailPrice.ToString()),
+                    Quantity = item.Quantity,
+                    Tax = decimal.Parse(item.TaxAmount.ToString())
+                });
+            }
+            return subTotalAndTaxInvoiceDetails;
+        }
+
         private void InitializeCart()
         {
             //load all products data
@@ -170,15 +247,18 @@ namespace ShoppingBird.Mobile.ViewModels
             {
                 if (_selectedStoreIndex == value) return;
                 _selectedStoreIndex = value;
-                SelectedStore = AllStores.Where((x) => x.Id == _selectedStoreIndex + 1).FirstOrDefault();
-                if (SelectedStore is null)
+                if (value == -1)
                 {
-                    _selectedStoreIndex = null;
+                    _selectedStore = null;
                 }
+                else
+                {
+                    SelectedStore = AllStores.Where((x) => x.Id == _selectedStoreIndex + 1).FirstOrDefault();
+                }
+
                 NotifyPropertyChanged();
             }
         }
-
         public List<Product> AllProducts { get; set; }
         public string SelectedProduct
         {
@@ -198,7 +278,6 @@ namespace ShoppingBird.Mobile.ViewModels
                 NotifyPropertyChanged();
             }
         }
-
         public CartItem SelectedCartItem
         {
             get => _selectedCartItem; set
@@ -208,7 +287,6 @@ namespace ShoppingBird.Mobile.ViewModels
                 NotifyPropertyChanged();
             }
         }
-
         public ObservableCollection<CartItem> CartItems { get; set; }
         public double Total
         {
@@ -219,6 +297,8 @@ namespace ShoppingBird.Mobile.ViewModels
                 NotifyPropertyChanged();
             }
         }
+        public int InvoiceId { get; set; }
+
         public void OnSearch()
         {
             //check if store is selected
@@ -366,6 +446,12 @@ namespace ShoppingBird.Mobile.ViewModels
             var searchData = _itemIO.SearchItem(new Fly.Models.ItemSearchTerms(barcode, SelectedStore.Id));
             if (!string.IsNullOrEmpty(searchData.ErrorMessage))
             {
+                if(searchData.ErrorMessage == "PriceDataNotFoundForStore")
+                {
+                    AddPriceForStore(barcode);
+                    return;
+                }   
+                
                 DisplayAlert?.Invoke(this, searchData.ErrorMessage);
                 return;
             }
@@ -375,6 +461,14 @@ namespace ShoppingBird.Mobile.ViewModels
             cartItem.Store = SelectedStore;
             CartItems.Add(cartItem);
             Debug.WriteLine("Item Added to cart");
+        }
+
+        private void AddPriceForStore(string barcode)
+        {
+            //search for product
+            var itemData = _itemIO.GetItemDataByBarcode(barcode);
+            //Initiate adding new price data for selected store
+            InitiateAddPriceData?.Invoke(this, new AddPriceForStoreArgs());
         }
 
         /// <summary>

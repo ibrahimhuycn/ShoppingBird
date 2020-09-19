@@ -34,13 +34,13 @@ namespace ShoppingBird.Fly
 
                     returnvalue = 0;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                     sql.RollbackTransaction();
-                    throw new Exception(ex.Message);
-                    //throw;
+                    throw;
                 }
+        
 
                 return returnvalue;
             }

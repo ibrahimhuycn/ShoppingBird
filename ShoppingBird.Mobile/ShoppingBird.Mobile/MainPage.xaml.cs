@@ -16,6 +16,16 @@ namespace ShoppingBird.Mobile
             SearchBar.Completed += SearchBar_OnSearch;
             _viewModel.CheckForSavedData?.Invoke(this, new System.Runtime.CompilerServices.AsyncVoidMethodBuilder());
             _viewModel.ItemNotFound += OnItemNotFound;
+            _viewModel.DisplayPrompt += this.DisplayPrompt;
+            _viewModel.InitiateAddPriceData += this.OnInitiatePriceData;
+        }
+
+        private async void OnInitiatePriceData(object sender, AddPriceForStoreArgs e)
+        {
+            SearchBar.Unfocused -= ReForcusSearchBar;
+            var addItemPage = new AddItemPage(e);
+            addItemPage.Disappearing += AddItemPage_Disappearing;
+            await Navigation.PushModalAsync(addItemPage);
         }
 
         private void SearchBar_OnSearch(object sender, EventArgs e)
@@ -59,6 +69,21 @@ namespace ShoppingBird.Mobile
         private async void DisplayViewModelAlert(object sender, string e)
         {
             await DisplayAlert("Required!", e, "OK");
+        }
+
+        private async void DisplayPrompt(object sender, PromptModel e)
+        {
+            var result = await DisplayPromptAsync(e.Header, e.Message,"OK", "Cancel");
+            var IsInvoiceIdValid = int.TryParse(result, out int invoiceId);
+
+            if (!IsInvoiceIdValid)
+            {
+                await DisplayAlert("Invalid", "Invoice Id needs to be an integer.", "OK");
+                return;
+            }
+
+            _viewModel.InvoiceId = invoiceId;
+            _viewModel.CheckOut();
         }
     }
 }

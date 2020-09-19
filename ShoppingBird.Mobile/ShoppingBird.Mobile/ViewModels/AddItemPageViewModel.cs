@@ -52,6 +52,14 @@ namespace ShoppingBird.Mobile.ViewModels
 
         }
 
+        internal void InitializeForAddingPrice(AddPriceForStoreArgs addPriceArgs)
+        {
+            Description = addPriceArgs.Description;
+            Barcode = addPriceArgs.Barcode;
+            Store = addPriceArgs.CurrentStore;
+            SelectedTax = TaxList.Find((x) => x.Id == addPriceArgs.ItemTaxId);
+        }
+
         public StoreModel Store
         {
             get => _store; set
