@@ -13,7 +13,7 @@ namespace ShoppingBird.Mobile.ViewModels
         private readonly ITaxIO _taxIO;
         private readonly ICategoriesIO _categoriesIO;
         private readonly IUnitsIO _unitsIO;
-        private readonly IItemIO  _itemIO;
+        private readonly IItemIO _itemIO;
         private string _storeName;
         private string _barcode;
         private StoreModel _store;
@@ -25,7 +25,9 @@ namespace ShoppingBird.Mobile.ViewModels
         private UnitModel _selectedUnit;
         private string _pageTitle;
 
+        public ItemActionMode _actionMode;
         public event EventHandler<ToastModel> DisplayToast;
+        public event EventHandler<ItemUpdateModel> ItemUpdateSuccessful;
         public ICommand SaveItemCommand { get; }
 
         public AddItemPageViewModel()
@@ -65,6 +67,12 @@ namespace ShoppingBird.Mobile.ViewModels
             }
 
 
+        }
+
+        internal void InitializeForItemEditing(EditItemArgs args)
+        {
+            InitializeParamsExceptPrice(args);
+            Price = args.RetailPrice;
         }
 
         /// <summary>
@@ -144,16 +152,20 @@ namespace ShoppingBird.Mobile.ViewModels
 
         }
 
-        internal void InitializeForAddingPrice(AddPriceForStoreArgs addPriceArgs)
+        internal void InitializeForAddingPrice(AddPriceForStoreArgs args)
         {
-            Description = addPriceArgs.Description;
-            Barcode = addPriceArgs.Barcode;
-            Store = addPriceArgs.CurrentStore;
-            SelectedTax = TaxList.Find((x) => x.Id == addPriceArgs.ItemTaxId);
-            SelectedCategory = CategoryList.Find((x) => x.Id == addPriceArgs.ItemCatId);
-            SelectedSubCategory = CategoryList.Find((x) => x.Id == addPriceArgs.ItemSubCatId);
-            SelectedUnit = UnitList.Find((x) => x.Id == addPriceArgs.ItemUnitId);
+            InitializeParamsExceptPrice(args);
+        }
 
+        private void InitializeParamsExceptPrice(dynamic args)
+        {
+            Description = args.Description;
+            Barcode = args.Barcode;
+            Store = args.CurrentStore;
+            SelectedTax = TaxList.Find((x) => x.Id == args.ItemTaxId);
+            SelectedCategory = CategoryList.Find((x) => x.Id == args.ItemCatId);
+            SelectedSubCategory = CategoryList.Find((x) => x.Id == args.ItemSubCatId);
+            SelectedUnit = UnitList.Find((x) => x.Id == args.ItemUnitId);
         }
 
         public string PageTitle
@@ -256,7 +268,7 @@ namespace ShoppingBird.Mobile.ViewModels
             {
                 var saveInsertItem = new Item()
                 {
-                    Category  = new ItemCategory() {Id = SelectedCategory.Id, Category = SelectedCategory.Category },
+                    Category = new ItemCategory() { Id = SelectedCategory.Id, Category = SelectedCategory.Category },
                     SubCategory = new ItemCategory() { Id = SelectedSubCategory.Id, Category = SelectedSubCategory.Category },
                     Description = Description
                 };
@@ -273,7 +285,7 @@ namespace ShoppingBird.Mobile.ViewModels
                         Description = SelectedTax.Description,
                         Rate = decimal.Parse(SelectedTax.Percent.ToString())
                     },
-                    Unit = new Units() 
+                    Unit = new Units()
                     {
                         Id = SelectedUnit.Id,
                         Unit = SelectedUnit.Unit,
@@ -283,23 +295,17 @@ namespace ShoppingBird.Mobile.ViewModels
 
                 try
                 {
-                    if (_itemIO.SaveItem(new ItemInsertDataArgs(saveInsertItem, priceData)) == 0)
+                    switch (_actionMode)
                     {
-                        DisplayToast?.Invoke(this, new ToastModel() 
-                        {
-                            Message = "Item saved successfully." ,
-                            Type = ToastModel.MessageType.Success,
-                            ToastLength = Plugin.Toast.Abstractions.ToastLength.Long
-                        });
-                    }
-                    else
-                    {
-                        DisplayToast?.Invoke(this, new ToastModel()
-                        {
-                            Message = "Something unexpected happened! Not sure that the item was saved!",
-                            Type = ToastModel.MessageType.Warning,
-                            ToastLength = Plugin.Toast.Abstractions.ToastLength.Long
-                        });
+                        case ItemActionMode.AddNewItem:
+                        case ItemActionMode.AddPriceForStore:
+                            ExecuteSave(priceData, saveInsertItem);
+                            break;
+                        case ItemActionMode.EditItem:
+                            ExecuteUpdates(priceData, saveInsertItem);
+                            break;
+                        default:
+                            break;
                     }
                 }
                 catch (Exception ex)
@@ -307,7 +313,7 @@ namespace ShoppingBird.Mobile.ViewModels
                     DisplayToast?.Invoke(this, new ToastModel()
                     {
                         Message = $"Error saving item record!\n\n {ex.Message}",
-                        Type= ToastModel.MessageType.Error,
+                        Type = ToastModel.MessageType.Error,
                         ToastLength = Plugin.Toast.Abstractions.ToastLength.Long
                     });
                 }
@@ -323,6 +329,54 @@ namespace ShoppingBird.Mobile.ViewModels
             }
         }
 
+        private void ExecuteUpdates(ItemPriceData priceData, Item saveInsertItem)
+        {
+            var update = new ItemUpdateModel()
+            {
+                Barcode = priceData.Barcode,
+                Description = saveInsertItem.Description,
+                ItemId = saveInsertItem.Id,
+                StoreId = priceData.Store.Id,
+                RetailPrice = priceData.RetailPrice,
+                TaxId = priceData.Tax.Id,
+                UnitId = priceData.Unit.Id,
+                CategoryId = saveInsertItem.Category.Id,
+                SubCategoryId = saveInsertItem.SubCategory.Id
+            };
+            try
+            {
+                _itemIO.UpdateItem(update);
+                ItemUpdateSuccessful?.Invoke(this, update);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private void ExecuteSave(ItemPriceData priceData, Item saveInsertItem)
+        {
+            if (_itemIO.SaveItem(new ItemInsertDataArgs(saveInsertItem, priceData)) == 0)
+            {
+                DisplayToast?.Invoke(this, new ToastModel()
+                {
+                    Message = "Item saved successfully.",
+                    Type = ToastModel.MessageType.Success,
+                    ToastLength = Plugin.Toast.Abstractions.ToastLength.Long
+                });
+            }
+            else
+            {
+                DisplayToast?.Invoke(this, new ToastModel()
+                {
+                    Message = "Something unexpected happened! Not sure that the item was saved!",
+                    Type = ToastModel.MessageType.Warning,
+                    ToastLength = Plugin.Toast.Abstractions.ToastLength.Long
+                });
+            }
+
+        }
+
         private bool IsOkToSave()
         {
             if (string.IsNullOrEmpty(Description)) return false;
@@ -333,7 +387,6 @@ namespace ShoppingBird.Mobile.ViewModels
             if (SelectedUnit is null) return false;
             return true;
         }
-
 
     }
 }

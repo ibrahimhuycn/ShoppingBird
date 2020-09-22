@@ -2,6 +2,7 @@
 using ShoppingBird.Mobile.Models;
 using Syncfusion.XForms.ComboBox;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ShoppingBird.Mobile
@@ -19,9 +20,19 @@ namespace ShoppingBird.Mobile
             _viewModel.ItemNotFound += OnItemNotFound;
             _viewModel.DisplayPrompt += this.DisplayPrompt;
             _viewModel.InitiateAddPriceData += this.OnInitiatePriceData;
+            _viewModel.InitiateEditSelectedItem += _viewModel_InitiateEditSelectedItem;
             _viewModel.DisplayToast += _viewModel_DisplayToast;
         }
 
+        private async void _viewModel_InitiateEditSelectedItem(object sender, EditItemArgs e)
+        {
+            await LoadItemAddEditPageAsync(e); 
+        }
+
+        /// <summary>
+        /// Display a toast notification
+        /// </summary>
+        /// <param name="e">Toastmodel with required data</param>
         private void _viewModel_DisplayToast(object sender, ToastModel e)
         {
 
@@ -46,10 +57,21 @@ namespace ShoppingBird.Mobile
 
         private async void OnInitiatePriceData(object sender, AddPriceForStoreArgs e)
         {
+            await LoadItemAddEditPageAsync(e);
+        }
+
+        private async Task LoadItemAddEditPageAsync(dynamic e)
+        {
             SearchBar.Unfocused -= ReForcusSearchBar;
             var addItemPage = new AddItemPage(e);
             addItemPage.Disappearing += AddItemPage_Disappearing;
+            addItemPage.UpdateSuccessful += AddItemPage_UpdateSuccessful;
             await Navigation.PushModalAsync(addItemPage);
+        }
+
+        private void AddItemPage_UpdateSuccessful(object sender, EditItemArgs e)
+        {
+            _viewModel.UpdateUiOnItemUpdate(e);
         }
 
         private void SearchBar_OnSearch(object sender, EventArgs e)
@@ -63,10 +85,7 @@ namespace ShoppingBird.Mobile
             var response = await DisplayAlert("Item not found", "Cannot find the item you are looking for.., do you want to add the item?", "Yes", "No");
             if (response)
             {
-                SearchBar.Unfocused -= ReForcusSearchBar;
-                var addItemPage = new AddItemPage(e);
-                addItemPage.Disappearing += AddItemPage_Disappearing;
-                await Navigation.PushModalAsync(addItemPage);
+                await LoadItemAddEditPageAsync(e);
             }
             else
             {

@@ -1,4 +1,5 @@
 ﻿using Plugin.Toast;
+using ShoppingBird.Fly.Models;
 using ShoppingBird.Mobile.Models;
 using System;
 using System.Collections.Generic;
@@ -13,41 +14,74 @@ namespace ShoppingBird.Mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddItemPage : ContentPage
     {
+        public event EventHandler<EditItemArgs> UpdateSuccessful;
+
         private readonly ItemNotFoundArgs _itemNotFoundArgs;
         private readonly AddPriceForStoreArgs _addPriceArgs;
-
+        private readonly EditItemArgs _editItemArgs;
         public AddItemPage(ItemNotFoundArgs args)
         {
-            InitializeComponent();
+            PreInitialization();
             _itemNotFoundArgs = args;
-            InitializeDisplayData(Mode.AddNewItem);
-            ButtonCancel.Clicked += ButtonCancel_Clicked;
-            _viewModel.DisplayToast += _viewModel_DisplayToast;
-
+            InitializeDisplayData(ItemActionMode.AddNewItem);
         }
 
         public AddItemPage(AddPriceForStoreArgs args)
         {
-            InitializeComponent();
+            PreInitialization();
             _addPriceArgs = args;
-            InitializeDisplayData(Mode.AddPriceForStore);
+            InitializeDisplayData(ItemActionMode.AddPriceForStore);
+        }
+        public AddItemPage(EditItemArgs args)
+        {
+            PreInitialization();
+            _editItemArgs = args;
+            InitializeDisplayData(ItemActionMode.EditItem);
+        }
+
+        private void PreInitialization() 
+        {
+            InitializeComponent();
             ButtonCancel.Clicked += ButtonCancel_Clicked;
             _viewModel.DisplayToast += _viewModel_DisplayToast;
+            _viewModel.ItemUpdateSuccessful += _viewModel_ItemUpdateSuccessful;
+        }
+
+        private void _viewModel_ItemUpdateSuccessful(object sender, ItemUpdateModel e)
+        {
+            //show a meesage to indicate successful update
+            _viewModel_DisplayToast(this, new ToastModel()
+            {
+                Message = "Item updated successfully.",
+                ToastLength = Plugin.Toast.Abstractions.ToastLength.Long,
+                Type = ToastModel.MessageType.Success
+            });
+            //update the UI
+            UpdateSuccessful?.Invoke(this, _editItemArgs.SetUpdatedData(e));
+            ButtonCancel_Clicked(this, EventArgs.Empty);
 
         }
 
-        private void InitializeDisplayData(Mode initializeMode)
+
+        private void InitializeDisplayData(ItemActionMode initializeMode)
         {
             switch (initializeMode)
             {
-                case Mode.AddNewItem:
+                case ItemActionMode.AddNewItem:
                     _viewModel.Store = _itemNotFoundArgs.SelectedStore;
                     _viewModel.Barcode = _itemNotFoundArgs.Barcode;
+                    _viewModel._actionMode = ItemActionMode.AddNewItem;
                     _viewModel.PageTitle = "Add New Item";
                     break;
-                case Mode.AddPriceForStore:
+                case ItemActionMode.AddPriceForStore:
                     _viewModel.InitializeForAddingPrice(_addPriceArgs);
+                    _viewModel._actionMode = ItemActionMode.AddPriceForStore;
                     _viewModel.PageTitle = "Add Item Price";
+                    break;
+                case ItemActionMode.EditItem:
+                    _viewModel.InitializeForItemEditing(_editItemArgs);
+                    _viewModel._actionMode = ItemActionMode.EditItem;
+                    _viewModel.PageTitle = "Edit Item";
                     break;
                 default:
                     break;
@@ -79,12 +113,6 @@ namespace ShoppingBird.Mobile
         private async void ButtonCancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
-        }
-
-        private enum Mode
-        {
-            AddNewItem,
-            AddPriceForStore
         }
     }
 }

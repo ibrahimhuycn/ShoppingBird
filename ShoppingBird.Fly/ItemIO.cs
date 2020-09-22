@@ -86,7 +86,15 @@ namespace ShoppingBird.Fly
 
             using (IDbConnection cnx = new SqlConnection(CnxString))
             {
-                return cnx.Query<ItemListAllModel>("usp_GetAllItemDescriptionsWithId", commandType: CommandType.StoredProcedure).ToList();
+                try
+                {
+                    return cnx.Query<ItemListAllModel>("usp_GetAllItemDescriptionsWithId", commandType: CommandType.StoredProcedure).ToList();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
             }
         }
 
@@ -262,6 +270,39 @@ namespace ShoppingBird.Fly
 
                 }
                 catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        /// <summary>
+        /// updates item data
+        /// </summary>
+        /// <param name="itemUpdate"></param>
+        public void UpdateItem(ItemUpdateModel itemUpdate)
+        {
+            using (IDbConnection cnx = new SqlConnection(CnxString))
+            {
+                try
+                {
+                    var parameter = new
+                    {
+                        Barcode = itemUpdate.Barcode,
+                        Description = itemUpdate.Description,
+                        StoreId = itemUpdate.StoreId,
+                        RetailPrice = itemUpdate.RetailPrice,
+                        TaxId = itemUpdate.TaxId,
+                        UnitId = itemUpdate.UnitId,
+                        CategoryId = itemUpdate.CategoryId,
+                        SubCategoryId = itemUpdate.SubCategoryId
+                    };
+                    var updatedRows =  cnx.Execute("[dbo].[usp_UpdateItem]", parameter,
+                        commandType: CommandType.StoredProcedure);
+                    int a = updatedRows;
+
+                }
+                catch (Exception ex)
                 {
                     throw;
                 }

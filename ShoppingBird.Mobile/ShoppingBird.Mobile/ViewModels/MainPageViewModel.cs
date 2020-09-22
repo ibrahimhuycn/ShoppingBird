@@ -23,6 +23,7 @@ namespace ShoppingBird.Mobile.ViewModels
         private readonly IStoreIO _storeIO;
         private readonly IItemIO _itemIO;
         private readonly IInvoiceIO _invoiceIO;
+        private readonly ITaxIO _taxIO;
 
         public event EventHandler<string> DisplayAlert;
         public event EventHandler<ToastModel> DisplayToast;
@@ -31,6 +32,7 @@ namespace ShoppingBird.Mobile.ViewModels
         public EventHandler<ItemNotFoundArgs> ItemNotFound;
         public EventHandler<AsyncVoidMethodBuilder> CheckForSavedData;
         public EventHandler<AddPriceForStoreArgs> InitiateAddPriceData;
+        public event EventHandler<EditItemArgs> InitiateEditSelectedItem;
         public delegate void OnSaveCurrentState(object sender, EventArgs e);
         public event OnSaveCurrentState SaveCurrentState;
         public ICommand ExecuteSearchCommand { get; set; }
@@ -38,6 +40,7 @@ namespace ShoppingBird.Mobile.ViewModels
         public ICommand RemoveSelectedItemCommand { get; set; }
         public ICommand CartItemSelectionChanged { get; set; }
         public ICommand IncreaseQtyCommand { get; set; }
+        public ICommand EditItemCommand { get; set; }
         private double _total;
         private int? _selectedStoreIndex;
         private CartItem _selectedCartItem;
@@ -48,20 +51,21 @@ namespace ShoppingBird.Mobile.ViewModels
             AllStores = new List<StoreModel>();
             AllProducts = new List<Product>();
             CartItems = new ObservableCollection<CartItem>();
+            AllTax = new List<TaxModel>();
             this.Total = 0d;
-            //load demo data
             //LoadDemoData();
             _storeIO = new StoreIO();
             _itemIO = new ItemIO();
             _invoiceIO = new InvoiceIO();
-            InitializeCart();
+            _taxIO = new TaxIO();
 
             //act OnBarcodeRead
             ExecuteSearchCommand = new Command(OnSearch);
             CheckOutCommand = new Command(InitiateCheckOut, CanCheckOut);
             RemoveSelectedItemCommand = new Command(RemoveItem, CanRemoveItem);
             CartItemSelectionChanged = new Command<CartItem>(SetSelectedCartItem);
-            IncreaseQtyCommand = new Command<CartItem>(IncreaseSelectedItemQty);
+            IncreaseQtyCommand = new Command<CartItem>(IncreaseSelectedItemQty, CanIncreaseItemQty);
+            EditItemCommand = new Command<CartItem>(EditSelectedItem, CanEditItem);
             BarcodeRead += OnBarcodeRead_ReCalculateTotal;
             SaveCurrentState += MainPageViewModel_SaveCurrentState;
             CheckForSavedData += CheckForSavedInvoice;
@@ -69,11 +73,60 @@ namespace ShoppingBird.Mobile.ViewModels
             
 
             PropertyChanged += MainPageViewModel_PropertyChanged;
+            InitializeCart();
+
+        }
+
+        internal void UpdateUiOnItemUpdate(EditItemArgs e)
+        {
+            if (e is null) return;
+            var item = CartItems.First((x) => x.Barcode == e.Barcode);
+            if (item is null) return;
+            item.Description = e.Description;
+            item.RetailPrice = e.RetailPrice;
+
+            //update tax for cart item
+            item.TaxData.Clear();
+            var currentTax = AllTax.FirstOrDefault((x) => x.Id == e.ItemTaxId);
+            if (currentTax != null) item.TaxData.Add(currentTax);
+            item.UpdatePriceData();
+
+            OnBarcodeRead_ReCalculateTotal(this, EventArgs.Empty);
+        }
+
+        private void EditSelectedItem(CartItem cartItem)
+        {
+            try
+            {
+                //search for item with store and barcode
+                var item = _itemIO.GetItemDataByBarcode(cartItem.Barcode);
+                InitiateEditSelectedItem?.Invoke(this, new EditItemArgs()
+                {
+                    Barcode = cartItem.Barcode,
+                    CurrentStore = cartItem.Store,
+                    Description = cartItem.Description,
+                    ItemCatId = item.CategoryId,
+                    ItemSubCatId = item.SubCategoryId,
+                    ItemTaxId = item.TaxId,
+                    ItemUnitId = item.UnitId,
+                    RetailPrice = cartItem.RetailPrice
+                });
+            }
+            catch (Exception ex)
+            {
+                DisplayToast?.Invoke(this, new ToastModel()
+                {
+                    Message = $"Error editing Item!\n\n{ex.Message}",
+                    ToastLength = Plugin.Toast.Abstractions.ToastLength.Long,
+                    Type = ToastModel.MessageType.Error
+                });
+            }
         }
 
         private void IncreaseSelectedItemQty(CartItem cartItem)
         {
             cartItem.Quantity += 1;
+            OnBarcodeRead_ReCalculateTotal(this, EventArgs.Empty);
         }
 
         private void InitiateCheckOut()
@@ -94,6 +147,9 @@ namespace ShoppingBird.Mobile.ViewModels
         {
             (CheckOutCommand as Command).ChangeCanExecute();
             (RemoveSelectedItemCommand as Command).ChangeCanExecute();
+            (IncreaseQtyCommand as Command).ChangeCanExecute();
+            (EditItemCommand as Command).ChangeCanExecute();
+
         }
 
         private bool CanCheckOut()
@@ -176,10 +232,39 @@ namespace ShoppingBird.Mobile.ViewModels
 
         private void InitializeCart()
         {
-            //load all products data
-            LoadAllProductsData();
-            //load all stores
-            LoadAllStores();
+            try
+            {
+                //load all products data
+                LoadAllProductsData();
+                //load all stores
+                LoadAllStores();
+                //load all tax
+                LoadAllTax();
+            }
+            catch (Exception ex)
+            {
+                DisplayToast?.Invoke(this, new ToastModel()
+                {
+                    Message = ex.Message,
+                    ToastLength = Plugin.Toast.Abstractions.ToastLength.Long,
+                    Type = ToastModel.MessageType.Error
+                });
+            }
+
+        }
+
+        private void LoadAllTax()
+        {
+            var allTax = _taxIO.GetAllTax();
+            foreach (var item in allTax)
+            {
+                AllTax.Add(new TaxModel()
+                {
+                    Id = item.Id,
+                    Percent = double.Parse(item.Rate.ToString()),
+                    Description = item.Description
+                });
+            }
         }
 
         private void LoadAllStores()
@@ -213,6 +298,12 @@ namespace ShoppingBird.Mobile.ViewModels
                 var invoiceData = LoadSavedData(SavedData);
                 DisplaySavedData(invoiceData);
                 OnBarcodeRead_ReCalculateTotal(this, EventArgs.Empty);
+                DisplayToast?.Invoke(this, new ToastModel() 
+                {
+                    Message = "Successfully restored incomplete invoice!",
+                    ToastLength = Plugin.Toast.Abstractions.ToastLength.Long,
+                    Type = ToastModel.MessageType.Success
+                });
             }
         }
 
@@ -246,6 +337,7 @@ namespace ShoppingBird.Mobile.ViewModels
         }
 
         public List<StoreModel> AllStores { get; set; }
+        public List<TaxModel> AllTax { get; set; }
         public StoreModel SelectedStore
         {
             get => _selectedStore; set
@@ -425,13 +517,25 @@ namespace ShoppingBird.Mobile.ViewModels
             SaveCurrentState?.Invoke(this, EventArgs.Empty);
         }
 
+        private bool CanEditItem(CartItem cartItem)
+        {
+            return !(cartItem is null) && CartItems.Count > 0;
+        }
+        private bool CanIncreaseItemQty(CartItem cartItem)
+        {
+            return !(cartItem is null) && CartItems.Count > 0;
+        }
+
         private bool CanRemoveItem()
         {
-            return !(SelectedCartItem is null);
+            return !(SelectedCartItem is null) && CartItems.Count > 0;
         }
 
         private void OnBarcodeRead_ReCalculateTotal(object sender, EventArgs e)
         {
+            if (CartItems is null) return;
+            if (CartItems.Count == 0) return;
+
             Total = 0d;
             foreach (var item in CartItems)
             {
@@ -475,6 +579,8 @@ namespace ShoppingBird.Mobile.ViewModels
                 DisplayAlert?.Invoke(this, searchData.ErrorMessage);
                 return;
             }
+
+            item.Item = $"{barcode}|{searchData.Description}";
             var price = double.Parse(searchData.RetailPrice.ToString());
             var taxRate = double.Parse(searchData.Rate.ToString());
             var cartItem = new CartItem().GetPartialInvoiceItem(item, price, taxRate);
@@ -509,6 +615,8 @@ namespace ShoppingBird.Mobile.ViewModels
         {
             return SelectedStore is null ? false : !string.IsNullOrEmpty(SelectedStore.Name);
         }
+
+
 
     }
 }

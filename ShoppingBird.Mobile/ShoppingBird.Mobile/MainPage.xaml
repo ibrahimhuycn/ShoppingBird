@@ -99,25 +99,24 @@
         <StackLayout Grid.Row="5" Grid.Column="0" >
             <Frame BackgroundColor="#2196F3" Padding="5" CornerRadius="2">
                 <Grid>
-                    <StackLayout Orientation="Horizontal">
-                        <Button Text="Remove"
-                            Command="{Binding RemoveSelectedItemCommand}"
-                            x:Name="ButtonRemoveItem"/>
-                        <Button Text="Add"
-                            Command="{Binding IncreaseQtyCommand}"
-                            CommandParameter="{Binding SelectedItem , Source={x:Reference CartItemsViewCollection}}"
-                            x:Name="ButtonIncreaseQuantity"/>
-                        <Button Text="Edit"
-                            Command="{Binding RemoveSelectedItemCommand}"
-                            x:Name="ButtonEditItem"/>
-                    </StackLayout>
+                    <Button Text="Qty [ - ]" 
+                        Command="{Binding RemoveSelectedItemCommand}"
+                        x:Name="ButtonRemoveItem"/>
+                    <Button Text="Qty [ + ]" Grid.Column="1"
+                        Command="{Binding IncreaseQtyCommand}"
+                        CommandParameter="{Binding SelectedItem , Source={x:Reference CartItemsViewCollection}}"
+                        x:Name="ButtonIncreaseQuantity"/>
+                    <Button Text="Edit" Grid.Column="2"
+                        Command="{Binding EditItemCommand}"
+                        CommandParameter="{Binding SelectedItem , Source={x:Reference CartItemsViewCollection}}"
+                        x:Name="ButtonEditItem"/>
 
-                    <Label  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Margin="10,10,0,0" 
+                    <Label Grid.Column="3" Grid.ColumnSpan="3" Margin="10,10,0,0" 
                            Text="{Binding Total, StringFormat='Total: {0} MVR'}" 
                            TextColor="WhiteSmoke" FontSize="20" FontAttributes="Bold"
                            HorizontalTextAlignment="Center" />
                     
-                    <Button Grid.Row="0" Grid.Column="4" 
+                    <Button Grid.Column="6" Grid.ColumnSpan="2"
                             Text="{Binding CartItems.Count, StringFormat='Checkout ({0})'}"
                             Command="{Binding CheckOutCommand}" />
                 </Grid>

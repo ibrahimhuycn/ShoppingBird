@@ -11,5 +11,6 @@ namespace ShoppingBird.Fly.Interfaces
         List<SearchResultsAllPriceDataForItemModel> SearchAllPriceDataForItem(string itemDescription);
         ItemInsertAssistDataModel GetInsertAssistData(string barcode, int storeId);
         ItemDataModel GetItemDataByBarcode(string barcode);
+        void UpdateItem(ItemUpdateModel itemUpdate);
     }
 }
