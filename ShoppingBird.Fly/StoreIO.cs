@@ -20,7 +20,8 @@ namespace ShoppingBird.Fly
 
             using (IDbConnection cnx = new SqlConnection(CnxString))
             {
-                return cnx.Query<Store>("usp_GetAllStores", commandType: CommandType.StoredProcedure).ToList();
+                var stores = cnx.Query<Store>("usp_GetAllStores", commandType: CommandType.StoredProcedure).ToList();
+                return stores;
             }
         }
 

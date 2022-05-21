@@ -1,5 +1,6 @@
 ﻿using ShoppingBird.Fly.Models;
 using ShoppingBird.Mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 
 namespace ShoppingBird.Mobile.Models
@@ -16,7 +17,7 @@ namespace ShoppingBird.Mobile.Models
         {
             this.TaxData = new List<TaxModel>();
             this.Store = new StoreModel();
-            SetDemoTax();
+            //SetDemoTax();
             this.Quantity = 1;
         }
 
@@ -36,7 +37,7 @@ namespace ShoppingBird.Mobile.Models
             this.ItemId = product.Id;
             this.Barcode = product.Item.Split('|')[0].Trim();
             this.Description = product.Item.Split('|')[1].Trim();
-            this.RetailPrice = retailPrice;
+            this.RetailPrice = Math.Round(retailPrice, 2, MidpointRounding.AwayFromZero);
             //this.TaxAmount = CaluateTax();
             //this.Amount = RetailPrice + TaxAmount;
             UpdatePriceData();
@@ -98,7 +99,8 @@ namespace ShoppingBird.Mobile.Models
         public void UpdatePriceData()
         {
             TaxAmount = CaluateTax();
-            this.Amount = ((Quantity * RetailPrice) + TaxAmount);
+            var amount = ((Quantity * RetailPrice) + TaxAmount);
+            this.Amount = Math.Round(amount, 2, MidpointRounding.AwayFromZero);
         }
 
         private double CaluateTax()
@@ -106,9 +108,9 @@ namespace ShoppingBird.Mobile.Models
             var tax = 0d;
             foreach (var item in TaxData)
             {
-                tax += ((item.Percent / 100) * (RetailPrice * Quantity));
+                tax += ((item.Percent) * (RetailPrice * Quantity));
             }
-            return tax;
+            return Math.Round(tax,2,MidpointRounding.AwayFromZero);
         }
 
         //used only with saving and loading cart data from local storage

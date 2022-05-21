@@ -5,6 +5,7 @@
     <Authors>Ibrahim Hussain</Authors>
     <Company>Swat, Inc.</Company>
     <Product>ShoppingBird</Product>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
