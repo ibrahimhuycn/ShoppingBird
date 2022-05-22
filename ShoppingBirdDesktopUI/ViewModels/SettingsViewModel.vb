@@ -44,7 +44,8 @@ Public Class SettingsViewModel
         LoadTaxes()
     End Sub
     Private Sub LoadStores()
-        For Each store In _storeIO.GetAllStores()
+        Dim stores = _storeIO.GetAllStores()
+        For Each store In stores
             StoreList.Add(_mapper.Map(Of Store)(store))
         Next
     End Sub
@@ -66,6 +67,26 @@ Public Class SettingsViewModel
     Public Sub Dispose()
         Finalize()
     End Sub
+
+    Public Function InsertStore(ByVal store As Store) As Store
+        Dim inserted = _storeIO.SaveStore(store)
+        Return New Store() With
+        {
+            .Id = inserted.Id,
+            .Name = inserted.Name,
+            .IsTaxInclusive = inserted.IsTaxInclusive
+        }
+    End Function
+
+    Public Function UpdateStore(ByVal store As Store) As Store
+        Dim updated = _storeIO.UpdateStore(store)
+        Return New Store() With
+        {
+            .Id = updated.Id,
+            .Name = updated.Name,
+            .IsTaxInclusive = updated.IsTaxInclusive
+        }
+    End Function
 
     Public ReadOnly Property CategoryList As List(Of ItemCategory)
     Public ReadOnly Property StoreList As ObservableCollection(Of Store)

@@ -92,6 +92,8 @@
     <Build Include="Stored Procedures\usp_GetItemCatDataAndUnitWithBarcodeAndStore.sql" />
     <Build Include="Stored Procedures\usp_GetItemDataWithBarcode.sql" />
     <Build Include="Stored Procedures\usp_UpdateItem.sql" />
+    <Build Include="Stored Procedures\usp_InsertStoreAndReturnInserted.sql" />
+    <Build Include="Stored Procedures\usp_UpdateStoreAndReturnInserted.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ShoppingBirdData.refactorlog" />

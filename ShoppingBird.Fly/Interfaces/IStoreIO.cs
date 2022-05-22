@@ -7,6 +7,7 @@ namespace ShoppingBird.Fly.Interfaces
     public interface IStoreIO
     {
         IList<Store> GetAllStores();
-        int SaveStore(Store e);
+        Store SaveStore(Store e);
+        Store UpdateStore(Store e);
     }
 }

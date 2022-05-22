@@ -1,6 +1,6 @@
-﻿Imports System.Collections.ObjectModel
-Imports System.ComponentModel
+﻿Imports System.ComponentModel
 Imports AutoMapper
+Imports DevExpress.XtraEditors
 Imports ShoppingBird.Fly
 Imports ShoppingBird.Fly.Interfaces
 Imports ShoppingBird.Fly.Models
@@ -9,6 +9,7 @@ Public Class AddItemViewModel
     Inherits SettingsViewModel
     Implements INotifyPropertyChanged
 
+    Private Const StoreCannotbeNullMessage As String = "The store name cannot be null"
     Dim _barcode As String
     Dim _description As String
     Dim _id As Integer
@@ -104,4 +105,81 @@ Public Class AddItemViewModel
             RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Me.RetailPrice)))
         End Set
     End Property
+
+#Region "Store IO"
+    Private _selectedStoreName As String
+    Private _selectedStoreId As Integer
+    Private _selectedStoreIsTaxInclusive As Boolean
+
+
+    Public Property SelectedStoreName() As String
+        Get
+            Return _selectedStoreName
+        End Get
+        Set(ByVal value As String)
+            _selectedStoreName = value
+            RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Me.SelectedStoreName)))
+        End Set
+    End Property
+    Public Property SelectedStoreId() As Integer
+        Get
+            Return _selectedStoreId
+        End Get
+        Set(ByVal value As Integer)
+            _selectedStoreId = value
+            RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Me.SelectedStoreId)))
+
+        End Set
+    End Property
+    Public Property SelectedStoreIdTaxInclusive() As Boolean
+        Get
+            Return _selectedStoreIsTaxInclusive
+        End Get
+        Set(ByVal value As Boolean)
+            _selectedStoreIsTaxInclusive = value
+            RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Me.SelectedStoreIdTaxInclusive)))
+        End Set
+    End Property
+
+    Public Sub UpdateSelectedStore(selectedStore As Store)
+        If selectedStore Is Nothing Then
+            Return
+        End If
+        SelectedStoreId = selectedStore.Id
+        SelectedStoreName = selectedStore.Name
+        SelectedStoreIdTaxInclusive = selectedStore.IsTaxInclusive
+    End Sub
+
+    Friend Sub SaveOrUpdateStore()
+        If String.IsNullOrEmpty(SelectedStoreName) Then
+            Dim unused = XtraMessageBox.Show(StoreCannotbeNullMessage)
+        End If
+
+        Dim assumedNewStoreId As Integer = 0
+        If SelectedStoreId = assumedNewStoreId Then
+            Dim inserted = InsertStore(New Store() With
+                                       {.Name = SelectedStoreName,
+                                        .IsTaxInclusive = SelectedStoreIdTaxInclusive})
+            If inserted Is Nothing Then
+                Return
+            End If
+            StoreList.Add(inserted)
+        Else
+            Dim updated = UpdateStore(New Store() With
+                                       {.Id = SelectedStoreId,
+                                        .Name = SelectedStoreName,
+                                        .IsTaxInclusive = SelectedStoreIdTaxInclusive})
+            If updated Is Nothing Then
+                Return
+            End If
+            For Each store In StoreList
+                If store.Id = updated.Id Then
+                    store.Name = updated.Name
+                    store.IsTaxInclusive = updated.IsTaxInclusive
+                End If
+            Next
+        End If
+    End Sub
+
+#End Region
 End Class

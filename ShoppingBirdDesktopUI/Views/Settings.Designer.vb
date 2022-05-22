@@ -63,15 +63,16 @@ Partial Class Settings
         Me.GridControlCategories = New DevExpress.XtraGrid.GridControl()
         Me.GridViewCategories = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.XtraTabPage3 = New DevExpress.XtraTab.XtraTabPage()
-        Me.CheckEdit1 = New DevExpress.XtraEditors.CheckEdit()
-        Me.TextEdit6 = New DevExpress.XtraEditors.TextEdit()
-        Me.SimpleButton4 = New DevExpress.XtraEditors.SimpleButton()
+        Me.CheckEditSelectedStoreIsTaxInclusive = New DevExpress.XtraEditors.CheckEdit()
+        Me.TextEditSelectedStore = New DevExpress.XtraEditors.TextEdit()
+        Me.SimpleButtonSaveStore = New DevExpress.XtraEditors.SimpleButton()
         Me.GroupControl5 = New DevExpress.XtraEditors.GroupControl()
-        Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
-        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridControlStores = New DevExpress.XtraGrid.GridControl()
+        Me.GridViewStores = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
         Me.bar2 = New DevExpress.XtraBars.Bar()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.SimpleButtonNewStore = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.barManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.XtraTabControlSettings, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabControlSettings.SuspendLayout()
@@ -105,12 +106,12 @@ Partial Class Settings
         CType(Me.GridControlCategories, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridViewCategories, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.XtraTabPage3.SuspendLayout()
-        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TextEdit6.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CheckEditSelectedStoreIsTaxInclusive.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TextEditSelectedStore.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl5.SuspendLayout()
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControlStores, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridViewStores, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -510,69 +511,73 @@ Partial Class Settings
         '
         'XtraTabPage3
         '
-        Me.XtraTabPage3.Controls.Add(Me.CheckEdit1)
-        Me.XtraTabPage3.Controls.Add(Me.TextEdit6)
-        Me.XtraTabPage3.Controls.Add(Me.SimpleButton4)
+        Me.XtraTabPage3.Controls.Add(Me.SimpleButtonNewStore)
+        Me.XtraTabPage3.Controls.Add(Me.CheckEditSelectedStoreIsTaxInclusive)
+        Me.XtraTabPage3.Controls.Add(Me.TextEditSelectedStore)
+        Me.XtraTabPage3.Controls.Add(Me.SimpleButtonSaveStore)
         Me.XtraTabPage3.Controls.Add(Me.GroupControl5)
         Me.XtraTabPage3.Name = "XtraTabPage3"
         Me.XtraTabPage3.Size = New System.Drawing.Size(461, 207)
         Me.XtraTabPage3.Text = "Stores"
         '
-        'CheckEdit1
+        'CheckEditSelectedStoreIsTaxInclusive
         '
-        Me.CheckEdit1.Location = New System.Drawing.Point(281, 6)
-        Me.CheckEdit1.MenuManager = Me.barManager1
-        Me.CheckEdit1.Name = "CheckEdit1"
-        Me.CheckEdit1.Properties.Caption = "Is Tax Inclusive"
-        Me.CheckEdit1.Size = New System.Drawing.Size(102, 19)
-        Me.CheckEdit1.TabIndex = 12
-        Me.CheckEdit1.TabStop = False
+        Me.CheckEditSelectedStoreIsTaxInclusive.Location = New System.Drawing.Point(281, 6)
+        Me.CheckEditSelectedStoreIsTaxInclusive.MenuManager = Me.barManager1
+        Me.CheckEditSelectedStoreIsTaxInclusive.Name = "CheckEditSelectedStoreIsTaxInclusive"
+        Me.CheckEditSelectedStoreIsTaxInclusive.Properties.Caption = "Is Tax Inclusive"
+        Me.CheckEditSelectedStoreIsTaxInclusive.Size = New System.Drawing.Size(102, 19)
+        Me.CheckEditSelectedStoreIsTaxInclusive.TabIndex = 12
+        Me.CheckEditSelectedStoreIsTaxInclusive.TabStop = False
         '
-        'TextEdit6
+        'TextEditSelectedStore
         '
-        Me.TextEdit6.Location = New System.Drawing.Point(5, 6)
-        Me.TextEdit6.MenuManager = Me.barManager1
-        Me.TextEdit6.Name = "TextEdit6"
-        Me.TextEdit6.Properties.NullText = "Business name here..."
-        Me.TextEdit6.Size = New System.Drawing.Size(270, 20)
-        Me.TextEdit6.TabIndex = 11
+        Me.TextEditSelectedStore.Location = New System.Drawing.Point(76, 6)
+        Me.TextEditSelectedStore.MenuManager = Me.barManager1
+        Me.TextEditSelectedStore.Name = "TextEditSelectedStore"
+        Me.TextEditSelectedStore.Properties.NullText = "Business name here..."
+        Me.TextEditSelectedStore.Size = New System.Drawing.Size(199, 20)
+        Me.TextEditSelectedStore.TabIndex = 11
         '
-        'SimpleButton4
+        'SimpleButtonSaveStore
         '
-        Me.SimpleButton4.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
-        Me.SimpleButton4.ImageOptions.SvgImage = CType(resources.GetObject("SimpleButton4.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.SimpleButton4.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
-        Me.SimpleButton4.Location = New System.Drawing.Point(389, 4)
-        Me.SimpleButton4.Name = "SimpleButton4"
-        Me.SimpleButton4.Size = New System.Drawing.Size(65, 23)
-        Me.SimpleButton4.TabIndex = 10
-        Me.SimpleButton4.Text = "Save"
+        Me.SimpleButtonSaveStore.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
+        Me.SimpleButtonSaveStore.ImageOptions.SvgImage = CType(resources.GetObject("SimpleButton4.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.SimpleButtonSaveStore.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.SimpleButtonSaveStore.Location = New System.Drawing.Point(389, 4)
+        Me.SimpleButtonSaveStore.Name = "SimpleButtonSaveStore"
+        Me.SimpleButtonSaveStore.Size = New System.Drawing.Size(65, 23)
+        Me.SimpleButtonSaveStore.TabIndex = 10
+        Me.SimpleButtonSaveStore.Text = "Save"
         '
         'GroupControl5
         '
-        Me.GroupControl5.Controls.Add(Me.GridControl2)
+        Me.GroupControl5.Controls.Add(Me.GridControlStores)
         Me.GroupControl5.Location = New System.Drawing.Point(3, 31)
         Me.GroupControl5.Name = "GroupControl5"
         Me.GroupControl5.Size = New System.Drawing.Size(455, 151)
         Me.GroupControl5.TabIndex = 8
         Me.GroupControl5.Text = "Stores"
         '
-        'GridControl2
+        'GridControlStores
         '
-        Me.GridControl2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GridControl2.Location = New System.Drawing.Point(2, 20)
-        Me.GridControl2.MainView = Me.GridView2
-        Me.GridControl2.MenuManager = Me.barManager1
-        Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(451, 129)
-        Me.GridControl2.TabIndex = 0
-        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2})
+        Me.GridControlStores.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GridControlStores.Location = New System.Drawing.Point(2, 20)
+        Me.GridControlStores.MainView = Me.GridViewStores
+        Me.GridControlStores.MenuManager = Me.barManager1
+        Me.GridControlStores.Name = "GridControlStores"
+        Me.GridControlStores.Size = New System.Drawing.Size(451, 129)
+        Me.GridControlStores.TabIndex = 0
+        Me.GridControlStores.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridViewStores})
         '
-        'GridView2
+        'GridViewStores
         '
-        Me.GridView2.GridControl = Me.GridControl2
-        Me.GridView2.Name = "GridView2"
-        Me.GridView2.OptionsView.ShowGroupPanel = False
+        Me.GridViewStores.GridControl = Me.GridControlStores
+        Me.GridViewStores.Name = "GridViewStores"
+        Me.GridViewStores.OptionsBehavior.Editable = False
+        Me.GridViewStores.OptionsPrint.AutoWidth = False
+        Me.GridViewStores.OptionsView.ColumnAutoWidth = False
+        Me.GridViewStores.OptionsView.ShowGroupPanel = False
         '
         'bar2
         '
@@ -593,6 +598,17 @@ Partial Class Settings
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "Implement a way to search the item, edit store, Add it. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Search by barcode, if a" &
     "bsent, add it."
+        '
+        'SimpleButtonNewStore
+        '
+        Me.SimpleButtonNewStore.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple
+        Me.SimpleButtonNewStore.ImageOptions.SvgImage = CType(resources.GetObject("SimpleButton1.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.SimpleButtonNewStore.ImageOptions.SvgImageSize = New System.Drawing.Size(16, 16)
+        Me.SimpleButtonNewStore.Location = New System.Drawing.Point(5, 4)
+        Me.SimpleButtonNewStore.Name = "SimpleButtonNewStore"
+        Me.SimpleButtonNewStore.Size = New System.Drawing.Size(65, 23)
+        Me.SimpleButtonNewStore.TabIndex = 13
+        Me.SimpleButtonNewStore.Text = "New"
         '
         'Settings
         '
@@ -640,12 +656,12 @@ Partial Class Settings
         CType(Me.GridControlCategories, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridViewCategories, System.ComponentModel.ISupportInitialize).EndInit()
         Me.XtraTabPage3.ResumeLayout(False)
-        CType(Me.CheckEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TextEdit6.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CheckEditSelectedStoreIsTaxInclusive.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TextEditSelectedStore.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl5.ResumeLayout(False)
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControlStores, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridViewStores, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -680,12 +696,11 @@ Partial Class Settings
     Friend WithEvents GridControlCategories As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridViewCategories As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents XtraTabPage3 As DevExpress.XtraTab.XtraTabPage
-    Friend WithEvents CheckEdit1 As DevExpress.XtraEditors.CheckEdit
-    Friend WithEvents TextEdit6 As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents SimpleButton4 As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents CheckEditSelectedStoreIsTaxInclusive As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents TextEditSelectedStore As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents SimpleButtonSaveStore As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GroupControl5 As DevExpress.XtraEditors.GroupControl
-    Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridControlStores As DevExpress.XtraGrid.GridControl
     Friend WithEvents BehaviorManager1 As DevExpress.Utils.Behaviors.BehaviorManager
     Friend WithEvents BarButtonItem2 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents bar2 As DevExpress.XtraBars.Bar
@@ -703,4 +718,6 @@ Partial Class Settings
     Friend WithEvents GridColumnPrice As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents TextEditBarcode As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LookUpEditItemUnit As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents SimpleButtonNewStore As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents GridViewStores As DevExpress.XtraGrid.Views.Grid.GridView
 End Class

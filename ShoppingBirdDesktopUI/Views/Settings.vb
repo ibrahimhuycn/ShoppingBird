@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports AutoMapper
+Imports DevExpress.Data
 Imports ShoppingBird.Fly
 Imports ShoppingBird.Fly.Interfaces
 Imports ShoppingBird.Fly.Models
@@ -16,6 +17,25 @@ Public Class Settings
         _mapper = mapper
         Me.ItemList = SharedFunctions.LoadItemList(_addItem?.GetCurrentItemList())
         BindItemAndPriceData()
+
+        AddHandler GridViewStores.FocusedRowChanged, AddressOf FocusedStoreChanged
+        AddHandler SimpleButtonSaveStore.Click, AddressOf SaveOrUpdateStore
+        AddHandler SimpleButtonNewStore.Click, AddressOf SetStoreIdToZero
+    End Sub
+
+    Private Sub SetStoreIdToZero(sender As Object, e As EventArgs)
+        _addItem.SelectedStoreId = 0
+    End Sub
+
+    Private Sub SaveOrUpdateStore(sender As Object, e As EventArgs)
+        _addItem.SaveOrUpdateStore()
+    End Sub
+
+    Private Sub FocusedStoreChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs)
+        Dim rowHandler = GridViewStores.GetSelectedRows().FirstOrDefault()
+        Dim selectedStore As Store = CType(GridViewStores.GetRow(rowHandler), Store)
+
+        _addItem.UpdateSelectedStore(selectedStore)
     End Sub
 
     Public ReadOnly Property ItemList As List(Of ItemListAllModel)
@@ -67,6 +87,12 @@ Public Class Settings
         LookUpEditTax.Properties.DataSource = _addItem.TaxList
         LookUpEditTax.Properties.DisplayMember = NameOf(Tax.Description)
         LookUpEditTax.Properties.ValueMember = NameOf(Tax.Id)
+
+#Region "Store Settings"
+        GridControlStores.DataSource = _addItem.StoreList
+        TextEditSelectedStore.DataBindings.Add(New Binding("Text", _addItem, NameOf(_addItem.SelectedStoreName), False, DataSourceUpdateMode.OnPropertyChanged))
+        CheckEditSelectedStoreIsTaxInclusive.DataBindings.Add(New Binding("Checked", _addItem, NameOf(_addItem.SelectedStoreIdTaxInclusive), False, DataSourceUpdateMode.OnPropertyChanged))
+#End Region
     End Sub
 
 
