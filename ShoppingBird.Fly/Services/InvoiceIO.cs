@@ -16,7 +16,7 @@ namespace ShoppingBird.Fly.Services
         {
             _dataAccessBase = dataAccessBase;
         }
-        public async Task SaveInvoiceAsync(NewInvoiceModel e)
+        public async Task<int> SaveInvoiceAsync(NewInvoiceModel e)
         {
             var storedProcedure = "[dbo].[usp_InsertInvoiceAndInvoiceDetails]";
             var parameters = new 
@@ -30,7 +30,8 @@ namespace ShoppingBird.Fly.Services
                 InvoiceDetails = _dataAccessBase.GetInvoiceDetailsUDT(e.CartItems)
             };
 
-            _ = await _dataAccessBase.SelectInsertOrUpdateAsync<dynamic, dynamic>(storedProcedure, parameters);
+            var insertedInvoiceId = await _dataAccessBase.SelectInsertOrUpdateAsync<int, dynamic>(storedProcedure, parameters);
+            return insertedInvoiceId;
         }
     }
 }

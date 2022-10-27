@@ -1,5 +1,5 @@
 ﻿using DevExpress.XtraEditors;
-using ShoppingBird.Desktop.Transations;
+using ShoppingBird.Desktop.Translations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +15,11 @@ namespace ShoppingBird.Desktop.Helpers
         {
             if (string.IsNullOrEmpty(header)) { header = GlobalStrings.AnErrorOccurred;}
             XtraMessageBox.Show($"{ex.Message}\n{ex.StackTrace}", header, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        public static void ShowMessage(string message, string header = "")
+        {
+            if (string.IsNullOrEmpty(header)) { header = GlobalStrings.AnErrorOccurred; }
+            XtraMessageBox.Show(message, header, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static DialogResult ShowMessageWithResult(Exception ex, string header = "", MessageBoxButtons messageBoxButtons = MessageBoxButtons.YesNo)

@@ -24,13 +24,7 @@ BEGIN
 	INSERT INTO [dbo].[InvoiceDetails] ([InvoiceId],[ItemId],[Price],[Quantity])
 	SELECT @InvoiceId, ItemId, Price, Quantity FROM @InvoiceDetails;
 
-	SELECT Id, StoreId, Number, AdjustAmount, Total, UserId, [Date]
-	FROM [dbo].[Invoice]
-	WHERE Id = @InvoiceId;
-
-	SELECT [Id], [InvoiceId], [ItemId], [Price], [Quantity]
-	FROM dbo.InvoiceDetails
-	WHERE InvoiceId = @InvoiceId;
+	SELECT @InvoiceId;
 
 	--drop temp tables
 	DROP TABLE #InsertedInvoice;

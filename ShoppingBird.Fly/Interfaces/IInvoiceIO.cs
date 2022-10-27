@@ -5,6 +5,6 @@ namespace ShoppingBird.Fly.Interfaces
 {
     public interface IInvoiceIO
     {
-        Task SaveInvoiceAsync(NewInvoiceModel e);
+        Task<int> SaveInvoiceAsync(NewInvoiceModel e);
     }
 }

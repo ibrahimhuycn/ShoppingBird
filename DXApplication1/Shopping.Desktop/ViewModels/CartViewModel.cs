@@ -180,7 +180,8 @@ namespace ShoppingBird.Desktop.ViewModels
             };
 
             var mapped = _mapper.Map<Fly.Models.NewInvoiceModel>(invoiceModel);
-            await _invoiceIO.SaveInvoiceAsync(mapped);
+            var insertedInvoiceId = await _invoiceIO.SaveInvoiceAsync(mapped);
+            Helpers.NotificationHelper.ShowMessage($"Cart Items saved. Invoice Id #{insertedInvoiceId}");
         }
 
         #endregion
