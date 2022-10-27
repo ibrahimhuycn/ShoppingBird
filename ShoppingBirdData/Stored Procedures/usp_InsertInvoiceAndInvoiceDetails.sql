@@ -1,7 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[usp_InsertInvoiceAndInvoiceDetails]
 	@StoreId INT,
-	@Number INT,
-	@SubTotal DECIMAL(13,4),
+	@Number VARCHAR(10),
 	@AdjustAmount DECIMAL(13,4),
 	@Total DECIMAL(13,4),
 	@UserId INT,
@@ -15,9 +14,9 @@ BEGIN
 	CREATE TABLE #InsertedInvoice([Id] INT);
 	DECLARE @InvoiceId int;
 
-	INSERT INTO [dbo].[Invoice] ([StoreId],[Number],[SubTotal],[AdjustAmount],[Total],[UserId],[Date])
+	INSERT INTO [dbo].[Invoice] ([StoreId],[Number],[AdjustAmount],[Total],[UserId],[Date])
 	OUTPUT INSERTED.Id INTO #InsertedInvoice
-	VALUES (@StoreId,@Number,@SubTotal,@AdjustAmount,@Total,@UserId,@Date)
+	VALUES (@StoreId,@Number,@AdjustAmount,@Total,@UserId,@Date)
 
 	--IMPORTANT: Do not enter multiple multiple records to dbo.Invoice at once. That will lead to multiple Ids begin in the temp table and the SELECT TOP 1 begin unrelaible returning randomly unless ORDER BY is used 
 	SELECT TOP 1 @InvoiceId = [Id] FROM #InsertedInvoice;
@@ -25,7 +24,7 @@ BEGIN
 	INSERT INTO [dbo].[InvoiceDetails] ([InvoiceId],[ItemId],[Price],[Quantity])
 	SELECT @InvoiceId, ItemId, Price, Quantity FROM @InvoiceDetails;
 
-	SELECT Id, StoreId, Number, Subtotal, AdjustAmount, Total, UserId, [Date]
+	SELECT Id, StoreId, Number, AdjustAmount, Total, UserId, [Date]
 	FROM [dbo].[Invoice]
 	WHERE Id = @InvoiceId;
 

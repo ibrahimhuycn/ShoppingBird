@@ -14,6 +14,7 @@ namespace ShoppingBird.Desktop.ViewModels
         BindingList<CartItemModel> AllCartItems { get; set; }
         decimal TotalCartAmount { get; set; }
         decimal AdjustmentAmount { get; set; }
+        string InvoiceNumber { get; set; }
 
         Task AddSelectedItemToCart();
         void CalculateTotalCartAmount();

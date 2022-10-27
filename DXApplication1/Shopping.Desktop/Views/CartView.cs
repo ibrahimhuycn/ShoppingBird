@@ -27,7 +27,7 @@ namespace ShoppingBird.Desktop.Views
 
         private void SimpleButtonCheckout_Click(object sender, EventArgs e)
         {
-           CheckoutCurrentCart(Keys.F6);
+            CheckoutCurrentCart(Keys.F6);
         }
 
         private void SimpleButtonSetCartLabel_Click(object sender, EventArgs e)
@@ -51,6 +51,9 @@ namespace ShoppingBird.Desktop.Views
         {
             if (keyCode == Keys.F6)
             {
+                var invoiceNumber = XtraInputBox.Show("Please enter the invoice / bill number.", "Invoice Number Required", "");
+                if (invoiceNumber == "") { XtraMessageBox.Show("Invoice number cannot be zero. Please try again."); return; }
+                _viewModel.InvoiceNumber = invoiceNumber;
                 _viewModel.SaveCurrentCart();
             }
         }

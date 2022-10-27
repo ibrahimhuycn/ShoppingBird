@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Shopping.Desktop.Models;
 using ShoppingBird.Desktop.Exceptions;
 using ShoppingBird.Desktop.Helpers;
 using ShoppingBird.Desktop.Models;
@@ -47,6 +48,7 @@ namespace ShoppingBird.Desktop.ViewModels
         public List<ItemListAllModel> ItemSearchDatasource { get; set; }
         public BindingList<CartItemModel> AllCartItems { get; set; }
         public List<StoreModel> AllStores { get; set; }
+        public string InvoiceNumber { get; set; }
         public decimal AdjustmentAmount
         {
             get => _adjustmentAmount; set
@@ -163,7 +165,15 @@ namespace ShoppingBird.Desktop.ViewModels
 
         private async void CartViewModel_OnSaveCartRequested(object sender, EventArgs e)
         {
-            //_ = await _invoiceIO.SaveInvoiceAsync()
+            var invoiceModel = new NewInvoiceModel()
+            {
+                Invoice = new InvoiceModel()
+                {
+                    StoreId = SelectedStoreId,
+                    Number = InvoiceNumber
+                }
+            };
+            await _invoiceIO.SaveInvoiceAsync(new Fly.Models.NewInvoiceModel());
         }
 
         #endregion

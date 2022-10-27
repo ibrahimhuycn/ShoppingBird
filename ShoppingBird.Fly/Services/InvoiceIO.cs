@@ -23,7 +23,6 @@ namespace ShoppingBird.Fly.Services
             {
                 StoreId = e.Invoice.StoreId,
                 Number = e.Invoice.Number,
-                SubTotal = e.Invoice.SubTotal,
                 AdjustAmount = e.Invoice.AdjustAmount,
                 Total = e.Invoice.Total,
                 UserId = e.Invoice.UserId,
