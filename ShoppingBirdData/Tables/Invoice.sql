@@ -2,7 +2,7 @@
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
     [StoreId] INT NOT NULL, 
-    [Number] VARCHAR(10) NOT NULL /*Bill Number | Invoice Number etc...*/, 
+    [Number] VARCHAR(50) NOT NULL /*Bill Number | Invoice Number etc...*/, 
     [AdjustAmount] DECIMAL(13,4)  NOT NULL, 
     [Total] DECIMAL(13,4)  NOT NULL, 
     [UserId] INT NOT NULL /*This is the Id of the application user. Not the sales assistant at the desk*/, 

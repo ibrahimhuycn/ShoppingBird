@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[usp_InsertInvoiceAndInvoiceDetails]
 	@StoreId INT,
-	@Number VARCHAR(10),
+	@Number VARCHAR(50),
 	@AdjustAmount DECIMAL(13,4),
 	@Total DECIMAL(13,4),
 	@UserId INT,

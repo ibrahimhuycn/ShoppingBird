@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using AutoMapper;
+using Shopping.Desktop.Models;
 using ShoppingBird.Desktop.Models;
 using ShoppingBird.Fly.DataAccess;
 using System;
@@ -23,6 +24,8 @@ namespace ShoppingBird.Desktop
                 config.CreateMap<ItemListAllModel, ShoppingBird.Fly.Models.ItemListAllModel>().ReverseMap();
                 config.CreateMap<StoreModel, ShoppingBird.Fly.Models.StoreModel>().ReverseMap();
                 config.CreateMap<CartItemModel, ShoppingBird.Fly.Models.CartItemModel>().ReverseMap();
+                config.CreateMap<NewInvoiceModel, ShoppingBird.Fly.Models.NewInvoiceModel>().ReverseMap();
+                config.CreateMap<InvoiceModel, ShoppingBird.Fly.Models.InvoiceModel>().ReverseMap();
             })).AsSelf().SingleInstance();
 
             builder.Register(c =>

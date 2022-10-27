@@ -1,9 +1,5 @@
 ﻿using DevExpress.UserSkins;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ShoppingBird.Desktop
@@ -16,7 +12,20 @@ namespace ShoppingBird.Desktop
             Application.SetCompatibleTextRenderingDefault(false);
 
             BonusSkins.Register();
-            Application.Run(new MainView());
+            try
+            {
+                Application.Run(new MainView());
+            }
+            catch (Exception ex)
+            {
+                var exception = ex;
+                Helpers.NotificationHelper.ShowMessage(ex);
+                while (exception.InnerException != null)
+                {
+                    Helpers.NotificationHelper.ShowMessage(ex);
+                    exception = ex.InnerException;
+                }
+            }
         }
     }
 }

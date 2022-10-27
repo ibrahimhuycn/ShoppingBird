@@ -170,10 +170,17 @@ namespace ShoppingBird.Desktop.ViewModels
                 Invoice = new InvoiceModel()
                 {
                     StoreId = SelectedStoreId,
-                    Number = InvoiceNumber
-                }
+                    Number = InvoiceNumber,
+                    AdjustAmount = AdjustmentAmount,
+                    Total = TotalCartAmount,
+                    UserId = 1,
+                    InvoiceDate = DateTime.Today
+                },
+                CartItems = AllCartItems.ToList()
             };
-            await _invoiceIO.SaveInvoiceAsync(new Fly.Models.NewInvoiceModel());
+
+            var mapped = _mapper.Map<Fly.Models.NewInvoiceModel>(invoiceModel);
+            await _invoiceIO.SaveInvoiceAsync(mapped);
         }
 
         #endregion
