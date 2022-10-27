@@ -51,6 +51,9 @@ namespace ShoppingBird.Desktop.Views
             //End date
             dateEditEndDate.DataBindings.Add(new Binding("EditValue", _viewModel, nameof(_viewModel.EndDate),
                 false, DataSourceUpdateMode.OnPropertyChanged));
+            //checkEditGetCompleteTransactionHistory
+            checkEditGetCompleteTransactionHistory.DataBindings.Add(new Binding("Checked", _viewModel,
+                nameof(_viewModel.IsGetCompleteTransactionHistory), false, DataSourceUpdateMode.OnPropertyChanged));
         }
     }
 }

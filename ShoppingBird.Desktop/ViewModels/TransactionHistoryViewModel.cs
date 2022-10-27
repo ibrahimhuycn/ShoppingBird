@@ -14,8 +14,9 @@ namespace ShoppingBird.Desktop.ViewModels
         #region Private Properties
         private readonly IInvoiceIO _invoiceIO;
         private readonly IMapper _mapper;
-        private DateTime? _startDate;
-        private DateTime? _endDate;
+        private DateTime _startDate;
+        private DateTime _endDate;
+        private bool _isGetCompleteTransactionHistory;
         #endregion
 
         #region Constructor
@@ -24,12 +25,16 @@ namespace ShoppingBird.Desktop.ViewModels
             TransactionHistory = new BindingList<TransactionHistoryModel>();
             _invoiceIO = invoiceIO;
             _mapper = mapper;
+
+            StartDate = DateTime.Today;
+            EndDate = DateTime.Today;
+            IsGetCompleteTransactionHistory = false;
         }
         #endregion
 
         #region Public properties
         public BindingList<TransactionHistoryModel> TransactionHistory { get; set; }
-        public DateTime? StartDate
+        public DateTime StartDate
         {
             get => _startDate; set
             {
@@ -37,11 +42,19 @@ namespace ShoppingBird.Desktop.ViewModels
                 OnPropertyChanged();
             }
         }
-        public DateTime? EndDate
+        public DateTime EndDate
         {
             get => _endDate; set
             {
                 _endDate = value;
+                OnPropertyChanged();
+            }
+        }
+        public bool IsGetCompleteTransactionHistory
+        {
+            get => _isGetCompleteTransactionHistory; set
+            {
+                _isGetCompleteTransactionHistory = value;
                 OnPropertyChanged();
             }
         }
@@ -52,12 +65,18 @@ namespace ShoppingBird.Desktop.ViewModels
         {
             try
             {
-                var transactionHistory = await _invoiceIO.GetTransactionHistoryAsync();
-                var mappedTransactionHistory = _mapper.Map<List<TransactionHistoryModel>>(transactionHistory);
-
-                foreach (var item in mappedTransactionHistory)
+                TransactionHistory.Clear();
+                if (IsGetCompleteTransactionHistory)
                 {
-                    TransactionHistory.Add(item);
+                    var transactionHistory = await _invoiceIO.GetTransactionHistoryAsync();
+                    var mappedTransactionHistory = _mapper.Map<List<TransactionHistoryModel>>(transactionHistory);
+                    DisplayTransactionHistory(mappedTransactionHistory);
+                }
+                else
+                {
+                    var transactionHistory = await _invoiceIO.GetTransactionHistoryAsync(StartDate, EndDate);
+                    var mappedTransactionHistory = _mapper.Map<List<TransactionHistoryModel>>(transactionHistory);
+                    DisplayTransactionHistory(mappedTransactionHistory);
                 }
             }
             catch (Exception ex)
@@ -65,6 +84,15 @@ namespace ShoppingBird.Desktop.ViewModels
                 Helpers.NotificationHelper.ShowMessage(ex, "Error Loading Transaction History");
             }
 
+        }
+
+        private void DisplayTransactionHistory(List<TransactionHistoryModel> transactionHistory)
+        {
+
+            foreach (var item in transactionHistory)
+            {
+                TransactionHistory.Add(item);
+            }
         }
         #endregion
     }

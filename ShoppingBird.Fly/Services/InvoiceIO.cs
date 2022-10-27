@@ -40,6 +40,18 @@ namespace ShoppingBird.Fly.Services
             var data = await _dataAccessBase.LoadDataAsync<TransactionHistoryModel>(storedProcedure);
             return data;
         }
+        public async Task<List<TransactionHistoryModel>> GetTransactionHistoryAsync(DateTime startDate, DateTime endDate)
+        {
+            var storedProcedure = "[dbo].[usp_GetTransactionHistoryForPeriod]";
+            var parameters = new
+            {
+                StartDate = $"{startDate:yyyy-MM-dd} 00:00:00.000",
+                EndDate = $"{endDate:yyyy-MM-dd} 23:59:59.999",
+            };
+            var data = await _dataAccessBase.LoadDataWithParameterAsync<TransactionHistoryModel, dynamic>
+                (storedProcedure, parameters);
+            return data;
+        }
     }
 }
  

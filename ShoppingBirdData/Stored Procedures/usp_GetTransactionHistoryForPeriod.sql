@@ -1,4 +1,6 @@
-﻿CREATE PROCEDURE [dbo].[usp_GetTransactionHistory]
+﻿CREATE PROCEDURE [dbo].[usp_GetTransactionHistoryForPeriod]
+    @StartDate VARCHAR(25),
+    @EndDate VARCHAR(25)
 AS
 BEGIN
     select INV.Id AS [InvoiceId],
@@ -17,4 +19,5 @@ BEGIN
     inner join InvoiceDetails ID on INV.Id = ID.InvoiceId
     inner join Store S on S.Id = INV.StoreId
     inner join Item I on I.Id = ID.ItemId
+    where [Date] BETWEEN @StartDate AND @EndDate;
 END

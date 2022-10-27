@@ -31,23 +31,25 @@ namespace ShoppingBird.Desktop.Views
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransactionHistoryView));
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
+            this.simpleButtonFetchTransactionHistory = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.dateEditEndDate = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.dateEditStartDate = new DevExpress.XtraEditors.DateEdit();
             this.gridControlTransactionHistory = new DevExpress.XtraGrid.GridControl();
             this.gridViewTransactionHistory = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEditEndDate = new DevExpress.XtraEditors.DateEdit();
-            this.simpleButtonFetchTransactionHistory = new DevExpress.XtraEditors.SimpleButton();
+            this.checkEditGetCompleteTransactionHistory = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditStartDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditStartDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlTransactionHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTransactionHistory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditGetCompleteTransactionHistory.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerMain
@@ -61,6 +63,7 @@ namespace ShoppingBird.Desktop.Views
             // 
             // splitContainerMain.Panel1
             // 
+            this.splitContainerMain.Panel1.Controls.Add(this.checkEditGetCompleteTransactionHistory);
             this.splitContainerMain.Panel1.Controls.Add(this.simpleButtonFetchTransactionHistory);
             this.splitContainerMain.Panel1.Controls.Add(this.labelControl2);
             this.splitContainerMain.Panel1.Controls.Add(this.dateEditEndDate);
@@ -73,6 +76,47 @@ namespace ShoppingBird.Desktop.Views
             this.splitContainerMain.Size = new System.Drawing.Size(1446, 716);
             this.splitContainerMain.SplitterDistance = 80;
             this.splitContainerMain.TabIndex = 0;
+            // 
+            // simpleButtonFetchTransactionHistory
+            // 
+            this.simpleButtonFetchTransactionHistory.Location = new System.Drawing.Point(452, 31);
+            this.simpleButtonFetchTransactionHistory.Name = "simpleButtonFetchTransactionHistory";
+            this.simpleButtonFetchTransactionHistory.Size = new System.Drawing.Size(214, 36);
+            this.simpleButtonFetchTransactionHistory.TabIndex = 5;
+            this.simpleButtonFetchTransactionHistory.Text = "Fetch Trasaction History [ F2 ]";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(232, 12);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(54, 13);
+            this.labelControl2.TabIndex = 4;
+            this.labelControl2.Text = "END DATE";
+            // 
+            // dateEditEndDate
+            // 
+            this.dateEditEndDate.EditValue = null;
+            this.dateEditEndDate.Location = new System.Drawing.Point(232, 31);
+            this.dateEditEndDate.Name = "dateEditEndDate";
+            this.dateEditEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditEndDate.Properties.NullDate = "";
+            this.dateEditEndDate.Size = new System.Drawing.Size(214, 36);
+            this.dateEditEndDate.TabIndex = 3;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(12, 12);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(64, 13);
+            this.labelControl1.TabIndex = 2;
+            this.labelControl1.Text = "START DATE";
             // 
             // dateEditStartDate
             // 
@@ -103,46 +147,13 @@ namespace ShoppingBird.Desktop.Views
             this.gridViewTransactionHistory.GridControl = this.gridControlTransactionHistory;
             this.gridViewTransactionHistory.Name = "gridViewTransactionHistory";
             // 
-            // labelControl1
+            // checkEditGetCompleteTransactionHistory
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(12, 12);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(64, 13);
-            this.labelControl1.TabIndex = 2;
-            this.labelControl1.Text = "START DATE";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(232, 12);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(54, 13);
-            this.labelControl2.TabIndex = 4;
-            this.labelControl2.Text = "END DATE";
-            // 
-            // dateEditEndDate
-            // 
-            this.dateEditEndDate.EditValue = null;
-            this.dateEditEndDate.Location = new System.Drawing.Point(232, 31);
-            this.dateEditEndDate.Name = "dateEditEndDate";
-            this.dateEditEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditEndDate.Properties.NullDate = "";
-            this.dateEditEndDate.Size = new System.Drawing.Size(214, 36);
-            this.dateEditEndDate.TabIndex = 3;
-            // 
-            // simpleButtonFetchTransactionHistory
-            // 
-            this.simpleButtonFetchTransactionHistory.Location = new System.Drawing.Point(452, 31);
-            this.simpleButtonFetchTransactionHistory.Name = "simpleButtonFetchTransactionHistory";
-            this.simpleButtonFetchTransactionHistory.Size = new System.Drawing.Size(214, 36);
-            this.simpleButtonFetchTransactionHistory.TabIndex = 5;
-            this.simpleButtonFetchTransactionHistory.Text = "Fetch Trasaction History [ F2 ]";
+            this.checkEditGetCompleteTransactionHistory.Location = new System.Drawing.Point(672, 27);
+            this.checkEditGetCompleteTransactionHistory.Name = "checkEditGetCompleteTransactionHistory";
+            this.checkEditGetCompleteTransactionHistory.Properties.Caption = "Get Complete Transaction History";
+            this.checkEditGetCompleteTransactionHistory.Size = new System.Drawing.Size(253, 44);
+            this.checkEditGetCompleteTransactionHistory.TabIndex = 6;
             // 
             // TransactionHistoryView
             // 
@@ -159,12 +170,13 @@ namespace ShoppingBird.Desktop.Views
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditStartDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditStartDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlTransactionHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTransactionHistory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditEndDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditGetCompleteTransactionHistory.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -179,5 +191,6 @@ namespace ShoppingBird.Desktop.Views
         private DevExpress.XtraEditors.DateEdit dateEditEndDate;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButtonFetchTransactionHistory;
+        private DevExpress.XtraEditors.CheckEdit checkEditGetCompleteTransactionHistory;
     }
 }
