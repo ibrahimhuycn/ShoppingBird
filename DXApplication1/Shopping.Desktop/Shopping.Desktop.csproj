@@ -64,6 +64,9 @@
       <HintPath>..\..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.4, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Data.SqlClient.4.8.4\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
@@ -98,6 +101,16 @@
     <Compile Include="IShoppingBirdApplication.cs" />
     <Compile Include="Models\ItemListAllModel.cs" />
     <Compile Include="ShoppingBirdApplication.cs" />
+    <Compile Include="Transations\GlobalStrings.dv-MV.Designer.cs">
+      <DependentUpon>GlobalStrings.dv-MV.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Transations\GlobalStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\ICartViewModel.cs" />
     <Compile Include="Views\CartView.cs">
@@ -114,6 +127,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Transations\GlobalStrings.dv-MV.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalStrings.dv-MV.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transations\GlobalStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CartView.dv-MV.resx">
+      <DependentUpon>CartView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CartView.resx">
       <DependentUpon>CartView.cs</DependentUpon>
     </EmbeddedResource>

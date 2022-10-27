@@ -85,7 +85,6 @@
     <Build Include="Stored Procedures\usp_InsertItemPrice.sql" />
     <Build Include="Stored Procedures\usp_SearchItemIdByItemDescription.sql" />
     <Build Include="Stored Procedures\usp_ItemPriceDataByBarcode.sql" />
-    <Build Include="Stored Procedures\usp_GetAllCategories.sql" />
     <Build Include="Stored Procedures\usp_GetAllUnits.sql" />
     <Build Include="Stored Procedures\usp_GetAllTax.sql" />
     <Build Include="Stored Procedures\usp_GetAllPricesDataForItem.sql" />
@@ -97,12 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ShoppingBirdData.refactorlog" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ShoppingBirdData.publish.xml" />
-    <None Include="ProductionShoppingBirdData.publish.xml" />
-    <None Include="ShoppingBirdData_1.publish.xml" />
-    <None Include="pShoppingBirdData_Azure.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment_ItemInsert.sql" />

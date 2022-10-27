@@ -1,0 +1,14 @@
+{
+  "ConnectionName": [
+    {
+      "Name": "pShoppingBird",
+      "ConnectionString": "Server=192.168.100.4;Database=pShoppingBird;User Id=sa;Password=Bismillah.123!;",
+      "Provider": "System.Data.SqlClient"
+    },
+    {
+      "Name": "Testing",
+      "ConnectionString": "Server=localhost, 10433;Database=DbName;User Id=sa;Password=Bismillah.123!;",
+      "Provider": "System.Data.SqlClient"
+    }
+  ]
+}

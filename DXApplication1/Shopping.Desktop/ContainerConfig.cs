@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using AutoMapper;
 using Shopping.Desktop.Models;
+using ShoppingBird.Fly.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,8 @@ namespace Shopping.Desktop
             builder.RegisterType<AutofacFormFactory>().As<IFormFactory>();
 
             #region Register Data access services
+            builder.RegisterType<DataAccessBase>().As<IDataAccessBase>().SingleInstance();
+
             builder.RegisterAssemblyTypes(Assembly.Load("ShoppingBird.Fly"))
                 .Where(t=> t.Namespace.Contains("Services") || t.Namespace.Contains("Interfaces"))
                 .As(t => t.GetInterfaces().FirstOrDefault(i => i.Name == "I"+ t.Name));

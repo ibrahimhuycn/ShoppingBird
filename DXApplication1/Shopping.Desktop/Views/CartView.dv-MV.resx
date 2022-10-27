@@ -118,386 +118,42 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="splitContainerMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="splitContainerMain.Panel1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="splitContainerMain.IsSplitterFixed" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="splitContainerCart.Panel1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="splitContainerMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="splitContainerMain.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
-    <value>Horizontal</value>
-  </data>
-  <data name="lookUpEditSearch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="lookUpEditSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <assembly alias="DevExpress.Utils.v18.2" name="DevExpress.Utils.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="lookUpEditSearch.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v18.2">
-    <value>Search</value>
-  </data>
-  <data name="lookUpEditSearch.Properties.NullText" xml:space="preserve">
-    <value>Scan product barcode or search by product name, press [ Enter ] to search</value>
-  </data>
-  <data name="lookUpEditSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1411, 36</value>
-  </data>
-  <data name="lookUpEditSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lookUpEditSearch.Name" xml:space="preserve">
-    <value>lookUpEditSearch</value>
-  </data>
-  <data name="&gt;&gt;lookUpEditSearch.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LookUpEdit, DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lookUpEditSearch.Parent" xml:space="preserve">
-    <value>splitContainerMain.Panel1</value>
-  </data>
-  <data name="&gt;&gt;lookUpEditSearch.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitContainerMain.Panel1.Name" xml:space="preserve">
-    <value>splitContainerMain.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainerMain.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainerMain.Panel1.Parent" xml:space="preserve">
-    <value>splitContainerMain</value>
-  </data>
-  <data name="&gt;&gt;splitContainerMain.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainerCart.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="splitContainerCart.IsSplitterFixed" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="splitContainerCart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="gridControlCart.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="gridControlCart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="gridColumnDescription.Caption" xml:space="preserve">
-    <value>Product Name</value>
-  </data>
-  <data name="gridColumnDescription.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="gridColumnDescription.VisibleIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="gridColumnDescription.Width" type="System.Int32, mscorlib">
-    <value>657</value>
-  </data>
-  <data name="gridColumnQuantity.Caption" xml:space="preserve">
-    <value>Qty</value>
-  </data>
-  <data name="gridColumnQuantity.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="gridColumnQuantity.VisibleIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="gridColumnQuantity.Width" type="System.Int32, mscorlib">
-    <value>68</value>
-  </data>
-  <data name="gridColumnUnit.Caption" xml:space="preserve">
-    <value>Unit</value>
-  </data>
-  <data name="gridColumnUnit.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="gridColumnUnit.VisibleIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="gridColumnUnit.Width" type="System.Int32, mscorlib">
-    <value>79</value>
-  </data>
-  <data name="gridColumnRate.Caption" xml:space="preserve">
-    <value>Rate</value>
-  </data>
-  <data name="gridColumnRate.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="gridColumnRate.VisibleIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="gridColumnRate.Width" type="System.Int32, mscorlib">
-    <value>79</value>
-  </data>
-  <data name="gridColumnAmount.Caption" xml:space="preserve">
-    <value>Amount</value>
-  </data>
-  <data name="gridColumnAmount.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="gridColumnAmount.VisibleIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="gridColumnAmount.Width" type="System.Int32, mscorlib">
-    <value>99</value>
-  </data>
-  <data name="gridColumnBarcode.Caption" xml:space="preserve">
-    <value>Barcode</value>
-  </data>
-  <data name="gridColumnBarcode.Visible" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="gridColumnBarcode.VisibleIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="gridColumnBarcode.Width" type="System.Int32, mscorlib">
-    <value>124</value>
-  </data>
-  <data name="gridControlCart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1148, 602</value>
-  </data>
-  <data name="gridControlCart.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;gridControlCart.Name" xml:space="preserve">
-    <value>gridControlCart</value>
-  </data>
-  <data name="&gt;&gt;gridControlCart.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;gridControlCart.Parent" xml:space="preserve">
-    <value>splitContainerCart.Panel1</value>
-  </data>
-  <data name="&gt;&gt;gridControlCart.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitContainerCart.Panel1.Name" xml:space="preserve">
-    <value>splitContainerCart.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainerCart.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainerCart.Panel1.Parent" xml:space="preserve">
-    <value>splitContainerCart</value>
-  </data>
-  <data name="&gt;&gt;splitContainerCart.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="simpleButtonEditQuantity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 120</value>
-  </data>
-  <data name="simpleButtonEditQuantity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 23</value>
-  </data>
-  <data name="simpleButtonEditQuantity.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="simpleButtonEditQuantity.Text" xml:space="preserve">
-    <value>Edit Qty [ F12 ]</value>
-  </data>
-  <data name="&gt;&gt;simpleButtonEditQuantity.Name" xml:space="preserve">
-    <value>simpleButtonEditQuantity</value>
-  </data>
-  <data name="&gt;&gt;simpleButtonEditQuantity.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;simpleButtonEditQuantity.Parent" xml:space="preserve">
-    <value>splitContainerCart.Panel2</value>
-  </data>
-  <data name="&gt;&gt;simpleButtonEditQuantity.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>127, 130</value>
   </data>
   <data name="simpleButtonSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 149</value>
-  </data>
-  <data name="simpleButtonSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 23</value>
-  </data>
-  <data name="simpleButtonSave.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="simpleButtonSave.Text" xml:space="preserve">
-    <value>Save [ F6 ]</value>
-  </data>
-  <data name="&gt;&gt;simpleButtonSave.Name" xml:space="preserve">
-    <value>simpleButtonSave</value>
-  </data>
-  <data name="&gt;&gt;simpleButtonSave.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;simpleButtonSave.Parent" xml:space="preserve">
-    <value>splitContainerCart.Panel2</value>
-  </data>
-  <data name="&gt;&gt;simpleButtonSave.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="lookUpEditStore.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 78</value>
-  </data>
-  <data name="lookUpEditStore.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="lookUpEditStore.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v18.2">
-    <value>Combo</value>
+    <value>127, 159</value>
   </data>
   <data name="lookUpEditStore.Properties.NullText" xml:space="preserve">
-    <value>Please select the store</value>
+    <value>ފިހާރައިގެ ނަން ނަގާ</value>
   </data>
   <data name="lookUpEditStore.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 38</value>
-  </data>
-  <data name="lookUpEditStore.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lookUpEditStore.Name" xml:space="preserve">
-    <value>lookUpEditStore</value>
-  </data>
-  <data name="&gt;&gt;lookUpEditStore.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LookUpEdit, DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lookUpEditStore.Parent" xml:space="preserve">
-    <value>splitContainerCart.Panel2</value>
-  </data>
-  <data name="&gt;&gt;lookUpEditStore.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>234, 46</value>
   </data>
   <data name="labelControl1.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8.25pt, style=Bold</value>
+    <value>Faruma, 12pt, style=Bold, Italic</value>
   </data>
   <data name="labelControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 11</value>
+    <value>175, 3</value>
   </data>
   <data name="labelControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 13</value>
-  </data>
-  <data name="labelControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>72, 25</value>
   </data>
   <data name="labelControl1.Text" xml:space="preserve">
-    <value>TOTAL AMOUNT</value>
+    <value>ޖުމްލަ އަދަދު</value>
   </data>
-  <data name="&gt;&gt;labelControl1.Name" xml:space="preserve">
-    <value>labelControl1</value>
+  <data name="splitContainerCart.Panel2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
   </data>
-  <data name="&gt;&gt;labelControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;labelControl1.Parent" xml:space="preserve">
-    <value>splitContainerCart.Panel2</value>
-  </data>
-  <data name="&gt;&gt;labelControl1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="textEditTotalAmount.EditValue" xml:space="preserve">
-    <value>0.00</value>
-  </data>
-  <data name="textEditTotalAmount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 30</value>
-  </data>
-  <data name="textEditTotalAmount.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11.25pt, style=Bold</value>
-  </data>
-  <data name="textEditTotalAmount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 42</value>
-  </data>
-  <data name="textEditTotalAmount.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;textEditTotalAmount.Name" xml:space="preserve">
-    <value>textEditTotalAmount</value>
-  </data>
-  <data name="&gt;&gt;textEditTotalAmount.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;textEditTotalAmount.Parent" xml:space="preserve">
-    <value>splitContainerCart.Panel2</value>
-  </data>
-  <data name="&gt;&gt;textEditTotalAmount.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;splitContainerCart.Panel2.Name" xml:space="preserve">
-    <value>splitContainerCart.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainerCart.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainerCart.Panel2.Parent" xml:space="preserve">
-    <value>splitContainerCart</value>
-  </data>
-  <data name="&gt;&gt;splitContainerCart.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splitContainerCart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1411, 602</value>
-  </data>
-  <data name="splitContainerCart.SplitterDistance" type="System.Int32, mscorlib">
-    <value>1148</value>
-  </data>
-  <data name="splitContainerCart.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitContainerCart.Name" xml:space="preserve">
-    <value>splitContainerCart</value>
-  </data>
-  <data name="&gt;&gt;splitContainerCart.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainerCart.Parent" xml:space="preserve">
-    <value>splitContainerMain.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainerCart.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitContainerMain.Panel2.Name" xml:space="preserve">
-    <value>splitContainerMain.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainerMain.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainerMain.Panel2.Parent" xml:space="preserve">
-    <value>splitContainerMain</value>
-  </data>
-  <data name="&gt;&gt;splitContainerMain.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splitContainerMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1411, 653</value>
-  </data>
-  <data name="splitContainerMain.SplitterDistance" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="splitContainerMain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitContainerMain.Name" xml:space="preserve">
-    <value>splitContainerMain</value>
-  </data>
-  <data name="&gt;&gt;splitContainerMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainerMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;splitContainerMain.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1411, 653</value>
+  <data name="splitContainerMain.Panel2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2262,55 +1918,14 @@
         gAAAAJAHAAAQBwAAGAcAAPgPAAA=
 </value>
   </data>
+  <data name="$this.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.RightToLeftLayout" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Shopping Cart</value>
-  </data>
-  <data name="&gt;&gt;gridViewCart.Name" xml:space="preserve">
-    <value>gridViewCart</value>
-  </data>
-  <data name="&gt;&gt;gridViewCart.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Views.Grid.GridView, DevExpress.XtraGrid.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;gridColumnDescription.Name" xml:space="preserve">
-    <value>gridColumnDescription</value>
-  </data>
-  <data name="&gt;&gt;gridColumnDescription.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;gridColumnQuantity.Name" xml:space="preserve">
-    <value>gridColumnQuantity</value>
-  </data>
-  <data name="&gt;&gt;gridColumnQuantity.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;gridColumnUnit.Name" xml:space="preserve">
-    <value>gridColumnUnit</value>
-  </data>
-  <data name="&gt;&gt;gridColumnUnit.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;gridColumnRate.Name" xml:space="preserve">
-    <value>gridColumnRate</value>
-  </data>
-  <data name="&gt;&gt;gridColumnRate.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;gridColumnAmount.Name" xml:space="preserve">
-    <value>gridColumnAmount</value>
-  </data>
-  <data name="&gt;&gt;gridColumnAmount.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;gridColumnBarcode.Name" xml:space="preserve">
-    <value>gridColumnBarcode</value>
-  </data>
-  <data name="&gt;&gt;gridColumnBarcode.Type" xml:space="preserve">
-    <value>DevExpress.XtraGrid.Columns.GridColumn, DevExpress.XtraGrid.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>CartView</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>ވަށިގަނޑު</value>
   </data>
 </root>
