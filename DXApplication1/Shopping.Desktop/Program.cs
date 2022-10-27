@@ -22,9 +22,9 @@ namespace Shopping.Desktop
             using (var scope = container.BeginLifetimeScope())
             {
                 var app  = scope.Resolve<IShoppingBirdApplication>();
+                FormFactory.Use(container.Resolve<IFormFactory>());
                 app.Run();
             }
-            
         }
     }
 }

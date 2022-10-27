@@ -90,11 +90,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutofacFormFactory.cs" />
     <Compile Include="ContainerConfig.cs" />
+    <Compile Include="FormFactory.cs" />
     <Compile Include="Helpers\NotifyBase.cs" />
+    <Compile Include="IFormFactory.cs" />
     <Compile Include="IShoppingBirdApplication.cs" />
+    <Compile Include="Models\ItemListAllModel.cs" />
     <Compile Include="ShoppingBirdApplication.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
+    <Compile Include="ViewModels\ICartViewModel.cs" />
     <Compile Include="Views\CartView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,9 +147,7 @@
     <Content Include="hummingbird.ico" />
     <None Include="Resources\shopping-cart.svg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\ShoppingBird.Fly\ShoppingBird.Fly.csproj">
       <Project>{d6170a9c-83ad-43a9-a782-1b52f3c42ac5}</Project>

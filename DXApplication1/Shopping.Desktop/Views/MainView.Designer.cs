@@ -31,7 +31,7 @@ namespace Shopping.Desktop
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemCart = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -45,7 +45,7 @@ namespace Shopping.Desktop
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
-            this.barButtonItem1});
+            this.barButtonItemCart});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 2;
             this.ribbonControl1.Name = "ribbonControl1";
@@ -54,12 +54,12 @@ namespace Shopping.Desktop
             this.ribbonControl1.Size = new System.Drawing.Size(1348, 220);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
-            // barButtonItem1
+            // barButtonItemCart
             // 
-            this.barButtonItem1.Caption = "Cart";
-            this.barButtonItem1.Id = 1;
-            this.barButtonItem1.ImageOptions.SvgImage = global::Shopping.Desktop.Properties.Resources.shopping_cart;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItemCart.Caption = "Cart";
+            this.barButtonItemCart.Id = 1;
+            this.barButtonItemCart.ImageOptions.SvgImage = global::Shopping.Desktop.Properties.Resources.shopping_cart;
+            this.barButtonItemCart.Name = "barButtonItemCart";
             // 
             // ribbonPage1
             // 
@@ -71,7 +71,7 @@ namespace Shopping.Desktop
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemCart);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "General";
             // 
@@ -120,7 +120,7 @@ namespace Shopping.Desktop
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCart;
     }
 }
 
