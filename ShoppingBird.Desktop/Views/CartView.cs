@@ -23,28 +23,24 @@ namespace ShoppingBird.Desktop.Views
             gridViewCart.CellValueChanged += CalculateTotalCartPrice;
             simpleButtonSetCartLabel.Click += SimpleButtonSetCartLabel_Click;
             simpleButtonCheckout.Click += SimpleButtonCheckout_Click;
+            simpleButtonClearCart.Click += SimpleButtonClearCart_Click;
         }
 
-        private void SimpleButtonCheckout_Click(object sender, EventArgs e)
-        {
-            CheckoutCurrentCart(Keys.F6);
-        }
+        private void SimpleButtonClearCart_Click(object sender, EventArgs e) => ClearCart(Keys.Delete);
 
-        private void SimpleButtonSetCartLabel_Click(object sender, EventArgs e)
-        {
-            SetCartLabel(Keys.F8);
-        }
+        private void SimpleButtonCheckout_Click(object sender, EventArgs e) => CheckoutCurrentCart(Keys.F6);
 
-        private void CalculateTotalCartPrice(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            _viewModel.CalculateTotalCartAmount();
-        }
+        private void SimpleButtonSetCartLabel_Click(object sender, EventArgs e) => SetCartLabel(Keys.F8);
+
+        private void CalculateTotalCartPrice
+            (object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e) => _viewModel.CalculateTotalCartAmount();
 
         private async void CartView_KeyUp(object sender, KeyEventArgs e)
         {
             await AddSelectedItemToCartAsync(e.KeyCode);
             SetCartLabel(e.KeyCode);
             CheckoutCurrentCart(e.KeyCode);
+            ClearCart(e.KeyCode);
         }
 
         private void CheckoutCurrentCart(Keys keyCode)
@@ -66,6 +62,13 @@ namespace ShoppingBird.Desktop.Views
                 if (string.IsNullOrEmpty(response)) { Text = "Shopping Cart"; return; }
 
                 Text = $"Shopping Cart: {response}";
+            }
+        }
+        private void ClearCart(Keys keyCode)
+        {
+            if (keyCode == Keys.Delete)
+            {
+                _viewModel.ClearCart();
             }
         }
 

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using ShoppingBird.Desktop.Models;
 using ShoppingBird.Desktop.Exceptions;
 using ShoppingBird.Desktop.Helpers;
+using ShoppingBird.Desktop.Models;
 using ShoppingBird.Desktop.Translations;
 using ShoppingBird.Fly.Interfaces;
 using System;
@@ -27,7 +27,7 @@ namespace ShoppingBird.Desktop.ViewModels
         private event EventHandler OnItemAddedToCart;
         private event EventHandler OnSaveCartRequested;
 
-        public CartViewModel(IItemIO itemIO, IStoreIO storeIO,IInvoiceIO invoiceIO, IMapper mapper)
+        public CartViewModel(IItemIO itemIO, IStoreIO storeIO, IInvoiceIO invoiceIO, IMapper mapper)
         {
             _itemIO = itemIO;
             _storeIO = storeIO;
@@ -83,6 +83,14 @@ namespace ShoppingBird.Desktop.ViewModels
         }
 
         #region Public Methods
+        public void ClearCart()
+        {
+            AllCartItems.Clear();
+            TotalCartAmount = 0.0000m;
+            SelectedStoreId = -1;
+            AdjustmentAmount = 0.0000m;
+            SelectedItemId = -1;
+        }
         public void SaveCurrentCart()
         {
             OnSaveCartRequested?.Invoke(this, EventArgs.Empty);
@@ -164,23 +172,32 @@ namespace ShoppingBird.Desktop.ViewModels
 
         private async void CartViewModel_OnSaveCartRequested(object sender, EventArgs e)
         {
-            var invoiceModel = new NewInvoiceModel()
+            try
             {
-                Invoice = new InvoiceModel()
-                {
-                    StoreId = SelectedStoreId,
-                    Number = InvoiceNumber,
-                    AdjustAmount = AdjustmentAmount,
-                    Total = TotalCartAmount,
-                    UserId = 1,
-                    InvoiceDate = DateTime.Today
-                },
-                CartItems = AllCartItems.ToList()
-            };
 
-            var mapped = _mapper.Map<Fly.Models.NewInvoiceModel>(invoiceModel);
-            var insertedInvoiceId = await _invoiceIO.SaveInvoiceAsync(mapped);
-            Helpers.NotificationHelper.ShowMessage($"Cart Items saved. Invoice Id #{insertedInvoiceId}");
+                var invoiceModel = new NewInvoiceModel()
+                {
+                    Invoice = new InvoiceModel()
+                    {
+                        StoreId = SelectedStoreId,
+                        Number = InvoiceNumber,
+                        AdjustAmount = AdjustmentAmount,
+                        Total = TotalCartAmount,
+                        UserId = 1,
+                        InvoiceDate = DateTime.Today
+                    },
+                    CartItems = AllCartItems.ToList()
+                };
+
+                var mapped = _mapper.Map<Fly.Models.NewInvoiceModel>(invoiceModel);
+                var insertedInvoiceId = await _invoiceIO.SaveInvoiceAsync(mapped);
+                Helpers.NotificationHelper.ShowMessage($"Cart Items saved. Invoice Id #{insertedInvoiceId}");
+                ClearCart();
+            }
+            catch (Exception ex)
+            {
+                Helpers.NotificationHelper.ShowMessage(ex, "Error saving cart items");
+            }
         }
 
         #endregion

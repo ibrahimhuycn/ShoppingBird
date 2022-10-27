@@ -19,5 +19,6 @@ namespace ShoppingBird.Desktop.ViewModels
         Task AddSelectedItemToCart();
         void CalculateTotalCartAmount();
         void SaveCurrentCart();
+        void ClearCart();
     }
 }

@@ -41,6 +41,7 @@ namespace ShoppingBird.Desktop.Views
             this.gridColumnRate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnBarcode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.simpleButtonClearCart = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonSetCartLabel = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.textEditAdjustmentAmount = new DevExpress.XtraEditors.TextEdit();
@@ -99,6 +100,7 @@ namespace ShoppingBird.Desktop.Views
             // 
             // splitContainerCart.Panel2
             // 
+            this.splitContainerCart.Panel2.Controls.Add(this.simpleButtonClearCart);
             this.splitContainerCart.Panel2.Controls.Add(this.simpleButtonSetCartLabel);
             this.splitContainerCart.Panel2.Controls.Add(this.labelControl2);
             this.splitContainerCart.Panel2.Controls.Add(this.textEditAdjustmentAmount);
@@ -167,6 +169,11 @@ namespace ShoppingBird.Desktop.Views
             this.gridColumnBarcode.FieldName = "Barcode";
             this.gridColumnBarcode.Name = "gridColumnBarcode";
             this.gridColumnBarcode.OptionsColumn.AllowEdit = false;
+            // 
+            // simpleButtonClearCart
+            // 
+            resources.ApplyResources(this.simpleButtonClearCart, "simpleButtonClearCart");
+            this.simpleButtonClearCart.Name = "simpleButtonClearCart";
             // 
             // simpleButtonSetCartLabel
             // 
@@ -262,5 +269,6 @@ namespace ShoppingBird.Desktop.Views
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit textEditAdjustmentAmount;
         private DevExpress.XtraEditors.SimpleButton simpleButtonSetCartLabel;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonClearCart;
     }
 }

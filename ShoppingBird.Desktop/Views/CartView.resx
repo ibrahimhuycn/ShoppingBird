@@ -292,11 +292,35 @@
   <data name="&gt;&gt;splitContainerCart.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="simpleButtonClearCart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 267</value>
+  </data>
+  <data name="simpleButtonClearCart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 23</value>
+  </data>
+  <data name="simpleButtonClearCart.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="simpleButtonClearCart.Text" xml:space="preserve">
+    <value>Clear Cart [ Del ]</value>
+  </data>
+  <data name="&gt;&gt;simpleButtonClearCart.Name" xml:space="preserve">
+    <value>simpleButtonClearCart</value>
+  </data>
+  <data name="&gt;&gt;simpleButtonClearCart.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;simpleButtonClearCart.Parent" xml:space="preserve">
+    <value>splitContainerCart.Panel2</value>
+  </data>
+  <data name="&gt;&gt;simpleButtonClearCart.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="simpleButtonSetCartLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 567</value>
+    <value>112, 238</value>
   </data>
   <data name="simpleButtonSetCartLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 23</value>
+    <value>135, 23</value>
   </data>
   <data name="simpleButtonSetCartLabel.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -314,7 +338,7 @@
     <value>splitContainerCart.Panel2</value>
   </data>
   <data name="&gt;&gt;simpleButtonSetCartLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="labelControl2.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 8.25pt, style=Bold</value>
@@ -341,7 +365,7 @@
     <value>splitContainerCart.Panel2</value>
   </data>
   <data name="&gt;&gt;labelControl2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="textEditAdjustmentAmount.EditValue" xml:space="preserve">
     <value>0.00</value>
@@ -368,13 +392,13 @@
     <value>splitContainerCart.Panel2</value>
   </data>
   <data name="&gt;&gt;textEditAdjustmentAmount.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="simpleButtonCheckout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 209</value>
+    <value>112, 209</value>
   </data>
   <data name="simpleButtonCheckout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 23</value>
+    <value>135, 23</value>
   </data>
   <data name="simpleButtonCheckout.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -392,7 +416,7 @@
     <value>splitContainerCart.Panel2</value>
   </data>
   <data name="&gt;&gt;simpleButtonCheckout.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="lookUpEditStore.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 152</value>
@@ -422,7 +446,7 @@
     <value>splitContainerCart.Panel2</value>
   </data>
   <data name="&gt;&gt;lookUpEditStore.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="labelControl1.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 8.25pt, style=Bold</value>
@@ -449,7 +473,7 @@
     <value>splitContainerCart.Panel2</value>
   </data>
   <data name="&gt;&gt;labelControl1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="textEditTotalAmount.EditValue" xml:space="preserve">
     <value>0.00</value>
@@ -476,7 +500,7 @@
     <value>splitContainerCart.Panel2</value>
   </data>
   <data name="&gt;&gt;textEditTotalAmount.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;splitContainerCart.Panel2.Name" xml:space="preserve">
     <value>splitContainerCart.Panel2</value>
