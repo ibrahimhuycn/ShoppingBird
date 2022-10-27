@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using AutoMapper;
-using Shopping.Desktop.Models;
 using ShoppingBird.Desktop.Models;
 using ShoppingBird.Fly.DataAccess;
 using System;
@@ -51,13 +50,13 @@ namespace ShoppingBird.Desktop
             #endregion
 
             #region Register ViewModels
-            builder.RegisterAssemblyTypes(Assembly.Load("Shopping.Desktop"))
+            builder.RegisterAssemblyTypes(Assembly.Load("ShoppingBird.Desktop"))
                 .Where(t => t.Namespace.Contains("ViewModels"))
                 .As(t => t.GetInterfaces().FirstOrDefault(i => i.Name == "I" + t.Name));
             #endregion
 
             #region Register Views
-            builder.RegisterAssemblyTypes(Assembly.Load("Shopping.Desktop"))
+            builder.RegisterAssemblyTypes(Assembly.Load("ShoppingBird.Desktop"))
                 .Where(t => t.Namespace.Contains("Views"));
             #endregion
 

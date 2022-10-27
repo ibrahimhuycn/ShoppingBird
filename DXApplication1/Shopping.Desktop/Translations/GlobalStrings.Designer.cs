@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ShoppingBird.Desktop.Transations {
+namespace ShoppingBird.Desktop.Translations {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ShoppingBird.Desktop.Transations {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Shopping.Desktop.Transations.GlobalStrings", typeof(GlobalStrings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ShoppingBird.Desktop.Translations.GlobalStrings", typeof(GlobalStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,29 @@ namespace ShoppingBird.Desktop.Transations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sd.
+        /// </summary>
+        internal static string _as {
+            get {
+                return ResourceManager.GetString("as", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An Error Occurred.
         /// </summary>
         internal static string AnErrorOccurred {
             get {
                 return ResourceManager.GetString("AnErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to as1.
+        /// </summary>
+        internal static string as1 {
+            get {
+                return ResourceManager.GetString("as1", resourceCulture);
             }
         }
         

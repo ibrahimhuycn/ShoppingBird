@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
-using Shopping.Desktop.Models;
+using ShoppingBird.Desktop.Models;
 using ShoppingBird.Desktop.Exceptions;
 using ShoppingBird.Desktop.Helpers;
-using ShoppingBird.Desktop.Models;
-using ShoppingBird.Desktop.Transations;
+using ShoppingBird.Desktop.Translations;
 using ShoppingBird.Fly.Interfaces;
 using System;
 using System.Collections.Generic;

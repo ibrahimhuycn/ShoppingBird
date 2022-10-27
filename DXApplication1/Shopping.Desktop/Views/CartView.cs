@@ -2,7 +2,7 @@
 using ShoppingBird.Desktop.Exceptions;
 using ShoppingBird.Desktop.Helpers;
 using ShoppingBird.Desktop.Models;
-using ShoppingBird.Desktop.Transations;
+using ShoppingBird.Desktop.Translations;
 using ShoppingBird.Desktop.ViewModels;
 using System;
 using System.Threading.Tasks;

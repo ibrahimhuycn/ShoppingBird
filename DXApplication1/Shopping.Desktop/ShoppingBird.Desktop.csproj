@@ -8,8 +8,8 @@
     <ProjectGuid>{EAF54B4E-27CF-4FF2-A484-C2696AD7A176}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Shopping.Desktop</RootNamespace>
-    <AssemblyName>Shopping.Desktop</AssemblyName>
+    <RootNamespace>ShoppingBird.Desktop</RootNamespace>
+    <AssemblyName>ShoppingBird.Desktop</AssemblyName>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -109,15 +109,15 @@
     <Compile Include="Models\NewInvoiceModel.cs" />
     <Compile Include="Models\StoreModel.cs" />
     <Compile Include="ShoppingBirdApplication.cs" />
-    <Compile Include="Transations\GlobalStrings.dv-MV.Designer.cs">
-      <DependentUpon>GlobalStrings.dv-MV.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Transations\GlobalStrings.Designer.cs">
+    <Compile Include="Translations\GlobalStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GlobalStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Translations\GlobalStrings.dv-MV.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalStrings.dv-MV.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\ICartViewModel.cs" />
@@ -135,11 +135,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Transations\GlobalStrings.dv-MV.resx">
+    <EmbeddedResource Include="Translations\GlobalStrings.dv-MV.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalStrings.dv-MV.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Transations\GlobalStrings.resx">
+    <EmbeddedResource Include="Translations\GlobalStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
