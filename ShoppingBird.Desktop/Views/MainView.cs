@@ -11,6 +11,12 @@ namespace ShoppingBird.Desktop
         {
             InitializeComponent();
             barButtonItemCart.ItemClick += BarButtonItemCart_ItemClick;
+            barButtonItemTransactionHistory.ItemClick += BarButtonItemTransactionHistory_ItemClick;
+        }
+
+        private void BarButtonItemTransactionHistory_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenMdiForm<string, TransactionHistoryView>("", false, true, true);
         }
 
         private void BarButtonItemCart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

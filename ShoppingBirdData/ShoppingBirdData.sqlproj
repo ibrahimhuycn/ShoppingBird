@@ -69,7 +69,6 @@
     <Build Include="Tables\Store.sql" />
     <Build Include="Tables\User.sql" />
     <Build Include="Tables\Item.sql" />
-    <Build Include="Tables\Designation.sql" />
     <Build Include="Tables\PriceList.sql" />
     <Build Include="Tables\Unit.sql" />
     <Build Include="Stored Procedures\usp_SeachItemByBarcodeAndStore.sql" />
@@ -88,6 +87,7 @@
     <Build Include="Stored Procedures\usp_UpdateStoreAndReturnInserted.sql" />
     <Build Include="Stored Procedures\usp_InsertInvoiceAndInvoiceDetails.sql" />
     <Build Include="Types\InvoiceDetailsUDT.sql" />
+    <Build Include="Stored Procedures\usp_GetTransactionHistory.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ShoppingBirdData.refactorlog" />

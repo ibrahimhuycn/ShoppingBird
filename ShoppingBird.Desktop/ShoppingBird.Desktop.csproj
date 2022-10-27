@@ -108,6 +108,7 @@
     <Compile Include="Models\ItemListAllModel.cs" />
     <Compile Include="Models\NewInvoiceModel.cs" />
     <Compile Include="Models\StoreModel.cs" />
+    <Compile Include="Models\TransactionHistoryModel.cs" />
     <Compile Include="ShoppingBirdApplication.cs" />
     <Compile Include="Translations\GlobalStrings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -121,6 +122,8 @@
     </Compile>
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\ICartViewModel.cs" />
+    <Compile Include="ViewModels\ITransactionHistoryViewModel.cs" />
+    <Compile Include="ViewModels\TransactionHistoryViewModel.cs" />
     <Compile Include="Views\CartView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +138,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\TransactionHistoryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TransactionHistoryView.Designer.cs">
+      <DependentUpon>TransactionHistoryView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Translations\GlobalStrings.dv-MV.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalStrings.dv-MV.Designer.cs</LastGenOutput>
@@ -163,6 +172,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\TransactionHistoryView.resx">
+      <DependentUpon>TransactionHistoryView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -177,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="hummingbird.ico" />
+    <None Include="Resources\transaction-history.svg" />
     <None Include="Resources\shopping-cart.svg" />
   </ItemGroup>
   <ItemGroup />

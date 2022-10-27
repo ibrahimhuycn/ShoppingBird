@@ -25,6 +25,7 @@ namespace ShoppingBird.Desktop
                 config.CreateMap<CartItemModel, ShoppingBird.Fly.Models.CartItemModel>().ReverseMap();
                 config.CreateMap<NewInvoiceModel, ShoppingBird.Fly.Models.NewInvoiceModel>().ReverseMap();
                 config.CreateMap<InvoiceModel, ShoppingBird.Fly.Models.InvoiceModel>().ReverseMap();
+                config.CreateMap<TransactionHistoryModel, ShoppingBird.Fly.Models.TransactionHistoryModel>().ReverseMap();
             })).AsSelf().SingleInstance();
 
             builder.Register(c =>

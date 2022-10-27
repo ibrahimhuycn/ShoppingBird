@@ -33,6 +33,13 @@ namespace ShoppingBird.Fly.Services
             var insertedInvoiceId = await _dataAccessBase.SelectInsertOrUpdateAsync<int, dynamic>(storedProcedure, parameters);
             return insertedInvoiceId;
         }
+
+        public async Task<List<TransactionHistoryModel>> GetTransactionHistoryAsync()
+        {
+            var storedProcedure = "[dbo].[usp_GetTransactionHistory]";
+            var data = await _dataAccessBase.LoadDataAsync<TransactionHistoryModel>(storedProcedure);
+            return data;
+        }
     }
 }
  

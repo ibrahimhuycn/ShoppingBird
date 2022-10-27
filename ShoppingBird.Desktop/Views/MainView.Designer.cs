@@ -32,6 +32,7 @@ namespace ShoppingBird.Desktop
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemCart = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemTransactionHistory = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -45,9 +46,10 @@ namespace ShoppingBird.Desktop
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
-            this.barButtonItemCart});
+            this.barButtonItemCart,
+            this.barButtonItemTransactionHistory});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 2;
+            this.ribbonControl1.MaxItemId = 3;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -61,6 +63,13 @@ namespace ShoppingBird.Desktop
             this.barButtonItemCart.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.shopping_cart;
             this.barButtonItemCart.Name = "barButtonItemCart";
             // 
+            // barButtonItemTransactionHistory
+            // 
+            this.barButtonItemTransactionHistory.Caption = "Transaction History";
+            this.barButtonItemTransactionHistory.Id = 2;
+            this.barButtonItemTransactionHistory.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.transaction_history;
+            this.barButtonItemTransactionHistory.Name = "barButtonItemTransactionHistory";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -72,6 +81,7 @@ namespace ShoppingBird.Desktop
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemCart);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItemTransactionHistory);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "General";
             // 
@@ -121,6 +131,7 @@ namespace ShoppingBird.Desktop
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCart;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemTransactionHistory;
     }
 }
 
