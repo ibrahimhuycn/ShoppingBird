@@ -3,7 +3,7 @@ using ShoppingBird.Fly.Interfaces;
 using ShoppingBird.Fly.Models;
 using System;
 
-namespace ShoppingBird.Fly
+namespace ShoppingBird.Fly.Services
 {
     public class InvoiceIO : IInvoiceIO
     {

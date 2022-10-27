@@ -8,7 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace ShoppingBird.Fly
+namespace ShoppingBird.Fly.Services
 {
     public class CategoriesIO : ICategoriesIO
     {

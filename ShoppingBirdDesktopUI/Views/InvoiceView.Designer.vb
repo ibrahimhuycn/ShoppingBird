@@ -61,7 +61,7 @@ Partial Class InvoiceView
         Me.TextEditInvoiceNumber.Location = New System.Drawing.Point(12, 12)
         Me.TextEditInvoiceNumber.Name = "TextEditInvoiceNumber"
         Me.TextEditInvoiceNumber.Properties.NullText = "Invoice Number"
-        Me.TextEditInvoiceNumber.Size = New System.Drawing.Size(100, 20)
+        Me.TextEditInvoiceNumber.Size = New System.Drawing.Size(100, 36)
         Me.TextEditInvoiceNumber.TabIndex = 0
         '
         'GroupControlInvoiceItems
@@ -77,10 +77,10 @@ Partial Class InvoiceView
         'GridControlInvoiceItems
         '
         Me.GridControlInvoiceItems.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GridControlInvoiceItems.Location = New System.Drawing.Point(2, 20)
+        Me.GridControlInvoiceItems.Location = New System.Drawing.Point(2, 27)
         Me.GridControlInvoiceItems.MainView = Me.GridViewInvoiceItems
         Me.GridControlInvoiceItems.Name = "GridControlInvoiceItems"
-        Me.GridControlInvoiceItems.Size = New System.Drawing.Size(514, 169)
+        Me.GridControlInvoiceItems.Size = New System.Drawing.Size(514, 162)
         Me.GridControlInvoiceItems.TabIndex = 0
         Me.GridControlInvoiceItems.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridViewInvoiceItems})
         '
@@ -152,7 +152,7 @@ Partial Class InvoiceView
         Me.DateEditInvoiceDate.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.DateEditInvoiceDate.Properties.Mask.EditMask = "t"
         Me.DateEditInvoiceDate.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None
-        Me.DateEditInvoiceDate.Size = New System.Drawing.Size(100, 20)
+        Me.DateEditInvoiceDate.Size = New System.Drawing.Size(100, 36)
         Me.DateEditInvoiceDate.TabIndex = 6
         '
         'LabelControlTax
@@ -202,7 +202,7 @@ Partial Class InvoiceView
         Me.TextEditSubTotal.Properties.Mask.EditMask = "n"
         Me.TextEditSubTotal.Properties.NullText = "0.00"
         Me.TextEditSubTotal.Properties.ReadOnly = True
-        Me.TextEditSubTotal.Size = New System.Drawing.Size(83, 20)
+        Me.TextEditSubTotal.Size = New System.Drawing.Size(83, 36)
         Me.TextEditSubTotal.TabIndex = 15
         '
         'TextEditTax
@@ -213,7 +213,7 @@ Partial Class InvoiceView
         Me.TextEditTax.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.TextEditTax.Properties.NullText = "0.00"
         Me.TextEditTax.Properties.ReadOnly = True
-        Me.TextEditTax.Size = New System.Drawing.Size(83, 20)
+        Me.TextEditTax.Size = New System.Drawing.Size(83, 36)
         Me.TextEditTax.TabIndex = 16
         '
         'TextEditTotal
@@ -223,7 +223,7 @@ Partial Class InvoiceView
         Me.TextEditTotal.Properties.Mask.EditMask = "n"
         Me.TextEditTotal.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.TextEditTotal.Properties.NullText = "0.00"
-        Me.TextEditTotal.Size = New System.Drawing.Size(83, 20)
+        Me.TextEditTotal.Size = New System.Drawing.Size(83, 36)
         Me.TextEditTotal.TabIndex = 18
         '
         'LookUpEditStore
@@ -233,7 +233,7 @@ Partial Class InvoiceView
         Me.LookUpEditStore.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.LookUpEditStore.Properties.NullText = "Select Store"
         Me.LookUpEditStore.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
-        Me.LookUpEditStore.Size = New System.Drawing.Size(152, 20)
+        Me.LookUpEditStore.Size = New System.Drawing.Size(152, 36)
         Me.LookUpEditStore.TabIndex = 19
         '
         'ToggleSwitchSearch
@@ -243,7 +243,7 @@ Partial Class InvoiceView
         Me.ToggleSwitchSearch.Name = "ToggleSwitchSearch"
         Me.ToggleSwitchSearch.Properties.OffText = "Description"
         Me.ToggleSwitchSearch.Properties.OnText = "Barcode"
-        Me.ToggleSwitchSearch.Size = New System.Drawing.Size(146, 25)
+        Me.ToggleSwitchSearch.Size = New System.Drawing.Size(146, 36)
         Me.ToggleSwitchSearch.TabIndex = 20
         '
         'LookupEditSearch
@@ -255,7 +255,7 @@ Partial Class InvoiceView
         Me.LookupEditSearch.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains
         Me.LookupEditSearch.Properties.PopupSizeable = False
         Me.LookupEditSearch.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.LookupEditSearch.Size = New System.Drawing.Size(360, 20)
+        Me.LookupEditSearch.Size = New System.Drawing.Size(360, 36)
         Me.LookupEditSearch.TabIndex = 2
         '
         'InvoiceView

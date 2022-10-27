@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
-namespace ShoppingBird.Fly
+namespace ShoppingBird.Fly.Services
 {
     public class TaxIO : ITaxIO
     {

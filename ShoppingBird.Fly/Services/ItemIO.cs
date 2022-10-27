@@ -8,7 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace ShoppingBird.Fly
+namespace ShoppingBird.Fly.Services
 {
     /// <summary>
     /// Handles reading and saving item and item price data into price lists.
