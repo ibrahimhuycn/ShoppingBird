@@ -95,11 +95,17 @@
   <ItemGroup>
     <Compile Include="AutofacFormFactory.cs" />
     <Compile Include="ContainerConfig.cs" />
+    <Compile Include="Exceptions\CartItemNotFoundForStoreException.cs" />
+    <Compile Include="Exceptions\NoItemSelectedException.cs" />
+    <Compile Include="Exceptions\NoStoreSelectedException.cs" />
     <Compile Include="FormFactory.cs" />
+    <Compile Include="Helpers\NotificationHelper.cs" />
     <Compile Include="Helpers\NotifyBase.cs" />
     <Compile Include="IFormFactory.cs" />
     <Compile Include="IShoppingBirdApplication.cs" />
+    <Compile Include="Models\CartItemModel.cs" />
     <Compile Include="Models\ItemListAllModel.cs" />
+    <Compile Include="Models\StoreModel.cs" />
     <Compile Include="ShoppingBirdApplication.cs" />
     <Compile Include="Transations\GlobalStrings.dv-MV.Designer.cs">
       <DependentUpon>GlobalStrings.dv-MV.resx</DependentUpon>

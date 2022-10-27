@@ -1,5 +1,5 @@
 ﻿
-namespace Shopping.Desktop
+namespace ShoppingBird.Desktop
 {
     partial class MainView
     {
@@ -58,7 +58,7 @@ namespace Shopping.Desktop
             // 
             this.barButtonItemCart.Caption = "Cart";
             this.barButtonItemCart.Id = 1;
-            this.barButtonItemCart.ImageOptions.SvgImage = global::Shopping.Desktop.Properties.Resources.shopping_cart;
+            this.barButtonItemCart.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.shopping_cart;
             this.barButtonItemCart.Name = "barButtonItemCart";
             // 
             // ribbonPage1

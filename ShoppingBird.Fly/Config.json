@@ -1,8 +1,8 @@
 {
   "ConnectionName": [
     {
-      "Name": "pShoppingBird",
-      "ConnectionString": "Server=192.168.100.4;Database=pShoppingBird;User Id=sa;Password=Bismillah.123!;",
+      "Name": "pShoppingBirdData",
+      "ConnectionString": "Server=192.168.100.4;Database=pShoppingBirdData;User Id=sa;Password=Bismillah.123!;",
       "Provider": "System.Data.SqlClient"
     },
     {

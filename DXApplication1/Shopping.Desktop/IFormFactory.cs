@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Shopping.Desktop
+namespace ShoppingBird.Desktop
 {
     public interface IFormFactory
     {

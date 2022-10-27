@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System;
 
-namespace Shopping.Desktop
+namespace ShoppingBird.Desktop
 {
     public class AutofacFormFactory : IFormFactory
     {

@@ -13,10 +13,10 @@ namespace ShoppingBird.Fly.Interfaces
         /// <param name="category">An instance of ItemCategory model</param>
         /// <param name="subCategory">An instance of ItemCategory model as sub category</param>
         /// <param name="unit">An instance of units model</param>
-        ItemInsertUserSelectedStaticData Initialise(Store store, Tax tax, ItemCategory category, ItemCategory subCategory, Units unit);
+        ItemInsertUserSelectedStaticData Initialise(StoreModel store, Tax tax, ItemCategory category, ItemCategory subCategory, Units unit);
 
         ItemCategory Category { get; }
-        Store Store { get; }
+        StoreModel Store { get; }
         ItemCategory SubCategory { get; }
         Tax Tax { get; }
         Units Unit { get; }

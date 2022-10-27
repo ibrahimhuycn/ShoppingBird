@@ -1,5 +1,5 @@
 ﻿
-namespace Shopping.Desktop.Views
+namespace ShoppingBird.Desktop.Views
 {
     partial class CartView
     {
@@ -41,8 +41,10 @@ namespace Shopping.Desktop.Views
             this.gridColumnRate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnBarcode = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.simpleButtonEditQuantity = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonSetCartLabel = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.textEditAdjustmentAmount = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButtonCheckout = new DevExpress.XtraEditors.SimpleButton();
             this.lookUpEditStore = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.textEditTotalAmount = new DevExpress.XtraEditors.TextEdit();
@@ -57,6 +59,7 @@ namespace Shopping.Desktop.Views
             this.splitContainerCart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditAdjustmentAmount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditStore.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTotalAmount.Properties)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +86,6 @@ namespace Shopping.Desktop.Views
             new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("lookUpEditSearch.Properties.Buttons"))))});
             this.lookUpEditSearch.Properties.NullText = resources.GetString("lookUpEditSearch.Properties.NullText");
             this.lookUpEditSearch.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
-            this.lookUpEditSearch.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             // 
             // splitContainerCart
             // 
@@ -97,8 +99,10 @@ namespace Shopping.Desktop.Views
             // 
             // splitContainerCart.Panel2
             // 
-            this.splitContainerCart.Panel2.Controls.Add(this.simpleButtonEditQuantity);
-            this.splitContainerCart.Panel2.Controls.Add(this.simpleButtonSave);
+            this.splitContainerCart.Panel2.Controls.Add(this.simpleButtonSetCartLabel);
+            this.splitContainerCart.Panel2.Controls.Add(this.labelControl2);
+            this.splitContainerCart.Panel2.Controls.Add(this.textEditAdjustmentAmount);
+            this.splitContainerCart.Panel2.Controls.Add(this.simpleButtonCheckout);
             this.splitContainerCart.Panel2.Controls.Add(this.lookUpEditStore);
             this.splitContainerCart.Panel2.Controls.Add(this.labelControl1);
             this.splitContainerCart.Panel2.Controls.Add(this.textEditTotalAmount);
@@ -126,42 +130,67 @@ namespace Shopping.Desktop.Views
             // gridColumnDescription
             // 
             resources.ApplyResources(this.gridColumnDescription, "gridColumnDescription");
+            this.gridColumnDescription.FieldName = "ItemDescription";
             this.gridColumnDescription.Name = "gridColumnDescription";
+            this.gridColumnDescription.OptionsColumn.AllowEdit = false;
             // 
             // gridColumnQuantity
             // 
             resources.ApplyResources(this.gridColumnQuantity, "gridColumnQuantity");
+            this.gridColumnQuantity.FieldName = "Quantity";
             this.gridColumnQuantity.Name = "gridColumnQuantity";
             // 
             // gridColumnUnit
             // 
             resources.ApplyResources(this.gridColumnUnit, "gridColumnUnit");
+            this.gridColumnUnit.FieldName = "Unit";
             this.gridColumnUnit.Name = "gridColumnUnit";
+            this.gridColumnUnit.OptionsColumn.AllowEdit = false;
             // 
             // gridColumnRate
             // 
             resources.ApplyResources(this.gridColumnRate, "gridColumnRate");
+            this.gridColumnRate.FieldName = "RetailPrice";
             this.gridColumnRate.Name = "gridColumnRate";
+            this.gridColumnRate.OptionsColumn.AllowEdit = false;
             // 
             // gridColumnAmount
             // 
             resources.ApplyResources(this.gridColumnAmount, "gridColumnAmount");
+            this.gridColumnAmount.FieldName = "Amount";
             this.gridColumnAmount.Name = "gridColumnAmount";
+            this.gridColumnAmount.OptionsColumn.AllowEdit = false;
             // 
             // gridColumnBarcode
             // 
             resources.ApplyResources(this.gridColumnBarcode, "gridColumnBarcode");
+            this.gridColumnBarcode.FieldName = "Barcode";
             this.gridColumnBarcode.Name = "gridColumnBarcode";
+            this.gridColumnBarcode.OptionsColumn.AllowEdit = false;
             // 
-            // simpleButtonEditQuantity
+            // simpleButtonSetCartLabel
             // 
-            resources.ApplyResources(this.simpleButtonEditQuantity, "simpleButtonEditQuantity");
-            this.simpleButtonEditQuantity.Name = "simpleButtonEditQuantity";
+            resources.ApplyResources(this.simpleButtonSetCartLabel, "simpleButtonSetCartLabel");
+            this.simpleButtonSetCartLabel.Name = "simpleButtonSetCartLabel";
             // 
-            // simpleButtonSave
+            // labelControl2
             // 
-            resources.ApplyResources(this.simpleButtonSave, "simpleButtonSave");
-            this.simpleButtonSave.Name = "simpleButtonSave";
+            this.labelControl2.Appearance.Font = ((System.Drawing.Font)(resources.GetObject("labelControl2.Appearance.Font")));
+            this.labelControl2.Appearance.Options.UseFont = true;
+            resources.ApplyResources(this.labelControl2, "labelControl2");
+            this.labelControl2.Name = "labelControl2";
+            // 
+            // textEditAdjustmentAmount
+            // 
+            resources.ApplyResources(this.textEditAdjustmentAmount, "textEditAdjustmentAmount");
+            this.textEditAdjustmentAmount.Name = "textEditAdjustmentAmount";
+            this.textEditAdjustmentAmount.Properties.Appearance.Font = ((System.Drawing.Font)(resources.GetObject("textEditAdjustmentAmount.Properties.Appearance.Font")));
+            this.textEditAdjustmentAmount.Properties.Appearance.Options.UseFont = true;
+            // 
+            // simpleButtonCheckout
+            // 
+            resources.ApplyResources(this.simpleButtonCheckout, "simpleButtonCheckout");
+            this.simpleButtonCheckout.Name = "simpleButtonCheckout";
             // 
             // lookUpEditStore
             // 
@@ -206,6 +235,7 @@ namespace Shopping.Desktop.Views
             this.splitContainerCart.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditAdjustmentAmount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditStore.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTotalAmount.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -227,8 +257,10 @@ namespace Shopping.Desktop.Views
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnUnit;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnRate;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnAmount;
-        private DevExpress.XtraEditors.SimpleButton simpleButtonEditQuantity;
-        private DevExpress.XtraEditors.SimpleButton simpleButtonSave;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonCheckout;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnBarcode;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.TextEdit textEditAdjustmentAmount;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonSetCartLabel;
     }
 }

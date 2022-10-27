@@ -9,7 +9,7 @@ namespace ShoppingBird.Fly.Helpers
 {
     public class SqlDataAccessHelper
     {
-        public string GetConnectionString(string name = "pShoppingBird")
+        public string GetConnectionString(string name = "pShoppingBirdData")
         {
             return ReadConnectionString(name);
         }

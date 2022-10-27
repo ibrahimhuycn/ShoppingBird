@@ -251,6 +251,22 @@ namespace ShoppingBird.Fly.DataAccess
             }
 
         }
+
+        public SqlMapper.ICustomQueryParameter GetInvoiceDetailsUDT(List<CartItemModel> cartItems)
+        {
+            var returnTable = new DataTable();
+            returnTable.Columns.Add("ItemId").DataType = typeof(int);
+            returnTable.Columns.Add("Price").DataType = typeof(decimal);
+            returnTable.Columns.Add("Quantity").DataType = typeof(decimal);
+
+            //Add rows to the Data table declared, and return
+            for (int i = 0; i < cartItems.Count; i++)
+            {
+                var request = cartItems[i];
+                returnTable.Rows.Add(request.ItemId, request.RetailPrice, request.Quantity);
+            }
+            return returnTable.AsTableValuedParameter("[dbo].[InvoiceDetailsUDT]");
+        }
     }
 
 }

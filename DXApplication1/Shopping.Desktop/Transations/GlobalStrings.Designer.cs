@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Shopping.Desktop.Transations {
+namespace ShoppingBird.Desktop.Transations {
     using System;
     
     
@@ -57,6 +57,42 @@ namespace Shopping.Desktop.Transations {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An Error Occurred.
+        /// </summary>
+        internal static string AnErrorOccurred {
+            get {
+                return ResourceManager.GetString("AnErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can not find the item for the current selected store. Do you want to add the item to the store?.
+        /// </summary>
+        internal static string CartView_ItemNotFoundForStore {
+            get {
+                return ResourceManager.GetString("CartView_ItemNotFoundForStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the label for current cart..
+        /// </summary>
+        internal static string CartView_LabelRequest {
+            get {
+                return ResourceManager.GetString("CartView_LabelRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cart Labelling.
+        /// </summary>
+        internal static string CartView_LabelRequestHeader {
+            get {
+                return ResourceManager.GetString("CartView_LabelRequestHeader", resourceCulture);
             }
         }
         

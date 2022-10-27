@@ -1,12 +1,10 @@
 ﻿using ShoppingBird.Fly.Models;
-using System;
-
+using System.Threading.Tasks;
 
 namespace ShoppingBird.Fly.Interfaces
 {
     public interface IInvoiceIO
     {
-        IStaticInvoiceData LoadStaticData();
-        int SaveInvoice(NewInvoice e);
+        Task SaveInvoiceAsync(NewInvoiceModel e);
     }
 }

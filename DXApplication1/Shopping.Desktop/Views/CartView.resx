@@ -143,7 +143,7 @@
     <value>Search</value>
   </data>
   <data name="lookUpEditSearch.Properties.NullText" xml:space="preserve">
-    <value>Scan product barcode or search by product name, press [ Enter ] to search</value>
+    <value>Scan product barcode or search by product name, press [ F2 ] to search</value>
   </data>
   <data name="lookUpEditSearch.Size" type="System.Drawing.Size, System.Drawing">
     <value>1411, 36</value>
@@ -292,56 +292,110 @@
   <data name="&gt;&gt;splitContainerCart.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="simpleButtonEditQuantity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 120</value>
+  <data name="simpleButtonSetCartLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 567</value>
   </data>
-  <data name="simpleButtonEditQuantity.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="simpleButtonSetCartLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 23</value>
   </data>
-  <data name="simpleButtonEditQuantity.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="simpleButtonSetCartLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="simpleButtonEditQuantity.Text" xml:space="preserve">
-    <value>Edit Qty [ F12 ]</value>
+  <data name="simpleButtonSetCartLabel.Text" xml:space="preserve">
+    <value>Cart Label [ F8 ]</value>
   </data>
-  <data name="&gt;&gt;simpleButtonEditQuantity.Name" xml:space="preserve">
-    <value>simpleButtonEditQuantity</value>
+  <data name="&gt;&gt;simpleButtonSetCartLabel.Name" xml:space="preserve">
+    <value>simpleButtonSetCartLabel</value>
   </data>
-  <data name="&gt;&gt;simpleButtonEditQuantity.Type" xml:space="preserve">
+  <data name="&gt;&gt;simpleButtonSetCartLabel.Type" xml:space="preserve">
     <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="&gt;&gt;simpleButtonEditQuantity.Parent" xml:space="preserve">
+  <data name="&gt;&gt;simpleButtonSetCartLabel.Parent" xml:space="preserve">
     <value>splitContainerCart.Panel2</value>
   </data>
-  <data name="&gt;&gt;simpleButtonEditQuantity.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;simpleButtonSetCartLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="simpleButtonSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 149</value>
+  <data name="labelControl2.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8.25pt, style=Bold</value>
   </data>
-  <data name="simpleButtonSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 23</value>
+  <data name="labelControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 15</value>
   </data>
-  <data name="simpleButtonSave.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="labelControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
   </data>
-  <data name="simpleButtonSave.Text" xml:space="preserve">
-    <value>Save [ F6 ]</value>
+  <data name="labelControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;simpleButtonSave.Name" xml:space="preserve">
-    <value>simpleButtonSave</value>
+  <data name="labelControl2.Text" xml:space="preserve">
+    <value>ADJUSTMENT</value>
   </data>
-  <data name="&gt;&gt;simpleButtonSave.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="&gt;&gt;labelControl2.Name" xml:space="preserve">
+    <value>labelControl2</value>
   </data>
-  <data name="&gt;&gt;simpleButtonSave.Parent" xml:space="preserve">
+  <data name="&gt;&gt;labelControl2.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;labelControl2.Parent" xml:space="preserve">
     <value>splitContainerCart.Panel2</value>
   </data>
-  <data name="&gt;&gt;simpleButtonSave.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;labelControl2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="textEditAdjustmentAmount.EditValue" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="textEditAdjustmentAmount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 34</value>
+  </data>
+  <data name="textEditAdjustmentAmount.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11.25pt, style=Bold</value>
+  </data>
+  <data name="textEditAdjustmentAmount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 42</value>
+  </data>
+  <data name="textEditAdjustmentAmount.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;textEditAdjustmentAmount.Name" xml:space="preserve">
+    <value>textEditAdjustmentAmount</value>
+  </data>
+  <data name="&gt;&gt;textEditAdjustmentAmount.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;textEditAdjustmentAmount.Parent" xml:space="preserve">
+    <value>splitContainerCart.Panel2</value>
+  </data>
+  <data name="&gt;&gt;textEditAdjustmentAmount.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="simpleButtonCheckout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 209</value>
+  </data>
+  <data name="simpleButtonCheckout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 23</value>
+  </data>
+  <data name="simpleButtonCheckout.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="simpleButtonCheckout.Text" xml:space="preserve">
+    <value>Checkout [ F6 ]</value>
+  </data>
+  <data name="&gt;&gt;simpleButtonCheckout.Name" xml:space="preserve">
+    <value>simpleButtonCheckout</value>
+  </data>
+  <data name="&gt;&gt;simpleButtonCheckout.Type" xml:space="preserve">
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="&gt;&gt;simpleButtonCheckout.Parent" xml:space="preserve">
+    <value>splitContainerCart.Panel2</value>
+  </data>
+  <data name="&gt;&gt;simpleButtonCheckout.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="lookUpEditStore.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 78</value>
+    <value>13, 152</value>
   </data>
   <data name="lookUpEditStore.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -368,13 +422,13 @@
     <value>splitContainerCart.Panel2</value>
   </data>
   <data name="&gt;&gt;lookUpEditStore.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="labelControl1.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 8.25pt, style=Bold</value>
   </data>
   <data name="labelControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 11</value>
+    <value>13, 85</value>
   </data>
   <data name="labelControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 13</value>
@@ -395,13 +449,13 @@
     <value>splitContainerCart.Panel2</value>
   </data>
   <data name="&gt;&gt;labelControl1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="textEditTotalAmount.EditValue" xml:space="preserve">
     <value>0.00</value>
   </data>
   <data name="textEditTotalAmount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 30</value>
+    <value>13, 104</value>
   </data>
   <data name="textEditTotalAmount.Properties.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 11.25pt, style=Bold</value>
@@ -422,7 +476,7 @@
     <value>splitContainerCart.Panel2</value>
   </data>
   <data name="&gt;&gt;textEditTotalAmount.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;splitContainerCart.Panel2.Name" xml:space="preserve">
     <value>splitContainerCart.Panel2</value>

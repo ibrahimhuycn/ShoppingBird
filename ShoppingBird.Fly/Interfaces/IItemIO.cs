@@ -1,11 +1,12 @@
 ﻿using ShoppingBird.Fly.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ShoppingBird.Fly.Interfaces
 {
     public interface IItemIO
     {
-        List<ItemListAllModel> GetAllItemDescriptions();
-        object GetItemByItemIdAndStoreId(int selectedItemId, int selectedStoreId);
+        Task<List<ItemListAllModel>> GetAllItemDescriptionsAsync();
+        Task<CartItemModel> GetItemByItemIdAndStoreIdAsync(int selectedItemId, int selectedStoreId);
     }
 }

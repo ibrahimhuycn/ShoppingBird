@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using AutoMapper;
-using Shopping.Desktop.Models;
+using ShoppingBird.Desktop.Models;
 using ShoppingBird.Fly.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shopping.Desktop
+namespace ShoppingBird.Desktop
 {
     public static class ContainerConfig
     {
@@ -21,6 +21,8 @@ namespace Shopping.Desktop
             builder.Register(context => new MapperConfiguration(config => 
             {
                 config.CreateMap<ItemListAllModel, ShoppingBird.Fly.Models.ItemListAllModel>().ReverseMap();
+                config.CreateMap<StoreModel, ShoppingBird.Fly.Models.StoreModel>().ReverseMap();
+                config.CreateMap<CartItemModel, ShoppingBird.Fly.Models.CartItemModel>().ReverseMap();
             })).AsSelf().SingleInstance();
 
             builder.Register(c =>

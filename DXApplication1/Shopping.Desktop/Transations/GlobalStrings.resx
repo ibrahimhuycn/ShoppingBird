@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AnErrorOccurred" xml:space="preserve">
+    <value>An Error Occurred</value>
+  </data>
+  <data name="CartView_ItemNotFoundForStore" xml:space="preserve">
+    <value>Can not find the item for the current selected store. Do you want to add the item to the store?</value>
+  </data>
+  <data name="CartView_LabelRequest" xml:space="preserve">
+    <value>Please enter the label for current cart.</value>
+  </data>
+  <data name="CartView_LabelRequestHeader" xml:space="preserve">
+    <value>Cart Labelling</value>
+  </data>
   <data name="CartView_NoItemSelected" xml:space="preserve">
     <value>No item selected to add to the cart!</value>
   </data>

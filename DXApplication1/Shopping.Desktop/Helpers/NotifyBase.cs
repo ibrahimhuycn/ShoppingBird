@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shopping.Desktop.Helpers
+namespace ShoppingBird.Desktop.Helpers
 {
     public class NotifyBase : INotifyPropertyChanged
     {

@@ -61,6 +61,7 @@
     <Folder Include="Stored Procedures" />
     <Folder Include="Views" />
     <Folder Include="Scripts" />
+    <Folder Include="Types" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Invoice.sql" />
@@ -68,13 +69,9 @@
     <Build Include="Tables\Store.sql" />
     <Build Include="Tables\User.sql" />
     <Build Include="Tables\Item.sql" />
-    <Build Include="Tables\StoreEmployee.sql" />
     <Build Include="Tables\Designation.sql" />
     <Build Include="Tables\PriceList.sql" />
-    <Build Include="Tables\Tax.sql" />
     <Build Include="Tables\Unit.sql" />
-    <Build Include="Tables\UnitConversion.sql" />
-    <Build Include="Tables\Category.sql" />
     <Build Include="Stored Procedures\usp_SeachItemByBarcodeAndStore.sql" />
     <Build Include="Stored Procedures\usp_GetAllStores.sql" />
     <Build Include="Stored Procedures\usp_GetAllItemDescriptionsWithId.sql" />
@@ -83,21 +80,26 @@
     <Build Include="Stored Procedures\usp_InsertInvoiceDetails.sql" />
     <Build Include="Stored Procedures\usp_InsertItemReturnInsertedId.sql" />
     <Build Include="Stored Procedures\usp_InsertItemPrice.sql" />
-    <Build Include="Stored Procedures\usp_SearchItemIdByItemDescription.sql" />
+    <Build Include="Stored Procedures\usp_SearchItemByItemIdAndStoreId.sql" />
     <Build Include="Stored Procedures\usp_ItemPriceDataByBarcode.sql" />
     <Build Include="Stored Procedures\usp_GetAllUnits.sql" />
     <Build Include="Stored Procedures\usp_GetAllTax.sql" />
     <Build Include="Stored Procedures\usp_GetAllPricesDataForItem.sql" />
-    <Build Include="Stored Procedures\usp_GetItemCatDataAndUnitWithBarcodeAndStore.sql" />
     <Build Include="Stored Procedures\usp_GetItemDataWithBarcode.sql" />
     <Build Include="Stored Procedures\usp_UpdateItem.sql" />
     <Build Include="Stored Procedures\usp_InsertStoreAndReturnInserted.sql" />
     <Build Include="Stored Procedures\usp_UpdateStoreAndReturnInserted.sql" />
+    <Build Include="Stored Procedures\usp_InsertInvoiceAndInvoiceDetails.sql" />
+    <Build Include="Types\InvoiceDetailsUDT.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ShoppingBirdData.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment_ItemInsert.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="devShoppingBirdData.publish.xml" />
+    <None Include="pShoppingBirdData.publish.xml" />
   </ItemGroup>
 </Project>

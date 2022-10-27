@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Shopping.Desktop
+namespace ShoppingBird.Desktop
 {
     static class Program
     {

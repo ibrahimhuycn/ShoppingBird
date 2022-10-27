@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Shopping.Desktop.Properties {
+namespace ShoppingBird.Desktop.Properties {
     using System;
     
     

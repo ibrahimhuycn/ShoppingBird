@@ -1,9 +1,9 @@
 ﻿using DevExpress.XtraEditors;
-using Shopping.Desktop.Views;
+using ShoppingBird.Desktop.Views;
 using System;
 using System.Windows.Forms;
 
-namespace Shopping.Desktop
+namespace ShoppingBird.Desktop
 {
     public partial class MainView : DevExpress.XtraBars.Ribbon.RibbonForm
     {
@@ -15,7 +15,7 @@ namespace Shopping.Desktop
 
         private void BarButtonItemCart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            OpenMdiForm<string, CartView>("",false,true);
+            OpenMdiForm<string, CartView>("", false, true ,false);
         }
 
 
@@ -23,7 +23,7 @@ namespace Shopping.Desktop
         /// Open Mdi Form with data passed in. Assigns the passed in data to Tag property after evaluating authorization
         /// </summary>
         /// <typeparam name="T">Type of data to be passed in</typeparam>
-        public void OpenMdiForm<S, T>(S data, bool isDialogWindow = false, bool isMaximized = false) where T : Form
+        public void OpenMdiForm<S, T>(S data, bool isDialogWindow = false, bool isMaximized = false, bool isMdiChild = true) where T : Form
         {
             try
             {
@@ -40,13 +40,13 @@ namespace Shopping.Desktop
                 else
                 {
                     form.Show();
-                    form.MdiParent = this;
+                    if (IsMdiChild) { form.MdiParent = this; }
                 }
                 form.FormClosed += Form_FormClosed;
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show(ex.Message + "\n"+ ex.StackTrace);
+                XtraMessageBox.Show(ex.Message + "\n" + ex.StackTrace);
 
                 //handle any inner exceptions
                 var inner = ex.InnerException;

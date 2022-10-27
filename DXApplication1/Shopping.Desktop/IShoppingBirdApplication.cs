@@ -1,4 +1,4 @@
-﻿namespace Shopping.Desktop
+﻿namespace ShoppingBird.Desktop
 {
     public interface IShoppingBirdApplication
     {

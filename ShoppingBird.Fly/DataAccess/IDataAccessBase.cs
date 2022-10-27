@@ -1,4 +1,5 @@
-﻿using ShoppingBird.Fly.Models;
+﻿using Dapper;
+using ShoppingBird.Fly.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,6 +7,7 @@ namespace ShoppingBird.Fly.DataAccess
 {
     public interface IDataAccessBase
     {
+        SqlMapper.ICustomQueryParameter GetInvoiceDetailsUDT(List<CartItemModel> cartItems);
         Task<List<T>> LoadDataAsync<T>(string storedProcedure);
         Task<List<T>> LoadDataWithParameterAsync<T, TU>(string storedProcedure, TU parameter);
         Task<List<T>> LoadDataWithQueryAndParametersAsync<T, TU>(string query, TU parameters, string connectionName = "CD4Data");

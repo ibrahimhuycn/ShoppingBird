@@ -1,14 +1,12 @@
 ﻿CREATE PROCEDURE [dbo].[usp_UpdateStoreAndReturnInserted]
 	@Id int,
-	@StoreName varchar(50),
-	@IsTaxInclusive bit
+	@StoreName varchar(50)
 AS
 BEGIN
 	UPDATE [dbo].[Store]
 	SET
-		[Name] = @StoreName,
-		[IsTaxInclusive] = @IsTaxInclusive
+		[Name] = @StoreName
 	WHERE [Id] = @Id;
 
-	SELECT [Id],[Name],[IsTaxInclusive] FROM [dbo].[Store];
+	SELECT [Id],[Name] FROM [dbo].[Store];
 END

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Shopping.Desktop
+namespace ShoppingBird.Desktop
 {
     public static class FormFactory
     {

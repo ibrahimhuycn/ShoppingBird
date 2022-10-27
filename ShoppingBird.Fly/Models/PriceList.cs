@@ -8,14 +8,14 @@ namespace ShoppingBird.Fly.Models
         {
             Item = new Item();
             Tax = new Tax();
-            Store = new Store();
+            Store = new StoreModel();
             Unit = new Units();
         }
         public int Id { get; set; }
         public Item Item { get; set; }
         public string Barcode { get; set; }
         public Tax Tax { get; set; }
-        public Store Store { get; set; }
+        public StoreModel Store { get; set; }
         public decimal RetailPrice { get; set; }
         public Units Unit { get; set; }
     }

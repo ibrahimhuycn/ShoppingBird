@@ -19,16 +19,9 @@ BEGIN
 		[UpdatedAt] = GETDATE() 
 	WHERE [ItemId] = @ItemId AND [StoreId] = @StoreId AND [Barcode] = @Barcode; -- barcode is specified here because barcode might be different for different stores
 
-	--update tax(not updated with price because tax update will apply to the item in all stores)
-	UPDATE [dbo].[PriceList]
-	SET [TaxId] = @TaxId,
-		[UpdatedAt] = GETDATE()
-	WHERE [Barcode] = @Barcode;
 	--update item table
 	UPDATE [dbo].[item]
-	SET [Description] = @Description,
-		[CategoryId] = @CategoryId,
-		[SubCategoryId] = @SubCategoryId
+	SET [Description] = @Description
 	WHERE [Id] = @ItemId;
 END
 

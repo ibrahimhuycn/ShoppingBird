@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace ShoppingBird.Fly.Models
 {
-    public class NewInvoice
+    public class NewInvoiceModel
     {
         public Invoice Invoice { get; set; }
-        public IList<InvoiceDetail> InvoiceDetails { get; set; }
+        public List<CartItemModel> CartItems { get; set; }
     }
 }

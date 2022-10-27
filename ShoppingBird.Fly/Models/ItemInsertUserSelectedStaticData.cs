@@ -12,7 +12,7 @@ namespace ShoppingBird.Fly.Models
     {
 
         private ItemCategory _category;
-        private Store _store;
+        private StoreModel _store;
         private ItemCategory _subCategory;
         private Tax _tax;
         private Units _unit;
@@ -25,7 +25,7 @@ namespace ShoppingBird.Fly.Models
         /// <param name="category">An instance of ItemCategory model</param>
         /// <param name="subCategory">An instance of ItemCategory model as sub category</param>
         /// <param name="unit">An instance of units model</param>
-        public ItemInsertUserSelectedStaticData Initialise(Store store, Tax tax, ItemCategory category, ItemCategory subCategory, Units unit)
+        public ItemInsertUserSelectedStaticData Initialise(StoreModel store, Tax tax, ItemCategory category, ItemCategory subCategory, Units unit)
         {
             this._store = store;
             this._tax = tax;
@@ -43,7 +43,7 @@ namespace ShoppingBird.Fly.Models
                 return _category;
             }
         }
-        public Store Store
+        public StoreModel Store
         {
             get
             {

@@ -1,12 +1,10 @@
 ﻿CREATE PROCEDURE [dbo].[usp_InsertStoreAndReturnInserted]
-	@StoreName varchar(50),
-	@IsTaxInclusive bit
+	@StoreName varchar(50)
 AS
 BEGIN
-	INSERT INTO [dbo].[Store]([Name],[IsTaxInclusive])
+	INSERT INTO [dbo].[Store]([Name])
 	OUTPUT 
 		INSERTED.Id, 
-		INSERTED.[Name], 
-		INSERTED.[IsTaxInclusive] 
-	VALUES (@StoreName, @IsTaxInclusive)
+		INSERTED.[Name]
+	VALUES (@StoreName)
 END

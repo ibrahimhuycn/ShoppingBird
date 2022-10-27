@@ -7,7 +7,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ShoppingBirdData", "Shoppin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingBird.Fly", "ShoppingBird.Fly\ShoppingBird.Fly.csproj", "{D6170A9C-83AD-43A9-A782-1B52F3C42AC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Desktop", "DXApplication1\Shopping.Desktop\Shopping.Desktop.csproj", "{EAF54B4E-27CF-4FF2-A484-C2696AD7A176}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingBird.Desktop", "DXApplication1\Shopping.Desktop\ShoppingBird.Desktop.csproj", "{EAF54B4E-27CF-4FF2-A484-C2696AD7A176}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
