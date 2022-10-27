@@ -3,7 +3,6 @@
 	@Description varchar(100),
 	@StoreId int,
 	@RetailPrice DECIMAL(13,4),
-	@TaxId int,
 	@UnitId int,
 	@CategoryId int,
 	@SubCategoryId int
@@ -20,7 +19,7 @@ BEGIN
 	WHERE [ItemId] = @ItemId AND [StoreId] = @StoreId AND [Barcode] = @Barcode; -- barcode is specified here because barcode might be different for different stores
 
 	--update item table
-	UPDATE [dbo].[item]
+	UPDATE [dbo].[Item]
 	SET [Description] = @Description
 	WHERE [Id] = @ItemId;
 END

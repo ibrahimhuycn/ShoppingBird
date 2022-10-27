@@ -2,21 +2,19 @@
 
 namespace ShoppingBird.Fly.Models
 {
-    public class ItemPriceData
+    public class ItemPriceDataModel
     {
-        public ItemPriceData()
+        public ItemPriceDataModel()
         {
-            Item = new Item();
-            Tax = new Tax();
+            Item = new ItemModel();
             Store = new StoreModel();
-            Unit = new Units();
+            Unit = new UnitsModel();
         }
         public int Id { get; set; }
-        public Item Item { get; set; }
+        public ItemModel Item { get; set; }
         public string Barcode { get; set; }
-        public Tax Tax { get; set; }
         public StoreModel Store { get; set; }
         public decimal RetailPrice { get; set; }
-        public Units Unit { get; set; }
+        public UnitsModel Unit { get; set; }
     }
 }

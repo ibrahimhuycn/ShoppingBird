@@ -16,6 +16,7 @@ namespace ShoppingBird.Desktop.ViewModels
     {
         private readonly IItemIO _itemIO;
         private readonly IStoreIO _storeIO;
+        private readonly IInvoiceIO _invoiceIO;
         private readonly IMapper _mapper;
         private int _selectedItemId;
         private int _selectedStoreId;
@@ -26,10 +27,11 @@ namespace ShoppingBird.Desktop.ViewModels
         private event EventHandler OnItemAddedToCart;
         private event EventHandler OnSaveCartRequested;
 
-        public CartViewModel(IItemIO itemIO, IStoreIO storeIO, IMapper mapper)
+        public CartViewModel(IItemIO itemIO, IStoreIO storeIO,IInvoiceIO invoiceIO, IMapper mapper)
         {
             _itemIO = itemIO;
             _storeIO = storeIO;
+            _invoiceIO = invoiceIO;
             _mapper = mapper;
             ItemSearchDatasource = new List<ItemListAllModel>();
             AllStores = new List<StoreModel>();
@@ -159,8 +161,9 @@ namespace ShoppingBird.Desktop.ViewModels
             TotalCartAmount = totalAmount + AdjustmentAmount;
         }
 
-        private void CartViewModel_OnSaveCartRequested(object sender, EventArgs e)
+        private async void CartViewModel_OnSaveCartRequested(object sender, EventArgs e)
         {
+            //_ = await _invoiceIO.SaveInvoiceAsync()
         }
 
         #endregion

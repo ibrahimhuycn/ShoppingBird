@@ -7,7 +7,7 @@ BEGIN
            pl.[ItemId],
            [pl].[StoreId],
            [pl].[RetailPrice],
-           i.Description AS [ItemDescription],
+           i.[Description] AS [ItemDescription],
            u.Unit
     FROM [dbo].[PriceList] [pl]
         INNER JOIN [dbo].[Item] [i] ON [pl].[ItemId] = [i].[Id]

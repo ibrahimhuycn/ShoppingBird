@@ -27,7 +27,7 @@ namespace ShoppingBird.Fly.Services
                 AdjustAmount = e.Invoice.AdjustAmount,
                 Total = e.Invoice.Total,
                 UserId = e.Invoice.UserId,
-                Date = e.Invoice.Date,
+                Date = e.Invoice.InvoiceDate,
                 InvoiceDetails = _dataAccessBase.GetInvoiceDetailsUDT(e.CartItems)
             };
 

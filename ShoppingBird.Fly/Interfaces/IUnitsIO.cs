@@ -6,7 +6,7 @@ namespace ShoppingBird.Fly.Interfaces
 {
     public interface IUnitsIO
     {
-        List<Units> LoadAll();
-        void Save(Units e);
+        List<UnitsModel> LoadAll();
+        void Save(UnitsModel e);
     }
 }

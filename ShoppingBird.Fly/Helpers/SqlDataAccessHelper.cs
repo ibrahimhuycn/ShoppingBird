@@ -17,7 +17,7 @@ namespace ShoppingBird.Fly.Helpers
         private string ReadConnectionString(string name)
         {
             var reader = new DiskIOHelper();
-            var config = JsonConvert.DeserializeObject<Config>(reader.ReadConfigFile());
+            var config = JsonConvert.DeserializeObject<ConfigModel>(reader.ReadConfigFile());
             if (config is null) { throw new Exception("Cannot read config file."); }
 
             var configData = config.ConnectionName.Where(x => x.Name == name).FirstOrDefault();

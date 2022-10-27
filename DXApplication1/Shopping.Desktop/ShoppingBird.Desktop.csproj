@@ -104,7 +104,9 @@
     <Compile Include="IFormFactory.cs" />
     <Compile Include="IShoppingBirdApplication.cs" />
     <Compile Include="Models\CartItemModel.cs" />
+    <Compile Include="Models\InvoiceModel.cs" />
     <Compile Include="Models\ItemListAllModel.cs" />
+    <Compile Include="Models\NewInvoiceModel.cs" />
     <Compile Include="Models\StoreModel.cs" />
     <Compile Include="ShoppingBirdApplication.cs" />
     <Compile Include="Transations\GlobalStrings.dv-MV.Designer.cs">
