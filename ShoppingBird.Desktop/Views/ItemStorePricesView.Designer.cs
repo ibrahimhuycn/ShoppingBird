@@ -39,6 +39,14 @@ namespace ShoppingBird.Desktop.Views
             this.groupControlItems = new DevExpress.XtraEditors.GroupControl();
             this.groupControlAddEditPrices = new DevExpress.XtraEditors.GroupControl();
             this.groupControlCurrentPrices = new DevExpress.XtraEditors.GroupControl();
+            this.gridControlAllStores = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControlAllUnits = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControlAllItems = new DevExpress.XtraGrid.GridControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControlCurrentPrices = new DevExpress.XtraGrid.GridControl();
+            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -48,7 +56,9 @@ namespace ShoppingBird.Desktop.Views
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlStore)).BeginInit();
+            this.groupControlStore.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlUnits)).BeginInit();
+            this.groupControlUnits.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerPrices)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -58,8 +68,18 @@ namespace ShoppingBird.Desktop.Views
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlItems)).BeginInit();
+            this.groupControlItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlAddEditPrices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlCurrentPrices)).BeginInit();
+            this.groupControlCurrentPrices.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlAllStores)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlAllUnits)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlAllItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlCurrentPrices)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerMain
@@ -99,6 +119,7 @@ namespace ShoppingBird.Desktop.Views
             // 
             // groupControlStore
             // 
+            this.groupControlStore.Controls.Add(this.gridControlAllStores);
             this.groupControlStore.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlStore.Location = new System.Drawing.Point(0, 0);
             this.groupControlStore.Name = "groupControlStore";
@@ -108,6 +129,7 @@ namespace ShoppingBird.Desktop.Views
             // 
             // groupControlUnits
             // 
+            this.groupControlUnits.Controls.Add(this.gridControlAllUnits);
             this.groupControlUnits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlUnits.Location = new System.Drawing.Point(0, 0);
             this.groupControlUnits.Name = "groupControlUnits";
@@ -152,6 +174,7 @@ namespace ShoppingBird.Desktop.Views
             // 
             // groupControlItems
             // 
+            this.groupControlItems.Controls.Add(this.gridControlAllItems);
             this.groupControlItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlItems.Location = new System.Drawing.Point(0, 0);
             this.groupControlItems.Name = "groupControlItems";
@@ -170,12 +193,77 @@ namespace ShoppingBird.Desktop.Views
             // 
             // groupControlCurrentPrices
             // 
+            this.groupControlCurrentPrices.Controls.Add(this.gridControlCurrentPrices);
             this.groupControlCurrentPrices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlCurrentPrices.Location = new System.Drawing.Point(0, 0);
             this.groupControlCurrentPrices.Name = "groupControlCurrentPrices";
             this.groupControlCurrentPrices.Size = new System.Drawing.Size(714, 702);
             this.groupControlCurrentPrices.TabIndex = 2;
             this.groupControlCurrentPrices.Text = "CURRENT PRICES";
+            // 
+            // gridControlAllStores
+            // 
+            this.gridControlAllStores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlAllStores.Location = new System.Drawing.Point(2, 27);
+            this.gridControlAllStores.MainView = this.gridView1;
+            this.gridControlAllStores.Name = "gridControlAllStores";
+            this.gridControlAllStores.Size = new System.Drawing.Size(351, 305);
+            this.gridControlAllStores.TabIndex = 0;
+            this.gridControlAllStores.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridControlAllStores;
+            this.gridView1.Name = "gridView1";
+            // 
+            // gridControlAllUnits
+            // 
+            this.gridControlAllUnits.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlAllUnits.Location = new System.Drawing.Point(2, 27);
+            this.gridControlAllUnits.MainView = this.gridView2;
+            this.gridControlAllUnits.Name = "gridControlAllUnits";
+            this.gridControlAllUnits.Size = new System.Drawing.Size(351, 335);
+            this.gridControlAllUnits.TabIndex = 1;
+            this.gridControlAllUnits.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.GridControl = this.gridControlAllUnits;
+            this.gridView2.Name = "gridView2";
+            // 
+            // gridControlAllItems
+            // 
+            this.gridControlAllItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlAllItems.Location = new System.Drawing.Point(2, 27);
+            this.gridControlAllItems.MainView = this.gridView3;
+            this.gridControlAllItems.Name = "gridControlAllItems";
+            this.gridControlAllItems.Size = new System.Drawing.Size(355, 306);
+            this.gridControlAllItems.TabIndex = 1;
+            this.gridControlAllItems.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            // 
+            // gridView3
+            // 
+            this.gridView3.GridControl = this.gridControlAllItems;
+            this.gridView3.Name = "gridView3";
+            // 
+            // gridControlCurrentPrices
+            // 
+            this.gridControlCurrentPrices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlCurrentPrices.Location = new System.Drawing.Point(2, 27);
+            this.gridControlCurrentPrices.MainView = this.gridView5;
+            this.gridControlCurrentPrices.Name = "gridControlCurrentPrices";
+            this.gridControlCurrentPrices.Size = new System.Drawing.Size(710, 673);
+            this.gridControlCurrentPrices.TabIndex = 1;
+            this.gridControlCurrentPrices.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView5});
+            // 
+            // gridView5
+            // 
+            this.gridView5.GridControl = this.gridControlCurrentPrices;
+            this.gridView5.Name = "gridView5";
             // 
             // ItemStorePricesView
             // 
@@ -195,7 +283,9 @@ namespace ShoppingBird.Desktop.Views
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControlStore)).EndInit();
+            this.groupControlStore.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControlUnits)).EndInit();
+            this.groupControlUnits.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerPrices)).EndInit();
@@ -205,8 +295,18 @@ namespace ShoppingBird.Desktop.Views
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControlItems)).EndInit();
+            this.groupControlItems.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControlAddEditPrices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlCurrentPrices)).EndInit();
+            this.groupControlCurrentPrices.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlAllStores)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlAllUnits)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlAllItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlCurrentPrices)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -222,5 +322,13 @@ namespace ShoppingBird.Desktop.Views
         private DevExpress.XtraEditors.GroupControl groupControlItems;
         private DevExpress.XtraEditors.GroupControl groupControlAddEditPrices;
         private DevExpress.XtraEditors.GroupControl groupControlCurrentPrices;
+        private DevExpress.XtraGrid.GridControl gridControlAllStores;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gridControlAllUnits;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.GridControl gridControlAllItems;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.GridControl gridControlCurrentPrices;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
     }
 }
