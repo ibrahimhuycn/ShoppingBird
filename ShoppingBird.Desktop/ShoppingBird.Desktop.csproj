@@ -109,6 +109,7 @@
     <Compile Include="Models\NewInvoiceModel.cs" />
     <Compile Include="Models\StoreModel.cs" />
     <Compile Include="Models\TransactionHistoryModel.cs" />
+    <Compile Include="Models\UnitsModel.cs" />
     <Compile Include="ShoppingBirdApplication.cs" />
     <Compile Include="Translations\GlobalStrings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -124,8 +125,10 @@
     <Compile Include="ViewModels\ICartViewModel.cs" />
     <Compile Include="ViewModels\IStoreViewModel.cs" />
     <Compile Include="ViewModels\ITransactionHistoryViewModel.cs" />
+    <Compile Include="ViewModels\IUnitsViewModel.cs" />
     <Compile Include="ViewModels\StoreViewModel.cs" />
     <Compile Include="ViewModels\TransactionHistoryViewModel.cs" />
+    <Compile Include="ViewModels\UnitsViewModel.cs" />
     <Compile Include="Views\CartView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +154,12 @@
     </Compile>
     <Compile Include="Views\TransactionHistoryView.Designer.cs">
       <DependentUpon>TransactionHistoryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UnitsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UnitsView.Designer.cs">
+      <DependentUpon>UnitsView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Translations\GlobalStrings.dv-MV.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -185,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TransactionHistoryView.resx">
       <DependentUpon>TransactionHistoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UnitsView.resx">
+      <DependentUpon>UnitsView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
