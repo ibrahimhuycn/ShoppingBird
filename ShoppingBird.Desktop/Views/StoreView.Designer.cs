@@ -96,10 +96,10 @@ namespace ShoppingBird.Desktop.Views
             this.simpleButtonInsertStore.TabIndex = 10;
             this.simpleButtonInsertStore.Text = "New [ Insert ]";
             // 
-            // simpleButtonUpdateSaveStore
+            // simpleButtonSaveStore
             // 
             this.simpleButtonSaveStore.Location = new System.Drawing.Point(110, 171);
-            this.simpleButtonSaveStore.Name = "simpleButtonUpdateSaveStore";
+            this.simpleButtonSaveStore.Name = "simpleButtonSaveStore";
             this.simpleButtonSaveStore.Size = new System.Drawing.Size(135, 23);
             this.simpleButtonSaveStore.TabIndex = 9;
             this.simpleButtonSaveStore.Text = "Save [ F6 ]";
