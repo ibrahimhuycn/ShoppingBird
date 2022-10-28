@@ -33,6 +33,9 @@ namespace ShoppingBird.Desktop
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemCart = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemTransactionHistory = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpenStoreConfig = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpenUnitsConfig = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpenItemsConfig = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -47,9 +50,12 @@ namespace ShoppingBird.Desktop
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.barButtonItemCart,
-            this.barButtonItemTransactionHistory});
+            this.barButtonItemTransactionHistory,
+            this.barButtonItemOpenStoreConfig,
+            this.barButtonItemOpenUnitsConfig,
+            this.barButtonItemOpenItemsConfig});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 3;
+            this.ribbonControl1.MaxItemId = 6;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -70,6 +76,27 @@ namespace ShoppingBird.Desktop
             this.barButtonItemTransactionHistory.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.transaction_history;
             this.barButtonItemTransactionHistory.Name = "barButtonItemTransactionHistory";
             // 
+            // barButtonItemOpenStoreConfig
+            // 
+            this.barButtonItemOpenStoreConfig.Caption = "Retail Stores";
+            this.barButtonItemOpenStoreConfig.Id = 3;
+            this.barButtonItemOpenStoreConfig.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.shopping;
+            this.barButtonItemOpenStoreConfig.Name = "barButtonItemOpenStoreConfig";
+            // 
+            // barButtonItemOpenUnitsConfig
+            // 
+            this.barButtonItemOpenUnitsConfig.Caption = "Units";
+            this.barButtonItemOpenUnitsConfig.Id = 4;
+            this.barButtonItemOpenUnitsConfig.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.weighing_machine;
+            this.barButtonItemOpenUnitsConfig.Name = "barButtonItemOpenUnitsConfig";
+            // 
+            // barButtonItemOpenItemsConfig
+            // 
+            this.barButtonItemOpenItemsConfig.Caption = "Items";
+            this.barButtonItemOpenItemsConfig.Id = 5;
+            this.barButtonItemOpenItemsConfig.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.best_product;
+            this.barButtonItemOpenItemsConfig.Name = "barButtonItemOpenItemsConfig";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -87,8 +114,11 @@ namespace ShoppingBird.Desktop
             // 
             // ribbonPageGroup2
             // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemOpenStoreConfig);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemOpenUnitsConfig);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemOpenItemsConfig);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Configuration";
             // 
             // ribbonStatusBar1
             // 
@@ -104,6 +134,7 @@ namespace ShoppingBird.Desktop
             // 
             // MainView
             // 
+            this.AllowMdiBar = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1348, 776);
@@ -132,6 +163,9 @@ namespace ShoppingBird.Desktop
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.BarButtonItem barButtonItemCart;
         private DevExpress.XtraBars.BarButtonItem barButtonItemTransactionHistory;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenStoreConfig;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenUnitsConfig;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenItemsConfig;
     }
 }
 

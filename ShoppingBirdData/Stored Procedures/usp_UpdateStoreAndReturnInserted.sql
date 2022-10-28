@@ -8,5 +8,5 @@ BEGIN
 		[Name] = @StoreName
 	WHERE [Id] = @Id;
 
-	SELECT [Id],[Name] FROM [dbo].[Store];
+	SELECT [Id],[Name] FROM [dbo].[Store] WHERE [Id] = @Id;
 END

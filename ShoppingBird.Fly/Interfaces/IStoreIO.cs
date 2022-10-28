@@ -8,7 +8,7 @@ namespace ShoppingBird.Fly.Interfaces
     public interface IStoreIO
     {
         Task<List<StoreModel>> GetAllStoresAsync();
-        StoreModel SaveStore(StoreModel e);
-        StoreModel UpdateStore(StoreModel e);
+        Task<StoreModel> InsertStoreAsync(string storeName);
+        Task<StoreModel> UpdateStoreAsync(StoreModel e);
     }
 }

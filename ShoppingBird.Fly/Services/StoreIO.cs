@@ -23,14 +23,23 @@ namespace ShoppingBird.Fly.Services
             return stores;
         }
 
-        public StoreModel SaveStore(StoreModel e)
+        public async Task<StoreModel> UpdateStoreAsync(StoreModel e)
         {
-            throw new NotImplementedException();
+            var storedProcedure = "[dbo].[usp_UpdateStoreAndReturnInserted]";
+            var parameters = new {Id = e.Id, StoreName = e.Name};
+            var updated = await _dataAccessBase.SelectInsertOrUpdateAsync<StoreModel, dynamic>(storedProcedure, parameters);
+            return updated;
         }
 
-        public StoreModel UpdateStore(StoreModel e)
+        public async Task<StoreModel> InsertStoreAsync(string storeName)
         {
-            throw new NotImplementedException();
+            var storedProcedure = "[dbo].[usp_InsertStoreAndReturnInserted]";
+            var parameters = new
+            {
+                StoreName = storeName
+            };
+            var insertedStore = await _dataAccessBase.SelectInsertOrUpdateAsync<StoreModel, dynamic>(storedProcedure, parameters);
+            return insertedStore;
         }
     }
 }

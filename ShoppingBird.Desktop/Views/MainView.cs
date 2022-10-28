@@ -12,6 +12,12 @@ namespace ShoppingBird.Desktop
             InitializeComponent();
             barButtonItemCart.ItemClick += BarButtonItemCart_ItemClick;
             barButtonItemTransactionHistory.ItemClick += BarButtonItemTransactionHistory_ItemClick;
+            barButtonItemOpenStoreConfig.ItemClick += BarButtonItemOpenStoreConfig_ItemClick;
+        }
+
+        private void BarButtonItemOpenStoreConfig_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenMdiForm<string, StoreView>("", false, true, true);
         }
 
         private void BarButtonItemTransactionHistory_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -37,7 +43,6 @@ namespace ShoppingBird.Desktop
 
                 //pass-in data to the form
                 form.Tag = data;
-                if (isMaximized) { form.WindowState = FormWindowState.Maximized; }
 
                 if (isDialogWindow)
                 {
@@ -45,10 +50,12 @@ namespace ShoppingBird.Desktop
                 }
                 else
                 {
-                    form.Show();
                     if (IsMdiChild) { form.MdiParent = this; }
+                    form.Show();
                 }
                 form.FormClosed += Form_FormClosed;
+
+                if (isMaximized) { form.WindowState = FormWindowState.Maximized; }
             }
             catch (Exception ex)
             {

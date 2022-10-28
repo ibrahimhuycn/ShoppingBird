@@ -266,9 +266,9 @@ namespace ShoppingBird.Desktop.Views
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnAmount;
         private DevExpress.XtraEditors.SimpleButton simpleButtonCheckout;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnBarcode;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit textEditAdjustmentAmount;
         private DevExpress.XtraEditors.SimpleButton simpleButtonSetCartLabel;
         private DevExpress.XtraEditors.SimpleButton simpleButtonClearCart;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
     }
 }
