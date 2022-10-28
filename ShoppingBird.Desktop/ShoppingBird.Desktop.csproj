@@ -124,6 +124,7 @@
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\ICartViewModel.cs" />
     <Compile Include="ViewModels\IStoreViewModel.cs" />
+    <Compile Include="ViewModels\ItemStorePricesViewModel.cs" />
     <Compile Include="ViewModels\ITransactionHistoryViewModel.cs" />
     <Compile Include="ViewModels\IUnitsViewModel.cs" />
     <Compile Include="ViewModels\StoreViewModel.cs" />
@@ -134,6 +135,12 @@
     </Compile>
     <Compile Include="Views\CartView.Designer.cs">
       <DependentUpon>CartView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemStorePricesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ItemStorePricesView.Designer.cs">
+      <DependentUpon>ItemStorePricesView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
@@ -174,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CartView.resx">
       <DependentUpon>CartView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ItemStorePricesView.resx">
+      <DependentUpon>ItemStorePricesView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
