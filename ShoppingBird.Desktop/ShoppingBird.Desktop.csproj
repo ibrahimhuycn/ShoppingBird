@@ -107,6 +107,7 @@
     <Compile Include="Models\InvoiceModel.cs" />
     <Compile Include="Models\ItemListAllModel.cs" />
     <Compile Include="Models\NewInvoiceModel.cs" />
+    <Compile Include="Models\PriceListModel.cs" />
     <Compile Include="Models\StoreModel.cs" />
     <Compile Include="Models\TransactionHistoryModel.cs" />
     <Compile Include="Models\UnitsModel.cs" />
@@ -123,6 +124,7 @@
     </Compile>
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\ICartViewModel.cs" />
+    <Compile Include="ViewModels\IItemStorePricesViewModel.cs" />
     <Compile Include="ViewModels\IStoreViewModel.cs" />
     <Compile Include="ViewModels\ItemStorePricesViewModel.cs" />
     <Compile Include="ViewModels\ITransactionHistoryViewModel.cs" />
