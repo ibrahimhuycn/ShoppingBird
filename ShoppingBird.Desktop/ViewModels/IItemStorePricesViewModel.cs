@@ -1,5 +1,6 @@
 ﻿using ShoppingBird.Desktop.Models;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace ShoppingBird.Desktop.ViewModels
 {
@@ -19,5 +20,7 @@ namespace ShoppingBird.Desktop.ViewModels
         PriceListModel SelectedPriceListModel { get; set; }
         decimal SelectedItemRetailPrice { get; set; }
         bool IsAnExistingPriceSelected { get; set; }
+
+        Task InsertOrUpdateStorePriceDataAsync();
     }
 }

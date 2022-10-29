@@ -13,6 +13,8 @@ namespace ShoppingBird.Desktop.ViewModels
 {
     public class ItemStorePricesViewModel : NotifyBase, IItemStorePricesViewModel
     {
+        #region Private Fields
+
         private readonly IStoreIO _storeIO;
         private readonly IUnitsIO _unitsIO;
         private readonly IItemIO _itemIO;
@@ -28,8 +30,10 @@ namespace ShoppingBird.Desktop.ViewModels
         private PriceListModel _selectedPriceListModel;
         private decimal _selectedItemRetailPrice;
         private bool _isAnExistingPriceSelected;
+        #endregion
 
         private event EventHandler OnInitialize;
+        #region Constructor
         public ItemStorePricesViewModel(IStoreIO storeIO, IUnitsIO unitsIO, IItemIO itemIO, IPriceListIO priceListIO, IMapper mapper)
         {
             _storeIO = storeIO;
@@ -45,6 +49,7 @@ namespace ShoppingBird.Desktop.ViewModels
             OnInitialize += ItemStorePricesViewModel_OnInitialize;
             OnInitialize?.Invoke(this, EventArgs.Empty);
         }
+        #endregion
 
         #region Public properties
 
@@ -101,8 +106,12 @@ namespace ShoppingBird.Desktop.ViewModels
                 SelectedBarcode = value.Barcode;
                 SelectedItemRetailPrice = value.RetailPrice;
                 SelectedItemDescription = value.ItemDescription;
-                SelectedStoreName = value.StoreDescription;
-                SelectedUnit = value.UnitId.ToString();
+
+                var store = AllStores.FirstOrDefault(x=> x.Name == value.StoreDescription);
+                SelectedStoreModel = store;
+
+                var unit = AllUnits.FirstOrDefault(x=> x.Id == value.UnitId);
+                SelectedUnitsModel = unit;
             }
         }
 
@@ -167,7 +176,36 @@ namespace ShoppingBird.Desktop.ViewModels
         #endregion
 
         #region Public Methods
+        public async Task InsertOrUpdateStorePriceDataAsync()
+        {
+            if (IsAnExistingPriceSelected)
+            {
+                await UpdateSelectedStorePriceDataAsync();
+                return;
+            }
+            await InsertNewPriceDataAsync();
+        }
 
+        private async Task InsertNewPriceDataAsync()
+        {
+            var inserted  = await _priceListIO.InsertPriceListRecordAsync
+                (SelectedItemId, SelectedBarcode, SelectedStoreId, SelectedItemRetailPrice, SelectedUnitId);
+            var mapped = _mapper.Map<PriceListModel>(inserted);
+            AllPricesForAllStores.Add(mapped);
+            NotificationHelper.ShowMessage("Item inserted successfully", "STORE PRICE INSERTED");
+        }
+
+        private async Task UpdateSelectedStorePriceDataAsync()
+        {
+            var updated = await _priceListIO.UpdateStorePriceAsync
+                (SelectedPriceListModel.Id, SelectedBarcode, SelectedItemRetailPrice);
+            var storeItemPriceData = AllPricesForAllStores.FirstOrDefault(x=> x.Id == updated.Id);
+
+            storeItemPriceData.Barcode = updated.Barcode;
+            storeItemPriceData.RetailPrice = updated.RetailPrice;
+
+            NotificationHelper.ShowMessage("Item updated successfully", "RECORD UPDATED");
+        }
         #endregion
 
         #region Private Methods

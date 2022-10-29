@@ -110,8 +110,8 @@ namespace ShoppingBird.Desktop.Views
             // splitContainerMain.Panel2
             // 
             this.splitContainerMain.Panel2.Controls.Add(this.splitContainerPrices);
-            this.splitContainerMain.Size = new System.Drawing.Size(1436, 702);
-            this.splitContainerMain.SplitterDistance = 355;
+            this.splitContainerMain.Size = new System.Drawing.Size(1388, 702);
+            this.splitContainerMain.SplitterDistance = 343;
             this.splitContainerMain.TabIndex = 0;
             // 
             // splitContainer1
@@ -128,7 +128,7 @@ namespace ShoppingBird.Desktop.Views
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupControlUnits);
-            this.splitContainer1.Size = new System.Drawing.Size(355, 702);
+            this.splitContainer1.Size = new System.Drawing.Size(343, 702);
             this.splitContainer1.SplitterDistance = 334;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -138,7 +138,7 @@ namespace ShoppingBird.Desktop.Views
             this.groupControlStore.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlStore.Location = new System.Drawing.Point(0, 0);
             this.groupControlStore.Name = "groupControlStore";
-            this.groupControlStore.Size = new System.Drawing.Size(355, 334);
+            this.groupControlStore.Size = new System.Drawing.Size(343, 334);
             this.groupControlStore.TabIndex = 0;
             this.groupControlStore.Text = "ALL STORES";
             // 
@@ -148,7 +148,7 @@ namespace ShoppingBird.Desktop.Views
             this.gridControlAllStores.Location = new System.Drawing.Point(2, 27);
             this.gridControlAllStores.MainView = this.gridViewAllStores;
             this.gridControlAllStores.Name = "gridControlAllStores";
-            this.gridControlAllStores.Size = new System.Drawing.Size(351, 305);
+            this.gridControlAllStores.Size = new System.Drawing.Size(339, 305);
             this.gridControlAllStores.TabIndex = 0;
             this.gridControlAllStores.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewAllStores});
@@ -165,7 +165,7 @@ namespace ShoppingBird.Desktop.Views
             this.groupControlUnits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlUnits.Location = new System.Drawing.Point(0, 0);
             this.groupControlUnits.Name = "groupControlUnits";
-            this.groupControlUnits.Size = new System.Drawing.Size(355, 364);
+            this.groupControlUnits.Size = new System.Drawing.Size(343, 364);
             this.groupControlUnits.TabIndex = 1;
             this.groupControlUnits.Text = "ALL UNITS";
             // 
@@ -175,7 +175,7 @@ namespace ShoppingBird.Desktop.Views
             this.gridControlAllUnits.Location = new System.Drawing.Point(2, 27);
             this.gridControlAllUnits.MainView = this.gridViewAllUnits;
             this.gridControlAllUnits.Name = "gridControlAllUnits";
-            this.gridControlAllUnits.Size = new System.Drawing.Size(351, 335);
+            this.gridControlAllUnits.Size = new System.Drawing.Size(339, 335);
             this.gridControlAllUnits.TabIndex = 1;
             this.gridControlAllUnits.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewAllUnits});
@@ -199,8 +199,8 @@ namespace ShoppingBird.Desktop.Views
             // splitContainerPrices.Panel2
             // 
             this.splitContainerPrices.Panel2.Controls.Add(this.groupControlCurrentPrices);
-            this.splitContainerPrices.Size = new System.Drawing.Size(1077, 702);
-            this.splitContainerPrices.SplitterDistance = 359;
+            this.splitContainerPrices.Size = new System.Drawing.Size(1041, 702);
+            this.splitContainerPrices.SplitterDistance = 347;
             this.splitContainerPrices.TabIndex = 0;
             // 
             // splitContainer2
@@ -217,7 +217,7 @@ namespace ShoppingBird.Desktop.Views
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupControlAddEditPrices);
-            this.splitContainer2.Size = new System.Drawing.Size(359, 702);
+            this.splitContainer2.Size = new System.Drawing.Size(347, 702);
             this.splitContainer2.SplitterDistance = 335;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -227,7 +227,7 @@ namespace ShoppingBird.Desktop.Views
             this.groupControlItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlItems.Location = new System.Drawing.Point(0, 0);
             this.groupControlItems.Name = "groupControlItems";
-            this.groupControlItems.Size = new System.Drawing.Size(359, 335);
+            this.groupControlItems.Size = new System.Drawing.Size(347, 335);
             this.groupControlItems.TabIndex = 1;
             this.groupControlItems.Text = "ALL ITEMS";
             // 
@@ -237,7 +237,7 @@ namespace ShoppingBird.Desktop.Views
             this.gridControlAllItems.Location = new System.Drawing.Point(2, 27);
             this.gridControlAllItems.MainView = this.gridViewAllItems;
             this.gridControlAllItems.Name = "gridControlAllItems";
-            this.gridControlAllItems.Size = new System.Drawing.Size(355, 306);
+            this.gridControlAllItems.Size = new System.Drawing.Size(343, 306);
             this.gridControlAllItems.TabIndex = 1;
             this.gridControlAllItems.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewAllItems});
@@ -263,7 +263,7 @@ namespace ShoppingBird.Desktop.Views
             this.groupControlAddEditPrices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlAddEditPrices.Location = new System.Drawing.Point(0, 0);
             this.groupControlAddEditPrices.Name = "groupControlAddEditPrices";
-            this.groupControlAddEditPrices.Size = new System.Drawing.Size(359, 363);
+            this.groupControlAddEditPrices.Size = new System.Drawing.Size(347, 363);
             this.groupControlAddEditPrices.TabIndex = 2;
             this.groupControlAddEditPrices.Text = "ADD AND EDIT PRICES";
             // 
@@ -286,8 +286,9 @@ namespace ShoppingBird.Desktop.Views
             this.memoEditItemDescription.Name = "memoEditItemDescription";
             this.memoEditItemDescription.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memoEditItemDescription.Properties.Appearance.Options.UseFont = true;
+            this.memoEditItemDescription.Properties.ReadOnly = true;
             this.memoEditItemDescription.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.memoEditItemDescription.Size = new System.Drawing.Size(349, 100);
+            this.memoEditItemDescription.Size = new System.Drawing.Size(337, 100);
             this.memoEditItemDescription.TabIndex = 15;
             // 
             // labelControlSelectedUnit
@@ -296,7 +297,7 @@ namespace ShoppingBird.Desktop.Views
             this.labelControlSelectedUnit.Appearance.Options.UseFont = true;
             this.labelControlSelectedUnit.Location = new System.Drawing.Point(15, 231);
             this.labelControlSelectedUnit.Name = "labelControlSelectedUnit";
-            this.labelControlSelectedUnit.Size = new System.Drawing.Size(80, 13);
+            this.labelControlSelectedUnit.Size = new System.Drawing.Size(81, 13);
             this.labelControlSelectedUnit.TabIndex = 14;
             this.labelControlSelectedUnit.Text = "SELECTED UNIT";
             // 
@@ -313,7 +314,7 @@ namespace ShoppingBird.Desktop.Views
             // simpleButtonDelete
             // 
             this.simpleButtonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButtonDelete.Location = new System.Drawing.Point(250, 289);
+            this.simpleButtonDelete.Location = new System.Drawing.Point(238, 289);
             this.simpleButtonDelete.Name = "simpleButtonDelete";
             this.simpleButtonDelete.Size = new System.Drawing.Size(104, 23);
             this.simpleButtonDelete.TabIndex = 11;
@@ -339,7 +340,7 @@ namespace ShoppingBird.Desktop.Views
             this.textEditRetailPrice.Properties.Mask.BeepOnError = true;
             this.textEditRetailPrice.Properties.Mask.EditMask = "f3";
             this.textEditRetailPrice.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEditRetailPrice.Size = new System.Drawing.Size(147, 42);
+            this.textEditRetailPrice.Size = new System.Drawing.Size(135, 42);
             this.textEditRetailPrice.TabIndex = 9;
             // 
             // labelControl2
@@ -365,7 +366,7 @@ namespace ShoppingBird.Desktop.Views
             // simpleButtonSave
             // 
             this.simpleButtonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButtonSave.Location = new System.Drawing.Point(250, 260);
+            this.simpleButtonSave.Location = new System.Drawing.Point(238, 260);
             this.simpleButtonSave.Name = "simpleButtonSave";
             this.simpleButtonSave.Size = new System.Drawing.Size(104, 23);
             this.simpleButtonSave.TabIndex = 1;
@@ -377,7 +378,7 @@ namespace ShoppingBird.Desktop.Views
             this.groupControlCurrentPrices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControlCurrentPrices.Location = new System.Drawing.Point(0, 0);
             this.groupControlCurrentPrices.Name = "groupControlCurrentPrices";
-            this.groupControlCurrentPrices.Size = new System.Drawing.Size(714, 702);
+            this.groupControlCurrentPrices.Size = new System.Drawing.Size(690, 702);
             this.groupControlCurrentPrices.TabIndex = 2;
             this.groupControlCurrentPrices.Text = "CURRENT PRICES";
             // 
@@ -387,7 +388,7 @@ namespace ShoppingBird.Desktop.Views
             this.gridControlCurrentPrices.Location = new System.Drawing.Point(2, 27);
             this.gridControlCurrentPrices.MainView = this.gridViewCurrentPrices;
             this.gridControlCurrentPrices.Name = "gridControlCurrentPrices";
-            this.gridControlCurrentPrices.Size = new System.Drawing.Size(710, 673);
+            this.gridControlCurrentPrices.Size = new System.Drawing.Size(686, 673);
             this.gridControlCurrentPrices.TabIndex = 1;
             this.gridControlCurrentPrices.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCurrentPrices});
@@ -403,7 +404,7 @@ namespace ShoppingBird.Desktop.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1436, 702);
+            this.ClientSize = new System.Drawing.Size(1388, 702);
             this.Controls.Add(this.splitContainerMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ItemStorePricesView";
