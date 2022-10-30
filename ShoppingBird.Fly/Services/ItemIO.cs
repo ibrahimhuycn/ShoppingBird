@@ -17,9 +17,16 @@ namespace ShoppingBird.Fly.Services
         {
             _dataAccessBase = dataAccessBase;
         }
-        public async Task<List<ItemListAllModel>> GetAllItemDescriptionsAsync()
+        public async Task<List<ItemListAllModel>> GetAllItemDescriptionsWithIdAndBarcodeAsync()
         {
             var storedProcedure = "[dbo].[usp_GetAllItemDescriptionsWithIdAndBarcode]";
+            var data = await _dataAccessBase.LoadDataAsync<ItemListAllModel>(storedProcedure);
+            return data;
+        }
+
+        public async Task<List<ItemListAllModel>> GetAllItemsWithDescriptionAsync()
+        {
+            var storedProcedure = "[dbo].[usp_GetAllItemDescriptionsWithIds]";
             var data = await _dataAccessBase.LoadDataAsync<ItemListAllModel>(storedProcedure);
             return data;
         }

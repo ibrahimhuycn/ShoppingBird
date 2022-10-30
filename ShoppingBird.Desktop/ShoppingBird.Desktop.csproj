@@ -145,6 +145,7 @@
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\ICartViewModel.cs" />
     <Compile Include="ViewModels\IItemStorePricesViewModel.cs" />
+    <Compile Include="ViewModels\IItemViewModel.cs" />
     <Compile Include="ViewModels\IStoreViewModel.cs" />
     <Compile Include="ViewModels\ItemStorePricesViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />

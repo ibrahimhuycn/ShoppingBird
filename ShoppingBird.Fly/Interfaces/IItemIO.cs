@@ -6,7 +6,8 @@ namespace ShoppingBird.Fly.Interfaces
 {
     public interface IItemIO
     {
-        Task<List<ItemListAllModel>> GetAllItemDescriptionsAsync();
+        Task<List<ItemListAllModel>> GetAllItemDescriptionsWithIdAndBarcodeAsync();
+        Task<List<ItemListAllModel>> GetAllItemsWithDescriptionAsync();
         Task<CartItemModel> GetItemByItemIdAndStoreIdAsync(int selectedItemId, int selectedStoreId);
     }
 }

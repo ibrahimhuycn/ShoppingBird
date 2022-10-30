@@ -15,6 +15,12 @@ namespace ShoppingBird.Desktop
             barButtonItemOpenStoreConfig.ItemClick += BarButtonItemOpenStoreConfig_ItemClick;
             barButtonItemOpenUnitsConfig.ItemClick += BarButtonItemOpenUnitsConfig_ItemClick;
             barButtonItemStoreItemPrices.ItemClick += barButtonItemStoreItemPrices_ItemClick;
+            barButtonItemItem.ItemClick += BarButtonItemItem_ItemClick;
+        }
+
+        private void BarButtonItemItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenMdiForm<string, ItemsView>("", false, true, true);
         }
 
         private void barButtonItemStoreItemPrices_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

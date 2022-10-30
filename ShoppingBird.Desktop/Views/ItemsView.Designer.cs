@@ -31,7 +31,7 @@ namespace ShoppingBird.Desktop.Views
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemsView));
             this.gridControlItems = new DevExpress.XtraGrid.GridControl();
-            this.gridViewStore = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewItem = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.simpleButtonInsertItem = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonSaveItem = new DevExpress.XtraEditors.SimpleButton();
@@ -40,7 +40,7 @@ namespace ShoppingBird.Desktop.Views
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.textEditItemId = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlItems)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewStore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -53,18 +53,18 @@ namespace ShoppingBird.Desktop.Views
             // 
             this.gridControlItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControlItems.Location = new System.Drawing.Point(0, 0);
-            this.gridControlItems.MainView = this.gridViewStore;
+            this.gridControlItems.MainView = this.gridViewItem;
             this.gridControlItems.Name = "gridControlItems";
             this.gridControlItems.Size = new System.Drawing.Size(1019, 574);
             this.gridControlItems.TabIndex = 0;
             this.gridControlItems.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewStore});
+            this.gridViewItem});
             // 
-            // gridViewStore
+            // gridViewItem
             // 
-            this.gridViewStore.GridControl = this.gridControlItems;
-            this.gridViewStore.Name = "gridViewStore";
-            this.gridViewStore.OptionsBehavior.Editable = false;
+            this.gridViewItem.GridControl = this.gridControlItems;
+            this.gridViewItem.Name = "gridViewItem";
+            this.gridViewItem.OptionsBehavior.Editable = false;
             // 
             // splitContainer1
             // 
@@ -155,7 +155,7 @@ namespace ShoppingBird.Desktop.Views
             this.Name = "ItemsView";
             this.Text = "ItemsView";
             ((System.ComponentModel.ISupportInitialize)(this.gridControlItems)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewStore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewItem)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -170,7 +170,7 @@ namespace ShoppingBird.Desktop.Views
         #endregion
 
         private DevExpress.XtraGrid.GridControl gridControlItems;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewStore;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewItem;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private DevExpress.XtraEditors.SimpleButton simpleButtonInsertItem;
         private DevExpress.XtraEditors.SimpleButton simpleButtonSaveItem;

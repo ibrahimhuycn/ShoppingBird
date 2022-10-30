@@ -236,7 +236,7 @@ namespace ShoppingBird.Desktop.ViewModels
 
         private async Task LoadAllItemsAsync()
         {
-            var allItems = await _itemIO.GetAllItemDescriptionsAsync();
+            var allItems = await _itemIO.GetAllItemDescriptionsWithIdAndBarcodeAsync();
             var mapped = _mapper.Map<List<ItemListAllModel>>(allItems);
             foreach (var item in mapped)
             {

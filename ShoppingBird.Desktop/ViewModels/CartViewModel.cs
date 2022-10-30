@@ -154,7 +154,7 @@ namespace ShoppingBird.Desktop.ViewModels
         }
         private async Task LoadItemsSearchDataAsync()
         {
-            var data = await _itemIO.GetAllItemDescriptionsAsync();
+            var data = await _itemIO.GetAllItemDescriptionsWithIdAndBarcodeAsync();
             var mapped = _mapper.Map<List<ItemListAllModel>>(data);
             ItemSearchDatasource.AddRange(mapped);
         }
