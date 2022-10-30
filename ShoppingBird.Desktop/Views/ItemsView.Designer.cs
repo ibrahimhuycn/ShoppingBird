@@ -121,7 +121,7 @@ namespace ShoppingBird.Desktop.Views
             this.textEditItemName.Name = "textEditItemName";
             this.textEditItemName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.textEditItemName.Properties.Appearance.Options.UseFont = true;
-            this.textEditItemName.Size = new System.Drawing.Size(234, 42);
+            this.textEditItemName.Size = new System.Drawing.Size(243, 42);
             this.textEditItemName.TabIndex = 7;
             // 
             // labelControl2
@@ -142,7 +142,7 @@ namespace ShoppingBird.Desktop.Views
             this.textEditItemId.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
             this.textEditItemId.Properties.Appearance.Options.UseFont = true;
             this.textEditItemId.Properties.ReadOnly = true;
-            this.textEditItemId.Size = new System.Drawing.Size(234, 42);
+            this.textEditItemId.Size = new System.Drawing.Size(243, 42);
             this.textEditItemId.TabIndex = 5;
             // 
             // ItemsView

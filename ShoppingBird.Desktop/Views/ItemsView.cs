@@ -1,5 +1,6 @@
 ﻿using ShoppingBird.Desktop.Models;
 using ShoppingBird.Desktop.ViewModels;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ShoppingBird.Desktop.Views
@@ -13,7 +14,20 @@ namespace ShoppingBird.Desktop.Views
             InitializeComponent();
             _viewModel = viewModel;
             InitializeBinding();
+
             gridViewItem.FocusedRowChanged += GridViewItem_FocusedRowChanged;
+            simpleButtonInsertItem.Click += SimpleButtonInsertItem_Click;
+            simpleButtonSaveItem.Click += SimpleButtonSaveItem_ClickAsync;
+        }
+
+        private async void SimpleButtonSaveItem_ClickAsync(object sender, System.EventArgs e)
+        {
+            await _viewModel.InsertUpdateItemAsync();
+        }
+
+        private void SimpleButtonInsertItem_Click(object sender, System.EventArgs e)
+        {
+            _viewModel.SetInsertMode();
         }
 
         private void GridViewItem_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)

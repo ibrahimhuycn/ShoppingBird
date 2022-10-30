@@ -1,5 +1,6 @@
 ﻿using ShoppingBird.Desktop.Models;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace ShoppingBird.Desktop.ViewModels
 {
@@ -9,5 +10,8 @@ namespace ShoppingBird.Desktop.ViewModels
         ItemListAllModel SelectedItem { get; set; }
         string SelectedItemDescription { get; set; }
         int? SelectedItemId { get; set; }
+
+        void SetInsertMode();
+        Task InsertUpdateItemAsync();
     }
 }

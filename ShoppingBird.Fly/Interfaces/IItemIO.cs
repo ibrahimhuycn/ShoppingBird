@@ -9,5 +9,7 @@ namespace ShoppingBird.Fly.Interfaces
         Task<List<ItemListAllModel>> GetAllItemDescriptionsWithIdAndBarcodeAsync();
         Task<List<ItemListAllModel>> GetAllItemsWithDescriptionAsync();
         Task<CartItemModel> GetItemByItemIdAndStoreIdAsync(int selectedItemId, int selectedStoreId);
+        Task<ItemModel> InsertItemAsync(string selectedItemDescription);
+        Task<ItemModel> UpdateItemAsync(int id, string description);
     }
 }

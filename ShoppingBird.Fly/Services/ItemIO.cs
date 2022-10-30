@@ -38,5 +38,21 @@ namespace ShoppingBird.Fly.Services
             var data = await _dataAccessBase.LoadDataWithParameterAsync<CartItemModel, dynamic>(storedProcedure, parameter);
             return data.FirstOrDefault();
         }
+
+        public async Task<ItemModel> InsertItemAsync(string description)
+        {
+            var storedProcedure = "[dbo].[usp_InsertItemReturnInsertedIdAndDescription]";
+            var parameters = new {Description  = description};
+            var inserted = await _dataAccessBase.SelectInsertOrUpdateAsync<ItemModel, dynamic>(storedProcedure, parameters);
+            return inserted;
+        }
+
+        public async Task<ItemModel> UpdateItemAsync(int id, string description)
+        {
+            var storedProcedure = "[dbo].[usp_UpdateItem]";
+            var parameters = new {ItemId = id, Description = description};
+            var updated = await _dataAccessBase.SelectInsertOrUpdateAsync<ItemModel, dynamic>(storedProcedure, parameters);
+            return updated;
+        }
     }
 }
