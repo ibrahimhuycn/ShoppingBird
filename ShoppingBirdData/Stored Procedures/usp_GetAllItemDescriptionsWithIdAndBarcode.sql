@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[usp_GetAllItemDescriptionsWithId]
+﻿CREATE PROCEDURE [dbo].[usp_GetAllItemDescriptionsWithIdAndBarcode]
 AS
 BEGIN
 	/*Used to populate the combobox suggestions for doing search.*/

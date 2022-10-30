@@ -73,7 +73,7 @@
     <Build Include="Tables\Unit.sql" />
     <Build Include="Stored Procedures\usp_SeachItemByBarcodeAndStore.sql" />
     <Build Include="Stored Procedures\usp_GetAllStores.sql" />
-    <Build Include="Stored Procedures\usp_GetAllItemDescriptionsWithId.sql" />
+    <Build Include="Stored Procedures\usp_GetAllItemDescriptionsWithIdAndBarcode.sql" />
     <Build Include="Stored Procedures\usp_SearchItemByDescriptionAndStore.sql" />
     <Build Include="Stored Procedures\usp_InsertItemReturnInsertedId.sql" />
     <Build Include="Stored Procedures\usp_InsertItemPrice.sql" />
