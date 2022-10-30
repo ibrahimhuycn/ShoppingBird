@@ -147,6 +147,7 @@
     <Compile Include="ViewModels\IItemStorePricesViewModel.cs" />
     <Compile Include="ViewModels\IStoreViewModel.cs" />
     <Compile Include="ViewModels\ItemStorePricesViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\ITransactionHistoryViewModel.cs" />
     <Compile Include="ViewModels\IUnitsViewModel.cs" />
     <Compile Include="ViewModels\StoreViewModel.cs" />
@@ -163,6 +164,12 @@
     </Compile>
     <Compile Include="Views\ItemStorePricesView.Designer.cs">
       <DependentUpon>ItemStorePricesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ItemsView.Designer.cs">
+      <DependentUpon>ItemsView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
@@ -207,6 +214,9 @@
     <EmbeddedResource Include="Views\ItemStorePricesView.resx">
       <DependentUpon>ItemStorePricesView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ItemsView.resx">
+      <DependentUpon>ItemsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +254,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="hummingbird.ico" />
+    <None Include="Resources\reloading.svg" />
     <None Include="Resources\price-tag.svg" />
     <None Include="Resources\best-product.svg" />
     <None Include="Resources\weighing-machine.svg" />

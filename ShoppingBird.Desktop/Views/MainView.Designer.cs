@@ -41,6 +41,7 @@ namespace ShoppingBird.Desktop
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.barButtonItemItem = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,9 +54,10 @@ namespace ShoppingBird.Desktop
             this.barButtonItemTransactionHistory,
             this.barButtonItemOpenStoreConfig,
             this.barButtonItemOpenUnitsConfig,
-            this.barButtonItemStoreItemPrices});
+            this.barButtonItemStoreItemPrices,
+            this.barButtonItemItem});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 6;
+            this.ribbonControl1.MaxItemId = 7;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -117,6 +119,7 @@ namespace ShoppingBird.Desktop
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemOpenStoreConfig);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemOpenUnitsConfig);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemStoreItemPrices);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemItem);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Configuration";
             // 
@@ -131,6 +134,13 @@ namespace ShoppingBird.Desktop
             // 
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "ribbonPage2";
+            // 
+            // barButtonItemItem
+            // 
+            this.barButtonItemItem.Caption = "Items";
+            this.barButtonItemItem.Id = 6;
+            this.barButtonItemItem.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.best_product;
+            this.barButtonItemItem.Name = "barButtonItemItem";
             // 
             // MainView
             // 
@@ -166,6 +176,7 @@ namespace ShoppingBird.Desktop
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenStoreConfig;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenUnitsConfig;
         private DevExpress.XtraBars.BarButtonItem barButtonItemStoreItemPrices;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemItem;
     }
 }
 
