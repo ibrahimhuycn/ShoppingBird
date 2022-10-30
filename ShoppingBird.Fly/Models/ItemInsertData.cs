@@ -3,23 +3,23 @@ namespace ShoppingBird.Fly.Models
 {
     public class ItemInsertDataArgs : EventArgs
     {
-        private readonly Item _item;
-        private readonly ItemPriceData _priceData;
+        private readonly ItemModel _item;
+        private readonly ItemPriceDataModel _priceData;
 
-        public ItemInsertDataArgs(Item item, ItemPriceData itemPriceData)
+        public ItemInsertDataArgs(ItemModel item, ItemPriceDataModel itemPriceData)
         {
             this._item = item;
             this._priceData = itemPriceData;
         }
 
-        public Item Item
+        public ItemModel Item
         {
             get
             {
                 return _item;
             }
         }
-        public ItemPriceData PriceData
+        public ItemPriceDataModel PriceData
         {
             get
             {

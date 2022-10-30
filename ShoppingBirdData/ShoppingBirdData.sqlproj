@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{d803828b-3041-4988-8a34-ac8dfee51261}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -16,12 +16,13 @@
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetLanguage>CS</TargetLanguage>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -60,6 +61,7 @@
     <Folder Include="Stored Procedures" />
     <Folder Include="Views" />
     <Folder Include="Scripts" />
+    <Folder Include="Types" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Invoice.sql" />
@@ -67,37 +69,40 @@
     <Build Include="Tables\Store.sql" />
     <Build Include="Tables\User.sql" />
     <Build Include="Tables\Item.sql" />
-    <Build Include="Tables\StoreEmployee.sql" />
-    <Build Include="Tables\Designation.sql" />
     <Build Include="Tables\PriceList.sql" />
-    <Build Include="Tables\Tax.sql" />
     <Build Include="Tables\Unit.sql" />
-    <Build Include="Tables\UnitConversion.sql" />
-    <Build Include="Tables\Category.sql" />
     <Build Include="Stored Procedures\usp_SeachItemByBarcodeAndStore.sql" />
     <Build Include="Stored Procedures\usp_GetAllStores.sql" />
-    <Build Include="Stored Procedures\usp_GetAllItemDescriptionsWithId.sql" />
+    <Build Include="Stored Procedures\usp_GetAllItemDescriptionsWithIdAndBarcode.sql" />
     <Build Include="Stored Procedures\usp_SearchItemByDescriptionAndStore.sql" />
-    <Build Include="Stored Procedures\usp_InsertInvoice.sql" />
-    <Build Include="Stored Procedures\usp_InsertInvoiceDetails.sql" />
-    <Build Include="Stored Procedures\usp_InsertItemReturnInsertedId.sql" />
+    <Build Include="Stored Procedures\dbo.usp_InsertItemReturnInsertedIdAndDescription.sql" />
     <Build Include="Stored Procedures\usp_InsertItemPrice.sql" />
-    <Build Include="Stored Procedures\usp_SearchItemIdByItemDescription.sql" />
+    <Build Include="Stored Procedures\usp_SearchItemByItemIdAndStoreId.sql" />
     <Build Include="Stored Procedures\usp_ItemPriceDataByBarcode.sql" />
-    <Build Include="Stored Procedures\usp_GetAllCategories.sql" />
     <Build Include="Stored Procedures\usp_GetAllUnits.sql" />
-    <Build Include="Stored Procedures\usp_GetAllTax.sql" />
     <Build Include="Stored Procedures\usp_GetAllPricesDataForItem.sql" />
-    <Build Include="Stored Procedures\usp_GetItemCatDataAndUnitWithBarcodeAndStore.sql" />
+    <Build Include="Stored Procedures\usp_GetItemDataWithBarcode.sql" />
+    <Build Include="Stored Procedures\usp_UpdateItem.sql" />
+    <Build Include="Stored Procedures\usp_InsertStoreAndReturnInserted.sql" />
+    <Build Include="Stored Procedures\usp_UpdateStoreAndReturnInserted.sql" />
+    <Build Include="Stored Procedures\usp_InsertInvoiceAndInvoiceDetails.sql" />
+    <Build Include="Types\InvoiceDetailsUDT.sql" />
+    <Build Include="Stored Procedures\usp_GetTransactionHistory.sql" />
+    <Build Include="Stored Procedures\usp_GetTransactionHistoryForPeriod.sql" />
+    <Build Include="Stored Procedures\usp_InsertUnitAndReturnInserted.sql" />
+    <Build Include="Stored Procedures\usp_UpdateUnitAndReturnUpdated.sql" />
+    <Build Include="Stored Procedures\usp_GetAllPriceListsForAllStoresWithUnits.sql" />
+    <Build Include="Stored Procedures\usp_UpdateStorePriceAndBarcodeById.sql" />
+    <Build Include="Stored Procedures\usp_GetAllItemDescriptionsWithIds.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ShoppingBirdData.refactorlog" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ShoppingBirdData.publish.xml" />
-    <None Include="ProductionShoppingBirdData.publish.xml" />
+    <PostDeploy Include="Scripts\Script.PostDeployment_ItemInsert.sql" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="Scripts\Script.PostDeployment_ItemInsert.sql" />
+    <None Include="devShoppingBirdData.publish.xml" />
+    <None Include="pShoppingBirdData.publish.xml" />
   </ItemGroup>
 </Project>

@@ -1,12 +1,14 @@
 ﻿using ShoppingBird.Fly.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ShoppingBird.Fly.Interfaces
 {
     public interface IStoreIO
     {
-        IList<Store> GetAllStores();
-        int SaveStore(Store e);
+        Task<List<StoreModel>> GetAllStoresAsync();
+        Task<StoreModel> InsertStoreAsync(string storeName);
+        Task<StoreModel> UpdateStoreAsync(StoreModel e);
     }
 }

@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[usp_GetAllUnits]
 AS
 BEGIN
-	SELECT *
+	SELECT [Id],[Unit],[Description]
 	FROM [dbo].[Unit]
 END
