@@ -22,5 +22,6 @@ namespace ShoppingBird.Desktop.ViewModels
         bool IsAnExistingPriceSelected { get; set; }
 
         Task InsertOrUpdateStorePriceDataAsync();
+        void Refresh();
     }
 }

@@ -176,6 +176,15 @@ namespace ShoppingBird.Desktop.ViewModels
         #endregion
 
         #region Public Methods
+        public void Refresh()
+        {
+            AllStores.Clear();
+            AllUnits.Clear();
+            AllItems.Clear();
+            AllPricesForAllStores.Clear();
+
+            OnInitialize?.Invoke(this, EventArgs.Empty);
+        }
         public async Task InsertOrUpdateStorePriceDataAsync()
         {
             if (IsAnExistingPriceSelected)

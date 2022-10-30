@@ -19,6 +19,12 @@ namespace ShoppingBird.Desktop.Views
             gridViewAllUnits.FocusedRowChanged += GridViewAllUnits_FocusedRowChanged;
             gridViewCurrentPrices.FocusedRowChanged += GridViewCurrentPrices_FocusedRowChanged;
             simpleButtonSave.Click += SimpleButtonSave_Click;
+            barButtonItemRefresh.ItemClick += BarButtonItemRefresh_ItemClick;
+        }
+
+        private void BarButtonItemRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _viewModel.Refresh();
         }
 
         private async void SimpleButtonSave_Click(object sender, EventArgs e)

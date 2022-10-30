@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using ShoppingBird.Desktop.Views;
 using System;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace ShoppingBird.Desktop
@@ -16,6 +17,13 @@ namespace ShoppingBird.Desktop
             barButtonItemOpenUnitsConfig.ItemClick += BarButtonItemOpenUnitsConfig_ItemClick;
             barButtonItemStoreItemPrices.ItemClick += barButtonItemStoreItemPrices_ItemClick;
             barButtonItemItem.ItemClick += BarButtonItemItem_ItemClick;
+            DiaplaySoftwareVersion();
+        }
+
+        private void DiaplaySoftwareVersion()
+        {
+            var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            Text = $"Shopping Bird [ {version} ]";
         }
 
         private void BarButtonItemItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

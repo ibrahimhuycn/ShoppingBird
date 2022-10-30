@@ -64,7 +64,7 @@ namespace ShoppingBird.Desktop.Views
             this.gridViewCurrentPrices = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
@@ -426,7 +426,7 @@ namespace ShoppingBird.Desktop.Views
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem1,
+            this.barButtonItemRefresh,
             this.barButtonItem2,
             this.barButtonItem3,
             this.barButtonItem4});
@@ -439,18 +439,18 @@ namespace ShoppingBird.Desktop.Views
             this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemRefresh),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4)});
             this.bar1.Text = "Tools";
             // 
-            // barButtonItem1
+            // barButtonItemRefresh
             // 
-            this.barButtonItem1.Caption = "Refresh";
-            this.barButtonItem1.Id = 0;
-            this.barButtonItem1.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.reloading;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItemRefresh.Caption = "Refresh";
+            this.barButtonItemRefresh.Id = 0;
+            this.barButtonItemRefresh.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.reloading;
+            this.barButtonItemRefresh.Name = "barButtonItemRefresh";
             toolTipTitleItem1.Text = "Refresh";
             toolTipItem1.LeftIndent = 6;
             toolTipItem1.Text = "Reloads all data on form.\r\nStores, units, items and prices.";
@@ -459,7 +459,7 @@ namespace ShoppingBird.Desktop.Views
             superToolTip1.Items.Add(toolTipTitleItem1);
             superToolTip1.Items.Add(toolTipItem1);
             superToolTip1.Items.Add(toolTipTitleItem2);
-            this.barButtonItem1.SuperTip = superToolTip1;
+            this.barButtonItemRefresh.SuperTip = superToolTip1;
             // 
             // barButtonItem2
             // 
@@ -603,7 +603,7 @@ namespace ShoppingBird.Desktop.Views
         private DevExpress.XtraEditors.ToggleSwitch toggleSwitchModeIndicator;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemRefresh;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
