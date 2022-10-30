@@ -73,6 +73,16 @@ namespace ShoppingBird.Desktop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage price_tag {
+            get {
+                object obj = ResourceManager.GetObject("price-tag", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage shopping {
             get {
                 object obj = ResourceManager.GetObject("shopping", resourceCulture);

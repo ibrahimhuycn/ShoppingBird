@@ -35,7 +35,7 @@ namespace ShoppingBird.Desktop
             this.barButtonItemTransactionHistory = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemOpenStoreConfig = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemOpenUnitsConfig = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemOpenItemsConfig = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemStoreItemPrices = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -53,7 +53,7 @@ namespace ShoppingBird.Desktop
             this.barButtonItemTransactionHistory,
             this.barButtonItemOpenStoreConfig,
             this.barButtonItemOpenUnitsConfig,
-            this.barButtonItemOpenItemsConfig});
+            this.barButtonItemStoreItemPrices});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 6;
             this.ribbonControl1.Name = "ribbonControl1";
@@ -90,12 +90,12 @@ namespace ShoppingBird.Desktop
             this.barButtonItemOpenUnitsConfig.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.weighing_machine;
             this.barButtonItemOpenUnitsConfig.Name = "barButtonItemOpenUnitsConfig";
             // 
-            // barButtonItemOpenItemsConfig
+            // barButtonItemStoreItemPrices
             // 
-            this.barButtonItemOpenItemsConfig.Caption = "Items";
-            this.barButtonItemOpenItemsConfig.Id = 5;
-            this.barButtonItemOpenItemsConfig.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.best_product;
-            this.barButtonItemOpenItemsConfig.Name = "barButtonItemOpenItemsConfig";
+            this.barButtonItemStoreItemPrices.Caption = "Store Item Prices";
+            this.barButtonItemStoreItemPrices.Id = 5;
+            this.barButtonItemStoreItemPrices.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.price_tag;
+            this.barButtonItemStoreItemPrices.Name = "barButtonItemStoreItemPrices";
             // 
             // ribbonPage1
             // 
@@ -116,7 +116,7 @@ namespace ShoppingBird.Desktop
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemOpenStoreConfig);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemOpenUnitsConfig);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemOpenItemsConfig);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItemStoreItemPrices);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Configuration";
             // 
@@ -165,7 +165,7 @@ namespace ShoppingBird.Desktop
         private DevExpress.XtraBars.BarButtonItem barButtonItemTransactionHistory;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenStoreConfig;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenUnitsConfig;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenItemsConfig;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemStoreItemPrices;
     }
 }
 
