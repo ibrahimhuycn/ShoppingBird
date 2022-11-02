@@ -67,7 +67,7 @@ namespace ShoppingBird.Desktop.ViewModels
         {
             get => _selectedItemDescription; set
             {
-                _selectedItemDescription = value;
+                _selectedItemDescription = value.ToUpper();
                 OnPropertyChanged();
             }
         }
