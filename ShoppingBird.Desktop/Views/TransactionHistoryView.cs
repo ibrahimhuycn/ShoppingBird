@@ -21,6 +21,7 @@ namespace ShoppingBird.Desktop.Views
         private void SimulateF2KeyUp(object sender, EventArgs e)
         {
             TransactionHistoryView_KeyUp(sender, new KeyEventArgs(Keys.F2));
+            _viewModel.CalculateCurrentTotal();
         }
 
         private async void TransactionHistoryView_KeyUp(object sender, KeyEventArgs e)
@@ -54,6 +55,9 @@ namespace ShoppingBird.Desktop.Views
             //checkEditGetCompleteTransactionHistory
             checkEditGetCompleteTransactionHistory.DataBindings.Add(new Binding("Checked", _viewModel,
                 nameof(_viewModel.IsGetCompleteTransactionHistory), false, DataSourceUpdateMode.OnPropertyChanged));
+
+            labelControlTotal.DataBindings.Add(new Binding("Text",_viewModel, nameof(_viewModel.SumOfTotal),
+                false, DataSourceUpdateMode.OnPropertyChanged));
         }
     }
 }

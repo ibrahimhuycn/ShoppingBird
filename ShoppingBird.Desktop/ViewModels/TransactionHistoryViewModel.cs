@@ -5,6 +5,7 @@ using ShoppingBird.Fly.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ShoppingBird.Desktop.ViewModels
@@ -17,6 +18,7 @@ namespace ShoppingBird.Desktop.ViewModels
         private DateTime _startDate;
         private DateTime _endDate;
         private bool _isGetCompleteTransactionHistory;
+        private decimal _sumOfTotal;
         #endregion
 
         #region Constructor
@@ -34,6 +36,15 @@ namespace ShoppingBird.Desktop.ViewModels
 
         #region Public properties
         public BindingList<TransactionHistoryModel> TransactionHistory { get; set; }
+        public decimal SumOfTotal
+        {
+            get => _sumOfTotal; set
+            {
+                _sumOfTotal = value;
+                OnPropertyChanged();
+            }
+        }
+
         public DateTime StartDate
         {
             get => _startDate; set
@@ -57,6 +68,23 @@ namespace ShoppingBird.Desktop.ViewModels
                 _isGetCompleteTransactionHistory = value;
                 OnPropertyChanged();
             }
+        }
+
+        public void CalculateCurrentTotal()
+        {
+            List<int> processedInvoiceIds = new List<int>();
+            var sum = 0.00m;
+            foreach (var item in TransactionHistory)
+            {
+                var isProcessed = processedInvoiceIds.Any(x => x == item.InvoiceId);
+                if (!isProcessed)
+                {
+                    sum += item.Total;
+                    processedInvoiceIds.Add(item.InvoiceId);
+                }
+            }
+
+            SumOfTotal = sum;
         }
         #endregion
 

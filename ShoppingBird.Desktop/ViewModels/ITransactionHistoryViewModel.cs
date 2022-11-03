@@ -11,7 +11,9 @@ namespace ShoppingBird.Desktop.ViewModels
         DateTime StartDate { get; set; }
         BindingList<TransactionHistoryModel> TransactionHistory { get; set; }
         bool IsGetCompleteTransactionHistory { get; set; }
+        decimal SumOfTotal { get; set; }
 
         Task LoadTransactionHistoryAsync();
+        void CalculateCurrentTotal();
     }
 }
