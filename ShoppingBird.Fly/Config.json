@@ -2,12 +2,12 @@
   "ConnectionName": [
     {
       "Name": "pShoppingBirdData",
-      "ConnectionString": "Server=192.168.100.4;Database=pShoppingBirdData;User Id=sa;Password=Bismillah.123!;",
+      "ConnectionString": "Server=192.168.100.126\\SQLSERVERCI;Database=ShoppingBird.Data;User Id=sa;Password=Bismillah.123!;TrustServerCertificate=true;",
       "Provider": "System.Data.SqlClient"
     },
     {
       "Name": "Testing",
-      "ConnectionString": "Server=localhost, 10433;Database=DbName;User Id=sa;Password=Bismillah.123!;",
+      "ConnectionString": "Server=192.168.100.126\\SQLSERVERCI;Database=ShoppingBird.Data;User Id=sa;Password=Bismillah.123!;TrustServerCertificate=true;",
       "Provider": "System.Data.SqlClient"
     }
   ]

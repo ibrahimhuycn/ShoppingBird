@@ -11,6 +11,7 @@ namespace ShoppingBird.Fly.Helpers
     {
         public string GetConnectionString(string name = "pShoppingBirdData")
         {
+            //return "Server=DESKTOP-SMO1O2S\\SQLSERVERCI;Database=ShoppingBird.Data;User Id=sa;Password=Bismillah.123!;TrustServerCertificate=true;";
             return ReadConnectionString(name);
         }
 

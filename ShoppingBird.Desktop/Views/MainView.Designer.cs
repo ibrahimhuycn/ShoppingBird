@@ -68,35 +68,30 @@ namespace ShoppingBird.Desktop
             // 
             this.barButtonItemCart.Caption = "Cart";
             this.barButtonItemCart.Id = 1;
-            this.barButtonItemCart.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.shopping_cart;
             this.barButtonItemCart.Name = "barButtonItemCart";
             // 
             // barButtonItemTransactionHistory
             // 
             this.barButtonItemTransactionHistory.Caption = "Transaction History";
             this.barButtonItemTransactionHistory.Id = 2;
-            this.barButtonItemTransactionHistory.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.transaction_history;
             this.barButtonItemTransactionHistory.Name = "barButtonItemTransactionHistory";
             // 
             // barButtonItemOpenStoreConfig
             // 
             this.barButtonItemOpenStoreConfig.Caption = "Retail Stores";
             this.barButtonItemOpenStoreConfig.Id = 3;
-            this.barButtonItemOpenStoreConfig.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.shopping;
             this.barButtonItemOpenStoreConfig.Name = "barButtonItemOpenStoreConfig";
             // 
             // barButtonItemOpenUnitsConfig
             // 
             this.barButtonItemOpenUnitsConfig.Caption = "Units";
             this.barButtonItemOpenUnitsConfig.Id = 4;
-            this.barButtonItemOpenUnitsConfig.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.weighing_machine;
             this.barButtonItemOpenUnitsConfig.Name = "barButtonItemOpenUnitsConfig";
             // 
             // barButtonItemStoreItemPrices
             // 
             this.barButtonItemStoreItemPrices.Caption = "Store Item Prices";
             this.barButtonItemStoreItemPrices.Id = 5;
-            this.barButtonItemStoreItemPrices.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.price_tag;
             this.barButtonItemStoreItemPrices.Name = "barButtonItemStoreItemPrices";
             // 
             // ribbonPage1
@@ -139,7 +134,6 @@ namespace ShoppingBird.Desktop
             // 
             this.barButtonItemItem.Caption = "Items";
             this.barButtonItemItem.Id = 6;
-            this.barButtonItemItem.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.best_product;
             this.barButtonItemItem.Name = "barButtonItemItem";
             // 
             // MainView

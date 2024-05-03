@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ShopingBird.Maui.Controls;assembly=ShoppingBird.Controls"
+             xmlns:viewModel="clr-namespace:ShopingBird.Maui.ViewModel"
+             x:DataType="viewModel:MainViewModel"
+             x:Class="ShoppingBird.Maui.MainPage">
+
+    <ScrollView>
+        <FlexLayout Direction="Row" Wrap="Wrap" AlignItems="Center" JustifyContent="Center" Padding="10" >
+
+            <controls:ImageButton Caption="Shop Now" ImageSource="cart.png" TappedCommand="{Binding ShopNowCommand}"/>
+            <controls:ImageButton Caption="Shop Now1" ImageSource="dotnet_bot.png"/>
+
+        </FlexLayout>
+    </ScrollView>
+
+</ContentPage>

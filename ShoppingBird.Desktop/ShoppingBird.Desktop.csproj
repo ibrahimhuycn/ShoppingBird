@@ -1,281 +1,54 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EAF54B4E-27CF-4FF2-A484-C2696AD7A176}</ProjectGuid>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ShoppingBird.Desktop</RootNamespace>
-    <AssemblyName>ShoppingBird.Desktop</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>hummingbird.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=6.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Autofac.6.4.0\lib\netstandard2.0\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.BonusSkins.v18.2" />
-    <Reference Include="DevExpress.Data.v18.2" />
-    <Reference Include="DevExpress.Utils.v18.2" />
-    <Reference Include="DevExpress.Sparkline.v18.2.Core" />
-    <Reference Include="DevExpress.XtraBars.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v18.2" />
-    <Reference Include="DevExpress.Printing.v18.2.Core" />
-    <Reference Include="DevExpress.XtraGrid.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v18.2, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.SqlClient, Version=4.6.1.4, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Data.SqlClient.4.8.4\lib\net461\System.Data.SqlClient.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AutofacFormFactory.cs" />
-    <Compile Include="ContainerConfig.cs" />
-    <Compile Include="Exceptions\CartItemNotFoundForStoreException.cs" />
-    <Compile Include="Exceptions\NoItemSelectedException.cs" />
-    <Compile Include="Exceptions\NoStoreSelectedException.cs" />
-    <Compile Include="FormFactory.cs" />
-    <Compile Include="Helpers\NotificationHelper.cs" />
-    <Compile Include="Helpers\NotifyBase.cs" />
-    <Compile Include="IFormFactory.cs" />
-    <Compile Include="IShoppingBirdApplication.cs" />
-    <Compile Include="Models\CartItemModel.cs" />
-    <Compile Include="Models\InvoiceModel.cs" />
-    <Compile Include="Models\ItemListAllModel.cs" />
-    <Compile Include="Models\NewInvoiceModel.cs" />
-    <Compile Include="Models\PriceListModel.cs" />
-    <Compile Include="Models\StoreModel.cs" />
-    <Compile Include="Models\TransactionHistoryModel.cs" />
-    <Compile Include="Models\UnitsModel.cs" />
-    <Compile Include="ShoppingBirdApplication.cs" />
-    <Compile Include="Translations\GlobalStrings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GlobalStrings.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Translations\GlobalStrings.dv-MV.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GlobalStrings.dv-MV.resx</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\CartViewModel.cs" />
-    <Compile Include="ViewModels\ICartViewModel.cs" />
-    <Compile Include="ViewModels\IItemStorePricesViewModel.cs" />
-    <Compile Include="ViewModels\IItemViewModel.cs" />
-    <Compile Include="ViewModels\IStoreViewModel.cs" />
-    <Compile Include="ViewModels\ItemStorePricesViewModel.cs" />
-    <Compile Include="ViewModels\ItemViewModel.cs" />
-    <Compile Include="ViewModels\ITransactionHistoryViewModel.cs" />
-    <Compile Include="ViewModels\IUnitsViewModel.cs" />
-    <Compile Include="ViewModels\StoreViewModel.cs" />
-    <Compile Include="ViewModels\TransactionHistoryViewModel.cs" />
-    <Compile Include="ViewModels\UnitsViewModel.cs" />
-    <Compile Include="Views\CartView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\CartView.Designer.cs">
-      <DependentUpon>CartView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ItemStorePricesView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ItemStorePricesView.Designer.cs">
-      <DependentUpon>ItemStorePricesView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ItemsView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ItemsView.Designer.cs">
-      <DependentUpon>ItemsView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MainView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\MainView.Designer.cs">
-      <DependentUpon>MainView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\StoreView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\StoreView.Designer.cs">
-      <DependentUpon>StoreView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\TransactionHistoryView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\TransactionHistoryView.Designer.cs">
-      <DependentUpon>TransactionHistoryView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UnitsView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\UnitsView.Designer.cs">
-      <DependentUpon>UnitsView.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Translations\GlobalStrings.dv-MV.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>GlobalStrings.dv-MV.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Translations\GlobalStrings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>GlobalStrings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\CartView.dv-MV.resx">
-      <DependentUpon>CartView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\CartView.resx">
-      <DependentUpon>CartView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ItemStorePricesView.resx">
-      <DependentUpon>ItemStorePricesView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ItemsView.resx">
-      <DependentUpon>ItemsView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainView.resx">
-      <DependentUpon>MainView.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Views\StoreView.resx">
-      <DependentUpon>StoreView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\TransactionHistoryView.resx">
-      <DependentUpon>TransactionHistoryView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\UnitsView.resx">
-      <DependentUpon>UnitsView.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="hummingbird.ico" />
-    <None Include="Resources\reloading.svg" />
-    <None Include="Resources\price-tag.svg" />
-    <None Include="Resources\best-product.svg" />
-    <None Include="Resources\weighing-machine.svg" />
-    <None Include="Resources\shopping.svg" />
-    <None Include="Resources\transaction-history.svg" />
-    <None Include="Resources\shopping-cart.svg" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\ShoppingBird.Fly\ShoppingBird.Fly.csproj">
-      <Project>{d6170a9c-83ad-43a9-a782-1b52f3c42ac5}</Project>
-      <Name>ShoppingBird.Fly</Name>
-    </ProjectReference>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.1" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingBird.Fly\ShoppingBird.Fly.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.4.0" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="DevExpress.Data" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Data.Desktop" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Drawing" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Office.Core" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Pdf.Core" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Pdf.Drawing" Version="23.2.3" />
+    <PackageReference Include="DevExpress.PivotGrid.Core" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Printing.Core" Version="23.2.3" />
+    <PackageReference Include="DevExpress.RichEdit.Core" Version="23.2.3" />
+    <PackageReference Include="DevExpress.RichEdit.Export" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Sparkline.Core" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Utils" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Win" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Win.BonusSkins" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Win.Grid" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Win.Navigation" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Win.PivotGrid" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Win.Printing" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Win.TreeList" Version="23.2.3" />
+    <PackageReference Include="DevExpress.Win.VerticalGrid" Version="23.2.3" />
+  </ItemGroup>
 </Project>

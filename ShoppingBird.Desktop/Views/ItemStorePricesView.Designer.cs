@@ -449,7 +449,6 @@ namespace ShoppingBird.Desktop.Views
             // 
             this.barButtonItemRefresh.Caption = "Refresh";
             this.barButtonItemRefresh.Id = 0;
-            this.barButtonItemRefresh.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.reloading;
             this.barButtonItemRefresh.Name = "barButtonItemRefresh";
             toolTipTitleItem1.Text = "Refresh";
             toolTipItem1.LeftIndent = 6;
@@ -465,21 +464,18 @@ namespace ShoppingBird.Desktop.Views
             // 
             this.barButtonItem2.Caption = "Items";
             this.barButtonItem2.Id = 1;
-            this.barButtonItem2.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.best_product;
             this.barButtonItem2.Name = "barButtonItem2";
             // 
             // barButtonItem3
             // 
             this.barButtonItem3.Caption = "Stores";
             this.barButtonItem3.Id = 2;
-            this.barButtonItem3.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.shopping;
             this.barButtonItem3.Name = "barButtonItem3";
             // 
             // barButtonItem4
             // 
             this.barButtonItem4.Caption = "Units";
             this.barButtonItem4.Id = 3;
-            this.barButtonItem4.ImageOptions.SvgImage = global::ShoppingBird.Desktop.Properties.Resources.weighing_machine;
             this.barButtonItem4.Name = "barButtonItem4";
             // 
             // barDockControlTop
