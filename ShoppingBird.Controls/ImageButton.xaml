@@ -20,6 +20,8 @@
                     VerticalOptions="End"
                     FontAttributes="None"
                     FontSize="Small"
+                    TextColor="Purple"
+                    FontFamily="UbuntuMedium"
                     Margin="5"/>
 
         </Grid>

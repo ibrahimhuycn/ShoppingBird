@@ -9,8 +9,11 @@
     <ScrollView>
         <FlexLayout Direction="Row" Wrap="Wrap" AlignItems="Center" JustifyContent="Center" Padding="10" >
 
-            <controls:ImageButton Caption="Shop Now" ImageSource="cart.png" TappedCommand="{Binding ShopNowCommand}"/>
-            <controls:ImageButton Caption="Shop Now1" ImageSource="dotnet_bot.png"/>
+            <controls:ImageButton Caption="Cart" ImageSource="cart.png" TappedCommand="{Binding ShopNowCommand}"/>
+            <controls:ImageButton Caption="Stores" ImageSource="store.png"/>
+            <controls:ImageButton Caption="Items" ImageSource="items.png"/>
+            <controls:ImageButton Caption="History" ImageSource="history.png"/>
+            <controls:ImageButton Caption="Store Prices" ImageSource="prices.png"/>
 
         </FlexLayout>
     </ScrollView>

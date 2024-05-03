@@ -58,6 +58,10 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\cart.svg" />
+	  <None Remove="Resources\Images\history.svg" />
+	  <None Remove="Resources\Images\items.svg" />
+	  <None Remove="Resources\Images\prices.svg" />
+	  <None Remove="Resources\Images\store.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
